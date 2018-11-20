@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="亮度,对比度,图像处理," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="这个公式可以解释对图像的亮度和对比度操作的原理  α能使图像像素成倍数的增长或降低（α&amp;lt;1），使图像的差值有线性变化，从而改变了图像的对比度。 β可为负，也可为正。任何一个像素加上或减去一个值会使这个像素点向白色或向黑色靠近，从而改变了图像的亮度。">
+<meta name="keywords" content="亮度,对比度,图像处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图像处理之亮度与对比度">
+<meta property="og:url" content="https://www.yf-gz.cn/2018/06/24/图像处理之亮度与对比度/index.html">
+<meta property="og:site_name" content="chenogeの日志">
+<meta property="og:description" content="这个公式可以解释对图像的亮度和对比度操作的原理  α能使图像像素成倍数的增长或降低（α&amp;lt;1），使图像的差值有线性变化，从而改变了图像的对比度。 β可为负，也可为正。任何一个像素加上或减去一个值会使这个像素点向白色或向黑色靠近，从而改变了图像的亮度。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/24/图像处理之亮度与对比度/20170719173426437.png">
+<meta property="og:updated_time" content="2018-06-24T10:09:59.093Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图像处理之亮度与对比度">
+<meta name="twitter:description" content="这个公式可以解释对图像的亮度和对比度操作的原理  α能使图像像素成倍数的增长或降低（α&amp;lt;1），使图像的差值有线性变化，从而改变了图像的对比度。 β可为负，也可为正。任何一个像素加上或减去一个值会使这个像素点向白色或向黑色靠近，从而改变了图像的亮度。">
+<meta name="twitter:image" content="https://www.yf-gz.cn/2018/06/24/图像处理之亮度与对比度/20170719173426437.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.yf-gz.cn/2018/06/24/图像处理之亮度与对比度/"/>
+
+
+
+
+
+  <title>图像处理之亮度与对比度 | chenogeの日志</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">chenogeの日志</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/06/24/图像处理之亮度与对比度/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">图像处理之亮度与对比度</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-24T13:53:11+08:00">
+                2018-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/2018/06/24/图像处理之亮度与对比度/20170719173426437.png" alt=""></p>
+<p>这个公式可以解释对图像的<strong>亮度</strong>和<strong>对比度</strong>操作的原理</p>
+<ul>
+<li>α能使图像像素成倍数的<strong>增长</strong>或<strong>降低</strong>（α&lt;1），使图像的<strong>差值</strong>有<strong>线性变化</strong>，从而改变了图像的对比度。</li>
+<li>β可为负，也可为正。任何一个像素<strong>加上</strong>或<strong>减去</strong>一个值会使这个像素点向<strong>白色</strong>或向<strong>黑色</strong>靠近，从而改变了图像的亮度。 </li>
+</ul>
+<a id="more"></a> 
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>菜鸟教程(runoob.com)<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">onchange</span>=<span class="string">"f(this)"</span> <span class="attr">type</span>=<span class="string">"file"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">width</span>=<span class="string">"250"</span> <span class="attr">height</span>=<span class="string">"250"</span> <span class="attr">id</span>=<span class="string">"scream"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">width</span>=<span class="string">"250"</span> <span class="attr">height</span>=<span class="string">"250"</span> <span class="attr">style</span>=<span class="string">"border:1px solid #d3d3d3;"</span>&gt;</span></span><br><span class="line">        您的浏览器不支持 HTML5 canvas 标签。</span><br><span class="line">    <span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">inputBtn</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> url = URL.createObjectURL(inputBtn.files[<span class="number">0</span>]);</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> c = <span class="built_in">document</span>.getElementById(<span class="string">"myCanvas"</span>);</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> ctx = c.getContext(<span class="string">"2d"</span>);</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> img = <span class="built_in">document</span>.getElementById(<span class="string">"scream"</span>);</span></span><br><span class="line"><span class="javascript">        img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">            ctx.drawImage(img, 0, 0, img.width, img.height);</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> imgData = ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, c.width, c.height);</span></span><br><span class="line"><span class="javascript">            <span class="comment">//对比度系数</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> Contrast  = <span class="number">1.2</span>;</span></span><br><span class="line"><span class="javascript">            <span class="comment">//亮度增量</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> brightness = <span class="number">10</span>;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; imgData.data.length; i += <span class="number">4</span>) &#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> r = imgData.data[i] * Contrast + brightness;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> g = imgData.data[i + <span class="number">1</span>] * Contrast + brightness;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> b = imgData.data[i + <span class="number">2</span>] * Contrast + brightness;</span></span><br><span class="line"><span class="undefined">                imgData.data[i] = r;</span></span><br><span class="line"><span class="undefined">				imgData.data[i + 1] = g;</span></span><br><span class="line"><span class="undefined">				imgData.data[i + 2] = b;</span></span><br><span class="line"><span class="undefined">                imgData.data[i + 3] = 255;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">            ctx.putImageData(imgData, 0, 0);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        img.src = url;</span></span><br><span class="line"><span class="undefined">    &#125;;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/亮度/" rel="tag"># 亮度</a>
+          
+            <a href="/tags/对比度/" rel="tag"># 对比度</a>
+          
+            <a href="/tags/图像处理/" rel="tag"># 图像处理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/23/相似图片搜索原理/" rel="next" title="相似图片搜索原理">
+                <i class="fa fa-chevron-left"></i> 相似图片搜索原理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/24/直方图拉伸和图像均衡化/" rel="prev" title="直方图拉伸和图像均衡化">
+                直方图拉伸和图像均衡化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chenoge</p>
+              <p class="site-description motion-element" itemprop="description">一个程序猿和一支笔的故事</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">166</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">257</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenoge</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

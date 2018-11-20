@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="图像,灰度化,二值化,灰度直方图," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="灰度化在RGB模型中，当R=G=B时，则彩色表示一种灰度颜色，其中R=G=B的值叫灰度值（又称强度值、亮度值），灰度范围为0-255。获取每个像素点的灰度值有以下几种方式：  1. 分量法将图像中的三分量的亮度作为三个灰度值，可根据应用需要选取一种灰度值。 　　                  2. 最大值法将图像中的三分量亮度的最大值作为灰度值。 　　  3. 平均值法将图像中的三分量亮度求平">
+<meta name="keywords" content="图像,灰度化,二值化,灰度直方图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="灰度化与二值化">
+<meta property="og:url" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/index.html">
+<meta property="og:site_name" content="chenogeの日志">
+<meta property="og:description" content="灰度化在RGB模型中，当R=G=B时，则彩色表示一种灰度颜色，其中R=G=B的值叫灰度值（又称强度值、亮度值），灰度范围为0-255。获取每个像素点的灰度值有以下几种方式：  1. 分量法将图像中的三分量的亮度作为三个灰度值，可根据应用需要选取一种灰度值。 　　                  2. 最大值法将图像中的三分量亮度的最大值作为灰度值。 　　  3. 平均值法将图像中的三分量亮度求平">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/150036539477467.png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/150037519325954.png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/150038506192124.png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/150039337284220.png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/150047284164468.png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/439761-20170630113705633-1850306826.png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07101209-c8e55c763e9a490289d9fe6d58c767cb.x-png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07103305-7f1cabebf14947e9a9a0bd11bc59e74b.x-png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07103321-6db546f2026e46ab80a39db6882a95cf.x-png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07103044-76dee9cfb72b4832bab79cb5c83b388d.x-png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07103050-538eb87104234f878ae3b90e65e9b7f7.x-png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07105018-73a9292cdc2243c1b6a13059f9c0281e.x-png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07105112-3aa4d0e14209416b9761110f98fc4650.x-png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07105145-c4fc2294c8274e74baac3ed12d55942b.x-png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07105155-0da81b05d5bc4a079aed55b513039139.x-png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07103420-077f102094bb44e9b5ca0596285f6a8f.x-png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07105257-f00edc8f2bff490bac1278f98168818e.x-png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07103640-ac2cc98d329c4ee1bc0d4d7b2a706e6f.x-png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07105333-7f807824781d45e9a7f3af22d56b2373.x-png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07110059-5849bf33b0b1454d894690db3855a202.x-png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07110548-fcea3ebb81854175a54f4947a9b6b8cb.x-png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07110711-8020db244f1648e2a372523af491c697.x-png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07111226-f077d59164cf4cebaef135634abeb55c.x-png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07111238-b23e236161074ff4a2428ac6cfe8af0b.x-png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07111258-090a3ab6f3f842c58a098584c09f4552.x-png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07111312-085afaece33a4c4bbc0b65d651ca6c1f.x-png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07111343-3fdc17a60749466c8330a4841abdf6f7.x-png">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/07111359-99e366ba58f14956b34d6cc7d7b98027.x-png">
+<meta property="og:updated_time" content="2018-06-23T11:37:28.434Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="灰度化与二值化">
+<meta name="twitter:description" content="灰度化在RGB模型中，当R=G=B时，则彩色表示一种灰度颜色，其中R=G=B的值叫灰度值（又称强度值、亮度值），灰度范围为0-255。获取每个像素点的灰度值有以下几种方式：  1. 分量法将图像中的三分量的亮度作为三个灰度值，可根据应用需要选取一种灰度值。 　　                  2. 最大值法将图像中的三分量亮度的最大值作为灰度值。 　　  3. 平均值法将图像中的三分量亮度求平">
+<meta name="twitter:image" content="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/150036539477467.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/"/>
+
+
+
+
+
+  <title>灰度化与二值化 | chenogeの日志</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">chenogeの日志</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2017/12/24/灰度化与二值化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">灰度化与二值化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-24T12:42:35+08:00">
+                2017-12-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="灰度化"><a href="#灰度化" class="headerlink" title="灰度化"></a>灰度化</h1><p>在<code>RGB模型</code>中，<strong>当R=G=B时，则彩色表示一种灰度颜色，其中R=G=B的值叫灰度值</strong>（又称强度值、<strong>亮度值</strong>），灰度范围为<code>0-255</code>。获取<strong>每个像素点的灰度值</strong>有以下几种方式： </p>
+<h4 id="1-分量法"><a href="#1-分量法" class="headerlink" title="1. 分量法"></a><strong>1. 分量法</strong></h4><p>将图像中的<strong>三分量的亮度</strong>作为<strong>三个灰度值</strong>，可根据应用需要<strong>选取一种灰度值</strong>。</p>
+<p>　　                <img src="/2017/12/24/灰度化与二值化/150036539477467.png" alt="img"></p>
+<p><br></p>
+<h4 id="2-最大值法"><a href="#2-最大值法" class="headerlink" title="2. 最大值法"></a><strong>2. 最大值法</strong></h4><p>将图像中的<strong>三分量亮度的最大值</strong>作为<strong>灰度值</strong>。</p>
+<p>　　<img src="/2017/12/24/灰度化与二值化/150037519325954.png" alt="img"></p>
+<p><br></p>
+<h4 id="3-平均值法"><a href="#3-平均值法" class="headerlink" title="3. 平均值法"></a><strong>3. 平均值法</strong></h4><p>将图像中的<strong>三分量亮度求平均</strong>得到一个<strong>灰度值</strong>。</p>
+<p>　　<img src="/2017/12/24/灰度化与二值化/150038506192124.png" alt="img"></p>
+<p><br></p>
+<h4 id="4-加权平均法"><a href="#4-加权平均法" class="headerlink" title="　　4. 加权平均法"></a>　　<strong>4. 加权平均法</strong></h4><p>根据重要性及其它指标，将<strong>三个分量以不同的权值进行加权平均</strong>。由于<strong>人眼对绿色的敏感最高，对红色敏感较低，对蓝色敏感最低</strong>，因此，按下式对RGB三分量进行加权平均能得到较合理的<strong>灰度值</strong>。</p>
+<p>　　<img src="/2017/12/24/灰度化与二值化/150039337284220.png" alt="img"></p>
+<p><br></p>
+<p><img src="/2017/12/24/灰度化与二值化/150047284164468.png" alt=""></p>
+<p><br></p>
+<a id="more"></a> 
+<h1 id="二值化"><a href="#二值化" class="headerlink" title="二值化"></a>二值化</h1><p>对RGB彩色图像<strong>灰度化以后</strong>，扫描图像的<strong>每个像素值</strong>，将值小于<code>阈值的</code>将像素值设为0(黑色)，将值大于等于<code>阈值</code>的像素值设为255(白色)。**<code>阈值</code>可以根据<code>灰度直方图</code>按照<code>特定的数学方法</code>获取。可参考大神<a href="https://www.cnblogs.com/Imageshop/p/3307308.html" target="_blank" rel="noopener">Imageshop</a>的算法。</p>
+<p><br></p>
+<h2 id="灰度直方图"><a href="#灰度直方图" class="headerlink" title="灰度直方图"></a>灰度直方图</h2><p><strong>灰度图像</strong>由<strong>不同灰度值</strong>的像素组成，<strong>灰度图像中灰度值的分布是该图像的一个重要特征</strong>。</p>
+<p>图像的<strong>灰度直方图</strong>就描述了图像中灰度值分布情况，能够很直观的展示出图像中各个灰度值所占的多少。图像的灰度直方图是灰度值的函数，描述的是图像中具有该灰度值的像素的个数：其中，横坐标是灰度级，纵坐标是该灰度级出现的频率。<img src="/2017/12/24/灰度化与二值化/439761-20170630113705633-1850306826.png" alt="img"></p>
+<p><br></p>
+<h1 id="计算阈值"><a href="#计算阈值" class="headerlink" title="计算阈值"></a>计算阈值</h1><h4 id="1、灰度平局值值法"><a href="#1、灰度平局值值法" class="headerlink" title="1、灰度平局值值法"></a>1、<strong>灰度平局值值法</strong></h4><ul>
+<li><p>描述</p>
+<p>即使用整幅图像的<strong>灰度平均值作为二值化的阈值</strong>，一般该方法可作为其他方法的初始猜想值。</p>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li>原理　　 </li>
+</ul>
+<p>​      　      <img src="/2017/12/24/灰度化与二值化/07101209-c8e55c763e9a490289d9fe6d58c767cb.x-png" alt="img"></p>
+<p><br></p>
+<ul>
+<li>实现代码</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">GetMeanThreshold</span><span class="params">(<span class="keyword">int</span>[] HistGram)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> Sum = <span class="number">0</span>, Amount = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> Y = <span class="number">0</span>; Y &lt; <span class="number">256</span>; Y++) &#123;</span><br><span class="line">        Amount += HistGram[Y];</span><br><span class="line">        Sum += Y * HistGram[Y];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Sum / Amount;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="2、百分比阈值（P-Tile法）"><a href="#2、百分比阈值（P-Tile法）" class="headerlink" title="2、百分比阈值（P-Tile法）"></a><strong>2、百分比阈值（P-Tile法）</strong></h4><ul>
+<li><p>描述</p>
+<p>Doyle于1962年提出的P-Tile (即P分位数法)可以说是最古老的一种阈值选取方法。该方法根据<strong>先验概率</strong>来设定阈值，使得二值化后的目标或背景像素比例等于先验概率，该方法简单高效，但是对于先验概率难于估计的图像却无能为力。 </p>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li>实现代码</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// &lt;summary&gt;</span></span><br><span class="line"><span class="comment">/// 百分比阈值</span></span><br><span class="line"><span class="comment">/// &lt;/summary&gt;</span></span><br><span class="line"><span class="comment">/// &lt;param name="HistGram"&gt;灰度图像的直方图&lt;/param&gt;</span></span><br><span class="line"><span class="comment">/// &lt;param name="Tile"&gt;背景在图像中所占的面积百分比&lt;/param&gt;</span></span><br><span class="line"><span class="comment">/// &lt;returns&gt;&lt;/returns&gt;</span></span><br><span class="line">public <span class="keyword">static</span> int GetPTileThreshold(int[] HistGram, int Tile = <span class="number">50</span>) &#123;</span><br><span class="line">    int Y, Amount = <span class="number">0</span>, Sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (Y = <span class="number">0</span>; Y &lt; <span class="number">256</span>; Y++) Amount += HistGram[Y]; <span class="comment">//  像素总数</span></span><br><span class="line">    <span class="keyword">for</span> (Y = <span class="number">0</span>; Y &lt; <span class="number">256</span>; Y++) &#123;</span><br><span class="line">        Sum = Sum + HistGram[Y];</span><br><span class="line">        <span class="keyword">if</span> (Sum &gt;= Amount * Tile / <span class="number">100</span>) <span class="keyword">return</span> Y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="3、基于谷底最小值的阈值"><a href="#3、基于谷底最小值的阈值" class="headerlink" title="3、基于谷底最小值的阈值"></a>3、<strong>基于谷底最小值的阈值</strong></h4><ul>
+<li><p>描述</p>
+<p>此方法实用于具有明显双峰直方图的图像，其寻找双峰的谷底作为阈值，但是该方法不一定能获得阈值，对于那些具有平坦的直方图或单峰图像，该方法不合适。 </p>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li>实现代码</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">GetMinimumThreshold</span><span class="params">(<span class="keyword">int</span>[] HistGram)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> Y, Iter = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 基于精度问题，一定要用浮点数来处理，否则得不到正确的结果</span></span><br><span class="line">    <span class="keyword">double</span>[] HistGramC = <span class="keyword">new</span> <span class="keyword">double</span>[<span class="number">256</span>]; </span><br><span class="line">    <span class="comment">// 求均值的过程会破坏前面的数据，因此需要两份数据</span></span><br><span class="line">    <span class="keyword">double</span>[] HistGramCC = <span class="keyword">new</span> <span class="keyword">double</span>[<span class="number">256</span>]; </span><br><span class="line">    <span class="keyword">for</span> (Y = <span class="number">0</span>; Y &lt; <span class="number">256</span>; Y++) &#123;</span><br><span class="line">        HistGramC[Y] = HistGram[Y];</span><br><span class="line">        HistGramCC[Y] = HistGram[Y];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 通过三点求均值来平滑直方图</span></span><br><span class="line">    <span class="comment">// 判断是否已经是双峰的图像了      </span></span><br><span class="line">    <span class="keyword">while</span> (IsDimodal(HistGramCC) == <span class="keyword">false</span>) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 第一点</span></span><br><span class="line">        HistGramCC[<span class="number">0</span>] = (HistGramC[<span class="number">0</span>] + HistGramC[<span class="number">0</span>] + HistGramC[<span class="number">1</span>]) / <span class="number">3</span>; </span><br><span class="line">        <span class="keyword">for</span> (Y = <span class="number">1</span>; Y &lt; <span class="number">255</span>; Y++)</span><br><span class="line">             <span class="comment">// 中间的点</span></span><br><span class="line">            HistGramCC[Y] = (HistGramC[Y - <span class="number">1</span>] + HistGramC[Y] + HistGramC[Y + <span class="number">1</span>]) / <span class="number">3</span>;</span><br><span class="line">        <span class="comment">// 最后一点</span></span><br><span class="line">        HistGramCC[<span class="number">255</span>] = (HistGramC[<span class="number">254</span>] + HistGramC[<span class="number">255</span>] + HistGramC[<span class="number">255</span>]) / <span class="number">3</span>; </span><br><span class="line">        System.Buffer.BlockCopy(HistGramCC, <span class="number">0</span>, HistGramC, <span class="number">0</span>, <span class="number">256</span> * sizeof(<span class="keyword">double</span>));</span><br><span class="line">        Iter++;</span><br><span class="line">        <span class="comment">// 直方图无法平滑为双峰的，返回错误代码</span></span><br><span class="line">        <span class="keyword">if</span> (Iter &gt;= <span class="number">1000</span>) <span class="keyword">return</span> -<span class="number">1</span>; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 阈值极为两峰之间的最小值 </span></span><br><span class="line">    bool Peakfound = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (Y = <span class="number">1</span>; Y &lt; <span class="number">255</span>; Y++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (HistGramCC[Y - <span class="number">1</span>] &lt; HistGramCC[Y] &amp;&amp; HistGramCC[Y + <span class="number">1</span>] &lt; HistGramCC[Y]) Peakfound = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (Peakfound == <span class="keyword">true</span> &amp;&amp; HistGramCC[Y - <span class="number">1</span>] &gt;= HistGramCC[Y] &amp;&amp; HistGramCC[Y + <span class="number">1</span>] &gt;= HistGramCC[Y])</span><br><span class="line">            <span class="keyword">return</span> Y - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中IsDimodal函数为判断直方图是否是双峰的函数，代码如下： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> bool <span class="title">IsDimodal</span><span class="params">(<span class="keyword">double</span>[] HistGram)</span> <span class="comment">// 检测直方图是否为双峰的</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 对直方图的峰进行计数，只有峰数位2才为双峰 </span></span><br><span class="line">    <span class="keyword">int</span> Count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> Y = <span class="number">1</span>; Y &lt; <span class="number">255</span>; Y++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (HistGram[Y - <span class="number">1</span>] &lt; HistGram[Y] &amp;&amp; HistGram[Y + <span class="number">1</span>] &lt; HistGram[Y]) &#123;</span><br><span class="line">            Count++;</span><br><span class="line">            <span class="keyword">if</span> (Count &gt; <span class="number">2</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (Count == <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <img src="/2017/12/24/灰度化与二值化/07103305-7f1cabebf14947e9a9a0bd11bc59e74b.x-png" alt="img"> <img src="/2017/12/24/灰度化与二值化/07103321-6db546f2026e46ab80a39db6882a95cf.x-png" alt="img"><img src="/2017/12/24/灰度化与二值化/07103044-76dee9cfb72b4832bab79cb5c83b388d.x-png" alt="img"><img src="/2017/12/24/灰度化与二值化/07103050-538eb87104234f878ae3b90e65e9b7f7.x-png" alt="img"> </p>
+<p><br></p>
+<p> <strong><img src="/2017/12/24/灰度化与二值化/07105018-73a9292cdc2243c1b6a13059f9c0281e.x-png" alt="img"> <img src="/2017/12/24/灰度化与二值化/07105112-3aa4d0e14209416b9761110f98fc4650.x-png" alt="img"> <img src="/2017/12/24/灰度化与二值化/07105145-c4fc2294c8274e74baac3ed12d55942b.x-png" alt="img"> <img src="/2017/12/24/灰度化与二值化/07105155-0da81b05d5bc4a079aed55b513039139.x-png" alt="img"></strong></p>
+<p><br></p>
+<h4 id="4、基于双峰平均值的阈值"><a href="#4、基于双峰平均值的阈值" class="headerlink" title="4、基于双峰平均值的阈值"></a>4、<strong>基于双峰平均值的阈值</strong></h4><ul>
+<li><p>描述</p>
+<p>该算法和基于谷底最小值的阈值方法类似，只是最后一步不是取得双峰之间的谷底值，而是取双峰的平均值作为阈值。 </p>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li>参考代码 </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">GetIntermodesThreshold</span><span class="params">(<span class="keyword">int</span>[] HistGram)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> Y, Iter = <span class="number">0</span>, Index;</span><br><span class="line">    <span class="comment">// 基于精度问题，一定要用浮点数来处理，否则得不到正确的结果</span></span><br><span class="line">    <span class="keyword">double</span>[] HistGramC = <span class="keyword">new</span> <span class="keyword">double</span>[<span class="number">256</span>]; </span><br><span class="line">    <span class="comment">// 求均值的过程会破坏前面的数据，因此需要两份数据</span></span><br><span class="line">    <span class="keyword">double</span>[] HistGramCC = <span class="keyword">new</span> <span class="keyword">double</span>[<span class="number">256</span>]; </span><br><span class="line">    <span class="keyword">for</span> (Y = <span class="number">0</span>; Y &lt; <span class="number">256</span>; Y++) &#123;</span><br><span class="line">        HistGramC[Y] = HistGram[Y];</span><br><span class="line">        HistGramCC[Y] = HistGram[Y];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 通过三点求均值来平滑直方图</span></span><br><span class="line">    <span class="comment">// 判断是否已经是双峰的图像了</span></span><br><span class="line">    <span class="keyword">while</span> (IsDimodal(HistGramCC) == <span class="keyword">false</span>)      </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 第一点</span></span><br><span class="line">        HistGramCC[<span class="number">0</span>] = (HistGramC[<span class="number">0</span>] + HistGramC[<span class="number">0</span>] + HistGramC[<span class="number">1</span>]) / <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">for</span> (Y = <span class="number">1</span>; Y &lt; <span class="number">255</span>; Y++)</span><br><span class="line">           <span class="comment">// 中间的点</span></span><br><span class="line">            HistGramCC[Y] = (HistGramC[Y - <span class="number">1</span>] + HistGramC[Y] + HistGramC[Y + <span class="number">1</span>]) / <span class="number">3</span>; </span><br><span class="line">        <span class="comment">// 最后一点</span></span><br><span class="line">        HistGramCC[<span class="number">255</span>] = (HistGramC[<span class="number">254</span>] + HistGramC[<span class="number">255</span>] + HistGramC[<span class="number">255</span>]) / <span class="number">3</span>; </span><br><span class="line">        <span class="comment">// 备份数据，为下一次迭代做准备</span></span><br><span class="line">        System.Buffer.BlockCopy(HistGramCC, <span class="number">0</span>, HistGramC, <span class="number">0</span>, <span class="number">256</span> * sizeof(<span class="keyword">double</span>)); </span><br><span class="line">        Iter++;</span><br><span class="line">        <span class="comment">// 似乎直方图无法平滑为双峰的，返回错误代码</span></span><br><span class="line">        <span class="keyword">if</span> (Iter &gt;= <span class="number">10000</span>) <span class="keyword">return</span> -<span class="number">1</span>; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 阈值为两峰值的平均值</span></span><br><span class="line">    <span class="keyword">int</span>[] Peak = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">for</span> (Y = <span class="number">1</span>, Index = <span class="number">0</span>; Y &lt; <span class="number">255</span>; Y++)</span><br><span class="line">        <span class="keyword">if</span> (HistGramCC[Y - <span class="number">1</span>] &lt; HistGramCC[Y] &amp;&amp; HistGramCC[Y + <span class="number">1</span>] &lt; HistGramCC[Y]) Peak[Index++] = Y - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> ((Peak[<span class="number">0</span>] + Peak[<span class="number">1</span>]) / <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2017/12/24/灰度化与二值化/07103420-077f102094bb44e9b5ca0596285f6a8f.x-png" alt="img">   <img src="/2017/12/24/灰度化与二值化/07105257-f00edc8f2bff490bac1278f98168818e.x-png" alt="img"> <img src="/2017/12/24/灰度化与二值化/07103640-ac2cc98d329c4ee1bc0d4d7b2a706e6f.x-png" alt="img"> <img src="/2017/12/24/灰度化与二值化/07105333-7f807824781d45e9a7f3af22d56b2373.x-png" alt="img"></p>
+<p><br></p>
+<h4 id="5、迭代最佳阈值"><a href="#5、迭代最佳阈值" class="headerlink" title="5、迭代最佳阈值"></a>5、<strong>迭代最佳阈值</strong></h4><ul>
+<li><p>描述</p>
+<p>该算法先假定一个阈值，然后计算在该阈值下的<strong>前景</strong>和<strong>背景</strong>的<strong>中心值</strong>，<strong>当前景和背景中心值得平均值和假定的阈值相同时，则迭代中止，并以此值为阈值进行二值化</strong>。 </p>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li><p>实现过程 </p>
+<p>（1）求出图象的最大灰度值和最小灰度值，分别记为gi和gu，令初始阈值为：</p>
+<p>​                        <img src="/2017/12/24/灰度化与二值化/07110059-5849bf33b0b1454d894690db3855a202.x-png" alt="img"></p>
+<p><br></p>
+<p>​      (2) 根据阈值T0将图象分割为<strong>前景</strong>和<strong>背景</strong>，分别求出两者的平均灰度值Ab和Af:</p>
+<p>　　        　　　　<img src="/2017/12/24/灰度化与二值化/07110548-fcea3ebb81854175a54f4947a9b6b8cb.x-png" alt="img"></p>
+<p><br></p>
+<p>​      (3) 令</p>
+<p>​                          <img src="/2017/12/24/灰度化与二值化/07110711-8020db244f1648e2a372523af491c697.x-png" alt="img"></p>
+<p>如果Tk=Tk+1,则取Tk为所求得的阈值，否则，转2继续迭代。</p>
+<p><br></p>
+</li>
+<li><p>参考代码 </p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">GetIterativeBestThreshold</span><span class="params">(<span class="keyword">int</span>[] HistGram)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> X, Iter = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> MeanValueOne, MeanValueTwo, SumOne, SumTwo, SumIntegralOne, SumIntegralTwo;</span><br><span class="line">    <span class="keyword">int</span> MinValue, MaxValue;</span><br><span class="line">    <span class="keyword">int</span> Threshold, NewThreshold;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (MinValue = <span class="number">0</span>; MinValue &lt; <span class="number">256</span> &amp;&amp; HistGram[MinValue] == <span class="number">0</span>; MinValue++);</span><br><span class="line">    <span class="keyword">for</span> (MaxValue = <span class="number">255</span>; MaxValue &gt; MinValue &amp;&amp; HistGram[MinValue] == <span class="number">0</span>; MaxValue--);</span><br><span class="line">    <span class="comment">// 图像中只有一个颜色</span></span><br><span class="line">    <span class="keyword">if</span> (MaxValue == MinValue) <span class="keyword">return</span> MaxValue;</span><br><span class="line">    <span class="comment">// 图像中只有二个颜色           </span></span><br><span class="line">    <span class="keyword">if</span> (MinValue + <span class="number">1</span> == MaxValue) <span class="keyword">return</span> MinValue;</span><br><span class="line"></span><br><span class="line">    Threshold = MinValue;</span><br><span class="line">    NewThreshold = (MaxValue + MinValue) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 当前后两次迭代的获得阈值相同时，结束迭代 </span></span><br><span class="line">    <span class="keyword">while</span> (Threshold != NewThreshold) &#123;</span><br><span class="line">        SumOne = <span class="number">0</span>;</span><br><span class="line">        SumIntegralOne = <span class="number">0</span>;</span><br><span class="line">        SumTwo = <span class="number">0</span>;</span><br><span class="line">        SumIntegralTwo = <span class="number">0</span>;</span><br><span class="line">        Threshold = NewThreshold;</span><br><span class="line">        <span class="comment">//根据阈值将图像分割成目标和背景两部分，求出两部分的平均灰度值</span></span><br><span class="line">        <span class="keyword">for</span> (X = MinValue; X &lt;= Threshold; X++) &#123;</span><br><span class="line">            SumIntegralOne += HistGram[X] * X;</span><br><span class="line">            SumOne += HistGram[X];</span><br><span class="line">        &#125;</span><br><span class="line">        MeanValueOne = SumIntegralOne / SumOne;</span><br><span class="line">        <span class="keyword">for</span> (X = Threshold + <span class="number">1</span>; X &lt;= MaxValue; X++) &#123;</span><br><span class="line">            SumIntegralTwo += HistGram[X] * X;</span><br><span class="line">            SumTwo += HistGram[X];</span><br><span class="line">        &#125;</span><br><span class="line">        MeanValueTwo = SumIntegralTwo / SumTwo;</span><br><span class="line">        <span class="comment">//求出新的阈值</span></span><br><span class="line">        NewThreshold = (MeanValueOne + MeanValueTwo) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        Iter++;</span><br><span class="line">        <span class="keyword">if</span> (Iter &gt;= <span class="number">1000</span>) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Threshold;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   <img src="/2017/12/24/灰度化与二值化/07111226-f077d59164cf4cebaef135634abeb55c.x-png" alt="img">        <img src="/2017/12/24/灰度化与二值化/07111238-b23e236161074ff4a2428ac6cfe8af0b.x-png" alt="img">        <img src="/2017/12/24/灰度化与二值化/07111258-090a3ab6f3f842c58a098584c09f4552.x-png" alt="img"></p>
+<p>   <img src="/2017/12/24/灰度化与二值化/07111312-085afaece33a4c4bbc0b65d651ca6c1f.x-png" alt="img">        <img src="/2017/12/24/灰度化与二值化/07111343-3fdc17a60749466c8330a4841abdf6f7.x-png" alt="img">        <img src="/2017/12/24/灰度化与二值化/07111359-99e366ba58f14956b34d6cc7d7b98027.x-png" alt="img"></p>
+<p><br></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>菜鸟教程(runoob.com)<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">onchange</span>=<span class="string">"f(this)"</span> <span class="attr">type</span>=<span class="string">"file"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">width</span>=<span class="string">"250"</span> <span class="attr">height</span>=<span class="string">"250"</span> <span class="attr">id</span>=<span class="string">"scream"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">width</span>=<span class="string">"250"</span> <span class="attr">height</span>=<span class="string">"250"</span> <span class="attr">style</span>=<span class="string">"border:1px solid #d3d3d3;"</span>&gt;</span></span><br><span class="line">        您的浏览器不支持 HTML5 canvas 标签。</span><br><span class="line">    <span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">inputBtn</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> url = URL.createObjectURL(inputBtn.files[<span class="number">0</span>]);</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> c = <span class="built_in">document</span>.getElementById(<span class="string">"myCanvas"</span>);</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> ctx = c.getContext(<span class="string">"2d"</span>);</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> img = <span class="built_in">document</span>.getElementById(<span class="string">"scream"</span>);</span></span><br><span class="line"><span class="javascript">        img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">            ctx.drawImage(img, 0, 0, img.width, img.height);</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> imgData = ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, c.width, c.height);</span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> list = [];</span></span><br><span class="line"><span class="javascript">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; imgData.data.length; i += <span class="number">4</span>) &#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> r = imgData.data[i];</span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> g = imgData.data[i + <span class="number">1</span>];</span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> b = imgData.data[i + <span class="number">2</span>];</span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> v = <span class="built_in">parseInt</span>(<span class="number">0.299</span> * r + <span class="number">0.578</span> * g + <span class="number">0.114</span> * b);</span></span><br><span class="line"><span class="undefined">                !list[v] &amp;&amp; (list[v] = 0);</span></span><br><span class="line"><span class="undefined">                list[v]++;</span></span><br><span class="line"><span class="undefined">                imgData.data[i] = imgData.data[i + 1] = imgData.data[i + 2] = v;</span></span><br><span class="line"><span class="undefined">                imgData.data[i + 3] = 255;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> sum = <span class="number">0</span>;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> account = <span class="number">0</span>;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">255</span>; i++) &#123;</span></span><br><span class="line"><span class="undefined">                !list[i] &amp;&amp; (list[i] = 0);</span></span><br><span class="line"><span class="undefined">                sum += i * list[i];</span></span><br><span class="line"><span class="undefined">                account += list[i];</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> binaryV = sum / account;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(sum, account, binaryV)</span></span><br><span class="line"><span class="javascript">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; imgData.data.length; i += <span class="number">4</span>) &#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> v = imgData.data[i] &gt;= binaryV ? <span class="number">255</span> : <span class="number">0</span>;</span></span><br><span class="line"><span class="undefined">                imgData.data[i] = imgData.data[i + 1] = imgData.data[i + 2] = v;</span></span><br><span class="line"><span class="undefined">                imgData.data[i + 3] = 255;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">            ctx.putImageData(imgData, 0, 0, 0, 0, 125, 125);</span></span><br><span class="line"><span class="undefined">            ctx.putImageData(imgData, 0, 0, 125, 125, 125, 125);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        img.src = url;</span></span><br><span class="line"><span class="undefined">    &#125;;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/图像/" rel="tag"># 图像</a>
+          
+            <a href="/tags/灰度化/" rel="tag"># 灰度化</a>
+          
+            <a href="/tags/二值化/" rel="tag"># 二值化</a>
+          
+            <a href="/tags/灰度直方图/" rel="tag"># 灰度直方图</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/23/严格模式this/" rel="next" title="严格模式this">
+                <i class="fa fa-chevron-left"></i> 严格模式this
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/28/less进阶/" rel="prev" title="less进阶">
+                less进阶 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chenoge</p>
+              <p class="site-description motion-element" itemprop="description">一个程序猿和一支笔的故事</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">166</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">257</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#灰度化"><span class="nav-number">1.</span> <span class="nav-text">灰度化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-分量法"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1. 分量法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-最大值法"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2. 最大值法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-平均值法"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3. 平均值法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-加权平均法"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">　　4. 加权平均法</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二值化"><span class="nav-number">2.</span> <span class="nav-text">二值化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#灰度直方图"><span class="nav-number">2.1.</span> <span class="nav-text">灰度直方图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算阈值"><span class="nav-number">3.</span> <span class="nav-text">计算阈值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、灰度平局值值法"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">1、灰度平局值值法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、百分比阈值（P-Tile法）"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">2、百分比阈值（P-Tile法）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、基于谷底最小值的阈值"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">3、基于谷底最小值的阈值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、基于双峰平均值的阈值"><span class="nav-number">3.0.0.4.</span> <span class="nav-text">4、基于双峰平均值的阈值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、迭代最佳阈值"><span class="nav-number">3.0.0.5.</span> <span class="nav-text">5、迭代最佳阈值</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenoge</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="css,composite,渲染," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="原文   利用合成层，加速渲染 防止层爆，优化性能   一、整体流程一个 Web 页面的展示，简单来说可以认为经历了以下几个步骤。   JavaScript：一般来说，我们会使用 JavaScript 来实现一些视觉变化的效果。比如做一个动画或者往页面里添加一些 DOM 元素等。   Style：计算样式，这个过程是根据 CSS 选择器，对每个 DOM 元素匹配对应的 CSS 样式。这一步结束之后">
+<meta name="keywords" content="css,composite,渲染">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css-渲染-composite">
+<meta property="og:url" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/index.html">
+<meta property="og:site_name" content="chenogeの日志">
+<meta property="og:description" content="原文   利用合成层，加速渲染 防止层爆，优化性能   一、整体流程一个 Web 页面的展示，简单来说可以认为经历了以下几个步骤。   JavaScript：一般来说，我们会使用 JavaScript 来实现一些视觉变化的效果。比如做一个动画或者往页面里添加一些 DOM 元素等。   Style：计算样式，这个过程是根据 CSS 选择器，对每个 DOM 元素匹配对应的 CSS 样式。这一步结束之后">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1eabOLpXXXXX3XFXXXXXXXXXX-1093-167.jpg_720x720.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1VFRDMXXXXXahXpXXXXXXXXXX-814-320.png_720x720.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1XMzqMXXXXXXsXFXXXXXXXXXX-959-370.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/snipaste20180616_131458.png">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1sZbvMXXXXXXlXXXXXXXXXXXX-491-300.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1qzzmMXXXXXX1XpXXXXXXXXXX-491-300.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB13cYmMXXXXXaXXpXXXXXXXXXX-491-300.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1yslCMXXXXXahaXXXXXXXXXXX-755-406.png_720x720.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1xxh1MXXXXXX_XXXXXXXXXXXX-755-406.png_720x720.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1SHBOMXXXXXbnXFXXXXXXXXXX-690-484.jpg_640x640.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1IrRGMXXXXXXxaXXXXXXXXXXX-690-484.jpg_640x640.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1mJjwMXXXXXajXpXXXXXXXXXX-960-391.jpg">
+<meta property="og:image" content="https://img.alicdn.com/tps/TB1dZG.MXXXXXX2XVXXXXXXXXXX-276-164.png">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1EQu4MXXXXXXiaXXXXXXXXXXX-709-717.png_600x600.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1.uznMXXXXXbcXFXXXXXXXXXX-325-195.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1uCgsLpXXXXXNXFXXXXXXXXXX-333-260.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB163nGMXXXXXatXXXXXXXXXXXX-1440-756.jpg_720x720.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1_6P9LpXXXXblXXXXXXXXXXXX-1252-284.png_720x720.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB14YwvLpXXXXXGXFXXXXXXXXXX-1093-167.jpg_720x720.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1XsAVLpXXXXbzXpXXXXXXXXXX-712-411.png_640x640.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1j9M7LpXXXXaiXXXXXXXXXXXX-713-424.png_640x640.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1SK_9LpXXXXcaaXXXXXXXXXXX-699-304.png">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1EMYKMXXXXXcUXXXXXXXXXXXX-972-480.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1E7PEMXXXXXbAXpXXXXXXXXXX-1390-778.jpg_720x720.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1LxrnMXXXXXcIXVXXXXXXXXXX-1366-777.jpg_720x720.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1FoDwMXXXXXc2XFXXXXXXXXXX-947-485.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1OE6uMXXXXXc8XFXXXXXXXXXX-1368-774.jpg_720x720.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1eYvqMXXXXXbJXVXXXXXXXXXX-936-480.jpg">
+<meta property="og:updated_time" content="2018-06-23T11:30:33.846Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css-渲染-composite">
+<meta name="twitter:description" content="原文   利用合成层，加速渲染 防止层爆，优化性能   一、整体流程一个 Web 页面的展示，简单来说可以认为经历了以下几个步骤。   JavaScript：一般来说，我们会使用 JavaScript 来实现一些视觉变化的效果。比如做一个动画或者往页面里添加一些 DOM 元素等。   Style：计算样式，这个过程是根据 CSS 选择器，对每个 DOM 元素匹配对应的 CSS 样式。这一步结束之后">
+<meta name="twitter:image" content="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/TB1eabOLpXXXXX3XFXXXXXXXXXX-1093-167.jpg_720x720.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/"/>
+
+
+
+
+
+  <title>css-渲染-composite | chenogeの日志</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">chenogeの日志</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">css-渲染-composite</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-16T11:39:02+08:00">
+                2018-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="http://taobaofed.org/blog/2016/04/25/performance-composite/" target="_blank" rel="noopener">原文</a></p>
+<p><br></p>
+<ul>
+<li>利用<code>合成层</code>，加速渲染</li>
+<li>防止<code>层爆</code>，优化性能</li>
+</ul>
+<p><br></p>
+<h1 id="一、整体流程"><a href="#一、整体流程" class="headerlink" title="一、整体流程"></a>一、整体流程</h1><p>一个 Web 页面的展示，简单来说可以认为经历了以下几个步骤。</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1eabOLpXXXXX3XFXXXXXXXXXX-1093-167.jpg_720x720.jpg" alt="img"></p>
+<ul>
+<li><strong>JavaScript</strong>：一般来说，我们会使用 JavaScript 来实现一些视觉变化的效果。比如做一个动画或者往页面里添加一些 DOM 元素等。</li>
+</ul>
+<ul>
+<li><strong>Style</strong>：计算样式，这个过程是根据 CSS 选择器，对每个 DOM 元素匹配对应的 CSS 样式。这一步结束之后，就确定了每个 DOM 元素上该应用什么 CSS 样式规则。(<strong>Render Tree</strong>)</li>
+</ul>
+<ul>
+<li><strong>Layout</strong>：布局，上一步确定了每个 DOM 元素的样式规则，这一步就是具体计算每个 DOM 元素<strong>最终在屏幕上显示的大小和位置</strong>。web 页面中元素的布局是相对的，因此一个元素的布局发生变化，会联动地引发其他元素的布局发生变化。比如，<code>&lt;body&gt;</code> 元素的宽度的变化会影响其子元素的宽度，其子元素宽度的变化也会继续对其孙子元素产生影响。因此对于浏览器来说，布局过程是经常发生的。</li>
+</ul>
+<ul>
+<li><strong>Paint</strong>：绘制，本质上就是<strong>填充像素的过程</strong>。包括绘制文字、颜色、图像、边框和阴影等，也就是一个 DOM 元素所有的可视效果。一般来说，这个绘制过程是在多个层上完成的。</li>
+</ul>
+<ul>
+<li><strong>Composite</strong>：<strong>渲染层合并</strong>，由上一步可知，对页面中 DOM 元素的绘制是在多个层上进行的。在每个层上完成绘制过程之后，浏览器会将所有层按照合理的顺序合并成一个图层，然后显示在屏幕上。对于有位置重叠的元素的页面，这个过程尤其重要，因为一旦图层的合并顺序出错，将会导致元素显示异常。</li>
+</ul>
+<p>当然，本文我们只来关注 Composite 部分。</p>
+<p><br></p>
+<a id="more"></a> 
+<h2 id="二、浏览器渲染原理"><a href="#二、浏览器渲染原理" class="headerlink" title="二、浏览器渲染原理"></a>二、浏览器渲染原理</h2><p>在讨论 Composite 之前，有必要先简单了解下一些浏览器（本文只是针对 Chrome 来说）的渲染原理，方便对之后一些概念的理解。更多详细的内容可以参阅 <a href="http://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome" target="_blank" rel="noopener">GPU Accelerated Compositing in Chrome</a></p>
+<p><br></p>
+<p>在浏览器中，页面内容是存储为由 Node 对象组成的树状结构，也就是 DOM 树。每一个 HTML element 元素都有一个 <strong>Node 对象</strong>与之对应，DOM 树的根节点永远都是 Document Node。这一点相信大家都很熟悉了，但其实，从 DOM 树到最后的渲染，需要进行一些转换映射。</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1VFRDMXXXXXahXpXXXXXXXXXX-814-320.png_720x720.jpg" alt="img"></p>
+<p><br></p>
+<h4 id="1、从-Nodes-到-LayoutObjects"><a href="#1、从-Nodes-到-LayoutObjects" class="headerlink" title="1、从 Nodes 到 LayoutObjects"></a>1、从 Nodes 到 LayoutObjects</h4><p>DOM 树中得<strong>每个 Node 节点都有一个对应的</strong> <strong>LayoutObject</strong> 。LayoutObject 知道如何在屏幕上 paint Node 的内容。</p>
+<p><br></p>
+<h4 id="2、从-LayoutObjects-到-PaintLayers"><a href="#2、从-LayoutObjects-到-PaintLayers" class="headerlink" title="2、从 LayoutObjects 到 PaintLayers"></a>2、从 LayoutObjects 到 PaintLayers</h4><p>一般来说，拥有相同的坐标空间的 LayoutObjects，属于同一个渲染层（PaintLayer）。PaintLayer 最初是用来实现 <a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context" target="_blank" rel="noopener">stacking contest（层叠上下文）</a>，以此来保证页面元素以正确的顺序合成（composite），这样才能正确的展示元素的重叠以及半透明元素等等。因此<font color="#A52A2A" size="4"><strong>满足形成层叠上下文条件的 LayoutObject 一定会为其创建新的渲染层</strong></font>，当然还有其他的一些特殊情况，为一些特殊的 LayoutObjects 创建一个新的渲染层，比如 <code>overflow != visible</code> 的元素。根据创建 PaintLayer 的原因不同，可以将其分为常见的 3 类：</p>
+<ul>
+<li><strong>NormalPaintLayer</strong><ul>
+<li><strong>根元素</strong>（HTML）</li>
+<li>有明确的<strong>定位属性</strong>（relative、fixed、sticky、absolute）</li>
+<li><strong>透明</strong>的（opacity 小于 1）</li>
+<li>有 CSS <strong>滤镜</strong>（fliter）</li>
+<li>有 CSS mask 属性</li>
+<li>有 CSS <strong>mix-blend-mode</strong> 属性（不为 normal）</li>
+<li>有 CSS <strong>transform</strong> 属性（不为 none）</li>
+<li>backface-visibility 属性为 hidden</li>
+<li>有 CSS reflection 属性</li>
+<li>有 CSS <strong>column-count</strong> 属性（不为 auto）或者 有 CSS <strong>column-width</strong> 属性（不为 auto）</li>
+<li><strong>当前有对于 opacity、transform、fliter、backdrop-filter 应用动画</strong></li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li><strong>OverflowClipPaintLayer</strong><ul>
+<li>overflow 不为 visible</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li><strong>NoPaintLayer</strong><ul>
+<li>不需要 paint 的 PaintLayer，比如一个没有视觉属性（背景、颜色、阴影等）的空 div。</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<font color="#A52A2A" size="4"><strong>满足以上条件的 LayoutObject 会拥有独立的渲染层，而其他的 LayoutObject 则和拥有独立渲染层的最近的祖先元素共用一个。</strong></font>
+
+<p><br></p>
+<h4 id="3、从-PaintLayers-到-GraphicsLayers"><a href="#3、从-PaintLayers-到-GraphicsLayers" class="headerlink" title="3、从 PaintLayers 到 GraphicsLayers"></a>3、从 PaintLayers 到 GraphicsLayers</h4><p>某些特殊的渲染层会被认为是合成层（Compositing Layers），<font color="#A52A2A" size="4"><strong>合成层拥有单独的 GraphicsLayer</strong></font>，而其他<strong>不是合成层的渲染层</strong>，则和拥有 GraphicsLayer 的<strong>最近的祖先层</strong>公用一个。</p>
+<font color="#A52A2A" size="4"><br><br>注：根元素（html）是<strong>最外</strong>一层<strong>合成层（Compositing Layers）</strong>，包含了其<code>子合成层</code>、<code>子渲染层</code>（<code>NormalPaintLayer</code>、<code>OverflowClipPaintLayer</code>、<code>NoPaintLayer</code>）<br><br></font>
+
+<p>每个 GraphicsLayer 都有一个 GraphicsContext，GraphicsContext 会<strong>负责输出该层的位图</strong>，位图是存储在共享内存中，作为纹理上传到 GPU 中，最后<strong>由 GPU 将多个位图进行合成，然后 draw 到屏幕上</strong>，此时，我们的页面也就展现到了屏幕上。</p>
+<p>渲染层提升为合成层的原因有一下几种：</p>
+<p>注：渲染层提升为合成层有一个<strong>先决条件</strong>，该渲染层必须是 SelfPaintingLayer（基本可认为是上文介绍的 <strong>NormalPaintLayer</strong>）。以下所讨论的渲染层提升为合成层的情况都是在该渲染层为 SelfPaintingLayer 前提下的。</p>
+<ul>
+<li><font color="#A52A2A" size="4"><strong>直接原因</strong>（direct reason）</font>
+
+<ul>
+<li><p><strong>硬件加速</strong>的 iframe 元素（比如 <strong>iframe 页面中有合成层</strong>）<a href="http://taobaofed.github.io/demo/performance-composite-demo/layer-create/direct/iframe.html" target="_blank" rel="noopener">demo</a></p>
+</li>
+<li><p>video 元素</p>
+</li>
+<li><p>覆盖在 video 元素上的视频控制栏</p>
+</li>
+<li><p>3D 或者 <strong>硬件加速的 2D</strong> Canvas 元素</p>
+<ul>
+<li><a href="http://taobaofed.github.io/demo/performance-composite-demo/layer-create/direct/canvas.html" target="_blank" rel="noopener">demo：普通 2D Canvas 不会提升为合成层</a></li>
+<li><a href="http://taobaofed.github.io/demo/performance-composite-demo/layer-create/direct/webgl.html" target="_blank" rel="noopener">demo：3D Canvas 提升为合成层</a></li>
+</ul>
+</li>
+<li><p>硬件加速的插件，比如 flash 等等</p>
+</li>
+<li><p>在 DPI 较高的屏幕上，fix 定位的元素会自动地被提升到合成层中。但在 DPI 较低的设备上却并非如此，因为这个渲染层的提升会使得字体渲染方式由子像素变为灰阶（详细内容请参考：<a href="http://www.html5rocks.com/en/tutorials/internals/antialiasing-101/?redirect_from_locale=zh#toc-text-rendering" target="_blank" rel="noopener">Text Rendering</a>）</p>
+</li>
+<li><p>有 <strong>3D transform</strong></p>
+</li>
+<li><p>backface-visibility 为 hidden</p>
+</li>
+<li><p>对 opacity、transform、fliter、backdropfilter 应用了 animation 或者 transition（<strong>需要是 active 的 animation 或者 transition，当 animation 或者 transition 效果未开始或结束后，提升合成层也会失效</strong>）</p>
+<ul>
+<li><p><a href="http://taobaofed.github.io/demo/performance-composite-demo/layer-create/direct/animation.html" target="_blank" rel="noopener">demo：animation</a></p>
+</li>
+<li><p><a href="http://taobaofed.github.io/demo/performance-composite-demo/layer-create/direct/transition.html" target="_blank" rel="noopener">demo：transition</a></p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1XMzqMXXXXXXsXFXXXXXXXXXX-959-370.jpg" alt="img"></p>
+</li>
+</ul>
+</li>
+<li><p><strong>will-change</strong> 设置为 opacity、transform、top、left、bottom、right（其中 top、left 等需要设置明确的定位属性，如 relative 等）<a href="http://taobaofed.github.io/demo/performance-composite-demo/layer-create/direct/will-change.html" target="_blank" rel="noopener">demo</a></p>
+</li>
+</ul>
+<p><img src="/2018/06/16/css-渲染-Composite/snipaste20180616_131458.png" alt=""></p>
+<p><br></p>
+</li>
+<li><font color="#A52A2A" size="4"><strong>后代元素原因</strong></font>
+
+<ul>
+<li>有合成层后代同时本身有 transform、opactiy（小于 1）、mask、fliter、reflection 属性 <a href="http://taobaofed.github.io/demo/performance-composite-demo/layer-create/descendant/combo.html" target="_blank" rel="noopener">demo</a></li>
+<li>有合成层后代同时本身 overflow 不为 visible（如果本身是因为明确的定位因素产生的 SelfPaintingLayer，则需要 z-index 不为 auto） <a href="http://taobaofed.github.io/demo/performance-composite-demo/layer-create/descendant/overflow.html" target="_blank" rel="noopener">demo</a></li>
+<li>有合成层后代同时本身 fixed 定位 <a href="http://taobaofed.github.io/demo/performance-composite-demo/layer-create/descendant/fixed.html" target="_blank" rel="noopener">demo</a></li>
+<li>有 3D transfrom 的合成层后代同时本身有 preserves-3d 属性 <a href="http://taobaofed.github.io/demo/performance-composite-demo/layer-create/descendant/preserves-3d.html" target="_blank" rel="noopener">demo</a></li>
+<li>有 3D transfrom 的合成层后代同时本身有 perspective 属性 <a href="http://taobaofed.github.io/demo/performance-composite-demo/layer-create/descendant/perspective.html" target="_blank" rel="noopener">demo</a></li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li><font color="#A52A2A" size="4"><strong>overlap 重叠原因</strong></font>
+
+<p>为什么会因为重叠原因而产生合成层呢？举个简单的栗子。</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1sZbvMXXXXXXlXXXXXXXXXXXX-491-300.jpg" alt="img"></p>
+<p>蓝色的矩形重叠在绿色矩形之上，同时它们的父元素是一个 GraphicsLayer。此时假设绿色矩形为一个 GraphicsLayer，如果 overlap 无法提升合成层的话，那么蓝色矩形不会提升为合成层，也就会和父元素公用一个 GraphicsLayer。</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1qzzmMXXXXXX1XpXXXXXXXXXX-491-300.jpg" alt="img"></p>
+<p>此时，渲染顺序就会发生错误，因此为保证渲染顺序，overlap 也成为了合成层产生的原因，也就是如下的正常情形。</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB13cYmMXXXXXaXXpXXXXXXXXXX-491-300.jpg" alt="img"></p>
+<p>当然 overlap 的原因也会细分为几类，接下来我们会详细看下。</p>
+<ul>
+<li><p>重叠或者说<strong>部分重叠</strong>在一个合成层之上。</p>
+<p>那如何算是重叠呢，最常见和容易理解的就是元素的 <strong>border box（content + padding + border） 和合成层的有重叠</strong>，比如：<a href="http://taobaofed.github.io/demo/performance-composite-demo/layer-create/overlap/normal.html" target="_blank" rel="noopener">demo</a>，当然 <strong>margin area 的重叠是无效的</strong>（<a href="http://taobaofed.github.io/demo/performance-composite-demo/layer-create/overlap/margin.html" target="_blank" rel="noopener">demo</a>）。其他的还有一些不常见的情况，也算是同合成层重叠的条件，如下：</p>
+<ul>
+<li>filter 效果同合成层重叠 <a href="http://taobaofed.github.io/demo/performance-composite-demo/layer-create/overlap/filter.html" target="_blank" rel="noopener">demo</a></li>
+<li>transform 变换后同合成层重叠 <a href="http://taobaofed.github.io/demo/performance-composite-demo/layer-create/overlap/transform.html" target="_blank" rel="noopener">demo</a></li>
+<li>overflow scroll 情况下同合成层重叠。即如果一个 overflow scroll（不管 <code>overflow:auto</code> 还是 <code>overflow:scrill</code>，只要是能 scroll 即可） 的元素同一个合成层重叠，则其可视子元素也同该合成层重叠 <a href="http://taobaofed.github.io/demo/performance-composite-demo/layer-create/overlap/overflow.html" target="_blank" rel="noopener">demo</a></li>
+</ul>
+</li>
+<li><p><strong>假设重叠</strong>在一个合成层之上（assumedOverlap）。</p>
+<p>这个原因听上去有点虚，什么叫假设重叠？其实也比较好理解，比如一个元素的 CSS 动画效果，动画运行期间，<strong>元素是有可能和其他元素有重叠的</strong>。针对于这种情况，于是就有了 assumedOverlap 的合成层产生原因，示例可见：<a href="http://taobaofed.github.io/demo/performance-composite-demo/layer-create/overlap/animation.html" target="_blank" rel="noopener">demo</a>。在本 demo 中，动画元素视觉上并没有和其兄弟元素重叠，但因为 assumedOverlap 的原因，其兄弟元素依然提升为了合成层。</p>
+<p>需要注意的是该原因下，有一个很特殊的情况：</p>
+<p><strong>如果合成层有内联的 transform 属性，会导致<font color="#A52A2A" size="4">其兄弟渲染层 </font>assume overlap，从而提升为合成层</strong>。比如：<a href="http://taobaofed.github.io/demo/performance-composite-demo/layer-create/overlap/inline.html" target="_blank" rel="noopener">demo</a>。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h4 id="4、层压缩"><a href="#4、层压缩" class="headerlink" title="4、层压缩"></a>4、层压缩</h4><p>基本上常见的一些合成层的提升原因如上所说，你会发现，由于重叠的原因，可能随随便便就会产生出大量合成层来，而每个合成层都要消耗 CPU 和内存资源，岂不是严重影响页面性能。这一点浏览器也考虑到了，因此就有了层压缩（<strong>Layer Squashing</strong>）的处理。<strong>如果<font color="#A52A2A" size="4">多个渲染层</font>和<font color="#A52A2A" size="4">一个合成层</font>重叠时，这些渲染层会被压缩到一个 GraphicsLayer 中，以防止由于重叠原因导致可能出现的“层爆炸”。</strong>具体可以看如下 <a href="http://taobaofed.github.io/demo/performance-composite-demo/squash/squash-hover.html" target="_blank" rel="noopener">demo</a>。一开始，蓝色方块由于<br><code>translateZ</code> 提升为了合成层，其他的方块元素因为重叠的原因，被压缩了一起，大小就是包含这 3 个方块的矩形大小。</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1yslCMXXXXXahaXXXXXXXXXXX-755-406.png_720x720.jpg" alt="img"></p>
+<p>当我们 hover 绿色方块时，会给其设置 <code>translateZ</code> 属性，导致绿色方块也被提升为合成层，则剩下的两个被压缩到了一起，大小就缩小为包含这 2 个方块的矩形大小。</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1xxh1MXXXXXX_XXXXXXXXXXXX-755-406.png_720x720.jpg" alt="img"></p>
+<p>当然，浏览器的自动的层压缩也不是万能的，有很多特定情况下，浏览器是无法进行层压缩的，如下所示，而这些情况也是我们应该尽量避免的。（注：以下情况都是基于重叠原因而言）</p>
+<ul>
+<li><p>无法进行会打破渲染顺序的压缩（squashingWouldBreakPaintOrder）</p>
+<p>示例如下：<a href="http://taobaofed.github.io/demo/performance-composite-demo/squash/squashingWouldBreakPaintOrder-mask.html" target="_blank" rel="noopener">demo</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">  <span class="selector-id">#ancestor</span> &#123;</span></span><br><span class="line"><span class="undefined">    -webkit-mask-image: -webkit-linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0));</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">  </span></span><br><span class="line"><span class="css">  <span class="selector-id">#composited</span> &#123;</span></span><br><span class="line"><span class="undefined">    width: 100%;</span></span><br><span class="line"><span class="undefined">    height: 100%;</span></span><br><span class="line"><span class="undefined">    transform: translateZ(0);</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">  <span class="selector-id">#container</span> &#123;</span></span><br><span class="line"><span class="undefined">    position: relative;</span></span><br><span class="line"><span class="undefined">    width: 400px;</span></span><br><span class="line"><span class="undefined">    height: 60px;</span></span><br><span class="line"><span class="undefined">    border: 1px solid black;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">  <span class="selector-id">#overlap-child</span> &#123;</span></span><br><span class="line"><span class="undefined">    position: absolute;</span></span><br><span class="line"><span class="undefined">    left: 0;</span></span><br><span class="line"><span class="undefined">    top: 0 ;</span></span><br><span class="line"><span class="undefined">    bottom: 0px;</span></span><br><span class="line"><span class="undefined">    width: 100%;</span></span><br><span class="line"><span class="undefined">    height: 60px;</span></span><br><span class="line"><span class="undefined">    background-color: orange;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"composited"</span>&gt;</span>Text behind the orange box.<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"ancestor"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"overlap-child"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在本例中，<code>#overlap-child</code> 同合成层重叠，如果进行压缩，会导致渲染顺序的改变，其父元素 <code>#ancestor</code> 的 mask 属性将失效，因此类似这种情况下，是无法进行层压缩的。目前常见的产生这种原因的情况有两种，一种是上述的祖先元素使用 mask 属性的情况，另一种是祖先元素使用 filter 属性的情况（<a href="http://taobaofed.github.io/demo/performance-composite-demo/squash/squashingWouldBreakPaintOrder-filter.html" target="_blank" rel="noopener">demo</a>）。</p>
+</li>
+<li><p>video 元素的渲染层无法被压缩同时也无法将别的渲染层压缩到 video 所在的合成层上（squashingVideoIsDisallowed）<a href="http://taobaofed.github.io/demo/performance-composite-demo/squash/video.html" target="_blank" rel="noopener">demo</a></p>
+</li>
+<li><p>iframe、plugin 的渲染层无法被压缩同时也无法将别的渲染层压缩到其所在的合成层上（squashingLayoutPartIsDisallowed）<a href="http://taobaofed.github.io/demo/performance-composite-demo/squash/layoutpart.html" target="_blank" rel="noopener">demo</a></p>
+</li>
+<li><p>无法压缩有 reflection 属性的渲染层（squashingReflectionDisallowed）<a href="http://taobaofed.github.io/demo/performance-composite-demo/squash/reflection.html" target="_blank" rel="noopener">demo</a></p>
+</li>
+<li><p>无法压缩有 blend mode 属性的渲染层（squashingBlendingDisallowed）<a href="http://taobaofed.github.io/demo/performance-composite-demo/squash/blend-mode.html" target="_blank" rel="noopener">demo</a></p>
+</li>
+<li><p>当渲染层同合成层有不同的裁剪容器（clipping container）时，该渲染层无法压缩（squashingClippingContainerMismatch）。</p>
+<p>示例如下：<a href="http://taobaofed.github.io/demo/performance-composite-demo/squash/squashingClippingContainerMismatch.html" target="_blank" rel="noopener">demo</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">  <span class="selector-class">.clipping-container</span> &#123;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    overflow: hidden;</span></span><br><span class="line"><span class="undefined">    height: 10px; </span></span><br><span class="line"><span class="undefined">    background-color: blue;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">  <span class="selector-class">.composited</span> &#123;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    transform: translateZ(0); </span></span><br><span class="line"><span class="undefined">    height: 10px; </span></span><br><span class="line"><span class="undefined">    background-color: red;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">  <span class="selector-class">.target</span> &#123;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">    <span class="selector-tag">position</span><span class="selector-pseudo">:absolute</span>; </span></span><br><span class="line"><span class="undefined">    top: 0px; </span></span><br><span class="line"><span class="css">    <span class="selector-tag">height</span><span class="selector-pseudo">:100px</span>; </span></span><br><span class="line"><span class="css">    <span class="selector-tag">width</span><span class="selector-pseudo">:100px</span>; </span></span><br><span class="line"><span class="undefined">    background-color: green;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">color</span>: <span class="selector-id">#fff</span>;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"clipping-container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"composited"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"target"</span>&gt;</span>不会被压缩到 composited div 上<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>本例中 <code>.target</code> 同 合成层 <code>.composited</code> 重叠，但是由于 <code>.composited</code> 在一个 <code>overflow: hidden</code> 的容器中，导致 <code>.target</code> 和合成层有不同的裁剪容器，从而 <code>.target</code> 无法被压缩。</p>
+</li>
+<li><p>相对于合成层滚动的渲染层无法被压缩（scrollsWithRespectToSquashingLayer）</p>
+<p>示例如下：<a href="http://taobaofed.github.io/demo/performance-composite-demo/squash/scrollsWithRespectToSquashingLayer.html" target="_blank" rel="noopener">demo</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  body &#123;</span></span><br><span class="line"><span class="undefined">    height: 1500px;</span></span><br><span class="line"><span class="undefined">    overflow-x: hidden;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">  <span class="selector-class">.composited</span> &#123;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    width: 50px;</span></span><br><span class="line"><span class="undefined">    height: 50px;</span></span><br><span class="line"><span class="undefined">    background-color: red;</span></span><br><span class="line"><span class="undefined">    position: absolute;</span></span><br><span class="line"><span class="undefined">    left: 50px;</span></span><br><span class="line"><span class="undefined">    top: 400px;</span></span><br><span class="line"><span class="undefined">    transform: translateZ(0);</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">  <span class="selector-class">.overlap</span> &#123;</span></span><br><span class="line"><span class="undefined">    width: 200px;</span></span><br><span class="line"><span class="undefined">    height: 200px;</span></span><br><span class="line"><span class="undefined">    background-color: green;</span></span><br><span class="line"><span class="undefined">    position: fixed;</span></span><br><span class="line"><span class="undefined">    left: 0px;</span></span><br><span class="line"><span class="undefined">    top: 0px;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"composited"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"overlap"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>本例中，红色的 <code>.composited</code> 提升为了合成层，绿色的 <code>.overlap</code> fix 在页面顶部，一开始只有 <code>.composited</code> 合成层。</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1SHBOMXXXXXbnXFXXXXXXXXXX-690-484.jpg_640x640.jpg" alt="img"></p>
+<p>当滑动页面，<code>.overlap</code> 重叠到 <code>.composited</code> 上时，<code>.overlap</code> 会因重叠原因提升为合成层，同时，因为相对于合成层滚动，因此无法被压缩。</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1IrRGMXXXXXXxaXXXXXXXXXXX-690-484.jpg_640x640.jpg" alt="img"></p>
+</li>
+<li><p>当渲染层同合成层有不同的具有 opacity 的祖先层（一个设置了 opacity 且小于 1，一个没有设置 opacity，也算是不同）时，该渲染层无法压缩（squashingOpacityAncestorMismatch，同 squashingClippingContainerMismatch）<a href="http://taobaofed.github.io/demo/performance-composite-demo/squash/squashingOpacityAncestorMismatch.html" target="_blank" rel="noopener">demo</a></p>
+</li>
+<li><p>当渲染层同合成层有不同的具有 transform 的祖先层时，该渲染层无法压缩（squashingTransformAncestorMismatch，同上） <a href="http://taobaofed.github.io/demo/performance-composite-demo/squash/squashingTransformAncestorMismatch.html" target="_blank" rel="noopener">demo</a></p>
+</li>
+<li><p>当渲染层同合成层有不同的具有 filter 的祖先层时，该渲染层无法压缩（squashingFilterAncestorMismatch，同上）<a href="http://taobaofed.github.io/demo/performance-composite-demo/squash/squashingFilterAncestorMismatch.html" target="_blank" rel="noopener">demo</a></p>
+</li>
+<li><p>当覆盖的合成层正在运行动画时，该渲染层无法压缩（squashingLayerIsAnimating），当动画未开始或者运行完毕以后，该渲染层才可以被压缩 <a href="http://taobaofed.github.io/demo/performance-composite-demo/squash/animating.html" target="_blank" rel="noopener">demo</a></p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1mJjwMXXXXXajXpXXXXXXXXXX-960-391.jpg" alt="img"></p>
+</li>
+</ul>
+<p><br></p>
+<h2 id="三、如何查看合成层"><a href="#三、如何查看合成层" class="headerlink" title="三、如何查看合成层"></a>三、如何查看合成层</h2><p>使用 Chrome DevTools 工具来查看页面中合成层的情况。</p>
+<p>比较简单的方法是打开 DevTools，勾选上 <code>Show layer borders</code></p>
+<p><img src="https://img.alicdn.com/tps/TB1dZG.MXXXXXX2XVXXXXXXXXXX-276-164.png" alt="img"></p>
+<p>其中，页面上的合成层会用黄色边框框出来。</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1EQu4MXXXXXXiaXXXXXXXXXXX-709-717.png_600x600.jpg" alt="img"></p>
+<p>当然，更加详细的信息可以通过 Timeline 来查看。</p>
+<p>每一个单独的帧，看到每个帧的渲染细节：</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1.uznMXXXXXbcXFXXXXXXXXXX-325-195.jpg" alt="img"></p>
+<p>点击之后，你就会在视图中看到一个新的选项卡：Layers。</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1uCgsLpXXXXXNXFXXXXXXXXXX-333-260.jpg" alt="img"></p>
+<p>点击这个 Layers 选项卡，你会看到一个新的视图。在这个视图中，你可以对这一帧中的所有合成层进行扫描、缩放等操作，同时还能看到每个渲染层被创建的原因。</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB163nGMXXXXXatXXXXXXXXXXXX-1440-756.jpg_720x720.jpg" alt="img"></p>
+<p>有了这个视图，你就能知道页面中到底有多少个合成层。如果你在对页面滚动或渐变效果的性能分析中发现 Composite 过程耗费了太多时间，那么你可以从这个视图里看到页面中有多少个渲染层，它们为何被创建，从而对合成层的数量进行优化。</p>
+<p><br></p>
+<h2 id="四、性能优化"><a href="#四、性能优化" class="headerlink" title="四、性能优化"></a>四、性能优化</h2><p>提升为合成层简单说来有以下几点好处：</p>
+<font color="#A52A2A" size="4"><br><br>- <strong>合成层的位图，会交由 GPU 合成，比 CPU 处理要快</strong><br>- <strong>当需要 repaint 时，只需要 repaint 本身，不会影响到其他的层</strong><br>- <strong>对于 transform 和 opacity 效果，不会触发 layout 和 paint</strong><br><br></font>
+
+<p>利用合成层对于提升页面性能方面有很大的作用，因此我们也总结了一下几点优化建议。</p>
+<p><br></p>
+<h3 id="五、提升动画效果的元素"><a href="#五、提升动画效果的元素" class="headerlink" title="五、提升动画效果的元素"></a>五、提升动画效果的元素</h3><p>合成层的好处是不会影响到其他元素的绘制，因此，为了减少动画元素对其他元素的影响，从而减少 paint，我们需要把动画效果中的元素提升为合成层。</p>
+<p>提升合成层的最好方式是使用 CSS 的 will-change 属性。从上一节合成层产生原因中，可以知道 will-change 设置为 opacity、transform、top、left、bottom、right 可以将元素提升为合成层。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#target</span> &#123;</span><br><span class="line">  <span class="attribute">will-change</span>: transform;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其兼容如下所示：</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1_6P9LpXXXXblXXXXXXXXXXXX-1252-284.png_720x720.jpg" alt="img"></p>
+<p>对于那些目前还不支持 will-change 属性的浏览器，目前常用的是使用一个 3D transform 属性来强制提升为合成层：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#target</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateZ</span>(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但需要注意的是，不要创建太多的渲染层。因为每创建一个新的渲染层，就意味着新的内存分配和更复杂的层的管理。之后我们会详细讨论。</p>
+<p>如果你已经把一个元素放到一个新的合成层里，那么可以使用 Timeline 来确认这么做是否真的改进了渲染性能。别盲目提升合成层，一定要分析其实际性能表现。</p>
+<p><br></p>
+<h3 id="六、使用-transform-或者-opacity-来实现动画效果"><a href="#六、使用-transform-或者-opacity-来实现动画效果" class="headerlink" title="六、使用 transform 或者 opacity 来实现动画效果"></a>六、使用 transform 或者 opacity 来实现动画效果</h3><p>文章最开始，我们讲到了页面呈现出来所经历的渲染流水线，其实从性能方面考虑，最理想的渲染流水线是没有布局和绘制环节的，只需要做合成层的合并即可：</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB14YwvLpXXXXXGXFXXXXXXXXXX-1093-167.jpg_720x720.jpg" alt="img"></p>
+<p>为了实现上述效果，就需要只使用那些仅触发 Composite 的属性。<strong>目前，只有两个属性是满足这个条件的：transforms 和 opacity</strong>。更详细的信息可以查看 <a href="http://csstriggers.com/" target="_blank" rel="noopener">CSS Triggers</a>。</p>
+<p>注意：元素提升为合成层后，transform 和 opacity 才不会触发 paint，如果不是合成层，则其依然会触发 paint。具体见如下两个 demo。</p>
+<ul>
+<li><p><a href="http://taobaofed.github.io/demo/performance-composite-demo/paint/promote-element/no-promote-transform.html" target="_blank" rel="noopener">demo 1：transform</a></p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1XsAVLpXXXXbzXpXXXXXXXXXX-712-411.png_640x640.jpg" alt="no-promote-transform"></p>
+</li>
+<li><p><a href="http://taobaofed.github.io/demo/performance-composite-demo/paint/promote-element/no-promote-opacity.html" target="_blank" rel="noopener">demo 2：opacity</a></p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1j9M7LpXXXXaiXXXXXXXXXXXX-713-424.png_640x640.jpg" alt="no-promote-opacity"></p>
+</li>
+</ul>
+<p>可以看到未提升 target element 为合成层，transform 和 opacity 依然会触发 paint。</p>
+<p><br></p>
+<h3 id="七、减少绘制区域"><a href="#七、减少绘制区域" class="headerlink" title="七、减少绘制区域"></a>七、减少绘制区域</h3><p>对于不需要重新绘制的区域应尽量避免绘制，以减少绘制区域，比如一个 fix 在页面顶部的固定不变的导航 header，在页面内容某个区域 repaint 时，整个屏幕包括 fix 的 header 也会被重绘，见 <a href="http://taobaofed.github.io/demo/performance-composite-demo/paint/reduce/no-reduce.html" target="_blank" rel="noopener">demo</a>，结果如下：</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1SK_9LpXXXXcaaXXXXXXXXXXX-699-304.png" alt="no-reduce"></p>
+<p>而对于固定不变的区域，我们期望其并不会被重绘，因此可以通过之前的方法，将其提升为独立的合成层。</p>
+<p>减少绘制区域，需要仔细分析页面，区分绘制区域，减少重绘区域甚至避免重绘。</p>
+<p><br></p>
+<h3 id="八、合理管理合成层"><a href="#八、合理管理合成层" class="headerlink" title="八、合理管理合成层"></a>八、合理管理合成层</h3><p>看完上面的文章，你会发现提升合成层会达到更好的性能。这看上去非常诱人，但是问题是，创建一个新的合成层并不是免费的，它得消耗额外的内存和管理资源。实际上，在内存资源有限的设备上，合成层带来的性能改善，可能远远赶不上过多合成层开销给页面性能带来的负面影响。同时，由于每个渲染层的纹理都需要上传到 GPU 处理，因此我们还需要考虑 CPU 和 GPU 之间的带宽问题、以及有多大内存供 GPU 处理这些纹理的问题。</p>
+<p>对于合成层占用内存的问题，我们简单做了几个 demo 进行了验证。</p>
+<p><a href="http://taobaofed.github.io/demo/performance-composite-demo/memory/multi-layers-expect.html" target="_blank" rel="noopener">demo 1</a> 和 <a href="http://taobaofed.github.io/demo/performance-composite-demo/memory/multi-layers.html" target="_blank" rel="noopener">demo 2</a> 中，会创建 2000 个同样的 div 元素，不同的是 <a href="http://taobaofed.github.io/demo/performance-composite-demo/memory/multi-layers.html" target="_blank" rel="noopener">demo 2</a> 中的元素通过 will-change 都提升为了合成层，而两个 demo 页面的内存消耗却有很明显的差别。</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1EMYKMXXXXXcUXXXXXXXXXXXX-972-480.jpg" alt="img"></p>
+<p><br></p>
+<h4 id="九、防止层爆炸"><a href="#九、防止层爆炸" class="headerlink" title="九、防止层爆炸"></a>九、防止层爆炸</h4><p>通过之前的介绍，我们知道同合成层重叠也会使元素提升为合成层，虽然有浏览器的层压缩机制，但是也有很多无法进行压缩的情况。也就是说除了我们显式的声明的合成层，还可能由于重叠原因不经意间产生一些不在预期的合成层，极端一点可能会产生大量的额外合成层，出现层爆炸的现象。我们简单写了一个极端点但其实在我们的页面中比较常见的 <a href="http://taobaofed.github.io/demo/performance-composite-demo/memory/layer-explode.html" target="_blank" rel="noopener">demo</a>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">  @-<span class="keyword">webkit</span>-<span class="keyword">keyframes</span> slide &#123;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">from</span> &#123; <span class="attribute">transform</span>: none; &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">to</span> &#123; <span class="attribute">transform</span>: <span class="built_in">translateX</span>(100px); &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.animating</span> &#123;</span></span><br><span class="line"><span class="undefined">    </span></span><br><span class="line"><span class="undefined">    width: 300px;</span></span><br><span class="line"><span class="undefined">    height: 30px;</span></span><br><span class="line"><span class="undefined">    background-color: orange;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">color</span>: <span class="selector-id">#fff</span>;</span></span><br><span class="line"><span class="undefined">      -webkit-animation: slide 5s alternate linear infinite;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">  ul &#123;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    padding: 5px;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">border</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#000</span>;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.box</span> &#123;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    width: 600px;</span></span><br><span class="line"><span class="undefined">    height: 30px;</span></span><br><span class="line"><span class="undefined">    margin-bottom: 5px;</span></span><br><span class="line"><span class="undefined">    background-color: blue;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">color</span>: <span class="selector-id">#fff</span>;</span></span><br><span class="line"><span class="undefined">    position: relative;</span></span><br><span class="line"><span class="css">    <span class="comment">/* 会导致无法压缩：squashingClippingContainerMismatch */</span></span></span><br><span class="line"><span class="undefined">    overflow: hidden;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.inner</span> &#123;</span></span><br><span class="line"><span class="undefined">      position: absolute;</span></span><br><span class="line"><span class="undefined">      top: 2px;</span></span><br><span class="line"><span class="undefined">      left: 2px;</span></span><br><span class="line"><span class="undefined">      font-size: 16px;</span></span><br><span class="line"><span class="undefined">      line-height: 16px;</span></span><br><span class="line"><span class="undefined">      padding: 2px;</span></span><br><span class="line"><span class="undefined">      margin: 0;</span></span><br><span class="line"><span class="undefined">      background-color: green;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 动画合成层 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"animating"</span>&gt;</span>composited animating<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- assume overlap --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- assume overlap --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"inner"</span>&gt;</span>asume overlap, 因为 squashingClippingContainerMismatch 无法压缩<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><a href="http://taobaofed.github.io/demo/performance-composite-demo/memory/layer-explode.html" target="_blank" rel="noopener">demo</a> 中，<code>.animating</code> 的合成层在运行动画，会导致 <code>.inner</code> 元素因为上文介绍过的 assumedOverlap 的原因，而被提升为合成层，同时，<code>.inner</code> 的父元素 <code>.box</code> 设置了 <code>overflow: hidden</code>，导致 <code>.inner</code> 的合成层因为 squashingClippingContainerMismatch 的原因，无法压缩，就出现了层爆炸的问题。</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1E7PEMXXXXXbAXpXXXXXXXXXX-1390-778.jpg_720x720.jpg" alt="img"></p>
+<p>这种情况平时在我们的业务中还是很常见的，比如 slider + list 的结构，一旦满足了无法进行层压缩的情况，就很容易出现层爆炸的问题。</p>
+<p>解决层爆炸的问题，最佳方案是打破 overlap 的条件，也就是说让其他元素不要和合成层元素重叠。对于上述的示例，我们可以将 <code>.animation</code> 的 z-index 提高。修改后 <a href="http://taobaofed.github.io/demo/performance-composite-demo/memory/layer-explode-zIndex.html" target="_blank" rel="noopener">demo</a></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.animating</span> &#123;</span><br><span class="line">  </span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">/* 让其他元素不和合成层重叠 */</span></span><br><span class="line">  <span class="selector-tag">position</span>: <span class="selector-tag">relative</span>;</span><br><span class="line">  <span class="selector-tag">z-index</span>: 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时，就只有 <code>.animating</code> 提升为合成层，如下：</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1LxrnMXXXXXcIXVXXXXXXXXXX-1366-777.jpg_720x720.jpg" alt="img"></p>
+<p>同时，内存占用比起之前也降低了很多。</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1FoDwMXXXXXc2XFXXXXXXXXXX-947-485.jpg" alt="img"></p>
+<p>如果受限于视觉需要等因素，其他元素必须要覆盖在合成层之上，那应该尽量避免无法层压缩情况的出现。针对上述示例中，无法层压缩的情况（squashingClippingContainerMismatch），我们可以将 <code>.box</code> 的 <code>overflow: hidden</code> 去掉，这样就可以利用浏览器的层压缩了。修改后 <a href="http://taobaofed.github.io/demo/performance-composite-demo/memory/layer-explode-squash.html" target="_blank" rel="noopener">demo</a></p>
+<p>此时，由于第一个 <code>.box</code> 因为 squashingLayerIsAnimating 的原因无法压缩，其他的都被压缩到了一起。</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1OE6uMXXXXXc8XFXXXXXXXXXX-1368-774.jpg_720x720.jpg" alt="img"></p>
+<p>同时，内存占用比起之前也降低了很多。</p>
+<p><img src="/2018/06/16/css-渲染-Composite/TB1eYvqMXXXXXbJXVXXXXXXXXXX-936-480.jpg" alt="img"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+            <a href="/tags/composite/" rel="tag"># composite</a>
+          
+            <a href="/tags/渲染/" rel="tag"># 渲染</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/15/css-zoom和scale的区别/" rel="next" title="css-zoom和scale的区别">
+                <i class="fa fa-chevron-left"></i> css-zoom和scale的区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/19/JS-this原理/" rel="prev" title="JS-this原理">
+                JS-this原理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chenoge</p>
+              <p class="site-description motion-element" itemprop="description">一个程序猿和一支笔的故事</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">166</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">257</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、整体流程"><span class="nav-number">1.</span> <span class="nav-text">一、整体流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二、浏览器渲染原理"><span class="nav-number">1.1.</span> <span class="nav-text">二、浏览器渲染原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、从-Nodes-到-LayoutObjects"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">1、从 Nodes 到 LayoutObjects</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、从-LayoutObjects-到-PaintLayers"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">2、从 LayoutObjects 到 PaintLayers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、从-PaintLayers-到-GraphicsLayers"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">3、从 PaintLayers 到 GraphicsLayers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、层压缩"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">4、层压缩</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、如何查看合成层"><span class="nav-number">1.2.</span> <span class="nav-text">三、如何查看合成层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、性能优化"><span class="nav-number">1.3.</span> <span class="nav-text">四、性能优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#五、提升动画效果的元素"><span class="nav-number">1.3.1.</span> <span class="nav-text">五、提升动画效果的元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、使用-transform-或者-opacity-来实现动画效果"><span class="nav-number">1.3.2.</span> <span class="nav-text">六、使用 transform 或者 opacity 来实现动画效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、减少绘制区域"><span class="nav-number">1.3.3.</span> <span class="nav-text">七、减少绘制区域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#八、合理管理合成层"><span class="nav-number">1.3.4.</span> <span class="nav-text">八、合理管理合成层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#九、防止层爆炸"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">九、防止层爆炸</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenoge</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

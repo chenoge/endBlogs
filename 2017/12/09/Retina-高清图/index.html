@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="retina,视网膜图," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、高清图问题1、理论上，1个位图像素对应于1个物理像素，图片才能得到完美清晰的展示。在普通屏幕下是没有问题的，但是在retina屏幕下就会出现位图像素点不够，从而导致图片模糊的情况。用一张图来表示：   如上图：对于dpr=2的retina屏幕而言，1个位图像素对应于4个物理像素，由于单个位图像素不可以再进一步分割，所以只能就近取色，从而导致图片模糊(注意上述的几个颜色值)。   2、如果用了两">
+<meta name="keywords" content="retina,视网膜图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Retina-高清图">
+<meta property="og:url" content="https://www.yf-gz.cn/2017/12/09/Retina-高清图/index.html">
+<meta property="og:site_name" content="chenogeの日志">
+<meta property="og:description" content="一、高清图问题1、理论上，1个位图像素对应于1个物理像素，图片才能得到完美清晰的展示。在普通屏幕下是没有问题的，但是在retina屏幕下就会出现位图像素点不够，从而导致图片模糊的情况。用一张图来表示：   如上图：对于dpr=2的retina屏幕而言，1个位图像素对应于4个物理像素，由于单个位图像素不可以再进一步分割，所以只能就近取色，从而导致图片模糊(注意上述的几个颜色值)。   2、如果用了两">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/09/Retina-高清图/Fuex59zSiV9pbaJG-s9wg_UpCERP.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/09/Retina-高清图/FsYhT3m0Zq3ce-HLBOOlQfY9W2DD.jpg">
+<meta property="og:image" content="https://www.yf-gz.cn/2017/12/09/Retina-高清图/FkiktwhAWrkJoZmYuiYG-DzWDfME.jpg">
+<meta property="og:updated_time" content="2018-06-23T11:36:20.116Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Retina-高清图">
+<meta name="twitter:description" content="一、高清图问题1、理论上，1个位图像素对应于1个物理像素，图片才能得到完美清晰的展示。在普通屏幕下是没有问题的，但是在retina屏幕下就会出现位图像素点不够，从而导致图片模糊的情况。用一张图来表示：   如上图：对于dpr=2的retina屏幕而言，1个位图像素对应于4个物理像素，由于单个位图像素不可以再进一步分割，所以只能就近取色，从而导致图片模糊(注意上述的几个颜色值)。   2、如果用了两">
+<meta name="twitter:image" content="https://www.yf-gz.cn/2017/12/09/Retina-高清图/Fuex59zSiV9pbaJG-s9wg_UpCERP.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.yf-gz.cn/2017/12/09/Retina-高清图/"/>
+
+
+
+
+
+  <title>Retina-高清图 | chenogeの日志</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">chenogeの日志</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2017/12/09/Retina-高清图/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Retina-高清图</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-09T21:32:24+08:00">
+                2017-12-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、高清图问题"><a href="#一、高清图问题" class="headerlink" title="一、高清图问题"></a>一、高清图问题</h1><p>1、理论上，<strong>1个<font color="#A52A2A" size="4">位图像素</font>对应于1个<font color="#A52A2A" size="4">物理像素</font>，图片才能得到完美清晰的展示</strong>。在普通屏幕下是没有问题的，但是在<font color="#A52A2A" size="4"><strong>retina屏幕</strong></font>下就会出现位图像素点不够，从而导致图片模糊的情况。用一张图来表示： </p>
+<p><img src="/2017/12/09/Retina-高清图/Fuex59zSiV9pbaJG-s9wg_UpCERP.jpg" alt=""></p>
+<p>如上图：对于dpr=2的retina屏幕而言，<font color="#A52A2A" size="4"><strong>1个位图像素对应于4个物理像素，由于单个位图像素不可以再进一步分割，所以只能就近取色，从而导致图片模糊</strong></font>(注意上述的几个颜色值)。 </p>
+<p><br></p>
+<p>2、如果用了两倍图片，会怎样呢？很明显，在普通屏幕下，200×300(css pixel)img标签，所对应的物理像素个数就是200×300个，而两倍图片的位图像素个数则是200×300*4，所以就出现<strong>一个物理像素点对应4个位图像素点</strong>，所以它的取色也只能通过一定的算法(显示结果就是一张只有原图像素总数四分之一，我们称这个过程叫做<strong>downsampling</strong>)，肉眼看上去虽然图片不会模糊，但是会觉得图片缺少一些<strong>锐利度</strong>，或者是有点色差(但还是可以接受的)。</p>
+<p> <img src="/2017/12/09/Retina-高清图/FsYhT3m0Zq3ce-HLBOOlQfY9W2DD.jpg" alt="Retina-高清图"></p>
+<p><br></p>
+<a id="more"></a> 
+<h1 id="二、-1px-border问题"><a href="#二、-1px-border问题" class="headerlink" title="二、 1px border问题"></a>二、 1px border问题</h1><p>一张图来解释： </p>
+<p><img src="/2017/12/09/Retina-高清图/FkiktwhAWrkJoZmYuiYG-DzWDfME.jpg" alt=""></p>
+<p>上图中，<strong>对于一条1px宽的直线，它们在屏幕上的<font color="#A52A2A" size="4">物理尺寸</font>(灰色区域)的确是相同的</strong>，不同的其实是屏幕上最小的物理显示单元，即物理像素，所以对于一条直线，iphone5它能显示的最小宽度其实是图中的红线圈出来的灰色区域，用css来表示，理论上说是0.5px。设计师想要的retina下border: 1px;，其实就是1物理像素宽，对于css而言，可以认为是border: 0.5px;，这是retina下(dpr=2)下能显示的最小单位。</p>
+<p><br></p>
+<p><strong>注：在不同的屏幕上(普通屏幕 vs retina屏幕)，css像素所呈现的大小(物理尺寸)是一致的，不同的是1个css像素所对应的物理像素个数是不一致的。</strong> </p>
+<p><br></p>
+<h1 id="三、字体问题"><a href="#三、字体问题" class="headerlink" title="三、字体问题"></a>三、字体问题</h1><p>对于字体缩放问题，设计师原本的要求是这样的：<strong>任何手机屏幕上字体大小都要统一</strong>，所以我们针对不同的分辨率(dpr不同)，会做如下处理： </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width*dpr,initial-scale=1/dpr,maximum-scale=1/dpr, minimum-scale=1/dpr,user-scalable=no"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">font-size</span>: 16<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-attr">[data-dpr="2"]</span> <span class="selector-tag">input</span> &#123;</span><br><span class="line">    // font-size: calc(attr(data-dpr)*16px); 不支持</span><br><span class="line">    <span class="selector-tag">font-size</span>: 32<span class="selector-tag">px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意，字体不可以用rem，误差太大了，且不能满足任何屏幕下字体大小相同</strong>。为了方便，我们也会用less写一个mixin：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.px2px</span>(@<span class="keyword">name</span>, @px) &#123;</span><br><span class="line">    @&#123;<span class="selector-tag">name</span>&#125;: <span class="selector-tag">round</span>(@<span class="keyword">px</span> / <span class="number">2</span>) * <span class="number">1px</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="selector-attr">[data-dpr="2"]</span> &amp; &#123;</span><br><span class="line">        @&#123;name&#125;: @px * 1px;</span><br><span class="line">    &#125; </span><br><span class="line">    </span><br><span class="line">    // for mx3</span><br><span class="line">    <span class="selector-attr">[data-dpr="2.5"]</span> &amp; &#123;</span><br><span class="line">        @&#123;name&#125;: round(@px * 2.5 / 2) * 1px;</span><br><span class="line">    &#125; </span><br><span class="line">    </span><br><span class="line">    // for 小米note</span><br><span class="line">    <span class="selector-attr">[data-dpr="2.75"]</span> &amp; &#123;</span><br><span class="line">        @&#123;name&#125;: round(@px * 2.75 / 2) * 1px;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="selector-attr">[data-dpr="3"]</span> &amp; &#123;</span><br><span class="line">        @&#123;name&#125;: round(@px / 2 * 3) * 1px</span><br><span class="line">    &#125; </span><br><span class="line">    </span><br><span class="line">    // for 三星note4</span><br><span class="line">    <span class="selector-attr">[data-dpr="4"]</span> &amp; &#123;</span><br><span class="line">        @&#123;name&#125;: @px * 2px;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/retina/" rel="tag"># retina</a>
+          
+            <a href="/tags/视网膜图/" rel="tag"># 视网膜图</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/28/代码注释格式/" rel="next" title="代码注释格式">
+                <i class="fa fa-chevron-left"></i> 代码注释格式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/09/三个视口/" rel="prev" title="三个视口">
+                三个视口 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chenoge</p>
+              <p class="site-description motion-element" itemprop="description">一个程序猿和一支笔的故事</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">166</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">257</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、高清图问题"><span class="nav-number">1.</span> <span class="nav-text">一、高清图问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、-1px-border问题"><span class="nav-number">2.</span> <span class="nav-text">二、 1px border问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、字体问题"><span class="nav-number">3.</span> <span class="nav-text">三、字体问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenoge</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="javaScript,摄像," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、用法1234567navigator.mediaDevices.getUserMedia(constraints)    .then(function(stream) &amp;#123;        /* 使用这个stream stream */    &amp;#125;)    .catch(function(err) &amp;#123;        /* 处理error */    &amp;#125;); M">
+<meta name="keywords" content="javaScript,摄像">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS-调用摄像头">
+<meta property="og:url" content="https://www.yf-gz.cn/2018/05/08/JS-调用摄像头/index.html">
+<meta property="og:site_name" content="chenogeの日志">
+<meta property="og:description" content="一、用法1234567navigator.mediaDevices.getUserMedia(constraints)    .then(function(stream) &amp;#123;        /* 使用这个stream stream */    &amp;#125;)    .catch(function(err) &amp;#123;        /* 处理error */    &amp;#125;); M">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-14T12:46:23.913Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS-调用摄像头">
+<meta name="twitter:description" content="一、用法1234567navigator.mediaDevices.getUserMedia(constraints)    .then(function(stream) &amp;#123;        /* 使用这个stream stream */    &amp;#125;)    .catch(function(err) &amp;#123;        /* 处理error */    &amp;#125;); M">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.yf-gz.cn/2018/05/08/JS-调用摄像头/"/>
+
+
+
+
+
+  <title>JS-调用摄像头 | chenogeの日志</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">chenogeの日志</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/08/JS-调用摄像头/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JS-调用摄像头</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-08T15:39:21+08:00">
+                2018-05-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、用法"><a href="#一、用法" class="headerlink" title="一、用法"></a>一、用法</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">navigator.mediaDevices.getUserMedia(constraints)</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">stream</span>) </span>&#123;</span><br><span class="line">        <span class="comment">/* 使用这个stream stream */</span></span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">        <span class="comment">/* 处理error */</span></span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>MediaDevices.getUserMedia()</strong>会提示用户给予使用媒体输入的许可。它返回一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener">Promise</a> 对象，成功后会resolve回调一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/MediaStream" target="_blank" rel="noopener">MediaStream</a> 对象。若用户拒绝了使用权限，或者需要的媒体源不可用，promise会reject回调一个  PermissionDeniedError 或者 NotFoundError 。 </p>
+<h1 id="二、参数Constraints"><a href="#二、参数Constraints" class="headerlink" title="二、参数Constraints"></a>二、参数Constraints</h1><ol>
+<li><p>以下同时请求不带任何参数的音频和视频： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    audio: <span class="literal">true</span>,</span><br><span class="line">    video: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="2">
+<li><p>当由于隐私保护的原因，无法访问用户的摄像头和麦克风信息时，应用可以使用额外的constraints参数请求它所需要或者想要的摄像头和麦克风能力。下面演示了应用想要使用1280x720的摄像头分辨率： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    audio: <span class="literal">true</span>,</span><br><span class="line">    video:</span><br><span class="line">    &#123;</span><br><span class="line">        width: <span class="number">1280</span>,</span><br><span class="line">        height: <span class="number">720</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>浏览器会试着满足这个请求参数，但是如果无法准确满足此请求中参数要求或者用户选择覆盖了请求中的参数时，有可能返回其它的分辨率。 </p>
+<a id="more"></a> 
+</li>
+<li><p>强制要求获取特定的尺寸时，可以使用关键字min, max, 或者 exact(就是 min == max). 以下参数表示要求获取最低为1280x720的分辨率。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    audio: <span class="literal">true</span>,</span><br><span class="line">    video:</span><br><span class="line">    &#123;</span><br><span class="line">        width:</span><br><span class="line">        &#123;</span><br><span class="line">            min: <span class="number">1280</span></span><br><span class="line">        &#125;,</span><br><span class="line">        height:</span><br><span class="line">        &#123;</span><br><span class="line">            min: <span class="number">720</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果摄像头不支持请求的或者更高的分辨率，返回的Promise会处于rejected状态，NotFoundError作为rejected回调的参数，而且用户将不会得到要求授权的提示。 </p>
+</li>
+</ol>
+<ol start="4">
+<li><p>当请求包含一个ideal（应用最理想的）值时，这个值有着更高的权重，意味着浏览器会先尝试找到最接近指定的理想值的设定或者摄像头（如果设备拥有不止一个摄像头）。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    audio: <span class="literal">true</span>,</span><br><span class="line">    video:</span><br><span class="line">    &#123;</span><br><span class="line">        width:</span><br><span class="line">        &#123;</span><br><span class="line">            min: <span class="number">1024</span>,</span><br><span class="line">            ideal: <span class="number">1280</span>,</span><br><span class="line">            max: <span class="number">1920</span></span><br><span class="line">        &#125;,</span><br><span class="line">        height:</span><br><span class="line">        &#123;</span><br><span class="line">            min: <span class="number">776</span>,</span><br><span class="line">            ideal: <span class="number">720</span>,</span><br><span class="line">            max: <span class="number">1080</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="5">
+<li><p>并不是所有的constraints 都是数字。例如, 在移动设备上面，如下的例子表示优先使用前置摄像头： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    audio: <span class="literal">true</span>,</span><br><span class="line">    video:</span><br><span class="line">    &#123;</span><br><span class="line">        facingMode: <span class="string">"user"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>强制使用后置摄像头，请用： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    audio: <span class="literal">true</span>,</span><br><span class="line">    video:</span><br><span class="line">    &#123;</span><br><span class="line">        facingMode:</span><br><span class="line">        &#123;</span><br><span class="line">            exact: <span class="string">"environment"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    body &#123;</span></span><br><span class="line"><span class="undefined">        display: flex;</span></span><br><span class="line"><span class="undefined">        justify-content: center;</span></span><br><span class="line"><span class="undefined">        flex-wrap: wrap;</span></span><br><span class="line"><span class="undefined">        align-items: center;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    video &#123;</span></span><br><span class="line"><span class="undefined">        width: 100vw;</span></span><br><span class="line"><span class="undefined">        height: 60vw;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    button &#123;</span></span><br><span class="line"><span class="undefined">        display: inline-block;</span></span><br><span class="line"><span class="undefined">        width: 200px;</span></span><br><span class="line"><span class="undefined">        line-height: 2;</span></span><br><span class="line"><span class="undefined">        font-size: 20px;</span></span><br><span class="line"><span class="undefined">        margin: 15px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">video</span> <span class="attr">controls</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"setFront()"</span>&gt;</span>front<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"setRear()"</span>&gt;</span>rear<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"pause()"</span>&gt;</span>stop<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> constraints = &#123; <span class="attr">audio</span>: <span class="literal">true</span>, <span class="attr">video</span>: <span class="literal">true</span> &#125;;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> recorder = <span class="literal">null</span>;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> video = <span class="literal">null</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">pause</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">        recorder.stop();</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">setFront</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        constraints = &#123; <span class="attr">audio</span>: <span class="literal">true</span>, <span class="attr">video</span>: &#123; <span class="attr">facingMode</span>: <span class="string">"user"</span> &#125; &#125;;</span></span><br><span class="line"><span class="undefined">        author();</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">setRear</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        constraints = &#123; <span class="attr">audio</span>: <span class="literal">true</span>, <span class="attr">video</span>: &#123; <span class="attr">facingMode</span>: &#123; <span class="attr">exact</span>: <span class="string">"environment"</span> &#125; &#125; &#125;;</span></span><br><span class="line"><span class="undefined">        author();</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">author</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">        constraints.video.frameRate = &#123; ideal: 10, max: 15 &#125;;</span></span><br><span class="line"><span class="undefined">        navigator.mediaDevices.getUserMedia(constraints)</span></span><br><span class="line"><span class="javascript">            .then(<span class="function"><span class="keyword">function</span>(<span class="params">mediaStream</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="built_in">console</span>.log(<span class="string">'mediaStream'</span>)</span></span><br><span class="line"><span class="javascript">                video = <span class="built_in">document</span>.querySelector(<span class="string">'video'</span>);</span></span><br><span class="line"><span class="undefined">                video.src = URL.createObjectURL(mediaStream);</span></span><br><span class="line"><span class="javascript">                video.onloadedmetadata = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    recorder = <span class="keyword">new</span> MediaRecorder(mediaStream);</span></span><br><span class="line"><span class="javascript">                    recorder.ondataavailable = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">                        video.pause();</span></span><br><span class="line"><span class="undefined">                        video.src = URL.createObjectURL(event.data);</span></span><br><span class="line"><span class="javascript">                        video.onloadedmetadata = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">                            video.play();</span></span><br><span class="line"><span class="undefined">                        &#125;;</span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="undefined">                    video.play();</span></span><br><span class="line"><span class="undefined">                    recorder.start();</span></span><br><span class="line"><span class="undefined">                &#125;;</span></span><br><span class="line"><span class="undefined">            &#125;)</span></span><br><span class="line"><span class="javascript">            .catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="built_in">console</span>.log(err.name + <span class="string">": "</span> + err.message);</span></span><br><span class="line"><span class="undefined">            &#125;);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    author();</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"># javaScript</a>
+          
+            <a href="/tags/摄像/" rel="tag"># 摄像</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/07/JS-标签语句/" rel="next" title="JS-标签语句">
+                <i class="fa fa-chevron-left"></i> JS-标签语句
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/08/CSS-object-fit/" rel="prev" title="CSS-object-fit">
+                CSS-object-fit <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chenoge</p>
+              <p class="site-description motion-element" itemprop="description">一个程序猿和一支笔的故事</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">166</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">257</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、用法"><span class="nav-number">1.</span> <span class="nav-text">一、用法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、参数Constraints"><span class="nav-number">2.</span> <span class="nav-text">二、参数Constraints</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenoge</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="koa2,session," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、session应用12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152const Koa = require(&apos;koa&apos;)const session = require(&apos;koa-session-minimal&apos;)// koa-mysql-session为k">
+<meta name="keywords" content="koa2,session">
+<meta property="og:type" content="article">
+<meta property="og:title" content="koa2-session">
+<meta property="og:url" content="https://www.yf-gz.cn/2018/04/12/koa2-session/index.html">
+<meta property="og:site_name" content="chenogeの日志">
+<meta property="og:description" content="一、session应用12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152const Koa = require(&apos;koa&apos;)const session = require(&apos;koa-session-minimal&apos;)// koa-mysql-session为k">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-23T11:34:44.423Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="koa2-session">
+<meta name="twitter:description" content="一、session应用12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152const Koa = require(&apos;koa&apos;)const session = require(&apos;koa-session-minimal&apos;)// koa-mysql-session为k">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.yf-gz.cn/2018/04/12/koa2-session/"/>
+
+
+
+
+
+  <title>koa2-session | chenogeの日志</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">chenogeの日志</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/04/12/koa2-session/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">koa2-session</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-12T12:40:00+08:00">
+                2018-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、session应用"><a href="#一、session应用" class="headerlink" title="一、session应用"></a>一、session应用</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>)</span><br><span class="line"><span class="keyword">const</span> session = <span class="built_in">require</span>(<span class="string">'koa-session-minimal'</span>)</span><br><span class="line"><span class="comment">// koa-mysql-session为koa-session-minimal中间件提供MySQL数据库的session数据读写操作</span></span><br><span class="line"><span class="comment">// koa-session-minimal默认使用内存保存session对象</span></span><br><span class="line"><span class="keyword">const</span> MysqlSession = <span class="built_in">require</span>(<span class="string">'koa-mysql-session'</span>)</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 配置存储session信息的mysql</span></span><br><span class="line"><span class="keyword">let</span> store = <span class="keyword">new</span> MysqlSession(&#123;</span><br><span class="line">  user: <span class="string">'root'</span>,</span><br><span class="line">  password: <span class="string">'abc123'</span>,</span><br><span class="line">  database: <span class="string">'koa_demo'</span>,</span><br><span class="line">  host: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 存放sessionId的cookie配置</span></span><br><span class="line"><span class="keyword">let</span> cookie = &#123;</span><br><span class="line">  maxAge: <span class="string">''</span>, <span class="comment">// cookie有效时长</span></span><br><span class="line">  expires: <span class="string">''</span>,  <span class="comment">// cookie失效时间</span></span><br><span class="line">  path: <span class="string">''</span>, <span class="comment">// 写cookie所在的路径</span></span><br><span class="line">  domain: <span class="string">''</span>, <span class="comment">// 写cookie所在的域名</span></span><br><span class="line">  httpOnly: <span class="string">''</span>, <span class="comment">// 是否只用于http请求中获取</span></span><br><span class="line">  overwrite: <span class="string">''</span>,  <span class="comment">// 是否允许重写</span></span><br><span class="line">  secure: <span class="string">''</span>,</span><br><span class="line">  sameSite: <span class="string">''</span>,</span><br><span class="line">  signed: <span class="string">''</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用session中间件</span></span><br><span class="line">app.use(session(&#123;</span><br><span class="line">  key: <span class="string">'SESSION_ID'</span>,</span><br><span class="line">  store: store,</span><br><span class="line">  cookie: cookie</span><br><span class="line">&#125;))</span><br><span class="line"></span><br><span class="line">app.use( <span class="keyword">async</span> ( ctx ) =&gt; &#123;</span><br><span class="line">    <span class="comment">// 设置session</span></span><br><span class="line">    <span class="keyword">if</span> ( ctx.url === <span class="string">'/set'</span> ) &#123;</span><br><span class="line">    ctx.session = &#123;</span><br><span class="line">      user_id: <span class="built_in">Math</span>.random().toString(<span class="number">36</span>).substr(<span class="number">2</span>),</span><br><span class="line">      count: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    ctx.body = ctx.session</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> ( ctx.url === <span class="string">'/'</span> ) &#123;</span><br><span class="line">      <span class="comment">// 读取session对象</span></span><br><span class="line">      ctx.session.count = ctx.session.count + <span class="number">1</span></span><br><span class="line">      ctx.body = ctx.session</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'[demo] session is starting at port 3000'</span>)</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<a id="more"></a> 
+<h1 id="二、koa-session-minimal源码"><a href="#二、koa-session-minimal源码" class="headerlink" title="二、koa-session-minimal源码"></a>二、koa-session-minimal源码</h1><h4 id="1、目录结构"><a href="#1、目录结构" class="headerlink" title="1、目录结构"></a>1、目录结构</h4><ul>
+<li><a href="https://github.com/longztian/koa-session-minimal/blob/master/src/session.js" target="_blank" rel="noopener">session.js</a> </li>
+<li><a href="https://github.com/longztian/koa-session-minimal/blob/master/src/memory_store.js" target="_blank" rel="noopener">memory_store.js</a> </li>
+<li><a href="https://github.com/longztian/koa-session-minimal/blob/master/src/store.js" target="_blank" rel="noopener">store.js</a> </li>
+</ul>
+<p><br></p>
+<h4 id="2、session-js"><a href="#2、session-js" class="headerlink" title="2、session.js"></a>2、session.js</h4><p><strong>session.js做两件事</strong></p>
+<ol>
+<li><strong>请求进来时，根据cookies中的sid来初始化ctx.session对象</strong></li>
+<li><strong>请求返回时，根据ctx.session的变化，更新ctx.session对象</strong></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> uid = <span class="built_in">require</span>(<span class="string">'uid-safe'</span>)</span><br><span class="line"><span class="keyword">const</span> deepEqual = <span class="built_in">require</span>(<span class="string">'deep-equal'</span>)</span><br><span class="line"><span class="keyword">const</span> Store = <span class="built_in">require</span>(<span class="string">'./store'</span>)</span><br><span class="line"><span class="keyword">const</span> MemoryStore = <span class="built_in">require</span>(<span class="string">'./memory_store'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ONE_DAY = <span class="number">24</span> * <span class="number">3600</span> * <span class="number">1000</span> <span class="comment">// one day in milliseconds</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cookieOpt = <span class="function">(<span class="params">cookie, ctx</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> obj = cookie <span class="keyword">instanceof</span> <span class="built_in">Function</span> ? cookie(ctx) : cookie</span><br><span class="line">  <span class="keyword">const</span> options = <span class="built_in">Object</span>.assign(&#123;</span><br><span class="line">    maxAge: <span class="number">0</span>, <span class="comment">// default to use session cookie</span></span><br><span class="line">    path: <span class="string">'/'</span>,</span><br><span class="line">    httpOnly: <span class="literal">true</span>,</span><br><span class="line">  &#125;, obj || &#123;&#125;, &#123;</span><br><span class="line">    overwrite: <span class="literal">true</span>, <span class="comment">// overwrite previous session cookie changes</span></span><br><span class="line">    signed: <span class="literal">false</span>, <span class="comment">// disable signed option</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">if</span> (!(options.maxAge &gt;= <span class="number">0</span>)) options.maxAge = <span class="number">0</span></span><br><span class="line">  <span class="keyword">return</span> options</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> deleteSession = <span class="function">(<span class="params">ctx, key, cookie, store, sid</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> tmpCookie = <span class="built_in">Object</span>.assign(&#123;&#125;, cookie)</span><br><span class="line">  <span class="keyword">delete</span> tmpCookie.maxAge</span><br><span class="line">  ctx.cookies.set(key, <span class="literal">null</span>, tmpCookie)</span><br><span class="line">  store.destroy(<span class="string">`<span class="subst">$&#123;key&#125;</span>:<span class="subst">$&#123;sid&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> saveSession = <span class="function">(<span class="params">ctx, key, cookie, store, sid</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> ttl = cookie.maxAge &gt; <span class="number">0</span> ? cookie.maxAge : ONE_DAY</span><br><span class="line">  ctx.cookies.set(key, sid, cookie)</span><br><span class="line">  store.set(<span class="string">`<span class="subst">$&#123;key&#125;</span>:<span class="subst">$&#123;sid&#125;</span>`</span>, ctx.session, ttl)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cleanSession = <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!ctx.session || <span class="keyword">typeof</span> ctx.session !== <span class="string">'object'</span>) ctx.session = &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function">(<span class="params">options</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> opt = options || &#123;&#125;</span><br><span class="line">  <span class="keyword">const</span> key = opt.key || <span class="string">'koa:sess'</span></span><br><span class="line">  <span class="keyword">const</span> store = <span class="keyword">new</span> Store(opt.store || <span class="keyword">new</span> MemoryStore())</span><br><span class="line">  <span class="keyword">const</span> getCookie = <span class="function"><span class="params">ctx</span> =&gt;</span> cookieOpt(opt.cookie, ctx)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">    <span class="comment">// initialize session id and data</span></span><br><span class="line">    <span class="comment">// 根据cookies中的sid初始化ctx.session对象</span></span><br><span class="line">    <span class="keyword">const</span> oldSid = ctx.cookies.get(key)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> sid = oldSid</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> regenerateId = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      sid = uid.sync(<span class="number">24</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!sid) &#123;</span><br><span class="line">      regenerateId()</span><br><span class="line">      ctx.session = &#123;&#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      ctx.session = <span class="keyword">await</span> store.get(<span class="string">`<span class="subst">$&#123;key&#125;</span>:<span class="subst">$&#123;sid&#125;</span>`</span>)</span><br><span class="line">      cleanSession(ctx)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> oldData = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(ctx.session))</span><br><span class="line"></span><br><span class="line">    <span class="comment">// expose session handler to ctx</span></span><br><span class="line">    ctx.sessionHandler = &#123;</span><br><span class="line">      regenerateId,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">await</span> next()</span><br><span class="line">      </span><br><span class="line">    <span class="comment">// 保存更新后的ctx.session对象</span></span><br><span class="line">    cleanSession(ctx)</span><br><span class="line">    <span class="keyword">const</span> hasData = <span class="built_in">Object</span>.keys(ctx.session).length &gt; <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (sid === oldSid) &#123; <span class="comment">// session id not changed</span></span><br><span class="line">      <span class="keyword">if</span> (deepEqual(ctx.session, oldData)) <span class="keyword">return</span> <span class="comment">// session data not changed</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">const</span> cookie = getCookie(ctx)</span><br><span class="line">      <span class="keyword">const</span> action = hasData ? saveSession : deleteSession</span><br><span class="line">      action(ctx, key, cookie, store, sid) <span class="comment">// update or delete the existing session</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123; <span class="comment">// session id changed</span></span><br><span class="line">      <span class="keyword">const</span> cookie = getCookie(ctx)</span><br><span class="line">      <span class="keyword">if</span> (oldSid) deleteSession(ctx, key, cookie, store, oldSid) <span class="comment">// delete old session</span></span><br><span class="line">      <span class="keyword">if</span> (hasData) saveSession(ctx, key, cookie, store, sid) <span class="comment">// save new session</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3、memory-store-js"><a href="#3、memory-store-js" class="headerlink" title="3、memory_store.js"></a>3、memory_store.js</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="class"><span class="keyword">class</span> <span class="title">MemoryStore</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">this</span>.sessions = &#123;&#125; <span class="comment">// data</span></span><br><span class="line">    <span class="keyword">this</span>.timeouts = &#123;&#125; <span class="comment">// expiration handler</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  get(sid) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.sessions[sid]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  set(sid, val, ttl) &#123;</span><br><span class="line">    <span class="keyword">if</span> (sid <span class="keyword">in</span> <span class="keyword">this</span>.timeouts) clearTimeout(<span class="keyword">this</span>.timeouts[sid])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.sessions[sid] = val</span><br><span class="line">    <span class="keyword">this</span>.timeouts[sid] = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">delete</span> <span class="keyword">this</span>.sessions[sid]</span><br><span class="line">      <span class="keyword">delete</span> <span class="keyword">this</span>.timeouts[sid]</span><br><span class="line">    &#125;, ttl)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  destroy(sid) &#123;</span><br><span class="line">    <span class="keyword">if</span> (sid <span class="keyword">in</span> <span class="keyword">this</span>.timeouts) &#123;</span><br><span class="line">      clearTimeout(<span class="keyword">this</span>.timeouts[sid])</span><br><span class="line"></span><br><span class="line">      <span class="keyword">delete</span> <span class="keyword">this</span>.sessions[sid]</span><br><span class="line">      <span class="keyword">delete</span> <span class="keyword">this</span>.timeouts[sid]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4、store-js"><a href="#4、store-js" class="headerlink" title="4、store.js"></a>4、store.js</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> co = <span class="built_in">require</span>(<span class="string">'co'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="class"><span class="keyword">class</span> <span class="title">Store</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(store) &#123;</span><br><span class="line">    <span class="keyword">this</span>.store = store</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  get(sid) &#123;</span><br><span class="line">    <span class="keyword">return</span> co(<span class="keyword">this</span>.store.get(sid))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  set(sid, val, ttl) &#123;</span><br><span class="line">    <span class="keyword">return</span> co(<span class="keyword">this</span>.store.set(sid, val, ttl))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  destroy(sid) &#123;</span><br><span class="line">    <span class="keyword">return</span> co(<span class="keyword">this</span>.store.destroy(sid))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/koa2/" rel="tag"># koa2</a>
+          
+            <a href="/tags/session/" rel="tag"># session</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/11/JS-连续赋值/" rel="next" title="JS-连续赋值">
+                <i class="fa fa-chevron-left"></i> JS-连续赋值
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/12/koa2-mysql连接池/" rel="prev" title="koa2-mysql连接池">
+                koa2-mysql连接池 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chenoge</p>
+              <p class="site-description motion-element" itemprop="description">一个程序猿和一支笔的故事</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">166</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">257</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、session应用"><span class="nav-number">1.</span> <span class="nav-text">一、session应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、koa-session-minimal源码"><span class="nav-number">2.</span> <span class="nav-text">二、koa-session-minimal源码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、目录结构"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">1、目录结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、session-js"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">2、session.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、memory-store-js"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">3、memory_store.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、store-js"><span class="nav-number">2.0.0.4.</span> <span class="nav-text">4、store.js</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenoge</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

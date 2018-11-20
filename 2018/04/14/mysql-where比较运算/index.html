@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="mysql,where,运算符,通配符," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、运算符   运算符 描述     = 等于   &amp;lt;&amp;gt; 不等于。注释：在 SQL 的一些版本中，该操作符可被写成 !=   &amp;gt; 大于   &amp;lt; 小于   &amp;gt;= 大于等于   &amp;lt;= 小于等于   And 同时满足两个条件的值   Or 满足其中一个条件的值   Not 满足不包含该条件的值   is null 空值判断   between and 在某个范围内">
+<meta name="keywords" content="mysql,where,运算符,通配符">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql-where比较运算">
+<meta property="og:url" content="https://www.yf-gz.cn/2018/04/14/mysql-where比较运算/index.html">
+<meta property="og:site_name" content="chenogeの日志">
+<meta property="og:description" content="一、运算符   运算符 描述     = 等于   &amp;lt;&amp;gt; 不等于。注释：在 SQL 的一些版本中，该操作符可被写成 !=   &amp;gt; 大于   &amp;lt; 小于   &amp;gt;= 大于等于   &amp;lt;= 小于等于   And 同时满足两个条件的值   Or 满足其中一个条件的值   Not 满足不包含该条件的值   is null 空值判断   between and 在某个范围内">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-25T11:00:40.741Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql-where比较运算">
+<meta name="twitter:description" content="一、运算符   运算符 描述     = 等于   &amp;lt;&amp;gt; 不等于。注释：在 SQL 的一些版本中，该操作符可被写成 !=   &amp;gt; 大于   &amp;lt; 小于   &amp;gt;= 大于等于   &amp;lt;= 小于等于   And 同时满足两个条件的值   Or 满足其中一个条件的值   Not 满足不包含该条件的值   is null 空值判断   between and 在某个范围内">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.yf-gz.cn/2018/04/14/mysql-where比较运算/"/>
+
+
+
+
+
+  <title>mysql-where比较运算 | chenogeの日志</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">chenogeの日志</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/04/14/mysql-where比较运算/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mysql-where比较运算</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-14T16:19:03+08:00">
+                2018-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、运算符"><a href="#一、运算符" class="headerlink" title="一、运算符"></a>一、运算符</h1><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>=</td>
+<td>等于</td>
+</tr>
+<tr>
+<td>&lt;&gt;</td>
+<td>不等于。<strong>注释：</strong>在 SQL 的一些版本中，该操作符可被写成 !=</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>大于等于</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td><strong>And</strong></td>
+<td>同时满足两个条件的值</td>
+</tr>
+<tr>
+<td><strong>Or</strong></td>
+<td>满足其中一个条件的值</td>
+</tr>
+<tr>
+<td><strong>Not</strong></td>
+<td>满足不包含该条件的值</td>
+</tr>
+<tr>
+<td><strong>is null</strong></td>
+<td><strong>空值判断</strong></td>
+</tr>
+<tr>
+<td><strong>between and</strong></td>
+<td>在某个范围内</td>
+</tr>
+<tr>
+<td><strong>LIKE</strong></td>
+<td>模糊查询（  <code>%</code> 表示多个字值，<code>_</code><strong>下划线</strong>表示一个字符； ）</td>
+</tr>
+<tr>
+<td><strong>IN</strong></td>
+<td>指定针对某个列的多个可能值</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<a id="more"></a>
+<h1 id="二、通配符"><a href="#二、通配符" class="headerlink" title="二、通配符"></a>二、通配符</h1><table>
+<thead>
+<tr>
+<th>通配符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%</td>
+<td>替代 0 个或多个字符</td>
+</tr>
+<tr>
+<td>_</td>
+<td>替代一个字符</td>
+</tr>
+<tr>
+<td>[<em>charlist</em>]</td>
+<td>字符列中的任何单一字符</td>
+</tr>
+<tr>
+<td>[^<em>charlist</em>] 或 [!<em>charlist</em>]</td>
+<td>不在字符列</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- LIKE&apos;%inger&apos; 将搜索以字母 inger 结尾的所有字符串</span><br><span class="line">-- LIKE&apos;_heryl&apos; 将搜索以字母 heryl 结尾的所有六个字母的名称</span><br><span class="line">-- LIKE&apos;[CK]ars[eo]n&apos; 将搜索下列字符串：Carsen、Karsen、Carson 和 Karson</span><br><span class="line">-- LIKE&apos;[M-Z]inger&apos; 将搜索以字符串 inger 结尾、以从 M 到 Z 的任何单个字母开头的所有名称</span><br><span class="line">-- LIKE&apos;M[^c]%&apos; 将搜索以字母 M 开头，并且第二个字母不是 c 的所有名称</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h1 id="三、例子"><a href="#三、例子" class="headerlink" title="三、例子"></a>三、例子</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">-- 搜索 empno 等于 7900 的数据</span><br><span class="line">Select * from emp where empno=7900;</span><br><span class="line"></span><br><span class="line">-- SMITH 用单引号引起来，表示是字符串，字符串要区分大小写</span><br><span class="line">-- 使用 BINARY 关键字来设定WHERE子句的字符串比较是区分大小写的</span><br><span class="line">Select * from emp where ename=&apos;SMITH&apos;;</span><br><span class="line">SELECT * from emp WHERE BINARY ename=&apos;SMITH&apos;;</span><br><span class="line"></span><br><span class="line">Select * from emp where sal &gt; 2000 and sal &lt; 3000;</span><br><span class="line">Select * from emp where sal &gt; 2000 or comm &gt; 500;</span><br><span class="line">select * from emp where not sal &gt; 1500;</span><br><span class="line"></span><br><span class="line">-- 查询 emp 表中 comm 列中的空值</span><br><span class="line">Select * from emp where comm is null;</span><br><span class="line"></span><br><span class="line">-- 大于等于 1500 且小于等于 3000</span><br><span class="line">Select * from emp where sal between 1500 and 3000;</span><br><span class="line"></span><br><span class="line">-- 查询 EMP 表 SAL 列中等于 5000，3000，1500 的值</span><br><span class="line">Select * from emp where sal in (5000,3000,1500);</span><br><span class="line"></span><br><span class="line">-- Like模糊查询</span><br><span class="line">Select * from emp where ename like &apos;_M%&apos;;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h1 id="四、不带比较运算符"><a href="#四、不带比较运算符" class="headerlink" title="四、不带比较运算符"></a>四、不带比较运算符</h1><p>WHERE子句并不一定带比较运算符，当不带运算符时，会执行一个隐式转换。<strong>当0时转化为 false，当其他值是转化为true。</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-- 返回一个空集，因为每一行记录WHERE都返回false</span><br><span class="line">SELECT studentNO FROM student WHERE 0;</span><br><span class="line"></span><br><span class="line">-- 返回student表所有行记录的studentNO列。因为每一行记录WHERE都返回true。</span><br><span class="line">SELECT  studentNO  FROM student WHERE 1;</span><br><span class="line">SELECT studentNO FROM student WHERE &apos;abc&apos;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
+          
+            <a href="/tags/where/" rel="tag"># where</a>
+          
+            <a href="/tags/运算符/" rel="tag"># 运算符</a>
+          
+            <a href="/tags/通配符/" rel="tag"># 通配符</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/14/mysql-If-Not-Exists/" rel="next" title="mysql-If-Not-Exists">
+                <i class="fa fa-chevron-left"></i> mysql-If-Not-Exists
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/14/mysql-limit-offset/" rel="prev" title="mysql-limit-offset">
+                mysql-limit-offset <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chenoge</p>
+              <p class="site-description motion-element" itemprop="description">一个程序猿和一支笔的故事</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">166</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">257</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、运算符"><span class="nav-number">1.</span> <span class="nav-text">一、运算符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、通配符"><span class="nav-number">2.</span> <span class="nav-text">二、通配符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、例子"><span class="nav-number">3.</span> <span class="nav-text">三、例子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、不带比较运算符"><span class="nav-number">4.</span> <span class="nav-text">四、不带比较运算符</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenoge</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

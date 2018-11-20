@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Pointfree,函数式编程," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、程序的本质为了理解 Pointfree，请大家先想一想，什么是程序？  上图是一个编程任务，左侧是数据输入（input），中间是一系列的运算步骤，对数据进行加工，右侧是最后的数据输出（output）。一个或多个这样的任务，就组成了程序。 输入和输出（统称为 I/O）与键盘、屏幕、文件、数据库等相关，这些跟本文无关。这里的关键是，中间的运算部分不能有 I/O 操作，应该是纯运算，即通过纯粹的数学">
+<meta name="keywords" content="Pointfree,函数式编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pointfree编程风格指南">
+<meta property="og:url" content="https://www.yf-gz.cn/2018/10/11/Pointfree编程风格指南/index.html">
+<meta property="og:site_name" content="chenogeの日志">
+<meta property="og:description" content="一、程序的本质为了理解 Pointfree，请大家先想一想，什么是程序？  上图是一个编程任务，左侧是数据输入（input），中间是一系列的运算步骤，对数据进行加工，右侧是最后的数据输出（output）。一个或多个这样的任务，就组成了程序。 输入和输出（统称为 I/O）与键盘、屏幕、文件、数据库等相关，这些跟本文无关。这里的关键是，中间的运算部分不能有 I/O 操作，应该是纯运算，即通过纯粹的数学">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/10/11/Pointfree编程风格指南/bg2017031202.png">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/10/11/Pointfree编程风格指南/bg2017031203.png">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/10/11/Pointfree编程风格指南/bg2017031204.png">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/10/11/Pointfree编程风格指南/bg2017031205.png">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/10/11/Pointfree编程风格指南/bg2017031206.png">
+<meta property="og:updated_time" content="2018-10-13T06:00:05.257Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pointfree编程风格指南">
+<meta name="twitter:description" content="一、程序的本质为了理解 Pointfree，请大家先想一想，什么是程序？  上图是一个编程任务，左侧是数据输入（input），中间是一系列的运算步骤，对数据进行加工，右侧是最后的数据输出（output）。一个或多个这样的任务，就组成了程序。 输入和输出（统称为 I/O）与键盘、屏幕、文件、数据库等相关，这些跟本文无关。这里的关键是，中间的运算部分不能有 I/O 操作，应该是纯运算，即通过纯粹的数学">
+<meta name="twitter:image" content="https://www.yf-gz.cn/2018/10/11/Pointfree编程风格指南/bg2017031202.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.yf-gz.cn/2018/10/11/Pointfree编程风格指南/"/>
+
+
+
+
+
+  <title>Pointfree编程风格指南 | chenogeの日志</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">chenogeの日志</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/10/11/Pointfree编程风格指南/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Pointfree编程风格指南</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-11T21:27:19+08:00">
+                2018-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、程序的本质"><a href="#一、程序的本质" class="headerlink" title="一、程序的本质"></a>一、程序的本质</h2><p>为了理解 Pointfree，请大家先想一想，什么是程序？</p>
+<p><img src="/2018/10/11/Pointfree编程风格指南/bg2017031202.png" alt="img"></p>
+<p>上图是一个编程任务，左侧是数据输入（input），中间是一系列的运算步骤，对数据进行加工，右侧是最后的数据输出（output）。<strong>一个或多个这样的任务，就组成了程序。</strong></p>
+<p>输入和输出（统称为 I/O）与键盘、屏幕、文件、数据库等相关，这些跟本文无关。<font color="#A52A2A" size="4"><strong>这里的关键是，中间的运算部分不能有 I/O 操作，应该是纯运算，即通过纯粹的数学运算来求值。</strong>否则，就应该拆分出另一个任务。</font></p>
+<h4 id="注：函数单一职责原则：拆分依据（纯粹数学运算）"><a href="#注：函数单一职责原则：拆分依据（纯粹数学运算）" class="headerlink" title="注：函数单一职责原则：拆分依据（纯粹数学运算）"></a>注：函数单一职责原则：拆分依据（纯粹数学运算）</h4><a id="more"></a>
+<p>I/O 操作往往有现成命令，大多数时候，编程主要就是写中间的那部分运算逻辑。现在，主流写法是过程式编程和面向对象编程，但是我觉得，最合适纯运算的是函数式编程。</p>
+<p><br></p>
+<h2 id="二、函数的拆分与合成"><a href="#二、函数的拆分与合成" class="headerlink" title="二、函数的拆分与合成"></a>二、函数的拆分与合成</h2><p>上面那张图中，运算过程可以用一个函数<code>fn</code>表示。</p>
+<p><img src="/2018/10/11/Pointfree编程风格指南/bg2017031203.png" alt="img"></p>
+<p><code>fn</code>的类型如下。</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; fn :: a -&gt; b</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>上面的式子表示，函数<code>fn</code>的输入是数据<code>a</code>，输出是数据<code>b</code>。</p>
+<p>如果运算比较复杂，通常需要将<code>fn</code>拆分成多个函数。</p>
+<p><img src="/2018/10/11/Pointfree编程风格指南/bg2017031204.png" alt="img"></p>
+<p><code>f1</code>、<code>f2</code>、<code>f3</code>的类型如下。</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; f1 :: a -&gt; m</span><br><span class="line">&gt; f2 :: m -&gt; n</span><br><span class="line">&gt; f3 :: n -&gt; b</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>上面的式子中，输入的数据还是<code>a</code>，输出的数据还是<code>b</code>，但是多了两个中间值<code>m</code>和<code>n</code>。</p>
+<p>我们可以把整个运算过程，想象成一根水管（pipe），数据从这头进去，那头出来。</p>
+<p><img src="/2018/10/11/Pointfree编程风格指南/bg2017031205.png" alt="img"></p>
+<p>函数的拆分，无非就是将一根水管拆成了三根。</p>
+<p><img src="/2018/10/11/Pointfree编程风格指南/bg2017031206.png" alt="img"></p>
+<p>进去的数据还是<code>a</code>，出来的数据还是<code>b</code>。<code>fn</code>与<code>f1</code>、<code>f2</code>、<code>f3</code>的关系如下。</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; fn = R.pipe(f1, f2, f3);</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>上面代码中，我用到了 <a href="http://www.ruanyifeng.com/blog/2017/03/ramda.html" target="_blank" rel="noopener">Ramda</a> 函数库的<a href="http://ramdajs.com/docs/#pipe" target="_blank" rel="noopener"><code>pipe</code></a>方法，将三个函数合成为一个。Ramda 是一个非常有用的库，后面的例子都会使用它，如果你还不了解，可以先读一下<a href="http://www.ruanyifeng.com/blog/2017/03/ramda.html" target="_blank" rel="noopener">教程</a>。</p>
+<p><br></p>
+<h2 id="三、Pointfree-的概念"><a href="#三、Pointfree-的概念" class="headerlink" title="三、Pointfree 的概念"></a>三、Pointfree 的概念</h2><blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; fn = R.pipe(f1, f2, f3);</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>这个公式说明，如果先定义<code>f1</code>、<code>f2</code>、<code>f3</code>，就可以算出<code>fn</code>。整个过程，根本不需要知道<code>a</code>或<code>b</code>。</p>
+<p>也就是说，我们完全可以把数据处理的过程，定义成一种与参数无关的合成运算。不需要用到代表数据的那个参数，只要把一些简单的运算步骤合成在一起即可。</p>
+<h4 id="这就叫做-Pointfree：不使用所要处理的值，只合成运算过程。中文可以译作”无值”风格。"><a href="#这就叫做-Pointfree：不使用所要处理的值，只合成运算过程。中文可以译作”无值”风格。" class="headerlink" title="这就叫做 Pointfree：不使用所要处理的值，只合成运算过程。中文可以译作”无值”风格。"></a><strong>这就叫做 Pointfree：不使用所要处理的值，只合成运算过程。</strong>中文可以译作”无值”风格。</h4><p>请看下面的例子。</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">var</span> addOne = <span class="function"><span class="params">x</span> =&gt;</span> x + <span class="number">1</span>;</span><br><span class="line">&gt; <span class="keyword">var</span> square = <span class="function"><span class="params">x</span> =&gt;</span> x * x;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>上面是两个简单函数<code>addOne</code>和<code>square</code>。</p>
+<p>把它们合成一个运算。</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">var</span> addOneThenSquare = R.pipe(addOne, square);</span><br><span class="line">&gt; </span><br><span class="line">&gt; addOneThenSquare(<span class="number">2</span>) <span class="comment">//  9</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>上面代码中，<code>addOneThenSquare</code>是一个合成函数。定义它的时候，根本不需要提到要处理的值，这就是 Pointfree。</p>
+<p><br></p>
+<h2 id="四、Pointfree-的本质"><a href="#四、Pointfree-的本质" class="headerlink" title="四、Pointfree 的本质"></a>四、Pointfree 的本质</h2><p>Pointfree 的本质就是使用一些通用的函数，组合出各种复杂运算。上层运算不要直接操作数据，而是通过底层函数去处理。这就要求，将一些常用的操作封装成函数。</p>
+<p>比如，读取对象的<code>role</code>属性，不要直接写成<code>obj.role</code>，而是要把这个操作封装成函数。</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">var</span> prop = <span class="function">(<span class="params">p, obj</span>) =&gt;</span> obj[p];</span><br><span class="line">&gt; <span class="keyword">var</span> propRole = R.curry(prop)(<span class="string">'role'</span>);</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>上面代码中，<code>prop</code>函数封装了读取操作。它需要两个参数<code>p</code>（属性名）和<code>obj</code>（对象）。这时，要把数据<code>obj</code>要放在最后一个参数，这是为了方便柯里化。函数<code>propRole</code>则是指定读取<code>role</code>属性，下面是它的用法（查看<a href="http://jsbin.com/nevuje/edit?js,console" target="_blank" rel="noopener">完整代码</a>）。</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">var</span> isWorker = <span class="function"><span class="params">s</span> =&gt;</span> s === <span class="string">'worker'</span>;</span><br><span class="line">&gt; <span class="keyword">var</span> getWorkers = R.filter(R.pipe(propRole, isWorker));</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="keyword">var</span> data = [</span><br><span class="line">&gt;   &#123;<span class="attr">name</span>: <span class="string">'张三'</span>, <span class="attr">role</span>: <span class="string">'worker'</span>&#125;,</span><br><span class="line">&gt;   &#123;<span class="attr">name</span>: <span class="string">'李四'</span>, <span class="attr">role</span>: <span class="string">'worker'</span>&#125;,</span><br><span class="line">&gt;   &#123;<span class="attr">name</span>: <span class="string">'王五'</span>, <span class="attr">role</span>: <span class="string">'manager'</span>&#125;,</span><br><span class="line">&gt; ];</span><br><span class="line">&gt; getWorkers(data)</span><br><span class="line">&gt; <span class="comment">// [</span></span><br><span class="line">&gt; <span class="comment">//   &#123;"name": "张三", "role": "worker"&#125;,</span></span><br><span class="line">&gt; <span class="comment">//   &#123;"name": "李四", "role": "worker"&#125;</span></span><br><span class="line">&gt; <span class="comment">// ]</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>上面代码中，<code>data</code>是传入的值，<code>getWorkers</code>是处理这个值的函数。定义<code>getWorkers</code>的时候，完全没有提到<code>data</code>，这就是 Pointfree。</p>
+<p>简单说，Pointfree 就是运算过程抽象化，处理一个值，但是不提到这个值。这样做有很多好处，它能够让代码更清晰和简练，更符合语义，更容易复用，测试也变得轻而易举。</p>
+<p><br></p>
+<h2 id="五、Pointfree-的示例一"><a href="#五、Pointfree-的示例一" class="headerlink" title="五、Pointfree 的示例一"></a>五、Pointfree 的示例一</h2><p>下面，我们来看一个示例。</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">var</span> str = <span class="string">'Lorem ipsum dolor sit amet consectetur adipiscing elit'</span>;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>上面是一个字符串，请问其中最长的单词有多少个字符？</p>
+<p>我们先定义一些基本运算。</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment">// 以空格分割单词</span></span><br><span class="line">&gt; <span class="keyword">var</span> splitBySpace = <span class="function"><span class="params">s</span> =&gt;</span> s.split(<span class="string">' '</span>);</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="comment">// 每个单词的长度</span></span><br><span class="line">&gt; <span class="keyword">var</span> getLength = <span class="function"><span class="params">w</span> =&gt;</span> w.length;</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="comment">// 词的数组转换成长度的数组</span></span><br><span class="line">&gt; <span class="keyword">var</span> getLengthArr = <span class="function"><span class="params">arr</span> =&gt;</span> R.map(getLength, arr); </span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="comment">// 返回较大的数字</span></span><br><span class="line">&gt; <span class="keyword">var</span> getBiggerNumber = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a &gt; b ? a : b;</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="comment">// 返回最大的一个数字</span></span><br><span class="line">&gt; <span class="keyword">var</span> findBiggestNumber = </span><br><span class="line">&gt;   <span class="function"><span class="params">arr</span> =&gt;</span> R.reduce(getBiggerNumber, <span class="number">0</span>, arr);</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>然后，把基本运算合成为一个函数（查看<a href="http://jsbin.com/qusohax/edit?js,console" target="_blank" rel="noopener">完整代码</a>）。</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">var</span> getLongestWordLength = R.pipe(</span><br><span class="line">&gt;   splitBySpace,</span><br><span class="line">&gt;   getLengthArr,</span><br><span class="line">&gt;   findBiggestNumber</span><br><span class="line">&gt; );</span><br><span class="line">&gt; </span><br><span class="line">&gt; getLongestWordLength(str) <span class="comment">// 11</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>可以看到，整个运算由三个步骤构成，每个步骤都有语义化的名称，非常的清晰。这就是 Pointfree 风格的优势。</p>
+<p>Ramda 提供了很多现成的方法，可以直接使用这些方法，省得自己定义一些常用函数（查看<a href="http://jsbin.com/vutoxis/edit?js,console" target="_blank" rel="noopener">完整代码</a>）。</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment">// 上面代码的另一种写法</span></span><br><span class="line">&gt; <span class="keyword">var</span> getLongestWordLength = R.pipe(</span><br><span class="line">&gt;   R.split(<span class="string">' '</span>),</span><br><span class="line">&gt;   R.map(R.length),</span><br><span class="line">&gt;   R.reduce(R.max, <span class="number">0</span>)</span><br><span class="line">&gt; );</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Pointfree/" rel="tag"># Pointfree</a>
+          
+            <a href="/tags/函数式编程/" rel="tag"># 函数式编程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/11/柯里化-currying/" rel="next" title="柯里化-currying">
+                <i class="fa fa-chevron-left"></i> 柯里化-currying
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/13/body-scrollTop与documentElement-scrollTop/" rel="prev" title="document.body.scrollTop与document.documentElement.scrollTop">
+                document.body.scrollTop与document.documentElement.scrollTop <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chenoge</p>
+              <p class="site-description motion-element" itemprop="description">一个程序猿和一支笔的故事</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">166</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">257</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、程序的本质"><span class="nav-number">1.</span> <span class="nav-text">一、程序的本质</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注：函数单一职责原则：拆分依据（纯粹数学运算）"><span class="nav-number">1.0.1.</span> <span class="nav-text">注：函数单一职责原则：拆分依据（纯粹数学运算）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、函数的拆分与合成"><span class="nav-number">2.</span> <span class="nav-text">二、函数的拆分与合成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、Pointfree-的概念"><span class="nav-number">3.</span> <span class="nav-text">三、Pointfree 的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#这就叫做-Pointfree：不使用所要处理的值，只合成运算过程。中文可以译作”无值”风格。"><span class="nav-number">3.0.1.</span> <span class="nav-text">这就叫做 Pointfree：不使用所要处理的值，只合成运算过程。中文可以译作”无值”风格。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、Pointfree-的本质"><span class="nav-number">4.</span> <span class="nav-text">四、Pointfree 的本质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、Pointfree-的示例一"><span class="nav-number">5.</span> <span class="nav-text">五、Pointfree 的示例一</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenoge</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

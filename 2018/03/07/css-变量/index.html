@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="css,变量," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、变量的声明声明变量的时候，变量名前面要加两根连词线--，变量名大小写敏感 1234body &amp;#123;    --foo: #7F583F;    --bar: #F7EFD2;&amp;#125; 上面代码中，body选择器里面声明了两个变量：--foo和--bar。它们与正式属性没有什么不同，只是没有默认含义。所以 CSS 变量（CSS variable）又叫做”CSS 自定义属性”（CSS c">
+<meta name="keywords" content="css,变量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css-变量">
+<meta property="og:url" content="https://www.yf-gz.cn/2018/03/07/css-变量/index.html">
+<meta property="og:site_name" content="chenogeの日志">
+<meta property="og:description" content="一、变量的声明声明变量的时候，变量名前面要加两根连词线--，变量名大小写敏感 1234body &amp;#123;    --foo: #7F583F;    --bar: #F7EFD2;&amp;#125; 上面代码中，body选择器里面声明了两个变量：--foo和--bar。它们与正式属性没有什么不同，只是没有默认含义。所以 CSS 变量（CSS variable）又叫做”CSS 自定义属性”（CSS c">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-23T11:29:55.008Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css-变量">
+<meta name="twitter:description" content="一、变量的声明声明变量的时候，变量名前面要加两根连词线--，变量名大小写敏感 1234body &amp;#123;    --foo: #7F583F;    --bar: #F7EFD2;&amp;#125; 上面代码中，body选择器里面声明了两个变量：--foo和--bar。它们与正式属性没有什么不同，只是没有默认含义。所以 CSS 变量（CSS variable）又叫做”CSS 自定义属性”（CSS c">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.yf-gz.cn/2018/03/07/css-变量/"/>
+
+
+
+
+
+  <title>css-变量 | chenogeの日志</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">chenogeの日志</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/03/07/css-变量/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">css-变量</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-07T21:19:52+08:00">
+                2018-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、变量的声明"><a href="#一、变量的声明" class="headerlink" title="一、变量的声明"></a>一、变量的声明</h1><p>声明变量的时候，变量名前面要加<strong>两根连词线</strong><code>--</code>，变量名大小写敏感</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">--foo</span>: <span class="number">#7F583F</span>;</span><br><span class="line">    <span class="attribute">--bar</span>: <span class="number">#F7EFD2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，body选择器里面声明了两个变量：<code>--foo</code>和<code>--bar</code>。它们与正式属性没有什么不同，只是没有默认含义。所以 <strong>CSS 变量（CSS variable）又叫做”CSS 自定义属性”（CSS custom properties）</strong>。因为变量与自定义的 CSS 属性其实是一回事。 </p>
+<p><br></p>
+<p>各种值都可以放入 CSS 变量 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">    <span class="attribute">--main-color</span>: <span class="number">#4d4e53</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">--main-bg</span>: <span class="built_in">rgb</span>(255, 255, 255);</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">--logo-border-color</span>: rebeccapurple;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">--header-height</span>: <span class="number">68px</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">--content-padding</span>: <span class="number">10px</span> <span class="number">20px</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">--base-line-height</span>: <span class="number">1.428571429</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">--transition-duration</span>: .<span class="number">35s</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">--external-link</span>: <span class="string">"external link"</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">--margin-top</span>: <span class="built_in">calc</span>(2vh + 20px);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<a id="more"></a> 
+<h1 id="二、var-函数"><a href="#二、var-函数" class="headerlink" title="二、var() 函数"></a>二、var() 函数</h1><p>var()函数用于读取变量。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">var</span>(--foo);</span><br><span class="line">    <span class="attribute">text-decoration-color</span>: <span class="built_in">var</span>(--bar);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>var()函数还可以使用第二个参数，表示变量的默认值。如果该变量不存在，就会使用这个默认值。 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">color</span>: <span class="selector-tag">var</span>(<span class="selector-tag">--foo</span>, <span class="selector-id">#7F583F</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>第二个参数不处理内部的逗号或空格，都视作参数的一部分。</strong> </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">var</span>(<span class="selector-tag">--font-stack</span>, "<span class="selector-tag">Roboto</span>", "<span class="selector-tag">Helvetica</span>");</span><br><span class="line"><span class="selector-tag">var</span>(<span class="selector-tag">--pad</span>, 10<span class="selector-tag">px</span> 15<span class="selector-tag">px</span> 20<span class="selector-tag">px</span>);</span><br></pre></td></tr></table></figure>
+<p>var()函数还可以用在变量的声明。 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">    <span class="attribute">--primary-color</span>: red;</span><br><span class="line">    <span class="attribute">--logo-text</span>: <span class="built_in">var</span>(--primary-color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意，变量值只能用作属性值，不能用作属性名。 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.foo</span> &#123;</span><br><span class="line">  <span class="attribute">--side</span>: margin-top;</span><br><span class="line">  <span class="comment">/* 无效 */</span></span><br><span class="line">  var(--side): 20px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，变量–side用作属性名，这是无效的。 </p>
+<p><br></p>
+<h1 id="三、变量值的类型"><a href="#三、变量值的类型" class="headerlink" title="三、变量值的类型"></a>三、变量值的类型</h1><p>如果变量值是一个字符串，可以与其他字符串拼接。 </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--bar: 'hello';</span><br><span class="line">--foo: var(--bar)' world';</span><br></pre></td></tr></table></figure>
+<p>​    利用这一点，可以 debug（<a href="https://codepen.io/malyw/pen/oBWMOY" target="_blank" rel="noopener">例子</a>）。 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">'--screen-category : '</span><span class="built_in">var</span>(--screen-category);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果变量值是数值，不能与数值单位直接连用。 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.foo</span> &#123;</span><br><span class="line">    <span class="attribute">--gap</span>: <span class="number">20</span>;</span><br><span class="line">    <span class="comment">/* 无效 */</span></span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="built_in">var</span>(--gap)<span class="built_in">px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，数值与单位直接写在一起，这是无效的。必须使用calc()函数，将它们连接。 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.foo</span> &#123;</span><br><span class="line">    <span class="attribute">--gap</span>: <span class="number">20</span>;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="built_in">calc</span>(var(--gap) * <span class="number">1px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果变量值带有单位，就不能写成字符串。 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 无效 */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.foo</span> &#123;</span><br><span class="line">    <span class="attribute">--foo</span>: <span class="string">'20px'</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="built_in">var</span>(--foo);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 有效 */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.foo</span> &#123;</span><br><span class="line">    <span class="attribute">--foo</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="built_in">var</span>(--foo);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h1 id="四、作用域"><a href="#四、作用域" class="headerlink" title="四、作用域"></a>四、作用域</h1><p>同一个 CSS 变量，可以在多个选择器内声明。读取的时候，优先级最高的声明生效。这与 CSS 的”层叠”（cascade）规则是一致的。下面是一个<a href="http://jsbin.com/buwahixoqo/edit?html,css,output" target="_blank" rel="noopener">例子</a>。 </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>蓝色<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>绿色<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"alert"</span>&gt;</span>红色<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">    <span class="attribute">--color</span>: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">--color</span>: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#alert</span> &#123;</span><br><span class="line">    <span class="attribute">--color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">* &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">var</span>(--color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，三个选择器都声明了<code>--color</code>变量。不同元素读取这个变量的时候，会采用优先级最高的规则，因此三段文字的颜色是不一样的。这就是说，变量的作用域就是它所在的选择器的有效范围。 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">--foo</span>: <span class="number">#7F583F</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.content</span> &#123;</span><br><span class="line">    <span class="attribute">--bar</span>: <span class="number">#F7EFD2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，变量–foo的作用域是body选择器的生效范围，–bar的作用域是.content选择器的生效范围。由于这个原因，全局的变量通常放在根元素:root里面，确保任何选择器都可以读取它们。 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">    <span class="attribute">--main-color</span>: <span class="number">#06c</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h1 id="五、响应式布局"><a href="#五、响应式布局" class="headerlink" title="五、响应式布局"></a>五、响应式布局</h1><p>CSS 是动态的，页面的任何变化，都会导致采用的规则变化。</p>
+<p>利用这个特点，可以在响应式布局的media命令里面声明变量，使得不同的屏幕宽度有不同的变量值。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">--primary</span>: <span class="number">#7F583F</span>;</span><br><span class="line">    <span class="attribute">--secondary</span>: <span class="number">#F7EFD2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">var</span>(--primary);</span><br><span class="line">    <span class="attribute">text-decoration-color</span>: <span class="built_in">var</span>(--secondary);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">768px</span>) &#123;</span><br><span class="line">    <span class="selector-tag">body</span> &#123;</span><br><span class="line">        <span class="attribute">--primary</span>: <span class="number">#F7EFD2</span>;</span><br><span class="line">        <span class="attribute">--secondary</span>: <span class="number">#7F583F</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+            <a href="/tags/变量/" rel="tag"># 变量</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/05/css-盒子垂直水平居中/" rel="next" title="css-盒子垂直水平居中">
+                <i class="fa fa-chevron-left"></i> css-盒子垂直水平居中
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/07/html-meta/" rel="prev" title="html-meta">
+                html-meta <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chenoge</p>
+              <p class="site-description motion-element" itemprop="description">一个程序猿和一支笔的故事</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">166</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">257</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、变量的声明"><span class="nav-number">1.</span> <span class="nav-text">一、变量的声明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、var-函数"><span class="nav-number">2.</span> <span class="nav-text">二、var() 函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、变量值的类型"><span class="nav-number">3.</span> <span class="nav-text">三、变量值的类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、作用域"><span class="nav-number">4.</span> <span class="nav-text">四、作用域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、响应式布局"><span class="nav-number">5.</span> <span class="nav-text">五、响应式布局</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenoge</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

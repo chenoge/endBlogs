@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="css,transform,坐标系," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、 坐标系统我们很熟悉的网页是平面的，一个DOM元素会有一个初始坐标系（initial coordinate system）：   每一个DOM元素都有一个这样的初始坐标系。其中，原点位于元素的左上角，z轴指向观察者。初始坐标系的z轴并不算是三维空间，而是像z-index那样作为参照，决定网页元素的绘制顺序，绘制顺序靠后的元素将覆盖绘制顺序靠前的。   在使用transform的时候，情况则有所">
+<meta name="keywords" content="css,transform,坐标系">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css-transform与坐标系统">
+<meta property="og:url" content="https://www.yf-gz.cn/2018/03/21/css-transform与坐标系统/index.html">
+<meta property="og:site_name" content="chenogeの日志">
+<meta property="og:description" content="一、 坐标系统我们很熟悉的网页是平面的，一个DOM元素会有一个初始坐标系（initial coordinate system）：   每一个DOM元素都有一个这样的初始坐标系。其中，原点位于元素的左上角，z轴指向观察者。初始坐标系的z轴并不算是三维空间，而是像z-index那样作为参照，决定网页元素的绘制顺序，绘制顺序靠后的元素将覆盖绘制顺序靠前的。   在使用transform的时候，情况则有所">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/03/21/css-transform与坐标系统/bVrVnk.png">
+<meta property="og:image" content="https://www.yf-gz.cn/2018/03/21/css-transform与坐标系统/bVrVnl.png">
+<meta property="og:updated_time" content="2018-06-23T11:29:13.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css-transform与坐标系统">
+<meta name="twitter:description" content="一、 坐标系统我们很熟悉的网页是平面的，一个DOM元素会有一个初始坐标系（initial coordinate system）：   每一个DOM元素都有一个这样的初始坐标系。其中，原点位于元素的左上角，z轴指向观察者。初始坐标系的z轴并不算是三维空间，而是像z-index那样作为参照，决定网页元素的绘制顺序，绘制顺序靠后的元素将覆盖绘制顺序靠前的。   在使用transform的时候，情况则有所">
+<meta name="twitter:image" content="https://www.yf-gz.cn/2018/03/21/css-transform与坐标系统/bVrVnk.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.yf-gz.cn/2018/03/21/css-transform与坐标系统/"/>
+
+
+
+
+
+  <title>css-transform与坐标系统 | chenogeの日志</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">chenogeの日志</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/03/21/css-transform与坐标系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">css-transform与坐标系统</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T11:55:31+08:00">
+                2018-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、-坐标系统"><a href="#一、-坐标系统" class="headerlink" title="一、 坐标系统"></a>一、 坐标系统</h1><p>我们很熟悉的网页是平面的，一个DOM元素会有一个初始坐标系（initial coordinate system）： </p>
+<p><img src="/2018/03/21/css-transform与坐标系统/bVrVnk.png" alt=""></p>
+<p><strong>每一个DOM元素都有一个这样的初始坐标系。其中，原点位于元素的左上角，z轴指向观察者。</strong>初始坐标系的z轴并不算是三维空间，而是像z-index那样作为参照，决定网页元素的绘制顺序，绘制顺序靠后的元素将覆盖绘制顺序靠前的。 </p>
+<p><br></p>
+<p>在使用transform的时候，情况则有所不同。transform所参照的并不是初始坐标系，而是一个新的坐标系： </p>
+<p><img src="/2018/03/21/css-transform与坐标系统/bVrVnl.png" alt=""></p>
+<p>transform所用的这个坐标系，相比初始坐标系，x、y、z轴的指向都不变，只是原点位置移动到了元素的正中心。<strong>如果想要改变这个坐标系的原点位置，使用transform-origin</strong>。<strong>transform-origin的默认值是50% 50%</strong>，因此，默认情况下，transform坐标系的原点位于元素中心。 </p>
+<p><br></p>
+<a id="more"></a> 
+<h1 id="二、变换函数顺序"><a href="#二、变换函数顺序" class="headerlink" title="二、变换函数顺序"></a>二、变换函数顺序</h1><p>我们都可能像</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">rotateY</span>(45<span class="selector-tag">deg</span>)  <span class="selector-tag">translateX</span>(100<span class="selector-tag">px</span>);</span><br></pre></td></tr></table></figure>
+<p>这样使用多个变换函数。这种时候，需要意识到变换函数的顺序。这是因为，<strong>每一个变换函数不仅改变了元素，同时也会改变和元素关联的transform坐标系</strong>，当变换函数依次执行时，<font color="#A52A2A" size="4"><strong>后一个变换函数总是基于前一个变换后的新transform坐标系</strong></font>。 </p>
+<p><br></p>
+<h1 id="三、transform-origin"><a href="#三、transform-origin" class="headerlink" title="三、transform-origin"></a>三、transform-origin</h1><p>transform-origin属性是所有矩阵计算的一个重要依据点 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.anim_image</span> &#123;</span><br><span class="line">    <span class="attribute">-webkit-transition</span>: all <span class="number">1s</span> ease-in-out;</span><br><span class="line">    <span class="attribute">-moz-transition</span>: all <span class="number">1s</span> ease-in-out;</span><br><span class="line">    <span class="attribute">-o-transition</span>: all <span class="number">1s</span> ease-in-out;</span><br><span class="line">    <span class="attribute">transition</span>: all <span class="number">1s</span> ease-in-out;</span><br><span class="line">    <span class="attribute">cursor</span>:pointer;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.anim_image_top</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">-webkit-transform</span>: <span class="built_in">scale</span>(0, 0);</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">filter</span>: <span class="built_in">Alpha</span>(opacity=0);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.anim_box</span><span class="selector-pseudo">:hover</span> <span class="selector-class">.anim_image_top</span> , </span><br><span class="line"><span class="selector-class">.anim_box_hover</span> <span class="selector-class">.anim_image_top</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">    <span class="attribute">filter</span>: <span class="built_in">Alpha</span>(opacity=100);</span><br><span class="line">    <span class="attribute">-webkit-transform</span>: <span class="built_in">scale</span>(1, 1);</span><br><span class="line">    <span class="attribute">-webkit-transform-origin</span>: top right;        </span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"><span class="selector-class">.anim_box</span><span class="selector-pseudo">:hover</span> <span class="selector-class">.anim_image_bottom</span>, </span><br><span class="line"><span class="selector-class">.anim_box_hover</span> <span class="selector-class">.anim_image_bottom</span> &#123;</span><br><span class="line">    <span class="attribute">-webkit-transform</span>: <span class="built_in">scale</span>(0, 0);</span><br><span class="line">    <span class="attribute">-webkit-transform-origin</span>: bottom left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"testBox"</span> <span class="attr">class</span>=<span class="string">"demo anim_box"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"anim_image anim_image_top"</span> <span class="attr">src</span>=<span class="string">"/ps6.jpg"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"anim_image anim_image_bottom"</span> <span class="attr">src</span>=<span class="string">"/ps4.jpg"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Demo ：<a href="http://www.zhangxinxu.com/study/201011/css3-transition-animate-demo-11.html" target="_blank" rel="noopener">http://www.zhangxinxu.com/study/201011/css3-transition-animate-demo-11.html</a> </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+            <a href="/tags/transform/" rel="tag"># transform</a>
+          
+            <a href="/tags/坐标系/" rel="tag"># 坐标系</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/19/css-视差滚动效果/" rel="next" title="css-视差滚动效果">
+                <i class="fa fa-chevron-left"></i> css-视差滚动效果
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/22/css-transform-matrix/" rel="prev" title="css-transform-matrix">
+                css-transform-matrix <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chenoge</p>
+              <p class="site-description motion-element" itemprop="description">一个程序猿和一支笔的故事</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">166</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">257</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、-坐标系统"><span class="nav-number">1.</span> <span class="nav-text">一、 坐标系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、变换函数顺序"><span class="nav-number">2.</span> <span class="nav-text">二、变换函数顺序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、transform-origin"><span class="nav-number">3.</span> <span class="nav-text">三、transform-origin</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenoge</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

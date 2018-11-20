@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="性能优化,35条军规," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="内容部分1.尽量减少HTTP请求数页面大部分的响应时间都在下载页面上的各种组件：图片，样式表，脚本等等。减少组件数必然能够减少页面提交的HTTP请求数。这是让页面更快的关键。 合并文件是通过把所有脚本放在一个文件中的方式来减少请求数的，当然，也可以合并所有的CSS。 CSS Sprites是减少图片请求数量的首选方式。把背景图片都整合到一张图片中。 行内图片（Base64编码）用data: URL">
+<meta name="keywords" content="性能优化,35条军规">
+<meta property="og:type" content="article">
+<meta property="og:title" content="雅虎前端优化的35条军规">
+<meta property="og:url" content="https://www.yf-gz.cn/2018/07/03/雅虎前端优化的35条军规/index.html">
+<meta property="og:site_name" content="chenogeの日志">
+<meta property="og:description" content="内容部分1.尽量减少HTTP请求数页面大部分的响应时间都在下载页面上的各种组件：图片，样式表，脚本等等。减少组件数必然能够减少页面提交的HTTP请求数。这是让页面更快的关键。 合并文件是通过把所有脚本放在一个文件中的方式来减少请求数的，当然，也可以合并所有的CSS。 CSS Sprites是减少图片请求数量的首选方式。把背景图片都整合到一张图片中。 行内图片（Base64编码）用data: URL">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-04T03:18:13.396Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="雅虎前端优化的35条军规">
+<meta name="twitter:description" content="内容部分1.尽量减少HTTP请求数页面大部分的响应时间都在下载页面上的各种组件：图片，样式表，脚本等等。减少组件数必然能够减少页面提交的HTTP请求数。这是让页面更快的关键。 合并文件是通过把所有脚本放在一个文件中的方式来减少请求数的，当然，也可以合并所有的CSS。 CSS Sprites是减少图片请求数量的首选方式。把背景图片都整合到一张图片中。 行内图片（Base64编码）用data: URL">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.yf-gz.cn/2018/07/03/雅虎前端优化的35条军规/"/>
+
+
+
+
+
+  <title>雅虎前端优化的35条军规 | chenogeの日志</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">chenogeの日志</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/07/03/雅虎前端优化的35条军规/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">雅虎前端优化的35条军规</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-03T20:41:18+08:00">
+                2018-07-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="内容部分"><a href="#内容部分" class="headerlink" title="内容部分"></a>内容部分</h1><h4 id="1-尽量减少HTTP请求数"><a href="#1-尽量减少HTTP请求数" class="headerlink" title="1.尽量减少HTTP请求数"></a>1.尽量减少HTTP请求数</h4><p>页面大部分的响应时间都在下载页面上的各种组件：图片，样式表，脚本等等。减少组件数必然能够减少页面提交的HTTP请求数。这是让页面更快的关键。</p>
+<p><strong>合并文件</strong>是通过把所有脚本放在一个文件中的方式来减少请求数的，当然，也可以合并所有的CSS。</p>
+<p><strong>CSS Sprites</strong>是减少图片请求数量的首选方式。把背景图片都整合到一张图片中。</p>
+<p><strong>行内图片（Base64编码）</strong>用<code>data: URL</code>模式来把图片放在（缓存的）样式表中。</p>
+<p><br></p>
+<h4 id="2-减少DNS查找"><a href="#2-减少DNS查找" class="headerlink" title="2.减少DNS查找"></a>2.减少DNS查找</h4><p>DNS是有成本的，它需要20到120毫秒去查找给定主机名的IP地址。在DNS查找完成之前，浏览器无法从主机名下载任何东西。</p>
+<p><strong>DNS查找数</strong>等于页面上不同的主机名数，包括页面URL，图片，脚本文件，样式表等等组件中的主机名，减少不同的主机名就可以减少DNS查找。</p>
+<p>HTTP客户端一般对同一个服务器的<strong>并发连接个数都是有限制的</strong> 。减少不同主机名的数量同时也减少了页面能够并行下载的组件数量，削减了避免DNS查找的响应时间，而减少并行下载数量却增加了响应时间。我的原则是把组件分散在2到4个主机名下，这是同时<strong>减少DNS查找</strong>和允<strong>许高并发下载</strong>的折中方案。</p>
+<p><br></p>
+<a id="more"></a>
+<h4 id="3-避免重定向"><a href="#3-避免重定向" class="headerlink" title="3.避免重定向"></a>3.避免重定向</h4><p>有一种常见的极其浪费资源的重定向，就是<strong>URL尾部缺少一个斜线</strong>。</p>
+<p>当Web服务器接收到对<strong>末尾不含斜杠的url请求</strong>时（<code>www.abc.com/home/efg</code>），服务器会搜索<code>/home目录</code>下有没有名为<code>efg</code>的文件，如果没有就把<code>efg</code>当做目录处理，然后返回<code>efg</code>目录下的默认首页，造成一次不必要的握手 。<strong>当Web服务器接收到的是末尾带斜杠的请求时就会直接当做目录处理。</strong> </p>
+<p><br></p>
+<h4 id="4-Ajax可缓存"><a href="#4-Ajax可缓存" class="headerlink" title="4.Ajax可缓存"></a>4.Ajax可缓存</h4><ul>
+<li>必须是GET请求</li>
+<li>必须在response中发送正确的HTTP头信息：Expires</li>
+</ul>
+<p><br></p>
+<h4 id="5-延迟加载组件"><a href="#5-延迟加载组件" class="headerlink" title="5.延迟加载组件"></a>5.延迟加载组件</h4><p><br></p>
+<h4 id="6-预加载组件"><a href="#6-预加载组件" class="headerlink" title="6.预加载组件"></a>6.预加载组件</h4><p>预加载可能看起来和延迟加载是相反的，但它其实有不同的目标。</p>
+<p>通过预加载组件可以充分利用浏览器空闲的时间来请求将来会用到的组件（图片，样式和脚本）。</p>
+<p><br></p>
+<h4 id="7-减少DOM元素的数量"><a href="#7-减少DOM元素的数量" class="headerlink" title="7.减少DOM元素的数量"></a>7.减少DOM元素的数量</h4><p>一个复杂的页面意味着要下载更多的字节，而且用JavaScript访问DOM也会更慢。 </p>
+<p><br></p>
+<h4 id="8-跨域分离组件"><a href="#8-跨域分离组件" class="headerlink" title="8.跨域分离组件"></a>8.跨域分离组件</h4><p>分离组件可以最大化并行下载，但要确保只用不超过2-4个域，因为存在DNS查找的代价。 </p>
+<p><br></p>
+<h4 id="9-尽量少用iframe"><a href="#9-尽量少用iframe" class="headerlink" title="9.尽量少用iframe"></a>9.尽量少用iframe</h4><p>用iframe可以把一个HTML文档插入到父文档里，重要的是明白iframe是如何工作的并高效地使用它。</p>
+<p><code>&lt;iframe&gt;</code>的优点：</p>
+<ul>
+<li>引入缓慢的第三方内容，比如标志和广告</li>
+<li>安全沙箱</li>
+<li>并行下载脚本</li>
+</ul>
+<p><code>&lt;iframe&gt;</code>的缺点：</p>
+<ul>
+<li>代价高昂，即使是空白的iframe</li>
+<li>阻塞页面加载</li>
+<li>非语义</li>
+</ul>
+<p><br></p>
+<h4 id="10-杜绝404"><a href="#10-杜绝404" class="headerlink" title="10.杜绝404"></a>10.杜绝404</h4><p>HTTP请求代价高昂，完全没有必要用一个HTTP请求去获取一个无用的响应（比如404 Not Found），只会拖慢用户体验而没有任何好处。 </p>
+<p><br></p>
+<h1 id="css部分"><a href="#css部分" class="headerlink" title="css部分"></a>css部分</h1><h4 id="11-避免使用CSS表达式"><a href="#11-避免使用CSS表达式" class="headerlink" title="11.避免使用CSS表达式"></a>11.避免使用CSS表达式</h4><p>用CSS表达式动态设置CSS属性，是一种强大又危险的方式。例如，可以用CSS表达式把背景颜色设置成按小时交替的：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">background-color</span>: <span class="selector-tag">expression</span>( (<span class="selector-tag">new</span> <span class="selector-tag">Date</span>())<span class="selector-class">.getHours</span>()%2 ? "<span class="selector-id">#B8D4FF</span>" : "<span class="selector-id">#F08A00</span>" );</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="12-选择-lt-link-gt-舍弃-import"><a href="#12-选择-lt-link-gt-舍弃-import" class="headerlink" title="12.选择&lt;link&gt;舍弃@import"></a>12.选择<code>&lt;link&gt;</code>舍弃<code>@import</code></h4><p>页面被加载时，<code>link</code>会同时被加载，而<code>@impor</code>t引用的<code>css</code>会等到页面加载结束后加载 。</p>
+<p><br></p>
+<h4 id="13-避免使用滤镜"><a href="#13-避免使用滤镜" class="headerlink" title="13.避免使用滤镜"></a>13.避免使用滤镜</h4><p>IE专有的<code>AlphaImageLoader</code>滤镜可以用来修复IE7之前的版本中<strong>半透明PNG图片的问题</strong>。在图片加载过程中，这个滤镜会阻塞渲染，卡住浏览器，还会增加内存消耗而且是被应用到每个元素的，而不是每个图片，所以会存在一大堆问题。</p>
+<p>最好的方法是干脆不要用<code>AlphaImageLoader</code>，而优雅地降级到用在IE中支持性很好的PNG8图片来代替。如果非要用<code>AlphaImageLoader</code>，应该用下划线hack：<code>_filter</code>来避免影响IE7及更高版本的用户。</p>
+<p><br></p>
+<h3 id="14-把样式表放在顶部"><a href="#14-把样式表放在顶部" class="headerlink" title="14.把样式表放在顶部"></a>14.把样式表放在顶部</h3><p>把样式表放在head里能让页面逐步渲染 。</p>
+<p><br></p>
+<h1 id="js部分"><a href="#js部分" class="headerlink" title="js部分"></a>js部分</h1><h4 id="15-去除重复脚本"><a href="#15-去除重复脚本" class="headerlink" title="15.去除重复脚本"></a>15.去除重复脚本</h4><p>除了<strong>产生没有意义的HTTP请求之外</strong>，<strong>多次对脚本求值</strong>也会浪费时间。因为无论脚本是否可缓存，在Firefox和IE中都会执行冗余的JavaScript代码。</p>
+<p>避免不小心把相同脚本引入两次的一种方法就是在模版系统中实现脚本管理模块。典型的脚本引入方法就是在HTML页面中用SCRIPT标签：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"menu_1.0.17.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="16-尽量减少DOM访问"><a href="#16-尽量减少DOM访问" class="headerlink" title="16.尽量减少DOM访问"></a>16.尽量减少DOM访问</h4><p>用JavaScript访问DOM元素是很慢的，所以，为了让页面反应更迅速，应该：</p>
+<ul>
+<li><strong>缓存已访问过的元素的索引</strong></li>
+<li><strong>先“离线”更新节点</strong>，再把它们添到DOM树上</li>
+<li><strong>避免用JavaScript修复布局问题</strong> </li>
+</ul>
+<p><br></p>
+<h4 id="17-用智能的事件处理器"><a href="#17-用智能的事件处理器" class="headerlink" title="17.用智能的事件处理器"></a>17.用智能的事件处理器</h4><p>太多<strong>频繁执行</strong>的<strong>事件处理器</strong>被添加到了DOM树的不同元素上会导致页面不灵敏，这就是<strong>推荐使用事件委托</strong>的原因。</p>
+<p><br></p>
+<h4 id="18-把脚本放在底部"><a href="#18-把脚本放在底部" class="headerlink" title="18.把脚本放在底部"></a>18.把脚本放在底部</h4><p>脚本会阻塞并行下载，HTTP/1.1官方文档建议浏览器每个主机名下并行下载的组件数不要超过两个，如果图片来自多个主机名，并行下载的数量就可以超过两个。如果脚本正在下载，浏览器就不开始任何其它下载任务，即使是在不同主机名下的。 </p>
+<p><br></p>
+<h1 id="javascript-css"><a href="#javascript-css" class="headerlink" title="javascript, css"></a>javascript, css</h1><h4 id="19-把JavaScript和CSS放到外面"><a href="#19-把JavaScript和CSS放到外面" class="headerlink" title="19.把JavaScript和CSS放到外面"></a>19.把JavaScript和CSS放到外面</h4><p>用外部文件可以让页面更快，因为JavaScript和CSS文件会被缓存在浏览器。 </p>
+<p><br></p>
+<h4 id="20-压缩JavaScript和CSS"><a href="#20-压缩JavaScript和CSS" class="headerlink" title="20.压缩JavaScript和CSS"></a>20.压缩JavaScript和CSS</h4><p>压缩具体来说就是从代码中<strong>去除不必要的字符以减少大小</strong>，从而提升加载速度。代码最小化就是去掉所有注释和不必要的空白字符（空格，换行和tab）。在JavaScript中这样做能够提高响应性能，因为要下载的文件变小了。</p>
+<p>两个最常用的JavaScript代码压缩工具是JSMin和YUI Compressor，YUI compressor还可以压缩CSS。 </p>
+<p><br></p>
+<h1 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h1><h4 id="21-优化图片"><a href="#21-优化图片" class="headerlink" title="21.优化图片"></a>21.优化图片</h4><p>尝试把GIF格式转换成PNG格式 </p>
+<p><br></p>
+<h4 id="22-优化CSS-Sprite"><a href="#22-优化CSS-Sprite" class="headerlink" title="22.优化CSS Sprite"></a>22.优化CSS Sprite</h4><ul>
+<li>在Sprite图片中<strong>横向排列一般都比纵向排列的最终文件小</strong></li>
+<li>组合Sprite图片中的相似颜色可以保持低色数，最理想的是256色以下PNG8格式</li>
+<li>“对移动端友好”，不要在Sprite图片中留下太大的空隙。虽然不会在很大程度上影响图片文件的大小，但这样做可以节省用户代理把图片解压成像素映射时消耗的内存。100×100的图片是1万个像素，而1000×1000的图片就是100万个像素了。</li>
+</ul>
+<p><br></p>
+<h4 id="23-不要用HTML缩放图片"><a href="#23-不要用HTML缩放图片" class="headerlink" title="23.不要用HTML缩放图片"></a>23.不要用HTML缩放图片</h4><p><strong>不要因为在HTML中可以设置宽高而使用本不需要的大图</strong>。如果需要</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span> <span class="attr">src</span>=<span class="string">"mycat.jpg"</span> <span class="attr">alt</span>=<span class="string">"My Cat"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>那么图片本身（mycat.jpg）应该是100x100px的，而不是去缩小500x500px的图片。</p>
+<p><br></p>
+<h4 id="24-用小的可缓存的favicon-ico"><a href="#24-用小的可缓存的favicon-ico" class="headerlink" title="24.用小的可缓存的favicon.ico"></a>24.用小的可缓存的favicon.ico</h4><p>favicon.ico是放在服务器根目录的图片，它会带来一堆麻烦，因为即便你不管它，浏览器也会自动请求它，所以最好不要给一个<code>404 Not Found</code>响应。而且只要在同一个服务器上，每次请求它时都会发送cookie，此外这个图片还会干扰下载顺序，例如在IE中，当你在onload中请求额外组件时，将会先下载favicon。</p>
+<p>所以为了缓解favicon.ico的缺点，应该确保：</p>
+<ul>
+<li>足够小，最好在1K以下</li>
+<li>设置合适的有效期HTTP头，把有效期设置为几个月后一般比较安全，可以通过检查当前favicon.ico的最后修改日期来确保变更能让浏览器知道。</li>
+</ul>
+<p><br></p>
+<h1 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h1><h4 id="25-给Cookie减肥"><a href="#25-给Cookie减肥" class="headerlink" title="25.给Cookie减肥"></a>25.给Cookie减肥</h4><p>保证cookie尽可能的小，以最小化对用户响应时间的影响。</p>
+<ul>
+<li>清除不必要的cookie</li>
+<li>保证cookie尽可能小，以最小化对用户响应时间的影响</li>
+<li>注意给cookie设置合适的域级别，以免影响其它子域</li>
+<li>设置合适的有效期，更早的有效期或者none可以更快的删除cookie，提高用户响应时间</li>
+</ul>
+<p><br></p>
+<h4 id="26-把组件放在不含cookie的域下"><a href="#26-把组件放在不含cookie的域下" class="headerlink" title="26.把组件放在不含cookie的域下"></a>26.把组件放在不含cookie的域下</h4><p>当浏览器发送对静态图像的请求时，cookie也会一起发送，而服务器根本不需要这些cookie。所以它们只会造成没有意义的网络通信量，应该确保对静态组件的请求不含cookie。可以创建一个子域，把所有的静态组件都部署在那儿。 如果域名是<code>www.example.org</code>，可以把静态组件部署到<code>static.example.org</code>。 </p>
+<p><br></p>
+<h1 id="移动端"><a href="#移动端" class="headerlink" title="移动端"></a>移动端</h1><h4 id="27-保证所有组件都小于25K"><a href="#27-保证所有组件都小于25K" class="headerlink" title="27.保证所有组件都小于25K"></a>27.保证所有组件都小于25K</h4><p>这个限制是因为iPhone不能缓存大于25K的组件，注意这里指的是未压缩的大小。这就是为什么缩减内容本身也很重要，因为单纯的gzip可能不够。</p>
+<p><br></p>
+<h4 id="28-把组件打包到一个复合文档里"><a href="#28-把组件打包到一个复合文档里" class="headerlink" title="28.把组件打包到一个复合文档里"></a>28.把组件打包到一个复合文档里</h4><p>把各个组件打包成一个像有附件的电子邮件一样的复合文档里，可以用一个HTTP请求获取多个组件（记住一点：HTTP请求是代价高昂的）。用这种方式的时候，要先检查用户代理是否支持（iPhone就不支持）。 </p>
+<p><br></p>
+<h1 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h1><h4 id="29-Gzip组件"><a href="#29-Gzip组件" class="headerlink" title="29.Gzip组件"></a>29.Gzip组件</h4><p>前端工程师可以想办法明显地缩短通过网络传输HTTP请求和响应的时间。毫无疑问，终端用户的带宽速度，网络服务商，对等交换点的距离等等，都是开发团队所无法控制的。但还有别的能够影响响应时间的因素，压缩可以通过减少HTTP响应的大小来缩短响应时间。</p>
+<p>从HTTP/1.1开始，web客户端就有了支持压缩的Accept-Encoding <strong>HTTP请求头</strong>。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Accept-Encoding: gzip, deflate</span><br></pre></td></tr></table></figure>
+<p>如果web服务器看到这个请求头，它就会用客户端列出的一种方式来压缩响应。web服务器通过<code>Content-Encoding</code>相应头来通知客户端。 </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Content-Encoding: gzip</span><br></pre></td></tr></table></figure>
+<p>尽可能多地用gzip压缩能够给页面减肥，这也是提升用户体验最简单的方法。 </p>
+<p><br></p>
+<h4 id="30-避免图片src属性为空"><a href="#30-避免图片src属性为空" class="headerlink" title="30.避免图片src属性为空"></a>30.避免图片src属性为空</h4><p>Image with empty string <strong>src</strong>属性是空字符串的图片很常见，主要以两种形式出现： </p>
+<ul>
+<li><p><strong>straight HTML</strong> </p>
+<ul>
+<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">””</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>JavaScript </p>
+<ul>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">img.src = <span class="string">''</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>这两种形式都会引起相同的问题：浏览器会向服务器发送另一个请求。 </p>
+<p><br></p>
+<h4 id="31-配置ETags"><a href="#31-配置ETags" class="headerlink" title="31.配置ETags"></a>31.配置ETags</h4><p>实体标签（ETags），是服务器和浏览器用来决定浏览器缓存中组件与源服务器中的组件是否匹配的一种机制（“实体”也就是组件：图片，脚本，样式表等等）。添加ETags可以提供一种实体验证机制，比最后修改日期更加灵活。一个ETag是一个字符串，作为一个组件某一具体版本的唯一标识符。唯一的格式约束是字符串必须用引号括起来，源服务器用相应头中的<code>ETag</code>来指定组件的ETag： </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">      Last-Modified: Tue, 12 Dec 2006 03:03:59 GMT</span><br><span class="line">      ETag: "10c24bc-4ab-457e1c1f"</span><br><span class="line">      Content-Length: 12195</span><br></pre></td></tr></table></figure>
+<p>然后，如果浏览器必须验证一个组件，它用<code>If-None-Match</code>请求头来把ETag传回源服务器。如果ETags匹配成功，会返回一个304状态码，这样就减少了12195个字节的响应体。 </p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">GET</span> /i/yahoo.gif HTTP/<span class="number">1</span>.<span class="number">1</span></span><br><span class="line">      Host: us.yimg.com</span><br><span class="line">      If-Modified-Since: Tue, <span class="number">12</span> Dec <span class="number">2006</span> <span class="number">03</span>:<span class="number">03</span>:<span class="number">59</span> GMT</span><br><span class="line">      If-None-Match: <span class="string">"10c24bc-4ab-457e1c1f"</span></span><br><span class="line">      HTTP/<span class="number">1</span>.<span class="number">1</span> <span class="number">304</span> Not Modified</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="32-对Ajax用GET请求"><a href="#32-对Ajax用GET请求" class="headerlink" title="32.对Ajax用GET请求"></a>32.对Ajax用GET请求</h4><p>Yahoo!邮箱团队发现使用<code>XMLHttpRequest</code>时，浏览器的<strong>POST请求是通过一个两步的过程来实现的</strong>：先发送HTTP头，再发送数据。所以最好用GET请求，它只需要发送一个TCP报文（除非cookie特别多）。IE的URL长度最大值是2K，所以如果要发送的数据超过2K就无法使用GET了。</p>
+<p>POST请求的一个有趣的副作用是实际上没有发送任何数据，就像GET请求一样。正如<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html" target="_blank" rel="noopener">HTTP说明文档</a>中描述的，GET请求是用来检索信息的。所以它的语义只是用GET请求来请求数据，而不是用来发送需要存储到服务器的数据。</p>
+<p><br></p>
+<h4 id="33-尽早清空缓冲区"><a href="#33-尽早清空缓冲区" class="headerlink" title="33.尽早清空缓冲区"></a>33.尽早清空缓冲区</h4><p><br></p>
+<h4 id="34-使用CDN（内容分发网络）"><a href="#34-使用CDN（内容分发网络）" class="headerlink" title="34.使用CDN（内容分发网络）"></a>34.使用CDN（<strong>内容分发网络</strong>）</h4><p><br></p>
+<h4 id="35-添上Expires或者Cache-Control-HTTP头"><a href="#35-添上Expires或者Cache-Control-HTTP头" class="headerlink" title="35.添上Expires或者Cache-Control HTTP头"></a>35.添上Expires或者Cache-Control HTTP头</h4>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/性能优化/" rel="tag"># 性能优化</a>
+          
+            <a href="/tags/35条军规/" rel="tag"># 35条军规</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/03/拦截全局ajax请求与Ajax-hook源码分析/" rel="next" title="拦截全局ajax请求与Ajax-hook源码分析">
+                <i class="fa fa-chevron-left"></i> 拦截全局ajax请求与Ajax-hook源码分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/04/javaScript易忽略语法集/" rel="prev" title="javaScript易忽略语法集">
+                javaScript易忽略语法集 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chenoge</p>
+              <p class="site-description motion-element" itemprop="description">一个程序猿和一支笔的故事</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">166</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">257</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#内容部分"><span class="nav-number">1.</span> <span class="nav-text">内容部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-尽量减少HTTP请求数"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1.尽量减少HTTP请求数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-减少DNS查找"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2.减少DNS查找</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-避免重定向"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3.避免重定向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Ajax可缓存"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">4.Ajax可缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-延迟加载组件"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">5.延迟加载组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-预加载组件"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">6.预加载组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-减少DOM元素的数量"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">7.减少DOM元素的数量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-跨域分离组件"><span class="nav-number">1.0.0.8.</span> <span class="nav-text">8.跨域分离组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-尽量少用iframe"><span class="nav-number">1.0.0.9.</span> <span class="nav-text">9.尽量少用iframe</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-杜绝404"><span class="nav-number">1.0.0.10.</span> <span class="nav-text">10.杜绝404</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#css部分"><span class="nav-number">2.</span> <span class="nav-text">css部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#11-避免使用CSS表达式"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">11.避免使用CSS表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-选择-lt-link-gt-舍弃-import"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">12.选择&lt;link&gt;舍弃@import</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-避免使用滤镜"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">13.避免使用滤镜</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-把样式表放在顶部"><span class="nav-number">2.0.1.</span> <span class="nav-text">14.把样式表放在顶部</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#js部分"><span class="nav-number">3.</span> <span class="nav-text">js部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#15-去除重复脚本"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">15.去除重复脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16-尽量减少DOM访问"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">16.尽量减少DOM访问</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#17-用智能的事件处理器"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">17.用智能的事件处理器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#18-把脚本放在底部"><span class="nav-number">3.0.0.4.</span> <span class="nav-text">18.把脚本放在底部</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-css"><span class="nav-number">4.</span> <span class="nav-text">javascript, css</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#19-把JavaScript和CSS放到外面"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">19.把JavaScript和CSS放到外面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#20-压缩JavaScript和CSS"><span class="nav-number">4.0.0.2.</span> <span class="nav-text">20.压缩JavaScript和CSS</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图片"><span class="nav-number">5.</span> <span class="nav-text">图片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#21-优化图片"><span class="nav-number">5.0.0.1.</span> <span class="nav-text">21.优化图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#22-优化CSS-Sprite"><span class="nav-number">5.0.0.2.</span> <span class="nav-text">22.优化CSS Sprite</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#23-不要用HTML缩放图片"><span class="nav-number">5.0.0.3.</span> <span class="nav-text">23.不要用HTML缩放图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#24-用小的可缓存的favicon-ico"><span class="nav-number">5.0.0.4.</span> <span class="nav-text">24.用小的可缓存的favicon.ico</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cookie"><span class="nav-number">6.</span> <span class="nav-text">cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#25-给Cookie减肥"><span class="nav-number">6.0.0.1.</span> <span class="nav-text">25.给Cookie减肥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#26-把组件放在不含cookie的域下"><span class="nav-number">6.0.0.2.</span> <span class="nav-text">26.把组件放在不含cookie的域下</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#移动端"><span class="nav-number">7.</span> <span class="nav-text">移动端</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#27-保证所有组件都小于25K"><span class="nav-number">7.0.0.1.</span> <span class="nav-text">27.保证所有组件都小于25K</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#28-把组件打包到一个复合文档里"><span class="nav-number">7.0.0.2.</span> <span class="nav-text">28.把组件打包到一个复合文档里</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#服务器"><span class="nav-number">8.</span> <span class="nav-text">服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#29-Gzip组件"><span class="nav-number">8.0.0.1.</span> <span class="nav-text">29.Gzip组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#30-避免图片src属性为空"><span class="nav-number">8.0.0.2.</span> <span class="nav-text">30.避免图片src属性为空</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#31-配置ETags"><span class="nav-number">8.0.0.3.</span> <span class="nav-text">31.配置ETags</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#32-对Ajax用GET请求"><span class="nav-number">8.0.0.4.</span> <span class="nav-text">32.对Ajax用GET请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#33-尽早清空缓冲区"><span class="nav-number">8.0.0.5.</span> <span class="nav-text">33.尽早清空缓冲区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#34-使用CDN（内容分发网络）"><span class="nav-number">8.0.0.6.</span> <span class="nav-text">34.使用CDN（内容分发网络）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#35-添上Expires或者Cache-Control-HTTP头"><span class="nav-number">8.0.0.7.</span> <span class="nav-text">35.添上Expires或者Cache-Control HTTP头</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenoge</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

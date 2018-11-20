@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,隐式转换," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="javascript隐式转换规则1. ToString，ToNumber，ToBoolean，ToPrimitive我们需要先了解一下js数据类型之间转换的基本规则，比如数字、字符串、布尔型、数组、对象之间的相互转换。  1.1 ToString 这里所说的ToString可不是对象的toString方法，而是指其他类型的值转换为字符串类型的操作。  这里我们讨论null、undefined、布尔">
+<meta name="keywords" content="JavaScript,隐式转换">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript隐式转换">
+<meta property="og:url" content="https://www.yf-gz.cn/2018/10/18/js隐式转换/index.html">
+<meta property="og:site_name" content="chenogeの日志">
+<meta property="og:description" content="javascript隐式转换规则1. ToString，ToNumber，ToBoolean，ToPrimitive我们需要先了解一下js数据类型之间转换的基本规则，比如数字、字符串、布尔型、数组、对象之间的相互转换。  1.1 ToString 这里所说的ToString可不是对象的toString方法，而是指其他类型的值转换为字符串类型的操作。  这里我们讨论null、undefined、布尔">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-18T05:29:34.167Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript隐式转换">
+<meta name="twitter:description" content="javascript隐式转换规则1. ToString，ToNumber，ToBoolean，ToPrimitive我们需要先了解一下js数据类型之间转换的基本规则，比如数字、字符串、布尔型、数组、对象之间的相互转换。  1.1 ToString 这里所说的ToString可不是对象的toString方法，而是指其他类型的值转换为字符串类型的操作。  这里我们讨论null、undefined、布尔">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.yf-gz.cn/2018/10/18/js隐式转换/"/>
+
+
+
+
+
+  <title>JavaScript隐式转换 | chenogeの日志</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">chenogeの日志</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/10/18/js隐式转换/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript隐式转换</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-18T13:00:45+08:00">
+                2018-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="javascript隐式转换规则"><a href="#javascript隐式转换规则" class="headerlink" title="javascript隐式转换规则"></a>javascript隐式转换规则</h2><h3 id="1-ToString，ToNumber，ToBoolean，ToPrimitive"><a href="#1-ToString，ToNumber，ToBoolean，ToPrimitive" class="headerlink" title="1. ToString，ToNumber，ToBoolean，ToPrimitive"></a>1. ToString，ToNumber，ToBoolean，ToPrimitive</h3><p>我们需要先了解一下js数据类型之间转换的基本规则，比如数字、字符串、布尔型、数组、对象之间的相互转换。</p>
+<p><br></p>
+<h4 id="1-1-ToString"><a href="#1-1-ToString" class="headerlink" title="1.1 ToString"></a>1.1 ToString</h4><blockquote>
+<p>这里所说的<code>ToString</code>可不是对象的<code>toString方法</code>，而是<strong>指其他类型的值转换为字符串类型的操作</strong>。</p>
+</blockquote>
+<p>这里我们讨论<code>null</code>、<code>undefined</code>、<code>布尔型</code>、<code>数字</code>、<code>数组</code>、<code>普通对象</code>转换为字符串的规则。</p>
+<ul>
+<li>null：转为<code>&quot;null&quot;</code></li>
+<li>undefined：转为<code>&quot;undefined&quot;</code></li>
+<li>布尔类型：<code>true</code>和<code>false</code>分别被转为<code>&quot;true&quot;</code>和<code>&quot;false&quot;</code></li>
+<li>数字类型：转为数字的字符串形式，如<code>10</code>转为<code>&quot;10&quot;</code>， <code>1e21</code>转为<code>&quot;1e+21&quot;</code></li>
+<li>数组：转为字符串是将所有元素按照”,”连接起来，相当于调用数组的<code>Array.prototype.join()</code>方法<ul>
+<li><code>[1, 2, 3]</code>转为<code>&quot;1,2,3&quot;</code></li>
+<li><strong>空数组<code>[]</code>转为空字符串</strong></li>
+<li>数组中的<code>null</code>或<code>undefined</code>，会被当做空字符串处理</li>
+</ul>
+</li>
+<li>普通对象：转为字符串相当于直接使用<code>Object.prototype.toString()</code>，返回<code>&quot;[object Object]&quot;</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span>(<span class="literal">null</span>) <span class="comment">// 'null'</span></span><br><span class="line"><span class="built_in">String</span>(<span class="literal">undefined</span>) <span class="comment">// 'undefined'</span></span><br><span class="line"><span class="built_in">String</span>(<span class="literal">true</span>) <span class="comment">// 'true'</span></span><br><span class="line"><span class="built_in">String</span>(<span class="number">10</span>) <span class="comment">// '10'</span></span><br><span class="line"><span class="built_in">String</span>(<span class="number">1e21</span>) <span class="comment">// '1e+21'</span></span><br><span class="line"><span class="built_in">String</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]) <span class="comment">// '1,2,3'</span></span><br><span class="line"><span class="built_in">String</span>([]) <span class="comment">// ''</span></span><br><span class="line"><span class="built_in">String</span>([<span class="literal">null</span>]) <span class="comment">// ''</span></span><br><span class="line"><span class="built_in">String</span>([<span class="number">1</span>, <span class="literal">undefined</span>, <span class="number">3</span>]) <span class="comment">// '1,,3'</span></span><br><span class="line"><span class="built_in">String</span>(&#123;&#125;) <span class="comment">// '[object Objecr]'</span></span><br></pre></td></tr></table></figure>
+<p>对象的<code>toString</code>方法，满足<code>ToString</code>操作的规则。</p>
+<blockquote>
+<p>注意：上面所说的规则是在默认的情况下，如果修改默认的<code>toString()</code>方法，会导致不同的结果</p>
+</blockquote>
+<p><br></p>
+<a id="more"></a>
+<h4 id="1-2-ToNumber"><a href="#1-2-ToNumber" class="headerlink" title="1.2 ToNumber"></a>1.2 ToNumber</h4><blockquote>
+<p><code>ToNumber</code>指<strong>其他类型转换为数字类型的操作</strong>。</p>
+</blockquote>
+<ul>
+<li>null： 转为<code>0</code></li>
+<li>undefined：转为<code>NaN</code></li>
+<li>字符串：如果是纯数字形式，则转为对应的数字，<strong>空字符转为<code>0</code></strong>, 否则一律按转换失败处理，转为<code>NaN</code></li>
+<li>布尔型：<code>true</code>和<code>false</code>被转为<code>1</code>和<code>0</code></li>
+<li>数组：数组首先会被转为原始类型，也就是<code>ToPrimitive</code>，然后在根据转换后的原始类型按照上面的规则处理，关于<code>ToPrimitive</code>，会在下文中讲到</li>
+<li>对象：同数组的处理</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>(<span class="literal">null</span>) <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">undefined</span>) <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">'10'</span>) <span class="comment">// 10</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">'10a'</span>) <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">''</span>) <span class="comment">// 0 </span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">true</span>) <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">false</span>) <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">Number</span>([]) <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">Number</span>([<span class="string">'1'</span>]) <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">Number</span>(&#123;&#125;) <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="1-3-ToBoolean"><a href="#1-3-ToBoolean" class="headerlink" title="1.3 ToBoolean"></a>1.3 ToBoolean</h4><blockquote>
+<p><code>ToBoolean</code>指其他类型转换为布尔类型的操作。</p>
+</blockquote>
+<p>js中的假值只有<code>false</code>、<code>null</code>、<code>undefined</code>、<code>空字符</code>、<code>0</code>和<code>NaN</code>，其它值转为布尔型都为<code>true</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Boolean</span>(<span class="literal">null</span>) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="literal">undefined</span>) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="string">''</span>) <span class="comment">// flase</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="literal">NaN</span>) <span class="comment">// flase</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="number">0</span>) <span class="comment">// flase</span></span><br><span class="line"><span class="built_in">Boolean</span>([]) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Boolean</span>(&#123;&#125;) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="literal">Infinity</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="1-4-ToPrimitive"><a href="#1-4-ToPrimitive" class="headerlink" title="1.4 ToPrimitive"></a>1.4 ToPrimitive</h4><blockquote>
+<p><code>ToPrimitive</code>指<strong>对象类型类型（如：对象、数组）转换为原始类型的操作</strong>。</p>
+</blockquote>
+<ul>
+<li>当对象类型需要被转为原始类型时，它会先查找对象的<code>valueOf</code>方法，如果<code>valueOf</code>方法返回原始类型的值，则<code>ToPrimitive</code>的结果就是这个值</li>
+<li>如果<code>valueOf</code>不存在或者<code>valueOf</code>方法返回的不是原始类型的值，就会尝试调用对象的<code>toString</code>方法，也就是会遵循对象的<code>ToString</code>规则，然后使用<code>toString</code>的返回值作为<code>ToPrimitive</code>的结果。</li>
+</ul>
+<p>如果<code>valueOf</code>和<code>toString</code>都没有返回原始类型的值，则会抛出异常。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>([]) <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">Number</span>([<span class="string">'10'</span>]) <span class="comment">//10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">  valueOf () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">100</span></span><br><span class="line">  &#125;,</span><br><span class="line">  toString () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">101</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Number</span>(obj1) <span class="comment">// 100</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj2 = &#123;</span><br><span class="line">  toString () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">102</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Number</span>(obj2) <span class="comment">// 102</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj3 = &#123;</span><br><span class="line">  toString () &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Number</span>(obj3) <span class="comment">// TypeError</span></span><br></pre></td></tr></table></figure>
+<p>前面说过，对象类型在<code>ToNumber</code>时会先<code>ToPrimitive</code>，再根据转换后的原始类型<code>ToNumber</code></p>
+<ul>
+<li><p><code>Number([])</code>， 空数组会先调用<code>valueOf</code>，但返回的是数组本身，不是原始类型，所以会继续调用<code>toString</code>，得到<code>空字符串</code>，<strong>相当于<code>Number(&#39;&#39;)</code></strong>，所以转换后的结果为<code>&quot;0&quot;</code></p>
+</li>
+<li><p>同理，<code>Number([&#39;10&#39;])</code><strong>相当于<code>Number(&#39;10&#39;)</code></strong>，得到结果<code>10</code></p>
+</li>
+<li><code>obj1</code>的<code>valueOf</code>方法返回原始类型<code>100</code>，所以<code>ToPrimitive</code>的结果为<code>100</code></li>
+<li><code>obj2</code>没有<code>valueOf</code>，但存在<code>toString</code>，并且返回一个原始类型，所以<code>Number(obj2)</code>结果为<code>102</code></li>
+<li><code>obj3</code>的<code>toString</code>方法返回的不是一个原始类型，无法<code>ToPrimitive</code>，所以会抛出错误</li>
+</ul>
+<p><br></p>
+<h3 id="2-宽松相等（-）比较时的隐式转换规则"><a href="#2-宽松相等（-）比较时的隐式转换规则" class="headerlink" title="2. 宽松相等（==）比较时的隐式转换规则"></a>2. 宽松相等（==）比较时的隐式转换规则</h3><p><code>宽松相等（==）</code>和<code>严格相等（===）</code>的区别在于宽松相等会在比较中进行<code>隐式转换</code>。现在我们来看看不同情况下的转换规则。</p>
+<h4 id="2-1-布尔类型和其他类型的相等比较"><a href="#2-1-布尔类型和其他类型的相等比较" class="headerlink" title="2.1 布尔类型和其他类型的相等比较"></a>2.1 布尔类型和其他类型的相等比较</h4><ul>
+<li><strong>只要<code>布尔类型</code>参与比较，该<code>布尔类型</code>的值首先会被转换为<code>数字类型</code></strong></li>
+<li>根据<code>布尔类型</code>的<code>ToNumber</code>规则，<code>true</code>转为<code>1</code>，<code>false</code>转为<code>0</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">false</span> == <span class="number">0</span> <span class="comment">// true</span></span><br><span class="line"><span class="literal">true</span> == <span class="number">1</span> <span class="comment">// true</span></span><br><span class="line"><span class="literal">true</span> == <span class="number">2</span> <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>之前有的人可能觉得数字<code>2</code>是一个真值，所以<code>true == 2</code>应该为真，现在明白了，布尔类型<code>true</code>参与相等比较会先转为数字<code>1</code>，相当于<code>1 == 2</code>，结果当然是<code>false</code></p>
+</blockquote>
+<p><br></p>
+<p>我们平时在使用<code>if</code>判断时，一般都是这样写</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> x = <span class="number">10</span></span><br><span class="line"><span class="keyword">if</span> (x) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(x)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里<code>if(x)</code>的<code>x</code>会在这里被转换为布尔类型，所以代码可以正常执行。但是如果写成这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> x = <span class="number">10</span></span><br><span class="line"><span class="keyword">if</span> (x == <span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(x)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码不会按照预期执行，因为<code>x == true</code>相当于<code>10 == 1</code></p>
+<p><br></p>
+<h4 id="2-2-数字类型和字符串类型的相等比较"><a href="#2-2-数字类型和字符串类型的相等比较" class="headerlink" title="2.2 数字类型和字符串类型的相等比较"></a>2.2 数字类型和字符串类型的相等比较</h4><ul>
+<li><strong>当<code>数字类型</code>和<code>字符串类型</code>做相等比较时，<code>字符串类型</code>会被转换为<code>数字类型</code></strong></li>
+<li>根据字符串的<code>ToNumber</code>规则，如果是纯数字形式的字符串，则转为对应的数字，空字符转为<code>0</code>, 否则一律按转换失败处理，转为<code>NaN</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span> == <span class="string">''</span> <span class="comment">// true</span></span><br><span class="line"><span class="number">1</span> == <span class="string">'1'</span> <span class="comment">// true</span></span><br><span class="line"><span class="number">1e21</span> == <span class="string">'1e21'</span> <span class="comment">// true</span></span><br><span class="line"><span class="literal">Infinity</span> == <span class="string">'Infinity'</span> <span class="comment">// true</span></span><br><span class="line"><span class="literal">true</span> == <span class="string">'1'</span> <span class="comment">// true</span></span><br><span class="line"><span class="literal">false</span> == <span class="string">'0'</span> <span class="comment">// true</span></span><br><span class="line"><span class="literal">false</span> == <span class="string">''</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>上面比较的结果和你预期的一致吗？ 根据规则，字符串转为数字，布尔型也转为数字，所以结果就显而易见了。</p>
+<blockquote>
+<p>这里就不讨论<code>NaN</code>了，因为<code>NaN</code>和任何值都不相等，包括它自己。</p>
+</blockquote>
+<p><br></p>
+<h4 id="2-3-对象类型和原始类型的相等比较"><a href="#2-3-对象类型和原始类型的相等比较" class="headerlink" title="2.3 对象类型和原始类型的相等比较"></a>2.3 对象类型和原始类型的相等比较</h4><ul>
+<li>当<code>对象类型</code>和<code>原始类型</code>做相等比较时，<strong><code>对象类型</code>会依照<code>ToPrimitive</code>规则转换为<code>原始类型</code></strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'[object Object]'</span> == &#123;&#125; <span class="comment">// true</span></span><br><span class="line"><span class="string">'1,2,3'</span> == [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>看一下文章开始时给出的例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">2</span>] == <span class="number">2</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>数组<code>[2]</code>是对象类型，所以会进行<code>ToPrimitive</code>操作，也就是先调用<code>valueOf</code>再调用<code>toString</code>，根据数组<code>ToString</code>操作规则，会得到结果<code>&quot;2&quot;</code>， 而字符串<code>&quot;2&quot;</code>再和数字<code>2</code>比较时，会先转为数字类型，所以最后得到的结果为<code>true</code>。</p>
+<p><br></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<span class="literal">null</span>] == <span class="number">0</span> <span class="comment">// true</span></span><br><span class="line">[<span class="literal">undefined</span>] == <span class="number">0</span> <span class="comment">// true</span></span><br><span class="line">[] == <span class="number">0</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>根据上文中提到的数组<code>ToString</code>操作规则，数组元素为<code>null</code>或<code>undefined</code>时，该元素被当做<code>空字符串</code>处理，而空数组<code>[]</code>也被转为<code>空字符串</code>，所以上述代码相当于</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">''</span> == <span class="number">0</span> <span class="comment">// true</span></span><br><span class="line"><span class="string">''</span> == <span class="number">0</span> <span class="comment">// true</span></span><br><span class="line"><span class="string">''</span> == <span class="number">0</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p><code>空字符串</code>会转换为数字<code>0</code>，所以结果为<code>true</code>。</p>
+<p><br></p>
+<p>试试valueOf方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = &#123;</span><br><span class="line">  valueOf () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">10</span></span><br><span class="line">  &#125;</span><br><span class="line">  toString () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">20</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">a == <span class="number">10</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>对象的<code>ToPrimitive</code>操作会先调用<code>valueOf</code>方法，并且<code>a</code>的<code>valueOf</code>方法返回一个原始类型的值，所以<code>ToPrimitive</code>的操作结果就是<code>valueOf</code>方法的返回值<code>10</code>。</p>
+</blockquote>
+<p><br></p>
+<p>对象每次和原始类型做<code>==</code>比较时，都会进行一次<code>ToPrimitive</code>操作，那我们是不是可以定义一个包含<code>valueOf</code>方法的对象，然后通过某个值的累加来实现？</p>
+<p>试一试</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = &#123;</span><br><span class="line">  <span class="comment">// 定义一个属性来做累加</span></span><br><span class="line">  i: <span class="number">1</span>,</span><br><span class="line">  valueOf () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.i++</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">a == <span class="number">1</span> &amp;&amp; a == <span class="number">2</span> &amp;&amp; a == <span class="number">3</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>结果正如你所想的，是正确的。当然，当没有定义<code>valueOf</code>方法时，用<code>toString</code>方法也是可以的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = &#123;</span><br><span class="line">  <span class="comment">// 定义一个属性来做累加</span></span><br><span class="line">  i: <span class="number">1</span>,</span><br><span class="line">  toString () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.i++</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">a == <span class="number">1</span> &amp;&amp; a == <span class="number">2</span> &amp;&amp; a == <span class="number">3</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="2-4-null、undefined和其他类型的比较"><a href="#2-4-null、undefined和其他类型的比较" class="headerlink" title="2.4 null、undefined和其他类型的比较"></a>2.4 null、undefined和其他类型的比较</h4><ul>
+<li><strong><code>null</code>和<code>undefined</code>宽松相等的结果为true</strong>，这一点大家都知道</li>
+</ul>
+<p>其次，<code>null</code>和<code>undefined</code>都是假值，那么</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">null</span> == <span class="literal">false</span> <span class="comment">// false</span></span><br><span class="line"><span class="literal">undefined</span> == <span class="literal">false</span> <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p>居然跟我想的不一样？为什么呢？ 首先，<code>false</code>转为<code>0</code>，然后呢？ 没有然后了，<strong><code>ECMAScript规范</code>中规定<code>null</code>和<code>undefined</code>之间互相<code>宽松相等（==）</code>，并且也与其自身相等，但和其他所有的值都不<code>宽松相等（==）</code>。</strong></p>
+<p><br></p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>现在这一段代码就明了了许多</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[] == ![] <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">[] == <span class="number">0</span> <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">[<span class="number">2</span>] == <span class="number">2</span> <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">[<span class="string">'0'</span>] == <span class="literal">false</span> <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="string">'0'</span> == <span class="literal">false</span> <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">[] == <span class="literal">false</span> <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">[<span class="literal">null</span>] == <span class="number">0</span> <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="literal">null</span> == <span class="number">0</span> <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">[<span class="literal">null</span>] == <span class="literal">false</span> <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="literal">null</span> == <span class="literal">false</span> <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">[<span class="literal">undefined</span>] == <span class="literal">false</span> <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="literal">undefined</span> == <span class="literal">false</span> <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/隐式转换/" rel="tag"># 隐式转换</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/13/通用性与适用性/" rel="next" title="通用性与适用性">
+                <i class="fa fa-chevron-left"></i> 通用性与适用性
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/19/正确评估项目开发时间/" rel="prev" title="正确评估项目开发时间">
+                正确评估项目开发时间 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chenoge</p>
+              <p class="site-description motion-element" itemprop="description">一个程序猿和一支笔的故事</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">166</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">257</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript隐式转换规则"><span class="nav-number">1.</span> <span class="nav-text">javascript隐式转换规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ToString，ToNumber，ToBoolean，ToPrimitive"><span class="nav-number">1.1.</span> <span class="nav-text">1. ToString，ToNumber，ToBoolean，ToPrimitive</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-ToString"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 ToString</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-ToNumber"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 ToNumber</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-ToBoolean"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 ToBoolean</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-ToPrimitive"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 ToPrimitive</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-宽松相等（-）比较时的隐式转换规则"><span class="nav-number">1.2.</span> <span class="nav-text">2. 宽松相等（==）比较时的隐式转换规则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-布尔类型和其他类型的相等比较"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 布尔类型和其他类型的相等比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-数字类型和字符串类型的相等比较"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 数字类型和字符串类型的相等比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-对象类型和原始类型的相等比较"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 对象类型和原始类型的相等比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-null、undefined和其他类型的比较"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 null、undefined和其他类型的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">2.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenoge</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
