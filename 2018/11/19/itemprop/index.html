@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="chenogeの日志">
 <meta property="og:description" content="一、itemprop属性全局属性 itemprop被用于向一个物体中添加属性。每一个HTML元素都可以指定一个itemprop属性，一个itemprop属性由name-value对组成。属性值可以是一个string或者一个URL，并且可以和大部分元素进行组合，包括img、video、link、source 、audio等。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-19T14:57:15.639Z">
+<meta property="og:updated_time" content="2018-11-22T03:56:33.832Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="itemprop">
 <meta name="twitter:description" content="一、itemprop属性全局属性 itemprop被用于向一个物体中添加属性。每一个HTML元素都可以指定一个itemprop属性，一个itemprop属性由name-value对组成。属性值可以是一个string或者一个URL，并且可以和大部分元素进行组合，包括img、video、link、source 、audio等。">
@@ -338,6 +338,42 @@
 <a id="more"></a>
 <p><br></p>
 <h3 id="二、结构化数据"><a href="#二、结构化数据" class="headerlink" title="二、结构化数据"></a>二、结构化数据</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">itemscope</span> <span class="attr">itemtype</span> =<span class="string">"http://schema.org/Movie"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span> <span class="attr">itemprop</span>=<span class="string">"name"</span>&gt;</span>Avatar<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>Director:</span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">itemprop</span>=<span class="string">"director"</span>&gt;</span>James Cameron<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    (born August 16, 1954)<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">itemprop</span>=<span class="string">"genre"</span>&gt;</span>Science fiction<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"../movies/avatar-theatrical-trailer.html"</span> <span class="attr">itemprop</span>=<span class="string">"trailer"</span>&gt;</span>Trailer<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Item</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>itemprop name</strong></td>
+<td><strong>itemprop value</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>itemprop</td>
+<td>name</td>
+<td>Avatar</td>
+</tr>
+<tr>
+<td>itemprop</td>
+<td>director</td>
+<td>James Cameron</td>
+</tr>
+<tr>
+<td>itemprop</td>
+<td>genre</td>
+<td>Science fiction</td>
+</tr>
+<tr>
+<td>itemprop</td>
+<td>trailer</td>
+<td>../movies/avatar-theatrical-trailer.html</td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
 <h3 id="三、itemscope"><a href="#三、itemscope" class="headerlink" title="三、itemscope"></a>三、<code>itemscope</code></h3><p><code>itemscope</code> 是一个布尔值的 全局属性。它定义了一个与元数据关联的数据项。就是说一个元素的 <code>itemscope</code> 属性会创建一个项，包含了一组与元素相关的键值对。 相关的属性 <code>itemtype</code>通常表示表中一个有效的 URL （比如 <a href="http://schema.org/" target="_blank" rel="noopener">schema.org</a>） 来表述项目和上下文。下面每个例子中的概念表都来自 <a href="https://schema.org/" target="_blank" rel="noopener">schema.org</a>. </p>
 <p>每个 HTML 元素都可以有指定的 <code>itemscope</code> 属性。一个具有 <code>itemscope</code> 属性的元素可以没有关联的 <code>itemtype</code> ，但必须有相关的 <code>itemref</code>。 </p>
@@ -381,6 +417,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/22/语义化标签整理/" rel="prev" title="语义化标签整理">
+                语义化标签整理 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -457,7 +497,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">166</span>
+                  <span class="site-state-item-count">167</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -470,7 +510,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">257</span>
+                  <span class="site-state-item-count">259</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
