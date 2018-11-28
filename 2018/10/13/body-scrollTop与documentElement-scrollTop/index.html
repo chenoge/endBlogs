@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="古代浏览器间的 scrollTop差异: IE6/7/8：使用 document.documentElement.scrollTop；  IE9及以上：使用window.pageYOffset或者document.documentElement.scrollTop Safari:  window.pageYOffset 与document.body.scrollTop都可以；  Firefox:">
+<meta name="description" content="古代浏览器间的 scrollTop差异 IE6/7/8：使用 document.documentElement.scrollTop；  IE9及以上：使用window.pageYOffset或者document.documentElement.scrollTop Safari:  window.pageYOffset 与document.body.scrollTop都可以；  Firefox: w">
 <meta name="keywords" content="document.body.scrollTop,document.documentElement.scrollTop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="document.body.scrollTop与document.documentElement.scrollTop">
 <meta property="og:url" content="https://www.yf-gz.cn/2018/10/13/body-scrollTop与documentElement-scrollTop/index.html">
 <meta property="og:site_name" content="chenogeの日志">
-<meta property="og:description" content="古代浏览器间的 scrollTop差异: IE6/7/8：使用 document.documentElement.scrollTop；  IE9及以上：使用window.pageYOffset或者document.documentElement.scrollTop Safari:  window.pageYOffset 与document.body.scrollTop都可以；  Firefox:">
+<meta property="og:description" content="古代浏览器间的 scrollTop差异 IE6/7/8：使用 document.documentElement.scrollTop；  IE9及以上：使用window.pageYOffset或者document.documentElement.scrollTop Safari:  window.pageYOffset 与document.body.scrollTop都可以；  Firefox: w">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-07T07:26:59.362Z">
+<meta property="og:updated_time" content="2018-11-28T08:51:37.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="document.body.scrollTop与document.documentElement.scrollTop">
-<meta name="twitter:description" content="古代浏览器间的 scrollTop差异: IE6/7/8：使用 document.documentElement.scrollTop；  IE9及以上：使用window.pageYOffset或者document.documentElement.scrollTop Safari:  window.pageYOffset 与document.body.scrollTop都可以；  Firefox:">
+<meta name="twitter:description" content="古代浏览器间的 scrollTop差异 IE6/7/8：使用 document.documentElement.scrollTop；  IE9及以上：使用window.pageYOffset或者document.documentElement.scrollTop Safari:  window.pageYOffset 与document.body.scrollTop都可以；  Firefox: w">
 
 
 
@@ -334,7 +334,7 @@
       
 
       
-        <h3 id="古代浏览器间的-scrollTop差异"><a href="#古代浏览器间的-scrollTop差异" class="headerlink" title="古代浏览器间的 scrollTop差异:"></a>古代浏览器间的 scrollTop差异:</h3><ul>
+        <h4 id="古代浏览器间的-scrollTop差异"><a href="#古代浏览器间的-scrollTop差异" class="headerlink" title="古代浏览器间的 scrollTop差异"></a>古代浏览器间的 scrollTop差异</h4><ul>
 <li><strong>IE6/7/8：</strong>使用 <code>document.documentElement.scrollTop</code>； </li>
 <li><strong>IE9及以上：</strong>使用<code>window.pageYOffset</code>或者<code>document.documentElement.scrollTop</code></li>
 <li><strong>Safari:</strong>  <code>window.pageYOffset</code> 与document.body.scrollTop都可以； </li>
@@ -344,8 +344,7 @@
 <p>注：document.body.scrollTop与document.documentElement.scrollTop同时只会有一个值生效。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sTop = <span class="built_in">document</span>.body.scrollTop || <span class="built_in">document</span>.documentElement.scrollTop;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>2018-10-30更新：<strong>浏览器 =》古代浏览器</strong></p>
-<p><strong>chrome:</strong></p>
+<li><h5 id="2018-10-30更新：浏览器-》古代浏览器"><a href="#2018-10-30更新：浏览器-》古代浏览器" class="headerlink" title="2018-10-30更新：浏览器 =》古代浏览器"></a>2018-10-30更新：<strong>浏览器 =》古代浏览器</strong></h5><p><strong>chrome:</strong></p>
 <ul>
 <li>html元素作为body元素的父类，遵行普通父元素与子元素之间的关系</li>
 <li><code>document.body</code>作为body元素<code>dom对象</code>的引用</li>
@@ -354,18 +353,18 @@
 </li>
 </ul>
 <p><br></p>
-<h1 id="document-compatMode"><a href="#document-compatMode" class="headerlink" title="document.compatMode"></a>document.compatMode</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mode = document.compatMode</span><br></pre></td></tr></table></figure>
+<h4 id="document-compatMode"><a href="#document-compatMode" class="headerlink" title="document.compatMode"></a>document.compatMode</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mode = document.compatMode</span><br></pre></td></tr></table></figure>
 <ul>
 <li>如果文档处于“怪异模式”，则该属性值为<code>&quot;BackCompat&quot;</code></li>
 <li>如果文档处于“标准模式”或者“准标准模式(almost standards mode)”，则该属性为<code>&quot;CSS1Compat&quot;</code></li>
 </ul>
 <p>注：还有另外一种渲染模式, <a href="https://developer.mozilla.org/zh-cn/Gecko&#39;s_%22Almost_Standards%22_Mode" target="_blank" rel="noopener">Gecko的”准标准模式”</a>, 该模式和标准规范模式的区别仅为表格单元内的图片布局方式不同. 且该模式的类型字符串仍为: “CSS1Compat”. </p>
 <p><br></p>
-<h1 id="Document-scrollingElement"><a href="#Document-scrollingElement" class="headerlink" title="Document.scrollingElement"></a>Document.scrollingElement</h1><p><strong>scrollingElement</strong> （ <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document" target="_blank" rel="noopener"><code>Document</code></a> 的只读属性）返回滚动文档的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element" target="_blank" rel="noopener"><code>Element</code></a> 对象的引用。 </p>
+<h4 id="Document-scrollingElement"><a href="#Document-scrollingElement" class="headerlink" title="Document.scrollingElement"></a>Document.scrollingElement</h4><p><strong>scrollingElement</strong> （ <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document" target="_blank" rel="noopener"><code>Document</code></a> 的只读属性）返回滚动文档的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element" target="_blank" rel="noopener"><code>Element</code></a> 对象的引用。 </p>
 <p>在标准模式（<code>Standards Mode</code>）下, 这是文档的根元素, <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/documentElement" target="_blank" rel="noopener"><code>document.documentElement</code></a>.</p>
 <p>当在怪异模式（<code>Quirks Mode</code>）下， <code>scrollingElement</code> 属性返回 HTML <code>body</code> 元素（若不存在返回 null ）。</p>
 <p><br></p>
-<h1 id="Window-scrollTo"><a href="#Window-scrollTo" class="headerlink" title="Window.scrollTo()"></a>Window.scrollTo()</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// window.scrollTo(x-coord,y-coord )</span></span><br><span class="line"><span class="built_in">window</span>.scrollTo( <span class="number">0</span>, <span class="number">1000</span> );</span><br><span class="line"></span><br><span class="line"><span class="comment">// window.scrollTo(options)</span></span><br><span class="line"><span class="comment">// 设置滚动行为改为平滑的滚动</span></span><br><span class="line"><span class="built_in">window</span>.scrollTo(&#123; </span><br><span class="line">    top: <span class="number">1000</span>, </span><br><span class="line">    behavior: <span class="string">"smooth"</span> </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="Window-scrollTo"><a href="#Window-scrollTo" class="headerlink" title="Window.scrollTo"></a>Window.scrollTo</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// window.scrollTo(x-coord,y-coord )</span></span><br><span class="line"><span class="built_in">window</span>.scrollTo( <span class="number">0</span>, <span class="number">1000</span> );</span><br><span class="line"></span><br><span class="line"><span class="comment">// window.scrollTo(options)</span></span><br><span class="line"><span class="comment">// 设置滚动行为改为平滑的滚动</span></span><br><span class="line"><span class="built_in">window</span>.scrollTo(&#123; </span><br><span class="line">    top: <span class="number">1000</span>, </span><br><span class="line">    behavior: <span class="string">"smooth"</span> </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>x-coord</code> 是文档中的横轴坐标。</li>
 <li><code>y-coord</code> 是文档中的纵轴坐标。</li>
@@ -381,6 +380,10 @@
 </li>
 </ul>
 <p><strong>注：window.scrollTo滚动的容器为<code>document.documentElement</code></strong></p>
+<p><br></p>
+<h4 id="window-scrollBy"><a href="#window-scrollBy" class="headerlink" title="window.scrollBy"></a>window.scrollBy</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.scrollBy(x-coord, y-coord);</span><br><span class="line"><span class="built_in">window</span>.scrollBy(options)</span><br></pre></td></tr></table></figure>
+<p>注：<code>window.scrollBy</code>的参数与<code>window.scrollTo</code>一样，但是<code>window.scrollBy</code>中的<code>x-coord</code> 、<code>y-coord</code>、<code>top</code>、<code>left</code> 可以是<strong>负值</strong>。<code>window.scrollBy</code>是<strong>以自身为参考点</strong>，<code>window.scrollTo</code><strong>以浏览器窗口为参考点</strong>。</p>
+<p><br></p>
 
       
     </div>
@@ -502,7 +505,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">171</span>
+                  <span class="site-state-item-count">172</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -515,7 +518,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">266</span>
+                  <span class="site-state-item-count">270</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -548,7 +551,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#古代浏览器间的-scrollTop差异"><span class="nav-number">1.</span> <span class="nav-text">古代浏览器间的 scrollTop差异:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#document-compatMode"><span class="nav-number"></span> <span class="nav-text">document.compatMode</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Document-scrollingElement"><span class="nav-number"></span> <span class="nav-text">Document.scrollingElement</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Window-scrollTo"><span class="nav-number"></span> <span class="nav-text">Window.scrollTo()</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#古代浏览器间的-scrollTop差异"><span class="nav-number">1.</span> <span class="nav-text">古代浏览器间的 scrollTop差异</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2018-10-30更新：浏览器-》古代浏览器"><span class="nav-number">1.1.</span> <span class="nav-text">2018-10-30更新：浏览器 =》古代浏览器</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#document-compatMode"><span class="nav-number">2.</span> <span class="nav-text">document.compatMode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Document-scrollingElement"><span class="nav-number">3.</span> <span class="nav-text">Document.scrollingElement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Window-scrollTo"><span class="nav-number">4.</span> <span class="nav-text">Window.scrollTo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#window-scrollBy"><span class="nav-number">5.</span> <span class="nav-text">window.scrollBy</span></a></li></ol></div>
             
 
           </div>
