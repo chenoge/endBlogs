@@ -266,6 +266,284 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/31/JS-Promise-A-规范/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/31/JS-Promise-A-规范/" itemprop="url">Promise/A+规范</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-31T20:39:37+08:00">
+                2018-05-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="零、英文原文：Promise-A"><a href="#零、英文原文：Promise-A" class="headerlink" title="零、英文原文：Promise/A+"></a>零、英文原文：<a href="https://promisesaplus.com/" target="_blank" rel="noopener">Promise/A+</a></h1><p><br></p>
+<h1 id="一、术语"><a href="#一、术语" class="headerlink" title="一、术语"></a>一、术语</h1><ul>
+<li><strong>Promise</strong>：是一个拥有 <code>then</code> 方法的<strong>对象或函数</strong>，其行为符合本规范；</li>
+<li><strong>thenable</strong>：是一个定义了 <code>then</code> 方法的对象或函数，文中译作“拥有 then 方法”；</li>
+<li><strong>值（value）</strong>：指<code>任何 JavaScript 的合法值</code>（包括 undefined , thenable 和 promise）；</li>
+<li><strong>异常（exception）</strong>：是使用 <code>throw</code> 语句抛出的一个值。</li>
+<li><strong>据因（reason）</strong>：表示一个 <code>promise</code> 的拒绝原因。</li>
+</ul>
+<p><br></p>
+<h1 id="二、要求"><a href="#二、要求" class="headerlink" title="二、要求"></a>二、要求</h1><h2 id="1、Promise-的状态"><a href="#1、Promise-的状态" class="headerlink" title="1、Promise 的状态"></a>1、Promise 的状态</h2><p>一个 Promise 的当前状态必须为以下三种状态中的一种：<strong>等待态（Pending）、执行态（Fulfilled）和拒绝态（Rejected）</strong>。</p>
+<h2 id="2、等待态（Pending）"><a href="#2、等待态（Pending）" class="headerlink" title="2、等待态（Pending）"></a>2、等待态（Pending）</h2><p>处于等待态时，promise 需满足以下条件：</p>
+<ul>
+<li>可以迁移至执行态或拒绝态</li>
+</ul>
+<h2 id="3、执行态（Fulfilled）"><a href="#3、执行态（Fulfilled）" class="headerlink" title="3、执行态（Fulfilled）"></a>3、执行态（Fulfilled）</h2><p>处于执行态时，promise 需满足以下条件：</p>
+<ul>
+<li>不能迁移至其他任何状态</li>
+<li>必须拥有一个<strong>不可变的终值</strong></li>
+</ul>
+<h2 id="4、拒绝态（Rejected）"><a href="#4、拒绝态（Rejected）" class="headerlink" title="4、拒绝态（Rejected）"></a>4、拒绝态（Rejected）</h2><p>处于拒绝态时，promise 需满足以下条件：</p>
+<ul>
+<li>不能迁移至其他任何状态</li>
+<li>必须拥有一个<strong>不可变的据因</strong></li>
+</ul>
+<p><strong>这里的不可变指的是恒等（即可用 === 判断相等），而不是意味着更深层次的不可变（译者注：盖指当 value 或 reason 不是基本值时，只要求其引用地址相等，但属性值可被更改）。</strong></p>
+<p><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/31/JS-Promise-A-规范/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/30/CSS-column实现瀑布流布局/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/30/CSS-column实现瀑布流布局/" itemprop="url">column实现瀑布流布局</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-30T15:42:20+08:00">
+                2018-05-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="一、属性"><a href="#一、属性" class="headerlink" title="一、属性"></a>一、属性</h1><ul>
+<li><strong>column-count</strong>:      最理想的分栏数目</li>
+<li><strong>column-gap</strong>:      栏目之间的水平间隙</li>
+<li><strong>column-rule</strong>:      分割线，形式规则什么的等同于border</li>
+<li><font color="#A52A2A" size="4"><strong>break-inside</strong>:      <strong>内容盒子如何中断</strong></font>
+
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*瀑布流层*/</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.waterfall</span> &#123;</span><br><span class="line">    <span class="attribute">column-count</span>: <span class="number">4</span>;</span><br><span class="line">    <span class="attribute">column-gap</span>: <span class="number">1em</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*一个内容层*/</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">1em</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">1em</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">break-inside</span>: avoid;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#000</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.item</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"waterfall"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"https://imgsa.jpg"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>1 convallis timestamp<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/30/CSS-flex瀑布流布局/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1292,269 +1570,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/24/CSS-vw和100/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/24/CSS-vw和100/" itemprop="url">CSS-vw和100%</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-24T11:26:52+08:00">
-                2018-05-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>100vw相对于浏览器的window.innerWidth，<font color="#A52A2A" size="4">是浏览器的<strong>内部宽度</strong>，注意，滚动条宽度也计算在内！</font></p>
-</li>
-<li><p>100%是<font color="#A52A2A" size="4"><strong>可用宽度</strong>，<strong>是不含滚动条的宽度</strong>。</font></p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/22/JS-ECMAScript和JavaScript/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/22/JS-ECMAScript和JavaScript/" itemprop="url">JS-ECMAScript和JavaScript</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-22T11:40:53+08:00">
-                2018-05-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>由 <strong>ECMA-262 定义的 ECMAScript 与 Web 浏览器没有依赖关系。实际上，这门语言本身<font color="#A52A2A" size="4">并不包含输 入和输出定义</font>。</strong>ECMA-262 定义的只是这门语言的基础，而在此基础之上可以构建更完善的脚本语言。</p>
-<p>ECMAScript规定了这 门语言的下列组成部分：</p>
-<ul>
-<li>语法</li>
-<li>类型 </li>
-<li>语句 </li>
-<li>关键字 </li>
-<li>保留字 </li>
-<li>操作符 </li>
-<li>对象 </li>
-</ul>
-<p><strong>ECMAScript 就是对实现该标准规定的各个方面内容的语言的<font color="#A52A2A" size="4">描述</font></strong>。JavaScript 实现了 ECMAScript， Adobe ActionScript 同样也实现了 ECMAScript。</p>
-<p>我们常见的 Web 浏览器只是 ECMAScript 实现可能的宿主环境之一。宿主环境不仅提供基本的 ECMAScript 实现，同时也会提供该语言的扩展，以便语言与环境之间对接交互。而这些扩展——如 DOM，则利用 ECMAScript 的核心类型和语法提供更多更具体的功能，以便实现针对环境的操作。其他 宿主环境包括 Node（一种服务端 JavaScript 平台）和 Adobe Flash。</p>
-<p>一个完整的 JavaScript 实现应该由下列三 个不同的部分组成</p>
-<ul>
-<li>核心（ECMAScript） </li>
-<li>文档对象模型（DOM） </li>
-<li>浏览器对象模型（BOM）</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1605,7 +1620,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">175</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1618,7 +1633,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">271</span>
+                  <span class="site-state-item-count">277</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[BASIC_HTTP认证_nginx]]></title>
+    <url>%2F2018%2F12%2F05%2FBASIC-HTTP%E8%AE%A4%E8%AF%81%2F</url>
+    <content type="text"><![CDATA[一、BASIC认证概述HTTP协议定义了基本认证过程，允许HTTP服务器对WEB浏览器进行用户身份证的方法。 当一个客户端向HTTP服务器进行数据请求时，如果客户端未被认证，则HTTP服务器将通过基本认证过程对客户端的用户名及密码进行验证，以决定用户是否合法。 客户端在接收到HTTP服务器的身份认证要求后，会提示用户输入用户名及密码，然后将用户名及密码以BASE64加密，加密后的密文将附加于请求信息中， 如当用户名为anjuta，密码为：123456时，客户端将用户名和密码用“：”合并，并将合并后的字符串用BASE64加密为密文，并于每次请求数据 时，将密文附加于请求头（Request Header）中。 HTTP服务器在每次收到请求包后，根据协议取得客户端附加的用户信息（BASE64加密的用户名和密码），解开请求包，对用户名及密码进行验证，如果用 户名及密码正确，则根据客户端请求，返回客户端所需要的数据;否则，返回错误代码或重新要求客户端提供用户名及密码。 二、BASIC认证的过程1、客户端向服务器请求数据，请求的内容可能是一个网页或者是一个其它的MIME类型，此时，假设客户端尚未被验证(即header中不带正确的Authorization字段)，则客户端提供如下请求至服务器: 12Get /index.html HTTP/1.0Host:www.google.com 2、 服务器向客户端发送验证请求代码401,服务器返回的数据大抵如下： 12345HTTP/1.0 401 UnauthorisedServer: SokEvo/1.0WWW-Authenticate: Basic realm="google.com"Content-Type: text/htmlContent-Length: xxx 3、当符合http规范的客户端收到401返回值时，将自动弹出一个登录窗口，要求用户输入用户名和密码。 4、用户输入用户名和密码后，将用户名及密码以BASE64加密方式加密，并将密文放入前一条请求信息中，则客户端发送的第一条请求信息则变成如下内容(即在header中自动加入Authorization字段)： 123Get /index.html HTTP/1.0Host:www.google.comAuthorization: Basic xxxxxxxxxxxxxxxxxxxxxxxxxxxx 5、服务器收到上述请求信息后，将Authorization字段后的用户信息取出、解密，将解密后的用户名及密码与用户数据库进行比较验证，如用户名及密码正确，服务器则根据请求，将所请求资源发送给客户端。 三、nginx用户认证配置nginx_http_auth_basic_module模块实现让访问着，只有输入正确的用户密码才允许访问web内容。默认情况下nginx已经安装了ngx_http_auth_basic_module模块，如果不需要这个模块，可以加上--without-http_auth_basic_module。 1、nginx basic auth指令123语法: auth_basic string | off;默认值: auth_basic off;配置段: http, server, location, limit_except 默认表示不开启认证，后面如果跟上字符，这些字符会在弹窗中显示。 123语法: auth_basic_user_file file;默认值: —配置段: http, server, location, limit_except 生成密码可以使用htpasswd，或者使用openssl。用户密码文件，文件内容类似如下： 123# printf &quot;ttlsa:$(openssl passwd -crypt 123456)\n&quot; &gt;&gt;conf/htpasswd# cat conf/htpasswdttlsauser1:password1 12345678910server &#123; server_name www.ttlsa.comttlsa.com; index index.html index.php; root /data/site/www.ttlsa.com; location / &#123; auth_basic "nginx basic http test for ttlsa.com"; auth_basic_user_file conf/htpasswd; &#125;&#125;]]></content>
+      <tags>
+        <tag>HTTP</tag>
+        <tag>BASIC</tag>
+        <tag>authentication</tag>
+        <tag>nginx_http_auth_basic_module</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[npm依赖包版本号]]></title>
+    <url>%2F2018%2F12%2F05%2Fnpm%E4%BE%9D%E8%B5%96%E5%8C%85%E7%89%88%E6%9C%AC%E5%8F%B7%2F</url>
+    <content type="text"><![CDATA[一、版本号给定一个版本号：主版本号(major).次版本号(minor).补丁版本号(patch)， 以下这三种情况需要增加相应的版本号： 主版本号： 当API发生改变，并与之前的版本不兼容的时候 次版本号： 当增加了功能，但是向后兼容的时 补丁版本号： 当做了向后兼容的缺陷修复的时候 1、~version 如果minor版本号指定了，那么minor版本号不变，而patch版本号任意 如果minor和patch版本号未指定，那么minor和patch版本号任意 12345~1.1.2，表示 &gt;= 1.1.2 &lt; 1.2.0~1.1，表示 &gt;= 1.1.0 &lt; 1.2.0~1，表示 &gt;= 1.0.0 &lt; 2.0.0 2、^version 版本号中最左边的非0数字的右侧可以任意 如果缺少某个版本号，则这个版本号的位置可以任意 12345^1.1.2 ，表示 &gt;= 1.1.2 &lt; 2.0.0^0.2.3 ，表示&gt;= 0.2.3 &lt; 0.3.0^0.0，表示 &gt;= 0.0.0 &lt; 0.1.0 注：^版本更新可能比较大，会造成项目代码错误]]></content>
+      <tags>
+        <tag>npm</tag>
+        <tag>版本号</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[tcp三次握手]]></title>
     <url>%2F2018%2F11%2F30%2Ftcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%2F</url>
     <content type="text"><![CDATA[一、TCP报文格式 TCP报文格式图： 上图中有几个字段需要重点介绍下： 序号：Seq序号，占32位，用来标识从TCP源端向目的端发送的字节流，发起方发送数据时对此进行标记。 确认序号：Ack序号，占32位，只有ACK标志位为1时，确认序号字段才有效，Ack=Seq+1。 标志位：共6个，即URG、ACK、PSH、RST、SYN、FIN等，具体含义如下： URG：紧急指针（urgent pointer）有效。 ACK：确认序号有效。 PSH：接收方应该尽快将这个报文交给应用层。 RST：重置连接。 SYN：发起一个新连接。 FIN：释放一个连接。 注： 不要将确认序号Ack与标志位中的ACK搞混了。 确认方Ack=发起方Req+1，两端配对。 二、三次握手 （1）第一次握手：Client将标志位SYN置为1，随机产生一个值seq=J，并将该数据包发送给Server，Client进入SYN_SENT状态，等待Server确认。 （2）第二次握手：Server收到数据包后由标志位SYN=1知道Client请求建立连接，Server将标志位SYN和ACK都置为1，ack (number )=J+1，随机产生一个值seq=K，并将该数据包发送给Client以确认连接请求，Server进入SYN_RCVD状态。 （3）第三次握手：Client收到确认后，检查ack是否为J+1，ACK是否为1，如果正确则将标志位ACK置为1，ack=K+1，并将该数据包发送给Server，Server检查ack是否为K+1，ACK是否为1，如果正确则连接建立成功，Client和Server进入ESTABLISHED状态，完成三次握手，随后Client与Server之间可以开始传输数据了。 为什么TCP客户端最后还要发送一次确认呢？12345一句话，主要防止已经失效的连接请求报文突然又传送到了服务器，从而产生错误。如果使用的是两次握手建立连接，假设有这样一种场景，客户端发送了第一个请求连接并且没有丢失，只是因为在网络结点中滞留的时间太长了，由于TCP的客户端迟迟没有收到确认报文，以为服务器没有收到，此时重新向服务器发送这条报文，此后客户端和服务器经过两次握手完成连接，传输数据，然后关闭连接。此时此前滞留的那一次请求连接，网络通畅了到达了服务器，这个报文本该是失效的，但是，两次握手的机制将会让客户端和服务器再次建立连接，这将导致不必要的错误和资源的浪费。如果采用的是三次握手，就算是那一次失效的报文传送过来了，服务端接受到了那条失效报文并且回复了确认报文，但是客户端不会再次发出确认。由于服务器收不到确认，就知道客户端并没有请求连接。]]></content>
