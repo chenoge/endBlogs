@@ -266,6 +266,420 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/12/07/UCS-2和UCS-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/07/UCS-2和UCS-4/" itemprop="url">字符编码与存储_UCS_UTF</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T20:32:19+08:00">
+                2018-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="字节和字符的区别"><a href="#字节和字符的区别" class="headerlink" title="字节和字符的区别"></a>字节和字符的区别</h4><p><code>ASCII</code>时代，字节和字符是一样的。当<code>Unicode</code>出现后，事情有所不同了。<code>字节（octet）</code>是一个八位的<strong>存储单元</strong>，取值范围一定是<code>0～255</code>。而<code>字符（character，或者word）</code>为<strong>语言意义上的符号</strong>，范围就不一定了。例如在<code>UCS-2</code>中定义的字符范围为<code>0～65535</code>，它的一个字符占用两个字节。</p>
+<p><br></p>
+<h4 id="UCS-2和UCS-4"><a href="#UCS-2和UCS-4" class="headerlink" title="UCS-2和UCS-4"></a><code>UCS-2</code>和<code>UCS-4</code></h4><p><code>Unicode</code>是为整合全世界的所有语言文字而诞生的。任何文字在<code>Unicode</code>中都对应一个值，这个值称为<code>代码点（code point）</code>。代码点的值通常写成<code>U+ABCD</code>的格式。而文字和代码点之间的对应关系就是<code>UCS-2（Universal Character Set coded in 2 octets）</code>。顾名思义，<code>UCS-2</code>是用两个字节来表示代码点，其取值范围为 <code>U+0000～U+FFFF</code>。</p>
+<p>为了能表示更多的文字，人们又提出了<code>UCS-4</code>，即用四个字节表示代码点。它的范围为 <code>U+00000000～U+7FFFFFFF</code>，其中 <code>U+00000000～U+0000FFFF</code>和<code>UCS-2</code>是一样的。</p>
+<p>要注意，<code>UCS-2</code>和<code>UCS-4</code>只规定了<code>代码点</code>和<code>文字</code>之间的对应关系，并没有规定代码点在计算机中如何存储。规定存储方式的称为<code>UTF（Unicode Transformation Format）</code>，其中应用较多的就是<code>UTF-8</code>。</p>
+<p><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/07/UCS-2和UCS-4/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/12/07/console格式化输出/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/07/console格式化输出/" itemprop="url">console.log格式化输出</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T16:43:54+08:00">
+                2018-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="字符串替代和格式设置"><a href="#字符串替代和格式设置" class="headerlink" title="字符串替代和格式设置"></a>字符串替代和格式设置</h4><p>传递到任何记录方法的<strong>第一个参数可能包含一个或多个格式说明符</strong>。格式说明符由一个 <code>%</code> 符号与后面紧跟的一个字母组成，字母指示应用到值的格式。<strong>字符串后面的参数会按顺序应用到占位符</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// Sam has 100 points</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"%s has %d points"</span>, <span class="string">"Sam"</span>, <span class="number">100</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Node count: 2, and the time is 1544184144238.</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"Node count: %d, and the time is %f."</span>, <span class="built_in">document</span>.childNodes.length, <span class="built_in">Date</span>.now());</span><br></pre></td></tr></table></figure>
+<p>格式说明符的完整列表为： </p>
+<table>
+<thead>
+<tr>
+<th>说明符</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%s</td>
+<td>将值格式化为字符串</td>
+</tr>
+<tr>
+<td>%i 或 %d</td>
+<td>将值格式化为整型</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>将值格式化为浮点值</td>
+</tr>
+<tr>
+<td>%o</td>
+<td>将值格式化为可扩展 DOM 元素。如同在 Elements 面板中显示的一样</td>
+</tr>
+<tr>
+<td>%O</td>
+<td>将值格式化为可扩展 JavaScript 对象</td>
+</tr>
+<tr>
+<td>%c</td>
+<td>将 CSS 样式规则应用到第二个参数指定的输出字符串</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/12/07/getComputedStyle和currentStyle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/07/getComputedStyle和currentStyle/" itemprop="url">getComputedStyle和currentStyle</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T15:39:03+08:00">
+                2018-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="getComputedStyle"><a href="#getComputedStyle" class="headerlink" title="getComputedStyle"></a>getComputedStyle</h4><p><code>Window.getComputedStyle()</code>方法返回一个对象，该对象在应用活动样式表并解析这些值可能包含的任何基本计算后报告元素的所有CSS属性的值。 私有的CSS属性值可以通过对象提供的API或通过简单地使用CSS属性名称进行索引来访问。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> style = <span class="built_in">window</span>.getComputedStyle(element, [pseudoElt]);</span><br><span class="line"><span class="comment">// let afterStyle = window.getComputedStyle(h3, '::after');</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>pseudoElt</code> 可选，指定一个要匹配的<strong>伪元素</strong>的字符串。</li>
+</ul>
+<p><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/07/getComputedStyle和currentStyle/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/12/05/BASIC-HTTP认证/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1178,388 +1592,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/11/23/gulp入门/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/23/gulp入门/" itemprop="url">gulp入门</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-23T20:44:13+08:00">
-                2018-11-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="一、安装gulp和插件"><a href="#一、安装gulp和插件" class="headerlink" title="一、安装gulp和插件"></a>一、安装gulp和插件</h2><h4 id="1、安装gulp"><a href="#1、安装gulp" class="headerlink" title="1、安装gulp"></a>1、安装gulp</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp -g</span><br><span class="line">npm install gulp --save-dev</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/23/gulp入门/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/11/22/语义化标签整理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/22/语义化标签整理/" itemprop="url">语义化标签整理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-22T11:39:47+08:00">
-                2018-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="一、语义化"><a href="#一、语义化" class="headerlink" title="一、语义化"></a>一、语义化</h3><h4 id="1、语义化属性"><a href="#1、语义化属性" class="headerlink" title="1、语义化属性"></a>1、语义化属性</h4><ul>
-<li>添加<a href="https://chenoge.github.io/2018/11/19/itemprop/" target="_blank" rel="noopener"><code>itemprop、itemscope</code></a>属性，到达<strong>数据结构化</strong>，属性名可参考 <a href="https://schema.org/" target="_blank" rel="noopener">schema.org</a>；</li>
-<li><code>meta</code>标签和<code>itemprop</code>属性，<code>&lt;meta itemprop=&quot;dateModified&quot; content=&quot;2018-11-17T04:14:51.000Z&quot;&gt;</code>；</li>
-</ul>
-<p>注：参考知乎页面，改动一下<code>meta</code>的读取位置</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--可以尝试，将meta标签放在需要元信息的块中--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">itemprop</span>=<span class="string">"dateModified"</span> <span class="attr">content</span>=<span class="string">"2018-11-17T04:14:51.000Z"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="2、语义化标签"><a href="#2、语义化标签" class="headerlink" title="2、语义化标签"></a>2、语义化标签</h4><ul>
-<li>各个标签的含义，使用场景</li>
-</ul>
-<p>注：<strong>语义化</strong>，即<strong>面向对象</strong>写<code>html</code>，方便<strong>网络蜘蛛</strong>或<strong>人</strong>快速理解网页结构和内容。</p>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/22/语义化标签整理/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/11/19/itemprop/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/19/itemprop/" itemprop="url">itemprop</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-19T22:45:16+08:00">
-                2018-11-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="一、itemprop属性"><a href="#一、itemprop属性" class="headerlink" title="一、itemprop属性"></a>一、<code>itemprop</code>属性</h3><p>全局属性 <code>itemprop</code>被用于向一个物体中添加属性。每一个HTML元素都可以指定一个itemprop属性，一个<code>itemprop</code>属性由name-value对组成。属性值可以是一个string或者一个URL，并且可以和大部分元素进行组合，包括<code>img</code>、<code>video</code>、<code>link</code>、<code>source</code> 、<code>audio</code>等。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/19/itemprop/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1610,7 +1642,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">175</span>
+                  <span class="site-state-item-count">178</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1623,7 +1655,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">277</span>
+                  <span class="site-state-item-count">283</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
