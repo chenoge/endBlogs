@@ -266,6 +266,140 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/04/11/JS-连续赋值/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/11/JS-连续赋值/" itemprop="url">JS-连续赋值</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-11T14:40:04+08:00">
+                2018-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="一、先看问题"><a href="#一、先看问题" class="headerlink" title="一、先看问题"></a>一、先看问题</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">n</span>:<span class="number">1</span>&#125;; </span><br><span class="line"><span class="keyword">var</span> b = a;  </span><br><span class="line">a.x = a = &#123;<span class="attr">n</span>:<span class="number">2</span>&#125;; </span><br><span class="line"><span class="built_in">console</span>.log(a.x);<span class="comment">// --&gt; undefined </span></span><br><span class="line"><span class="built_in">console</span>.log(b.x);<span class="comment">// --&gt; [object Object]</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h1 id="二、逐步分析"><a href="#二、逐步分析" class="headerlink" title="二、逐步分析"></a>二、逐步分析</h1><p>下面来分析下这段简单代码的工作步骤，从而进一步理解js引用类型“赋值”的工作方式。首先是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">n</span>:<span class="number">1</span>&#125;; </span><br><span class="line"><span class="keyword">var</span> b = a;</span><br></pre></td></tr></table></figure>
+<p>在这里a指向了一个对象{n:1}（我们姑且称它为对象A），b指向了a所指向的对象，也就是说，在这时候a和b都是指向对象A的。这一步很好理解，接着继续看下一行非常重要的代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.x = a = &#123;<span class="attr">n</span>:<span class="number">2</span>&#125;;</span><br></pre></td></tr></table></figure>
+<p>我们知道<strong>js的赋值运算顺序永远都是从右往左的</strong>，不过<font color="#A52A2A" size="4"><strong>由于“.”是优先级最高的运算符</strong></font>，所以这行代码先解析了<font color="#A52A2A" size="4"><strong>a.x</strong></font>。这时候发生了这个事情——a指向的对象{n:1}新增了属性x（虽然这个x是undefined的）：</p>
+<p><img src="/2018/04/11/JS-连续赋值/311824499357207.png" alt=""></p>
+<p>从图上可以看到，由于b跟a一样是指向对象A的，要表示A的x属性除了用a.x，自然也可以使用b.x来表示了。 </p>
+<p>接着，依循“从右往左”的赋值运算顺序先执行 a={n:2} ，这时候，a指向的对象发生了改变，变成了新对象{n:2}（我们称为对象B）： </p>
+<p><img src="/2018/04/11/JS-连续赋值/311825409517656.png" alt=""></p>
+<p>接着继续执行 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.x = a;</span><br></pre></td></tr></table></figure>
+<p>很多人会认为这里是“对象B也新增了一个属性x，并指向对象B自己”。但实际上并非如此，由于（ .  运算符最先计算）一开始js已经先计算了a.x，便已经<strong>解析</strong>了这个a.x是对象A的x，所以在同一条公式的情况下再回来给a.x赋值，也<font color="#A52A2A" size="4"><strong>不会重新解析</strong></font>这个a.x为对象B的x。所以 a.x=a 应理解为对象A的属性x指向了对象B:</p>
+<p><img src="/2018/04/11/JS-连续赋值/311826199988927.png" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/04/10/webpack-路径问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1472,137 +1606,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/03/22/css-渲染过程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/22/css-渲染过程/" itemprop="url">css-渲染过程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-22T18:47:33+08:00">
-                2018-03-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="一、浏览器渲染原理"><a href="#一、浏览器渲染原理" class="headerlink" title="一、浏览器渲染原理"></a>一、浏览器渲染原理</h1><p>关于浏览器工作原理之前有一篇非常出名的文章《<a href="http://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/" target="_blank" rel="noopener">浏览器的工作原理：新式网络浏览器幕后揭秘</a>》。文章详细阐述了浏览器工作原理，下面用两张图来分别描述Firefox和Chrome浏览器对Web页面的渲染过程。</p>
-<p><br></p>
-<h1 id="二、Chrome渲染过程"><a href="#二、Chrome渲染过程" class="headerlink" title="二、Chrome渲染过程"></a>二、Chrome渲染过程</h1><p><img src="/2018/03/22/css-渲染过程/css-animation-1.png" alt=""></p>
-<p>有关于Chrome浏览器渲染的详细内容，可以参考《<a href="https://github.com/abcrun/abcrun.github.com/issues/17" target="_blank" rel="noopener">图解浏览器渲染过程 - 基于Webkit/Blink内核Chrome浏览器</a>》一文。 </p>
-<p><br></p>
-<h1 id="三、Firefox渲染过程"><a href="#三、Firefox渲染过程" class="headerlink" title="三、Firefox渲染过程"></a>三、Firefox渲染过程</h1><p><img src="/2018/03/22/css-渲染过程/css-animation-2.jpeg" alt=""></p>
-<p>特别声明：接下来的内容都是针对于Chrome浏览器进行讨论。 </p>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/22/css-渲染过程/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1653,7 +1656,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">179</span>
+                  <span class="site-state-item-count">180</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1666,7 +1669,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">284</span>
+                  <span class="site-state-item-count">286</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
