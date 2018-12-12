@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="字节和字符的区别ASCII时代，字节和字符是一样的。当Unicode出现后，事情有所不同了。字节（octet）是一个八位的存储单元，取值范围一定是0～255。而字符（character，或者word）为语言意义上的符号，范围就不一定了。例如在UCS-2中定义的字符范围为0～65535，它的一个字符占用两个字节。  UCS-2和UCS-4Unicode是为整合全世界的所有语言文字而诞生的。任何文字在">
+<meta name="description" content="1、字节和字符的区别ASCII时代，字节和字符是一样的。当Unicode出现后，事情有所不同了。字节（octet）是一个八位的存储单元，取值范围一定是0～255。而字符（character，或者word）为语言意义上的符号，范围就不一定了。例如在UCS-2中定义的字符范围为0～65535，它的一个字符占用两个字节。  2、UCS-2和UCS-4Unicode是为整合全世界的所有语言文字而诞生的。任">
 <meta name="keywords" content="UCS-2,UCS-4,UTF-8">
 <meta property="og:type" content="article">
 <meta property="og:title" content="字符编码与存储_UCS_UTF">
 <meta property="og:url" content="https://www.yf-gz.cn/2018/12/07/UCS-2和UCS-4/index.html">
 <meta property="og:site_name" content="chenogeの日志">
-<meta property="og:description" content="字节和字符的区别ASCII时代，字节和字符是一样的。当Unicode出现后，事情有所不同了。字节（octet）是一个八位的存储单元，取值范围一定是0～255。而字符（character，或者word）为语言意义上的符号，范围就不一定了。例如在UCS-2中定义的字符范围为0～65535，它的一个字符占用两个字节。  UCS-2和UCS-4Unicode是为整合全世界的所有语言文字而诞生的。任何文字在">
+<meta property="og:description" content="1、字节和字符的区别ASCII时代，字节和字符是一样的。当Unicode出现后，事情有所不同了。字节（octet）是一个八位的存储单元，取值范围一定是0～255。而字符（character，或者word）为语言意义上的符号，范围就不一定了。例如在UCS-2中定义的字符范围为0～65535，它的一个字符占用两个字节。  2、UCS-2和UCS-4Unicode是为整合全世界的所有语言文字而诞生的。任">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-07T14:44:58.910Z">
+<meta property="og:updated_time" content="2018-12-12T14:05:13.643Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字符编码与存储_UCS_UTF">
-<meta name="twitter:description" content="字节和字符的区别ASCII时代，字节和字符是一样的。当Unicode出现后，事情有所不同了。字节（octet）是一个八位的存储单元，取值范围一定是0～255。而字符（character，或者word）为语言意义上的符号，范围就不一定了。例如在UCS-2中定义的字符范围为0～65535，它的一个字符占用两个字节。  UCS-2和UCS-4Unicode是为整合全世界的所有语言文字而诞生的。任何文字在">
+<meta name="twitter:description" content="1、字节和字符的区别ASCII时代，字节和字符是一样的。当Unicode出现后，事情有所不同了。字节（octet）是一个八位的存储单元，取值范围一定是0～255。而字符（character，或者word）为语言意义上的符号，范围就不一定了。例如在UCS-2中定义的字符范围为0～65535，它的一个字符占用两个字节。  2、UCS-2和UCS-4Unicode是为整合全世界的所有语言文字而诞生的。任">
 
 
 
@@ -334,24 +334,36 @@
       
 
       
-        <h4 id="字节和字符的区别"><a href="#字节和字符的区别" class="headerlink" title="字节和字符的区别"></a>字节和字符的区别</h4><p><code>ASCII</code>时代，字节和字符是一样的。当<code>Unicode</code>出现后，事情有所不同了。<code>字节（octet）</code>是一个八位的<strong>存储单元</strong>，取值范围一定是<code>0～255</code>。而<code>字符（character，或者word）</code>为<strong>语言意义上的符号</strong>，范围就不一定了。例如在<code>UCS-2</code>中定义的字符范围为<code>0～65535</code>，它的一个字符占用两个字节。</p>
+        <h3 id="1、字节和字符的区别"><a href="#1、字节和字符的区别" class="headerlink" title="1、字节和字符的区别"></a>1、字节和字符的区别</h3><p><code>ASCII</code>时代，字节和字符是一样的。当<code>Unicode</code>出现后，事情有所不同了。<code>字节（octet）</code>是一个八位的<strong>存储单元</strong>，取值范围一定是<code>0～255</code>。而<code>字符（character，或者word）</code>为<strong>语言意义上的符号</strong>，范围就不一定了。例如在<code>UCS-2</code>中定义的字符范围为<code>0～65535</code>，它的一个字符占用两个字节。</p>
 <p><br></p>
-<h4 id="UCS-2和UCS-4"><a href="#UCS-2和UCS-4" class="headerlink" title="UCS-2和UCS-4"></a><code>UCS-2</code>和<code>UCS-4</code></h4><p><code>Unicode</code>是为整合全世界的所有语言文字而诞生的。任何文字在<code>Unicode</code>中都对应一个值，这个值称为<code>代码点（code point）</code>。代码点的值通常写成<code>U+ABCD</code>的格式。而文字和代码点之间的对应关系就是<code>UCS-2（Universal Character Set coded in 2 octets）</code>。顾名思义，<code>UCS-2</code>是用两个字节来表示代码点，其取值范围为 <code>U+0000～U+FFFF</code>。</p>
+<h3 id="2、UCS-2和UCS-4"><a href="#2、UCS-2和UCS-4" class="headerlink" title="2、UCS-2和UCS-4"></a>2、<code>UCS-2</code>和<code>UCS-4</code></h3><p><code>Unicode</code>是为整合全世界的所有语言文字而诞生的。任何文字在<code>Unicode</code>中都对应一个值，这个值称为<code>代码点（code point）</code>。代码点的值通常写成<code>U+ABCD</code>的格式。而文字和代码点之间的对应关系就是<code>UCS-2（Universal Character Set coded in 2 octets）</code>。顾名思义，<code>UCS-2</code>是用两个字节来表示代码点，其取值范围为 <code>U+0000～U+FFFF</code>。</p>
+<p><br></p>
 <p>为了能表示更多的文字，人们又提出了<code>UCS-4</code>，即用四个字节表示代码点。它的范围为 <code>U+00000000～U+7FFFFFFF</code>，其中 <code>U+00000000～U+0000FFFF</code>和<code>UCS-2</code>是一样的。</p>
+<p><br></p>
 <p>要注意，<code>UCS-2</code>和<code>UCS-4</code>只规定了<code>代码点</code>和<code>文字</code>之间的对应关系，并没有规定代码点在计算机中如何存储。规定存储方式的称为<code>UTF（Unicode Transformation Format）</code>，其中应用较多的就是<code>UTF-8</code>。</p>
 <p><br></p>
+<p>注：</p>
+<ul>
+<li><code>Unicode</code>不是一次性定义的，而是<strong>分区定义</strong>。每个区可以存放<code>65536</code>个字符，称为一个平面（<code>plane</code>），定义了<code>17</code>个平面，目前<code>Unicode</code>字符集的大小是<code>1,114,112</code>。 </li>
+</ul>
+<ul>
+<li>最前面的<code>65536</code>个字符位，称为<strong>基本平面（缩写BMP）</strong>，是<code>Unicode</code>最先定义和公布的一个平面。 </li>
+</ul>
+<p><br></p>
 <a id="more"></a>
-<h4 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a><code>UTF-8</code></h4><p><code>UTF-8</code> 最大的一个特点，就是它是一种变长的编码方式。它可以使用<code>1~6</code>个字节表示一个符号，根据不同的符号而变化字节长度。</p>
+<h3 id="3、UTF-8"><a href="#3、UTF-8" class="headerlink" title="3、UTF-8"></a>3、<code>UTF-8</code></h3><p><code>UTF-8</code> 最大的一个特点，就是它是一种变长的编码方式。它可以使用<code>1~6</code>个字节表示一个符号，根据不同的符号而变化字节长度。</p>
 <p>UTF-8 的编码规则很简单，只有二条：</p>
 <ul>
 <li>对于单字节的符号，字节的第一位设为<code>0</code>，后面7位为这个符号的 Unicode 码。因此对于英语字母，UTF-8 编码和 ASCII 码是相同的。</li>
 <li>对于<code>n</code>字节的符号（<code>n &gt; 1</code>），第一个字节的前<code>n</code>位都设为<code>1</code>，第<code>n + 1</code>位设为<code>0</code>，后面字节的前两位一律设为<code>10</code>。剩下的没有提及的二进制位，全部为这个符号的 <code>Unicode</code> 码。</li>
 </ul>
+<p><br></p>
 <p>下表总结了编码规则，字母<code>x</code>表示可用编码的位。</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Unicode符号范围      |        UTF-8编码方式</span><br><span class="line">  (十六进制)         |         （二进制）</span><br><span class="line">--------------------+-------------------------------------</span><br><span class="line">0000 0000-0000 007F | 0xxxxxxx</span><br><span class="line">0000 0080-0000 07FF | 110xxxxx 10xxxxxx</span><br><span class="line">0000 0800-0000 FFFF | 1110xxxx 10xxxxxx 10xxxxxx</span><br><span class="line">0001 0000-001F FFFF | 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</span><br><span class="line">0020 0000-03FF FFFF | 111110xx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx</span><br><span class="line">0400 0000-7FFF FFFF | 1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx</span><br></pre></td></tr></table></figure>
 <p>注：</p>
 <ul>
 <li>如果一个字节的第一位是<code>0</code>，则这个字节单独就是一个字符；如果第一位是<code>1</code>，则<strong>连续有多少个<code>1</code>，就表示当前字符占用多少个字节</strong>。</li>
+<li>2003年11月<code>UTF-8</code>被<code>RFC 3629</code>重新规范，只能使用原来<code>Unicode</code>定义的区域，<code>U+0000</code>到<code>U+10FFFF</code>，也就是最多四个字节，<code>非标准UTF-8</code>仍支持使用<code>1~6</code>个字节表示一个符号。</li>
 </ul>
 <p><br></p>
 <p><code>严</code>的 Unicode 是<code>4E25</code>（<code>100111000100101</code>），根据上表，可以发现<code>4E25</code>处在第三行的范围内（<code>0000 0800 - 0000 FFFF</code>），因此<code>严</code>的 UTF-8 编码需要三个字节，即格式是<code>1110xxxx 10xxxxxx 10xxxxxx</code>。然后，从<code>严</code>的最后一个二进制位开始，依次从后向前填入格式中的<code>x</code>，多出的位补<code>0</code>。这样就得到了，<code>严</code>的 UTF-8 编码是<code>11100100 10111000 10100101</code>，转换成十六进制就是<code>E4B8A5</code>。</p>
@@ -360,8 +372,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/[\u4e00-\u9fa5]/ 中文：20902个</span><br><span class="line"></span><br><span class="line">/[\u0800-\u4e00]/ 日文：17921个</span><br><span class="line"></span><br><span class="line">/[\uac00-\ud7ff]/ 韩文：11264个</span><br></pre></td></tr></table></figure>
 <p>注：以上正则表达式是<strong>部分中文匹配</strong>，并非精确，但能满足大多数情况。</p>
 <p><br></p>
-<p>中文编码范围</p>
-<table>
+<h3 id="4、中文Unicode-编码范围"><a href="#4、中文Unicode-编码范围" class="headerlink" title="4、中文Unicode 编码范围"></a>4、中文Unicode 编码范围</h3><table>
 <thead>
 <tr>
 <th><strong>字符集</strong></th>
@@ -462,6 +473,19 @@
 </tr>
 </tbody>
 </table>
+<p><br></p>
+<h3 id="5、UTF-16"><a href="#5、UTF-16" class="headerlink" title="5、UTF-16"></a>5、<code>UTF-16</code></h3><p><code>UTF-16</code>的编码规则很简单：<strong>基本平面</strong>的字符占用2个字节，辅助平面的字符占用4个字节。<strong>也就是说，UTF-16的编码长度要么是2个字节（U+0000到U+FFFF），要么是4个字节（U+010000到U+10FFFF）。</strong><code>UTF-16</code>编码是<code>UCS-2</code>的超集，介于<code>UTF-32</code>与<code>UTF-8</code>之间，同时结合了定长和变长两种编码方法的特点。</p>
+<p><br></p>
+<h3 id="6、Unicode与JavaScript"><a href="#6、Unicode与JavaScript" class="headerlink" title="6、Unicode与JavaScript"></a>6、Unicode与JavaScript</h3><p><code>JavaScript</code>语言采用<code>Unicode</code>字符集，但是只支持一种编码方法。这种编码既不是<code>UTF-16</code>，也不是<code>UTF-8</code>，更不是<code>UTF-32</code>。<strong>JavaScript用的是<code>UCS-2</code></strong>。</p>
+<p><br></p>
+<p><code>JavaScript</code> 允许采用<code>\uxxxx</code>形式表示一个字符，其中<code>xxxx</code>表示字符的 <code>Unicode</code> 码点。 但是，这种表示法只限于码点在<code>\u0000</code>~<code>\uFFFF</code>之间的字符。超出这个范围的字符，必须用两个双字节的形式表示。 <code>ES6</code> 对这一点做出了改进，只要将码点放入大括号，就能正确解读该字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"\u20BB7"</span></span><br><span class="line"><span class="comment">// "₻7" JavaScript会理解成\u20BB+7</span></span><br><span class="line"></span><br><span class="line"><span class="string">"\u&#123;20BB7&#125;"</span></span><br><span class="line"><span class="comment">// "𠮷"</span></span><br><span class="line"></span><br><span class="line"><span class="string">"\u&#123;41&#125;\u&#123;42&#125;\u&#123;43&#125;"</span></span><br><span class="line"><span class="comment">// "ABC"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> hello = <span class="number">123</span>;</span><br><span class="line">hell\u&#123;<span class="number">6</span>F&#125; <span class="comment">// 123</span></span><br><span class="line"></span><br><span class="line"><span class="string">'\u&#123;1F680&#125;'</span> === <span class="string">'\uD83D\uDE80'</span></span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p>使用<code>for...of</code>循环，因为它会正确识别 32 位的 UTF-16 字符</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="string">'𠮷a'</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> ch <span class="keyword">of</span> s) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(ch.codePointAt(<span class="number">0</span>).toString(<span class="number">16</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 20bb7</span></span><br><span class="line"><span class="comment">// 61</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><code>codePointAt</code>方法是测试一个字符由两个字节还是由四个字节组成的最简单方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">is32Bit</span>(<span class="params">c</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> c.codePointAt(<span class="number">0</span>) &gt; <span class="number">0xFFFF</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">is32Bit(<span class="string">"𠮷"</span>) <span class="comment">// true</span></span><br><span class="line">is32Bit(<span class="string">"a"</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
 <p><br></p>
 
       
@@ -632,7 +656,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#字节和字符的区别"><span class="nav-number">1.</span> <span class="nav-text">字节和字符的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UCS-2和UCS-4"><span class="nav-number">2.</span> <span class="nav-text">UCS-2和UCS-4</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UTF-8"><span class="nav-number">3.</span> <span class="nav-text">UTF-8</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、字节和字符的区别"><span class="nav-number">1.</span> <span class="nav-text">1、字节和字符的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、UCS-2和UCS-4"><span class="nav-number">2.</span> <span class="nav-text">2、UCS-2和UCS-4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、UTF-8"><span class="nav-number">3.</span> <span class="nav-text">3、UTF-8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、中文Unicode-编码范围"><span class="nav-number">4.</span> <span class="nav-text">4、中文Unicode 编码范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、UTF-16"><span class="nav-number">5.</span> <span class="nav-text">5、UTF-16</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、Unicode与JavaScript"><span class="nav-number">6.</span> <span class="nav-text">6、Unicode与JavaScript</span></a></li></ol></div>
             
 
           </div>

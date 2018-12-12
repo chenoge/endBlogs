@@ -483,11 +483,21 @@
 
       
         
-          <h4 id="字节和字符的区别"><a href="#字节和字符的区别" class="headerlink" title="字节和字符的区别"></a>字节和字符的区别</h4><p><code>ASCII</code>时代，字节和字符是一样的。当<code>Unicode</code>出现后，事情有所不同了。<code>字节（octet）</code>是一个八位的<strong>存储单元</strong>，取值范围一定是<code>0～255</code>。而<code>字符（character，或者word）</code>为<strong>语言意义上的符号</strong>，范围就不一定了。例如在<code>UCS-2</code>中定义的字符范围为<code>0～65535</code>，它的一个字符占用两个字节。</p>
+          <h3 id="1、字节和字符的区别"><a href="#1、字节和字符的区别" class="headerlink" title="1、字节和字符的区别"></a>1、字节和字符的区别</h3><p><code>ASCII</code>时代，字节和字符是一样的。当<code>Unicode</code>出现后，事情有所不同了。<code>字节（octet）</code>是一个八位的<strong>存储单元</strong>，取值范围一定是<code>0～255</code>。而<code>字符（character，或者word）</code>为<strong>语言意义上的符号</strong>，范围就不一定了。例如在<code>UCS-2</code>中定义的字符范围为<code>0～65535</code>，它的一个字符占用两个字节。</p>
 <p><br></p>
-<h4 id="UCS-2和UCS-4"><a href="#UCS-2和UCS-4" class="headerlink" title="UCS-2和UCS-4"></a><code>UCS-2</code>和<code>UCS-4</code></h4><p><code>Unicode</code>是为整合全世界的所有语言文字而诞生的。任何文字在<code>Unicode</code>中都对应一个值，这个值称为<code>代码点（code point）</code>。代码点的值通常写成<code>U+ABCD</code>的格式。而文字和代码点之间的对应关系就是<code>UCS-2（Universal Character Set coded in 2 octets）</code>。顾名思义，<code>UCS-2</code>是用两个字节来表示代码点，其取值范围为 <code>U+0000～U+FFFF</code>。</p>
+<h3 id="2、UCS-2和UCS-4"><a href="#2、UCS-2和UCS-4" class="headerlink" title="2、UCS-2和UCS-4"></a>2、<code>UCS-2</code>和<code>UCS-4</code></h3><p><code>Unicode</code>是为整合全世界的所有语言文字而诞生的。任何文字在<code>Unicode</code>中都对应一个值，这个值称为<code>代码点（code point）</code>。代码点的值通常写成<code>U+ABCD</code>的格式。而文字和代码点之间的对应关系就是<code>UCS-2（Universal Character Set coded in 2 octets）</code>。顾名思义，<code>UCS-2</code>是用两个字节来表示代码点，其取值范围为 <code>U+0000～U+FFFF</code>。</p>
+<p><br></p>
 <p>为了能表示更多的文字，人们又提出了<code>UCS-4</code>，即用四个字节表示代码点。它的范围为 <code>U+00000000～U+7FFFFFFF</code>，其中 <code>U+00000000～U+0000FFFF</code>和<code>UCS-2</code>是一样的。</p>
+<p><br></p>
 <p>要注意，<code>UCS-2</code>和<code>UCS-4</code>只规定了<code>代码点</code>和<code>文字</code>之间的对应关系，并没有规定代码点在计算机中如何存储。规定存储方式的称为<code>UTF（Unicode Transformation Format）</code>，其中应用较多的就是<code>UTF-8</code>。</p>
+<p><br></p>
+<p>注：</p>
+<ul>
+<li><code>Unicode</code>不是一次性定义的，而是<strong>分区定义</strong>。每个区可以存放<code>65536</code>个字符，称为一个平面（<code>plane</code>），定义了<code>17</code>个平面，目前<code>Unicode</code>字符集的大小是<code>1,114,112</code>。 </li>
+</ul>
+<ul>
+<li>最前面的<code>65536</code>个字符位，称为<strong>基本平面（缩写BMP）</strong>，是<code>Unicode</code>最先定义和公布的一个平面。 </li>
+</ul>
 <p><br></p>
           <!--noindex-->
           <div class="post-button text-center">
