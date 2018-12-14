@@ -266,6 +266,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/27/CSS-line-height继承问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/27/CSS-line-height继承问题/" itemprop="url">line-height继承问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-27T23:21:48+08:00">
+                2018-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="一、line-height值"><a href="#一、line-height值" class="headerlink" title="一、line-height值"></a>一、line-height值</h1><table>
+<thead>
+<tr>
+<th>normal</th>
+<th>默认。设置合理的行间距。</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>number</td>
+<td>设置数字，此数字会与当前的字体尺寸相乘来设置行间距。</td>
+</tr>
+<tr>
+<td>length</td>
+<td>设置固定的行间距。</td>
+</tr>
+<tr>
+<td>%</td>
+<td>基于当前字体尺寸的百分比行间距。</td>
+</tr>
+<tr>
+<td>inherit</td>
+<td>规定应该从父元素继承 line-height 属性的值。</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h1 id="二、继承问题"><a href="#二、继承问题" class="headerlink" title="二、继承问题"></a>二、继承问题</h1><ul>
+<li><p>如果父级的line-height属性值<strong>有单位或百分比</strong>，那么<strong>子级继承的值则是换算后的一个具体的px级别的值</strong>； </p>
+</li>
+<li><p>而如果父级的line-height属性值<strong>没有单位</strong>，则<strong>子级会直接继承这个“数值”</strong>，而非计算后的具体值，此时子级的line-height会根据本身的font-size值重新计算得到新的line-height      值。</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/27/JS-整页滚动/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1407,136 +1559,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/18/防卫性编程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/18/防卫性编程/" itemprop="url">防卫性编程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-18T12:40:39+08:00">
-                2018-05-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="一、边界清晰，御敌于国门之外"><a href="#一、边界清晰，御敌于国门之外" class="headerlink" title="一、边界清晰，御敌于国门之外"></a>一、边界清晰，御敌于国门之外</h1><p>在模块的边界处，<strong>无论别人调用你还是你调用别人，一定要明确约定调用规范</strong>，一旦违反规范，立即启用错误处理流程（注意不是防卫流程），不要让错误在自己的模块内部流窜。</p>
-<p><br> </p>
-<h1 id="二、不给错误做二传手"><a href="#二、不给错误做二传手" class="headerlink" title="二、不给错误做二传手"></a>二、不给错误做二传手</h1><p>如果发现错误，让错误到此为止，非必要不接力传递错误码。</p>
-<p><br> </p>
-<h1 id="三、当断则断，早死早超生"><a href="#三、当断则断，早死早超生" class="headerlink" title="三、当断则断，早死早超生"></a>三、当断则断，早死早超生</h1><p>所有程序的正确运行都是依赖于一定的前提条件的，如果你发现外部模块不工作了，遵从系统的错误处理策略，<strong>该报异常就报异常，该立即退出就退出</strong>，重要的是搜集好现场的证据。一味的容错处理既不能解决问题还会掩盖问题，导致错误扩散，变形，拖延定位问题的时机。</p>
-<p><br></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1582,7 +1609,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">180</span>
+                  <span class="site-state-item-count">181</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1595,7 +1622,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">286</span>
+                  <span class="site-state-item-count">287</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
