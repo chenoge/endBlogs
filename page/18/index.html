@@ -266,6 +266,265 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2017/09/24/css-padding宽高比/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/24/css-padding宽高比/" itemprop="url">css-padding宽高比</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-24T22:17:19+08:00">
+                2017-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>对于padding属性而言，任意方向的百分比padding都相对于宽度计算可以让我们轻松实现固定比例的块级容器。 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123; <span class="attribute">padding</span>: <span class="number">50%</span>; &#125;</span><br><span class="line"><span class="selector-tag">div</span> &#123; <span class="attribute">padding</span>: <span class="number">100%</span> <span class="number">0</span> <span class="number">0</span>; &#125;</span><br><span class="line"><span class="selector-tag">div</span> &#123; <span class="attribute">padding-bottom</span>: <span class="number">100%</span>; &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.banner</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">15.15%</span> <span class="number">0</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line"><span class="selector-class">.banner</span> &gt; <span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>; </span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>; <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<p>1、图片宽度是100%容器的，padding的15.5%其实就是图片的高宽比例。</p>
+<p>2、图片宽度50%容器宽度，图片高宽比4:3，我们也可以这么写</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.img-box</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">50%</span> <span class="number">66.66%</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、如果没有text-align属性干扰，img的position，及left和top可以不用指定 </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2017/09/11/nginx-location/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/11/nginx-location/" itemprop="url">nginx-location</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-11T15:37:34+08:00">
+                2017-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="一、location匹配顺序"><a href="#一、location匹配顺序" class="headerlink" title="一、location匹配顺序"></a>一、location匹配顺序</h1><ol>
+<li><strong>“=”前缀指令</strong>匹配，如果匹配成功，则停止其他匹配。</li>
+<li><strong>普通字符串指令</strong>匹配，顺序是<font color="#A52A2A" size="4"><strong>从长到短</strong></font>，匹配成功的location如果使用<font color="#A52A2A" size="4"><strong>^~</strong></font>，则停止其他匹配（正则匹配）。</li>
+<li><strong>正则表达式指令</strong>匹配，按照配置文件里的顺序，成功就停止其他匹配。</li>
+<li><strong>如果第三步中有匹配成功，则使用该结果，否则使用第二步结果。</strong></li>
+</ol>
+<ul>
+<li>匹配的顺序是<font color="#A52A2A" size="4"><strong>先匹配普通字符串，然后再匹配正则表达式</strong></font>。另外<font color="#A52A2A" size="4"><strong>普通字符串匹配顺序是根据配置中字符长度从长到短</strong></font>，也就是说使用普通字符串配置的location顺序是无关紧要的，反正最后nginx会根据配置的长短来进行匹配，但是需要注意的是<font color="#A52A2A" size="4"><strong>正则表达式按照配置文件里的顺序</strong></font>测试。找到第一个比配的正则表达式将停止搜索。</li>
+</ul>
+<p><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/11/nginx-location/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2017/09/04/Git-忽略文件规则/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1282,253 +1541,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2017/07/25/H5-FileReader/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/25/H5-FileReader/" itemprop="url">H5-FileReader</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-25T20:57:28+08:00">
-                2017-07-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="一、FileList"><a href="#一、FileList" class="headerlink" title="一、FileList"></a>一、FileList</h1><p><strong>FileList 对象</strong>针对表单的 <strong>file 控件</strong>。当用户通过 file 控件选取文件后，这个<strong>控件的 files 属性值就是 FileList 对象</strong>。它在结构上类似于数组，<strong>数组里每一个元素都是File对象</strong>，包含用户选取的多个文件。如果 file 控件没有设置 <strong>multiple</strong> 属性，那么用户只能选择一个文件，FileList 对象也就只有一个元素了。 </p>
-<p><br></p>
-<h1 id="二、File"><a href="#二、File" class="headerlink" title="二、File"></a>二、File</h1><p>我们看到一个 <strong>FileList 对象</strong>包含了我们选中的 <strong>File 对象</strong> </p>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/25/H5-FileReader/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2017/07/25/JS-三种对话框/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/25/JS-三种对话框/" itemprop="url">JS-三种对话框</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-25T20:42:02+08:00">
-                2017-07-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//弹出对话框并输出一段提示信息  </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ale</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//弹出一个对话框  </span></span><br><span class="line">    alert(<span class="string">"提示信息！"</span>);  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//弹出一个询问框，有确定和取消按钮  </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">firm</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">    <span class="comment">//利用对话框返回的值 （true 或者 false）  </span></span><br><span class="line">    <span class="keyword">if</span> (confirm(<span class="string">"你确定提交吗？"</span>)) &#123;  </span><br><span class="line">        alert(<span class="string">"点击了确定"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">else</span> &#123;  </span><br><span class="line">        alert(<span class="string">"点击了取消"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//弹出一个输入框，输入一段文字，可以提交  </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">prom</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">    <span class="comment">//将输入的内容赋给变量 name ，  </span></span><br><span class="line">    <span class="keyword">var</span> name = prompt(<span class="string">"请输入您的名字"</span>, <span class="string">""</span>);</span><br><span class="line">    <span class="comment">//这里需要注意的是，prompt有两个参数，前面是提示的话，后面是当对话框出来后，在对话框里的默认值  </span></span><br><span class="line">    <span class="comment">//如果返回的有内容 </span></span><br><span class="line">    <span class="keyword">if</span> (name) </span><br><span class="line">    &#123;  </span><br><span class="line">        alert(<span class="string">"欢迎您："</span> + name)  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1579,7 +1591,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">181</span>
+                  <span class="site-state-item-count">183</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1592,7 +1604,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">287</span>
+                  <span class="site-state-item-count">289</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

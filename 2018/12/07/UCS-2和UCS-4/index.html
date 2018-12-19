@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="chenogeの日志">
 <meta property="og:description" content="1、字节和字符的区别ASCII时代，字节和字符是一样的。当Unicode出现后，事情有所不同了。字节（octet）是一个八位的存储单元，取值范围一定是0～255。而字符（character，或者word）为语言意义上的符号，范围就不一定了。例如在UCS-2中定义的字符范围为0～65535，它的一个字符占用两个字节。  2、UCS-2和UCS-4Unicode是为整合全世界的所有语言文字而诞生的。任">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-12T14:47:48.587Z">
+<meta property="og:updated_time" content="2018-12-17T02:57:28.215Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字符编码与存储_UCS_UTF">
 <meta name="twitter:description" content="1、字节和字符的区别ASCII时代，字节和字符是一样的。当Unicode出现后，事情有所不同了。字节（octet）是一个八位的存储单元，取值范围一定是0～255。而字符（character，或者word）为语言意义上的符号，范围就不一定了。例如在UCS-2中定义的字符范围为0～65535，它的一个字符占用两个字节。  2、UCS-2和UCS-4Unicode是为整合全世界的所有语言文字而诞生的。任">
@@ -510,8 +510,14 @@
 <p><code>JavaScript</code> 允许采用<code>\uxxxx</code>形式表示一个字符，其中<code>xxxx</code>表示字符的 <code>Unicode</code> 码点。 但是，这种表示法只限于码点在<code>\u0000</code>~<code>\uFFFF</code>之间的字符。超出这个范围的字符，必须用两个双字节的形式表示。 <code>ES6</code> 对这一点做出了改进，只要将码点放入大括号，就能正确解读该字符。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"\u20BB7"</span></span><br><span class="line"><span class="comment">// "₻7" JavaScript会理解成\u20BB+7</span></span><br><span class="line"></span><br><span class="line"><span class="string">"\u&#123;20BB7&#125;"</span></span><br><span class="line"><span class="comment">// "𠮷"</span></span><br><span class="line"></span><br><span class="line"><span class="string">"\u&#123;41&#125;\u&#123;42&#125;\u&#123;43&#125;"</span></span><br><span class="line"><span class="comment">// "ABC"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> hello = <span class="number">123</span>;</span><br><span class="line">hell\u&#123;<span class="number">6</span>F&#125; <span class="comment">// 123</span></span><br><span class="line"></span><br><span class="line"><span class="string">'\u&#123;1F680&#125;'</span> === <span class="string">'\uD83D\uDE80'</span></span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 <p><br></p>
-<p>JavaScript 内部，字符以 <code>UTF-16</code> 的格式储存，每个字符固定为<code>2</code>个字节。 使用<code>for...of</code>循环，它会正确识别 32 位的 UTF-16 字符</p>
+<ul>
+<li>JavaScript 内部，字符以 <code>UTF-16</code> 的格式储存，每个字符固定为<code>2</code>个字节。 使用<code>for...of</code>循环，它会正确识别 32 位的 UTF-16 字符</li>
+</ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="string">'𠮷a'</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> ch <span class="keyword">of</span> s) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(ch.codePointAt(<span class="number">0</span>).toString(<span class="number">16</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 20bb7</span></span><br><span class="line"><span class="comment">// 61</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>Array.from()</code>可以将字符串转为数组，然后返回字符串的长度。它能正确处理各种 <code>Unicode</code> 字符，可以避免 <code>JavaScript</code> 将大于<code>\uFFFF</code>的 <code>Unicod</code>e 字符，算作两个字符的 bug。 </li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.from(string).length</span><br></pre></td></tr></table></figure>
 <p><br></p>
 <p><code>codePointAt</code>方法是测试一个字符由两个字节还是由四个字节组成的最简单方法</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">is32Bit</span>(<span class="params">c</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> c.codePointAt(<span class="number">0</span>) &gt; <span class="number">0xFFFF</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">is32Bit(<span class="string">"𠮷"</span>) <span class="comment">// true</span></span><br><span class="line">is32Bit(<span class="string">"a"</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
@@ -639,7 +645,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">181</span>
+                  <span class="site-state-item-count">183</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -652,7 +658,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">287</span>
+                  <span class="site-state-item-count">289</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

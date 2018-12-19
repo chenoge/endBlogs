@@ -266,6 +266,263 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/07/03/雅虎前端优化的35条军规/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/03/雅虎前端优化的35条军规/" itemprop="url">雅虎前端优化的35条军规</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-03T20:41:18+08:00">
+                2018-07-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="内容部分"><a href="#内容部分" class="headerlink" title="内容部分"></a>内容部分</h1><h4 id="1-尽量减少HTTP请求数"><a href="#1-尽量减少HTTP请求数" class="headerlink" title="1.尽量减少HTTP请求数"></a>1.尽量减少HTTP请求数</h4><p>页面大部分的响应时间都在下载页面上的各种组件：图片，样式表，脚本等等。减少组件数必然能够减少页面提交的HTTP请求数。这是让页面更快的关键。</p>
+<p><strong>合并文件</strong>是通过把所有脚本放在一个文件中的方式来减少请求数的，当然，也可以合并所有的CSS。</p>
+<p><strong>CSS Sprites</strong>是减少图片请求数量的首选方式。把背景图片都整合到一张图片中。</p>
+<p><strong>行内图片（Base64编码）</strong>用<code>data: URL</code>模式来把图片放在（缓存的）样式表中。</p>
+<p><br></p>
+<h4 id="2-减少DNS查找"><a href="#2-减少DNS查找" class="headerlink" title="2.减少DNS查找"></a>2.减少DNS查找</h4><p>DNS是有成本的，它需要20到120毫秒去查找给定主机名的IP地址。在DNS查找完成之前，浏览器无法从主机名下载任何东西。</p>
+<p><strong>DNS查找数</strong>等于页面上不同的主机名数，包括页面URL，图片，脚本文件，样式表等等组件中的主机名，减少不同的主机名就可以减少DNS查找。</p>
+<p>HTTP客户端一般对同一个服务器的<strong>并发连接个数都是有限制的</strong> 。减少不同主机名的数量同时也减少了页面能够并行下载的组件数量，削减了避免DNS查找的响应时间，而减少并行下载数量却增加了响应时间。我的原则是把组件分散在2到4个主机名下，这是同时<strong>减少DNS查找</strong>和允<strong>许高并发下载</strong>的折中方案。</p>
+<p><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/03/雅虎前端优化的35条军规/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/07/03/拦截全局ajax请求与Ajax-hook源码分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/03/拦截全局ajax请求与Ajax-hook源码分析/" itemprop="url">拦截全局ajax请求与Ajax-hook源码分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-03T19:35:35+08:00">
+                2018-07-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="一、ajax-hook插件"><a href="#一、ajax-hook插件" class="headerlink" title="一、ajax-hook插件"></a>一、<a href="https://github.com/wendux/Ajax-hook" target="_blank" rel="noopener">ajax-hook插件</a></h1><h4 id="原理图"><a href="#原理图" class="headerlink" title="原理图"></a>原理图</h4><p><img src="/2018/07/03/拦截全局ajax请求与Ajax-hook源码分析/ajaxhook.png" alt="image"></p>
+<p><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/03/拦截全局ajax请求与Ajax-hook源码分析/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/06/28/浏览器缓存机制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1311,298 +1568,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/06/19/JS-this原理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/19/JS-this原理/" itemprop="url">JS-this原理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-19T20:56:14+08:00">
-                2018-06-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><a href="http://www.ruanyifeng.com/blog/2018/06/javascript-this.html" target="_blank" rel="noopener">原文</a></p>
-<p><br></p>
-<h2 id="一、问题的由来"><a href="#一、问题的由来" class="headerlink" title="一、问题的由来"></a>一、问题的由来</h2><p>学懂 JavaScript 语言，一个标志就是理解下面两种写法，可能有不一样的结果。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  foo: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = obj.foo;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 写法一</span></span><br><span class="line">obj.foo()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 写法二</span></span><br><span class="line">foo()</span><br></pre></td></tr></table></figure>
-<p>上面代码中，虽然<code>obj.foo</code>和<code>foo</code>指向同一个函数，但是执行结果可能不一样。请看下面的例子。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  foo: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>.bar) &#125;,</span><br><span class="line">  bar: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = obj.foo;</span><br><span class="line"><span class="keyword">var</span> bar = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">obj.foo() <span class="comment">// 1</span></span><br><span class="line">foo() <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
-<p>这种差异的原因，就在于函数体内部使用了<code>this</code>关键字。很多教科书会告诉你，<code>this</code>指的是函数运行时所在的环境。对于<code>obj.foo()</code>来说，<code>foo</code>运行在<code>obj</code>环境，所以<code>this</code>指向<code>obj</code>；对于<code>foo()</code>来说，<code>foo</code>运行在全局环境，所以<code>this</code>指向全局环境。所以，两者的运行结果不一样。</p>
-<p>这种解释没错，但是教科书往往不告诉你，为什么会这样？也就是说，函数的运行环境到底是怎么决定的？举例来说，为什么<code>obj.foo()</code>就是在<code>obj</code>环境执行，而一旦<code>var foo = obj.foo</code>，<code>foo()</code>就变成在全局环境执行？</p>
-<p>本文就来解释 JavaScript 这样处理的原理。理解了这一点，你就会彻底理解<code>this</code>的作用。</p>
-<p><br></p>
-<h2 id="二、内存的数据结构"><a href="#二、内存的数据结构" class="headerlink" title="二、内存的数据结构"></a>二、内存的数据结构</h2><p>JavaScript 语言之所以有<code>this</code>的设计，跟内存里面的数据结构有关系。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">foo</span>:  <span class="number">5</span> &#125;;</span><br></pre></td></tr></table></figure>
-<p>上面的代码将一个对象赋值给变量<code>obj</code>。JavaScript 引擎会先在内存里面，生成一个对象<code>{ foo: 5 }</code>，然后把这个对象的内存地址赋值给变量<code>obj</code>。</p>
-<p><img src="/2018/06/19/JS-this原理/bg2018061801.png" alt="img"></p>
-<p>也就是说，变量<code>obj</code>是一个<strong>地址</strong>（reference）。后面如果要读取<code>obj.foo</code>，引擎先<strong>从<code>obj</code>拿到内存地址，然后再从该地址读出原始的对象，返回它的<code>foo</code>属性</strong>。</p>
-<p>原始的对象以字典结构保存，每一个属性名都对应<strong>一个属性描述对象</strong>。举例来说，上面例子的<code>foo</code>属性，实际上是以下面的形式保存的。</p>
-<p><img src="/2018/06/19/JS-this原理/bg2018061802.png" alt="img"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  foo: &#123;</span><br><span class="line">    [[value]]: <span class="number">5</span></span><br><span class="line">    [[writable]]: <span class="literal">true</span></span><br><span class="line">    [[enumerable]]: <span class="literal">true</span></span><br><span class="line">    [[configurable]]: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注意，<code>foo</code>属性的值保存在<strong>属性描述对象的<code>value</code>属性</strong>里面。</p>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/19/JS-this原理/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/06/16/css-渲染-Composite/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/16/css-渲染-Composite/" itemprop="url">css-渲染-composite</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-16T11:39:02+08:00">
-                2018-06-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><a href="http://taobaofed.org/blog/2016/04/25/performance-composite/" target="_blank" rel="noopener">原文</a></p>
-<p><br></p>
-<ul>
-<li>利用<code>合成层</code>，加速渲染</li>
-<li>防止<code>层爆</code>，优化性能</li>
-</ul>
-<p><br></p>
-<h1 id="一、整体流程"><a href="#一、整体流程" class="headerlink" title="一、整体流程"></a>一、整体流程</h1><p>一个 Web 页面的展示，简单来说可以认为经历了以下几个步骤。</p>
-<p><img src="/2018/06/16/css-渲染-Composite/TB1eabOLpXXXXX3XFXXXXXXXXXX-1093-167.jpg_720x720.jpg" alt="img"></p>
-<ul>
-<li><strong>JavaScript</strong>：一般来说，我们会使用 JavaScript 来实现一些视觉变化的效果。比如做一个动画或者往页面里添加一些 DOM 元素等。</li>
-</ul>
-<ul>
-<li><strong>Style</strong>：计算样式，这个过程是根据 CSS 选择器，对每个 DOM 元素匹配对应的 CSS 样式。这一步结束之后，就确定了每个 DOM 元素上该应用什么 CSS 样式规则。(<strong>Render Tree</strong>)</li>
-</ul>
-<ul>
-<li><strong>Layout</strong>：布局，上一步确定了每个 DOM 元素的样式规则，这一步就是具体计算每个 DOM 元素<strong>最终在屏幕上显示的大小和位置</strong>。web 页面中元素的布局是相对的，因此一个元素的布局发生变化，会联动地引发其他元素的布局发生变化。比如，<code>&lt;body&gt;</code> 元素的宽度的变化会影响其子元素的宽度，其子元素宽度的变化也会继续对其孙子元素产生影响。因此对于浏览器来说，布局过程是经常发生的。</li>
-</ul>
-<ul>
-<li><strong>Paint</strong>：绘制，本质上就是<strong>填充像素的过程</strong>。包括绘制文字、颜色、图像、边框和阴影等，也就是一个 DOM 元素所有的可视效果。一般来说，这个绘制过程是在多个层上完成的。</li>
-</ul>
-<ul>
-<li><strong>Composite</strong>：<strong>渲染层合并</strong>，由上一步可知，对页面中 DOM 元素的绘制是在多个层上进行的。在每个层上完成绘制过程之后，浏览器会将所有层按照合理的顺序合并成一个图层，然后显示在屏幕上。对于有位置重叠的元素的页面，这个过程尤其重要，因为一旦图层的合并顺序出错，将会导致元素显示异常。</li>
-</ul>
-<p>当然，本文我们只来关注 Composite 部分。</p>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/16/css-渲染-Composite/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1653,7 +1618,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">181</span>
+                  <span class="site-state-item-count">183</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1666,7 +1631,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">287</span>
+                  <span class="site-state-item-count">289</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
