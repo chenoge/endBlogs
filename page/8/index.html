@@ -869,7 +869,7 @@
       
         
           
-            <h1 id="一、line-height值"><a href="#一、line-height值" class="headerlink" title="一、line-height值"></a>一、line-height值</h1><table>
+            <h4 id="一、line-height值"><a href="#一、line-height值" class="headerlink" title="一、line-height值"></a>一、line-height值</h4><table>
 <thead>
 <tr>
 <th>normal</th>
@@ -891,17 +891,33 @@
 </tr>
 <tr>
 <td>inherit</td>
-<td>规定应该从父元素继承 line-height 属性的值。</td>
+<td>规定应该从父元素继承 <code>line-height</code> 属性的值。</td>
 </tr>
 </tbody>
 </table>
+<p>注：<code>normal</code>我们常常认为它是（或者应该是）<code>1</code>或者<code>1.2</code>，甚至也可以说，<a href="https://www.w3.org/TR/CSS2/visudet.html#propdef-line-height" target="_blank" rel="noopener">CSS规范</a>都不清楚是哪一个。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">normal: Tells user agents to set the used value to a &quot;reasonable&quot; value based on the font of the element. The value has the same meaning as &lt;number&gt;. We recommend a used value for &apos;normal&apos; between 1.0 to 1.2. The computed value is &apos;normal&apos;.</span><br></pre></td></tr></table></figure>
 <p><br></p>
-<h1 id="二、继承问题"><a href="#二、继承问题" class="headerlink" title="二、继承问题"></a>二、继承问题</h1><ul>
-<li><p>如果父级的line-height属性值<strong>有单位或百分比</strong>，那么<strong>子级继承的值则是换算后的一个具体的px级别的值</strong>； </p>
-</li>
-<li><p>而如果父级的line-height属性值<strong>没有单位</strong>，则<strong>子级会直接继承这个“数值”</strong>，而非计算后的具体值，此时子级的line-height会根据本身的font-size值重新计算得到新的line-height      值。</p>
-</li>
+<h3 id="二、继承问题"><a href="#二、继承问题" class="headerlink" title="二、继承问题"></a>二、继承问题</h3><ul>
+<li>如果父级的<code>line-height</code>属性值<strong>有单位或百分比</strong>，那么<strong>子级继承的值则是换算后的一个具体的px级别的值</strong>； </li>
+<li>而如果父级的<code>line-height</code>属性值<strong>没有单位</strong>，则<strong>子级会直接继承这个“数值”</strong>，而非计算后的具体值，此时子级的<code>line-height</code>会根据本身的<code>font-size</code>值重新计算得到新的<code>line-height</code>值。</li>
 </ul>
+<p><br></p>
+<h3 id="三、font-size-与line-height"><a href="#三、font-size-与line-height" class="headerlink" title="三、font-size 与line-height"></a>三、font-size 与line-height</h3><p>每个元素使用相同的<code>font-size</code>，但使用不同的<code>font-family</code>，但渲染出来的<code>line-height</code>是不同的。</p>
+<p>CSS 权威指南<code>基本视觉格式化</code>一章中讲到：对于行内非替换元素或者匿名文本来说， <code>font-size</code> 指定了它们的 <code>content area</code>的高度，由于<code>inline box</code> 是由 <code>content area</code> 加上<code>上下</code>的 <code>half-leading</code>构成的，那么如果元素的<code>leading</code>为 0，在这种情况下，<code>font-size</code> 指定了<code>inline box</code> 的高度。</p>
+<p><br></p>
+<h3 id="四、leading"><a href="#四、leading" class="headerlink" title="四、leading"></a>四、<a href="http://www.ituring.com.cn/article/18076" target="_blank" rel="noopener">leading</a></h3><p>1、英文字体有<strong>基线</strong>（<code>baseline</code>）和<strong>中线</strong>（<code>meanline</code>），这两条线之间就是所谓的<code>x-height</code>，即<code>小写字母x</code>的高度。基线之上的部分是<strong>上伸区域</strong>（<code>ascent</code>），基线之下的部分是<strong>下伸区域</strong>（<code>descent</code>）。</p>
+<p>2、两种说法</p>
+<p><img src="/2018/05/27/CSS-line-height继承问题/01RTdJhLw8R4.png" alt=""></p>
+<ul>
+<li><strong>现代排版软件</strong> ：两行文本的基线之间的距离是<strong>现代排版软件</strong>中所说的行距（leading） </li>
+</ul>
+<p><br></p>
+<ul>
+<li><strong>CSS</strong> ： <code>leading = line-height - font-size</code> </li>
+</ul>
+<p><img src="/2018/05/27/CSS-line-height继承问题/01RTdOdi3s7A.png" alt=""></p>
+<p><br></p>
 
           
         

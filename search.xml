@@ -694,7 +694,7 @@
   <entry>
     <title><![CDATA[line-height继承问题]]></title>
     <url>%2F2018%2F05%2F27%2FCSS-line-height%E7%BB%A7%E6%89%BF%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[一、line-height值 normal 默认。设置合理的行间距。 number 设置数字，此数字会与当前的字体尺寸相乘来设置行间距。 length 设置固定的行间距。 % 基于当前字体尺寸的百分比行间距。 inherit 规定应该从父元素继承 line-height 属性的值。 二、继承问题 如果父级的line-height属性值有单位或百分比，那么子级继承的值则是换算后的一个具体的px级别的值； 而如果父级的line-height属性值没有单位，则子级会直接继承这个“数值”，而非计算后的具体值，此时子级的line-height会根据本身的font-size值重新计算得到新的line-height 值。]]></content>
+    <content type="text"><![CDATA[一、line-height值 normal 默认。设置合理的行间距。 number 设置数字，此数字会与当前的字体尺寸相乘来设置行间距。 length 设置固定的行间距。 % 基于当前字体尺寸的百分比行间距。 inherit 规定应该从父元素继承 line-height 属性的值。 注：normal我们常常认为它是（或者应该是）1或者1.2，甚至也可以说，CSS规范都不清楚是哪一个。 1normal: Tells user agents to set the used value to a &quot;reasonable&quot; value based on the font of the element. The value has the same meaning as &lt;number&gt;. We recommend a used value for &apos;normal&apos; between 1.0 to 1.2. The computed value is &apos;normal&apos;. 二、继承问题 如果父级的line-height属性值有单位或百分比，那么子级继承的值则是换算后的一个具体的px级别的值； 而如果父级的line-height属性值没有单位，则子级会直接继承这个“数值”，而非计算后的具体值，此时子级的line-height会根据本身的font-size值重新计算得到新的line-height值。 三、font-size 与line-height每个元素使用相同的font-size，但使用不同的font-family，但渲染出来的line-height是不同的。 CSS 权威指南基本视觉格式化一章中讲到：对于行内非替换元素或者匿名文本来说， font-size 指定了它们的 content area的高度，由于inline box 是由 content area 加上上下的 half-leading构成的，那么如果元素的leading为 0，在这种情况下，font-size 指定了inline box 的高度。 四、leading1、英文字体有基线（baseline）和中线（meanline），这两条线之间就是所谓的x-height，即小写字母x的高度。基线之上的部分是上伸区域（ascent），基线之下的部分是下伸区域（descent）。 2、两种说法 现代排版软件 ：两行文本的基线之间的距离是现代排版软件中所说的行距（leading） CSS ： leading = line-height - font-size]]></content>
       <tags>
         <tag>css</tag>
         <tag>line-height</tag>
