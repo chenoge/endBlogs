@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[pushState和replaceState]]></title>
+    <url>%2F2018%2F12%2F24%2FpushState%E5%92%8CreplaceState%2F</url>
+    <content type="text"><![CDATA[window 对象通过 history 对象提供了对浏览器历史的访问。它暴露了很多有用的方法和属性，允许你在用户浏览历史中向前和向后跳转，同时——从HTML5开始——提供了对history栈中内容的操作。 123window.history.back(); // 与点击浏览器回退按钮的效果相同window.history.forward(); // 与点击浏览器前进按钮的效果相同window.history.go(-1); // 通过与当前页面相对位置，来标志某一特定页面 一、pushStatepushState() 需要三个参数: 一个状态对象， 一个标题 (目前被忽略)，和 (可选的) 一个URL。让我们来解释下这三个参数详细内容： 状态对象 状态对象state是一个JavaScript对象 popstate事件被触发时，该事件的state属性包含该历史记录状态对象的副本 状态对象可以是能被序列化的任何东西，但有640k的大小限制 标题 Firefox 目前忽略这个参数，但未来可能会用到。传递一个空字符串在这里是安全的，而在将来这是不安全的。二选一的话，你可以为跳转的state传递一个短标题。 URL 该参数定义了新的历史URL记录 注意，调用 pushState() 后浏览器并不会立即加载这个URL 新URL不必须为绝对路径。如果新URL是相对路径，那么它将被作为相对于当前URL处理 新URL必须与当前URL同源，否则 pushState() 会抛出一个异常。该参数是可选的，缺省为当前URL 1234567// http://mozilla.org/foo.html 假设当前urllet stateObj = &#123; foo: "bar" &#125;;history.pushState(stateObj, "page 2", "bar.html");// 这将使浏览器地址栏显示为 http://mozilla.org/bar.html// 但并不会导致浏览器加载 bar.html ，甚至不会检查bar.html 是否存在。 注： pushState() 绝对不会触发 hashchange 事件，即使新的URL与旧的URL仅哈希不同也是如此。vue-router 底层调用的正是history.pushState和history.replaceState。 二、replaceStatehistory.replaceState() 的使用与 history.pushState() 非常相似，区别在于 replaceState() 是修改了当前的历史记录项而不是新建一个。 replaceState() 的使用场景在于为了响应用户操作，你想要更新状态对象state或者当前历史记录的URL。 三、获取当前状态 你可以读取当前历史记录项的状态对象state，而不必等待popstate 事件， 只需要这样使用history.state 属性： 1let currentState = history.state; 四、改变referrer使用 history.pushState() 可以改变referrer，它在用户发送 XMLHttpRequest请求时在HTTP头部使用，改变state后创建的 XMLHttpRequest对象的referrer都会被改变，但超越不了同源策略。]]></content>
+      <tags>
+        <tag>pushState</tag>
+        <tag>replaceState</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[visibilityState]]></title>
     <url>%2F2018%2F12%2F20%2FvisibilityState%2F</url>
     <content type="text"><![CDATA[一、document.visibilityStatePage Visibility API 在document对象上，新增了一个document.visibilityState属性。该属性返回一个字符串，表示页面当前的可见性状态，共有三个可能的值。 hidden：页面彻底不可见 visible：页面至少一部分可见 prerender：页面即将或正在渲染，处于不可见状态 其中，hidden状态和visible状态是所有浏览器都必须支持的。prerender状态只在支持”预渲染”的浏览器上才会出现，比如 Chrome 浏览器就有预渲染功能，可以在用户不可见的状态下，预先把页面渲染出来，等到用户要浏览的时候，直接展示渲染好的网页。 只要页面可见，哪怕只露出一个角，document.visibilityState属性就返回visible。只有以下四种情况，才会返回hidden。 浏览器最小化 浏览器没有最小化，但是当前页面切换成了背景页 浏览器将要卸载（unload）页面 操作系统触发锁屏屏幕 注意，document.visibilityState属性只针对顶层窗口，内嵌的&lt;iframe&gt;页面的document.visibilityState属性由顶层窗口决定。使用 CSS 属性隐藏&lt;iframe&gt;页面（比如display: none;），并不会影响内嵌页面的可见性。 二、visibilitychange 事件只要document.visibilityState属性发生变化，就会触发visibilitychange事件，通过document.addEventListener()方法或document.onvisibilitychange属性。 1234567891011document.addEventListener('visibilitychange', function () &#123; // 用户离开了当前页面 if (document.visibilityState === 'hidden') &#123; document.title = '页面不可见'; &#125; // 用户打开或回到页面 if (document.visibilityState === 'visible') &#123; document.title = '页面可见'; &#125;&#125;); 三、Page Lifecycle API(原文)Android、iOS 和最新的 Windows 系统可以随时自主地停止后台进程，及时释放系统资源。也就是说，网页可能随时被系统丢弃掉。Page Visibility API 只在网页对用户不可见时触发，至于网页会不会被系统丢弃掉，它就无能为力了。 为了解决这个问题，W3C 新制定了一个 Page Lifecycle API，统一了网页从诞生到卸载的行为模式，并且定义了新的事件，允许开发者响应网页状态的各种转换。 有了这个 API，开发者就可以预测网页下一步的状态，从而进行各种针对性的处理。Chrome 68 支持这个 API，对于老式浏览器可以使用谷歌开发的兼容库 PageLifecycle.js。 网页的生命周期分成六个阶段，每个时刻只可能处于其中一个阶段]]></content>
@@ -1486,10 +1495,10 @@
     <content type="text"><![CDATA[一、XYZ轴以屏幕为平面，X轴的方向为宽的方向，Y轴的方向为高的方向，Z轴的方向垂直于屏幕 二、css变换函数 rotateX(angle)：绕着X轴旋转 rotateY(angle)：绕着Y轴旋转 rotateZ(angle)：绕着Z轴旋转 translateX(n)：沿着X轴位移 translateY(n)：沿着Y轴位移 translateZ(n)：沿着Z轴位移 三、属性1、transform-style属性123transform-style: flat | preserve-3d/*flat值为默认值，表示所有子元素在2D平面呈现。*//*preserve-3d表示所有子元素在3D空间中呈现。*/ 如果对一个元素设置了transform-style的值为flat，则该元素的所有子元素都将被平展到该元素的2D平面中进行呈现。沿着X轴或Y轴方向旋转该元素将导致位于正或负Z轴位置的子元素显示在该元素的平面上，而不是它的前面或者后面。 如果你的元素设置了transform-style值为preserve-3d，就不能为了防止子元素溢出容器而设置overflow值为hidden。 2、perspective属性1perspective：none | &lt;length&gt; 简单的理解为视距，用来设置用户和元素3D空间Z平面之间的距离。 perspective属性的默认值为none，表示无限的角度来看3D物体，但看上去是平的。 另一个值&lt;length&gt;接受一个长度单位大于0的值。而且其单位不能为百分比值。 &lt;length&gt;值越大，角度出现的越远，从而创建一个相当低的强度和非常小的3D空间变化。 反之，此值越小，角度出现的越近，从而创建一个高强度的角度和一个大型3D变化。 为了使用原始圆（轮廓）看起来出现在Z轴上（虚线圆），画布上的实体圆将扩大两部，如浅蓝色的圆。在底部图中显示，圆按比例缩小，致使虚线圆出现在画布后面，并且z的大小是距原始位置三分之一。 perspective用在舞台元素上（变形元素们的共同父元素）；perspective()就是用在当前变形元素上，并且可以与其他的transform函数一起使用。 3、perspective-origin属性主要用来决定perspective属性的源点角度。它实际上设置了X轴和Y轴位置，在该位置观看者好像在观看该元素的子元素。 4、backface-visibility属性12backface-visibility: visible | hidden/**决定元素旋转背面是否可见 */]]></content>
       <tags>
         <tag>css</tag>
+        <tag>transform</tag>
         <tag>3D</tag>
         <tag>变换</tag>
         <tag>旋转</tag>
-        <tag>transform</tag>
         <tag>perspective</tag>
       </tags>
   </entry>
