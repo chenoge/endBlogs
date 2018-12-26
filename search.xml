@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[时间戳、时区以及时间格式]]></title>
+    <url>%2F2018%2F12%2F26%2F%E6%97%B6%E9%97%B4%E6%88%B3%E3%80%81%E6%97%B6%E5%8C%BA%E4%BB%A5%E5%8F%8A%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[一、时间戳时间戳是指格林威治时间1970年01月01日00时00分00秒(北京时间1970年01月01日08时00分00秒)起至现在的总毫秒数。 注：时间戳是不会跟着时区的改变而改变，同一时刻的时间戳都是相同的。 二、GMT 和UTC格林威治标准时间GMT1十七世纪，格林威治皇家天文台为了海上霸权的扩张计画而进行天体观测。1675年旧皇家观测所(Old Royal Observatory) 正式成立，到了1884年决定以通过格林威治的子午线作为划分地球东西两半球的经度零度。观测所门口墙上有一个标志24小时的时钟，显示当下的时间，对全球而言，这里所设定的时间是世界时间参考点，全球都以格林威治的时间作为标准来设定时间，这就是我们耳熟能详的「格林威治标准时间(Greenwich Mean Time，简称G.M.T.)的由来，标示在手表上，则代表此表具有两地时间功能，也就是同时可以显示原居地和另一个国度的时间。 世界协调时间UTC1多数的两地时间表都以GMT来表示，但也有些两地时间表上看不到GMT字样，出现的反而是UTC这3个英文字母，究竟何谓UTC？事实上，UTC指的是Coordinated Universal Time－世界协调时间（又称世界标准时间、世界统一时间），是经过平均太阳时(以格林威治时间GMT为准)、地轴运动修正后的新时标以及以「秒」为单位的国际原子时所综合精算而成的时间，计算过程相当严谨精密，因此若以「世界标准时间」的角度来说，UTC比GMT来得更加精准。其误差值必须保持在0.9秒以内，若大于0.9秒则由位于巴黎的国际地球自转事务中央局发布闰秒，使UTC与地球自转周期一致。所以基本上UTC的本质强调的是比GMT更为精确的世界时间标准，不过对于现行表款来说，GMT与UTC的功能与精确度是没有差别的。 注： 两者的区别在于前者是一个天文上的概念，而后者是基于一个原子钟。 在UTC中，每一年或两年会有一个“闰秒”。 三、时区整个地球分为二十四时区，每个时区都有自己的本地时间 。本地时间 = UTC + 时区差，时区差东为正，西为负。因此，把东八时区（北京时间 ）记为 UTC+8。 四、几种表示时间的格式/标准1、RFC-2822标准格式，形如：1234// GMT+0800(CST)代表东八区// CST(china standard time)表示中国标准时间Sun Apr 08 2018 11:38:39 GMT+0800(CST) 2、ISO-8601标准格式，其中一种常见的格式形如：122018-04-08T11:38:39+08:00 // 日期用&apos;-&apos;相隔，与时间用&apos;T&apos;连接2018-04-08T11:38:39Z // Z代表UTC时间，Z也可写成00:00 ISO 8601的标准格式是：YYYY-MM-DDTHH:mm:ss.sssZ，分别表示： 123456789YYYY：年份，0000 ~ 9999MM：月份，01 ~ 12DD：日，01 ~ 31T：分隔日期和时间HH：小时，00 ~ 24mm：分钟，00 ~ 59ss：秒，00 ~ 59.sss：毫秒Z：时区，可以是：Z（UFC）、+HH:mm、-HH:mm 五、JS DateJavaScript内部，所有日期和时间都储存为一个整数，表示当前时间距离1970年1月1日00:00:00的毫秒数，正负的范围为基准时间前后各1亿天。 1234567891011// 依据系统设置的当前时间来创建一个Date对象new Date();// 时间戳new Date(value);// 表示日期的字符串值。该字符串应该能被 Date.parse() 方法识别new Date(dateString);// 当Date作为构造函数调用并传入多个参数时，所定义参数代表的是当地时间new Date(year, month[, day[, hour[, minutes[, seconds[, milliseconds]]]]]); 1、new Date(dateString)在ES5之中，如果日期采用连词线（-）格式分隔，且具有前导0，JavaScript会认为这是一个ISO格式的日期字符串，导致返回的时间是以UTC时区计算的。 12345new Date('2014-01-01')// Wed Jan 01 2014 08:00:00 GMT+0800 (CST)new Date('2014-1-1')// Wed Jan 01 2014 00:00:00 GMT+0800 (CST) 在ES5之中，如果日期采用连词线（-）格式分隔，且没有前导0，JavaScript引擎假设用户处于本地时区。 ES6 改变了这种做法，规定凡是没有指定时区的日期字符串，一律认定用户处于本地时区。 对于其他格式的日期字符串，一律视为非ISO格式，采用本地时区作为计时标准。 12345new Date('2014-12-11')// Thu Dec 11 2014 08:00:00 GMT+0800 (CST)new Date('2014/12/11')// Thu Dec 11 2014 00:00:00 GMT+0800 (CST)]]></content>
+      <tags>
+        <tag>时间戳</tag>
+        <tag>时区</tag>
+        <tag>时间格式</tag>
+        <tag>UTC</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[pushState和replaceState]]></title>
     <url>%2F2018%2F12%2F24%2FpushState%E5%92%8CreplaceState%2F</url>
     <content type="text"><![CDATA[window 对象通过 history 对象提供了对浏览器历史的访问。它暴露了很多有用的方法和属性，允许你在用户浏览历史中向前和向后跳转，同时——从HTML5开始——提供了对history栈中内容的操作。 123window.history.back(); // 与点击浏览器回退按钮的效果相同window.history.forward(); // 与点击浏览器前进按钮的效果相同window.history.go(-1); // 通过与当前页面相对位置，来标志某一特定页面 一、pushStatepushState() 需要三个参数: 一个状态对象， 一个标题 (目前被忽略)，和 (可选的) 一个URL。让我们来解释下这三个参数详细内容： 状态对象 状态对象state是一个JavaScript对象 popstate事件被触发时，该事件的state属性包含该历史记录状态对象的副本 状态对象可以是能被序列化的任何东西，但有640k的大小限制 标题 Firefox 目前忽略这个参数，但未来可能会用到。传递一个空字符串在这里是安全的，而在将来这是不安全的。二选一的话，你可以为跳转的state传递一个短标题。 URL 该参数定义了新的历史URL记录 注意，调用 pushState() 后浏览器并不会立即加载这个URL 新URL不必须为绝对路径。如果新URL是相对路径，那么它将被作为相对于当前URL处理 新URL必须与当前URL同源，否则 pushState() 会抛出一个异常。该参数是可选的，缺省为当前URL 1234567// http://mozilla.org/foo.html 假设当前urllet stateObj = &#123; foo: "bar" &#125;;history.pushState(stateObj, "page 2", "bar.html");// 这将使浏览器地址栏显示为 http://mozilla.org/bar.html// 但并不会导致浏览器加载 bar.html ，甚至不会检查bar.html 是否存在。 注： pushState() 绝对不会触发 hashchange 事件，即使新的URL与旧的URL仅哈希不同也是如此。vue-router 底层调用的正是history.pushState和history.replaceState。 二、replaceStatehistory.replaceState() 的使用与 history.pushState() 非常相似，区别在于 replaceState() 是修改了当前的历史记录项而不是新建一个。 replaceState() 的使用场景在于为了响应用户操作，你想要更新状态对象state或者当前历史记录的URL。 三、获取当前状态 你可以读取当前历史记录项的状态对象state，而不必等待popstate 事件， 只需要这样使用history.state 属性： 1let currentState = history.state; 四、改变referrer使用 history.pushState() 可以改变referrer，它在用户发送 XMLHttpRequest请求时在HTTP头部使用，改变state后创建的 XMLHttpRequest对象的referrer都会被改变，但超越不了同源策略。]]></content>
@@ -1495,10 +1506,10 @@
     <content type="text"><![CDATA[一、XYZ轴以屏幕为平面，X轴的方向为宽的方向，Y轴的方向为高的方向，Z轴的方向垂直于屏幕 二、css变换函数 rotateX(angle)：绕着X轴旋转 rotateY(angle)：绕着Y轴旋转 rotateZ(angle)：绕着Z轴旋转 translateX(n)：沿着X轴位移 translateY(n)：沿着Y轴位移 translateZ(n)：沿着Z轴位移 三、属性1、transform-style属性123transform-style: flat | preserve-3d/*flat值为默认值，表示所有子元素在2D平面呈现。*//*preserve-3d表示所有子元素在3D空间中呈现。*/ 如果对一个元素设置了transform-style的值为flat，则该元素的所有子元素都将被平展到该元素的2D平面中进行呈现。沿着X轴或Y轴方向旋转该元素将导致位于正或负Z轴位置的子元素显示在该元素的平面上，而不是它的前面或者后面。 如果你的元素设置了transform-style值为preserve-3d，就不能为了防止子元素溢出容器而设置overflow值为hidden。 2、perspective属性1perspective：none | &lt;length&gt; 简单的理解为视距，用来设置用户和元素3D空间Z平面之间的距离。 perspective属性的默认值为none，表示无限的角度来看3D物体，但看上去是平的。 另一个值&lt;length&gt;接受一个长度单位大于0的值。而且其单位不能为百分比值。 &lt;length&gt;值越大，角度出现的越远，从而创建一个相当低的强度和非常小的3D空间变化。 反之，此值越小，角度出现的越近，从而创建一个高强度的角度和一个大型3D变化。 为了使用原始圆（轮廓）看起来出现在Z轴上（虚线圆），画布上的实体圆将扩大两部，如浅蓝色的圆。在底部图中显示，圆按比例缩小，致使虚线圆出现在画布后面，并且z的大小是距原始位置三分之一。 perspective用在舞台元素上（变形元素们的共同父元素）；perspective()就是用在当前变形元素上，并且可以与其他的transform函数一起使用。 3、perspective-origin属性主要用来决定perspective属性的源点角度。它实际上设置了X轴和Y轴位置，在该位置观看者好像在观看该元素的子元素。 4、backface-visibility属性12backface-visibility: visible | hidden/**决定元素旋转背面是否可见 */]]></content>
       <tags>
         <tag>css</tag>
-        <tag>transform</tag>
         <tag>3D</tag>
         <tag>变换</tag>
         <tag>旋转</tag>
+        <tag>transform</tag>
         <tag>perspective</tag>
       </tags>
   </entry>
