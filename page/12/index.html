@@ -266,6 +266,180 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/04/14/mysql-regexp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/14/mysql-regexp/" itemprop="url">mysql-regexp</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-14T18:51:45+08:00">
+                2018-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="REGEXP-操作符"><a href="#REGEXP-操作符" class="headerlink" title="REGEXP 操作符"></a>REGEXP 操作符</h1><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>^</code></td>
+<td>匹配输入字符串的开始位置。如果设置了 RegExp 对象的 <strong>Multiline</strong> 属性，<code>^</code> 也匹配<code>&#39;\n&#39;</code>或<code>&#39;\r&#39;</code> 之后的位置。</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>匹配输入字符串的结束位置。如果设置了RegExp 对象的 <strong>Multiline</strong> 属性，<code>$</code>也匹配 <code>&#39;\n&#39;</code>或<code>&#39;\r&#39;</code>之前的位置。</td>
+</tr>
+<tr>
+<td>.</td>
+<td>匹配除<code>&quot;\n&quot;</code>之外的任何单个字符。要匹配包括 <code>&#39;\n&#39;</code>在内的任何字符，请使用象 <code>&#39;[.\n]&#39;</code>的模式。</td>
+</tr>
+<tr>
+<td><code>[...]</code></td>
+<td>字符集合。匹配所包含的任意一个字符。例如， <code>&#39;[abc]&#39;</code>可以匹配 <code>&quot;plain&quot;</code>中的<code>&#39;a&#39;</code>。</td>
+</tr>
+<tr>
+<td><code>[^...]</code></td>
+<td>负值字符集合。匹配未包含的任意字符。</td>
+</tr>
+<tr>
+<td>`p1\</td>
+<td>p2\</td>
+<td>p3`</td>
+<td>匹配 p1 或 p2 或 p3。例如，`’z\</td>
+<td>food’ <code>能匹配</code>“z” <code>或</code>“food”<code>。</code>‘(z\</td>
+<td>f)ood’ <code>则匹配</code>“zood” <code>或</code>“food”`。</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>匹配前面的子表达式零次或多次。例如，<code>zo*</code> 能匹配<code>&quot;z&quot;</code>以及 <code>&quot;zoo&quot;</code>。* 等价于<code>{0,}</code>。</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>匹配前面的子表达式一次或多次。例如，<code>&#39;zo+&#39;</code>能匹配 <code>&quot;zo&quot;</code>以及<code>&quot;zoo&quot;</code>，但不能匹配 <code>&quot;z&quot;</code>。+ 等价于<code>{1,}</code>。</td>
+</tr>
+<tr>
+<td><code>{n}</code></td>
+<td>n 是一个非负整数。匹配确定的 n 次。例如，<code>&#39;o{2}&#39;</code> 不能匹配 <code>&quot;Bob&quot;</code>中的 <code>&#39;o&#39;</code>，但是能匹配 <code>&quot;food&quot;</code> 中的两个 o。</td>
+</tr>
+<tr>
+<td><code>{n,m}</code></td>
+<td>m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-- 查找name字段中以元音字符开头或以&apos;ok&apos;字符串结尾的所有数据</span><br><span class="line">SELECT name FROM person_tbl WHERE name REGEXP &apos;^[aeiou]|ok$&apos;;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/04/14/mysql-limit-offset/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1473,147 +1647,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/04/10/webpack-路径问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/10/webpack-路径问题/" itemprop="url">webpack-路径问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-10T19:53:54+08:00">
-                2018-04-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="一、context"><a href="#一、context" class="headerlink" title="一、context"></a>一、context</h1><font color="#A52A2A" size="4">context 是 webpack 编译时的<strong>基础目录</strong>，<strong>webpack会根据此目录去查找入口起点（entry）。</strong></font>
-
-<p>若不配置，默认值为当前目录，webpack设置 context 默认值<a href="https://github.com/webpack/webpack/blob/master/lib/WebpackOptionsDefaulter.js#L16" target="_blank" rel="noopener">代码</a>：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.set(<span class="string">"context"</span>, process.cwd());</span><br></pre></td></tr></table></figure>
-<p><strong>process.cwd()即webpack运行所在的目录（等同package.json所在目录）。</strong></p>
-<p>context 应该配置为绝对路径，假如入口起点为src/main.js，则可以配置：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    context: path.resolve(<span class="string">'./src'</span>),</span><br><span class="line">    entry: <span class="string">'./main.js'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>此时 entry 不能再配置为’./src/main.js’，因为 webpack 会相对于 context 配置的 src 目录区查找入口起点（main.js），而 main.js 就在此目录下，所以应当将 entry 配置为当前目录（./）。 </p>
-<p><br></p>
-<p>context 有什么实际作用？官方文档的解释是使得你的配置独立于工程目录 「This makes your configuration independent from CWD (current working directory)」。怎么理解？举个例子，在分离开发生产配置文件时候，一般把 webpack.config 放到 build 文件夹下，此时 entry 却不用考虑相对于 build 目录来配置，仍然要相对于 context 来配置，这也就是所谓的<strong>独立于工程目录</strong>。 </p>
-<p><br></p>
-<p>需要注意的是，output 的配置项和 context 没有关系，但是有些插件的配置项和 context 有关，后面会说明。</p>
-<p><br></p>
-<h1 id="二、output"><a href="#二、output" class="headerlink" title="二、output"></a>二、output</h1><h4 id="1、output-path"><a href="#1、output-path" class="headerlink" title="1、output.path"></a>1、output.path</h4><p><strong>打包文件输出的目录</strong>，建议配置为绝对路径（相对路径不会报错），<strong>默认值和 context 的默认值一样，都是process.cwd()。</strong>除了常规的配置方式，还可以在 path 中用使用 [hash] 模板，比如配置：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">    path: path.resolve(<span class="string">'./dist/[hash:8]/'</span>),</span><br><span class="line">    filename: <span class="string">'[name].js'</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>这里的 hash 值是编译过程的 hash，如果被打包进来的内容改变了，那么 hash 值也会发生改变。这个可以用于版本回滚。为方便做持续集成等，你也可以配置：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">    path: path.resolve(<span class="string">`./dist/<span class="subst">$&#123;<span class="built_in">Date</span>.now()&#125;</span>/`</span>),</span><br><span class="line">    filename: <span class="string">'[name].js'</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/10/webpack-路径问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1664,7 +1697,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">188</span>
+                  <span class="site-state-item-count">189</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1677,7 +1710,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">302</span>
+                  <span class="site-state-item-count">305</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -1714,7 +1747,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

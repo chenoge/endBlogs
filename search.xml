@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JS在IE中的兼容问题]]></title>
+    <url>%2F2019%2F01%2F02%2FJS%E5%9C%A8IE%E4%B8%AD%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[SCRIPT1010缺少标识符 ，一般是在IE下会出现这个问题 1、出现了多余的逗号：”,” 2、使用了js中保留的关键词，如： default, delete 等 SCRIPT1028123456let a = &#123; x: 1, y: 2,&#125;;alert(a.x); 如果在IE浏览器下，会报告错误：SCRIPT1028: 缺少标识符、字符串或数字。json最后一项是不允许有逗号的，为了更好的兼容各个浏览器，json最后的逗号最好不加！]]></content>
+      <tags>
+        <tag>js</tag>
+        <tag>IE</tag>
+        <tag>兼容</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[url长度限制]]></title>
     <url>%2F2018%2F12%2F29%2Furl%E9%95%BF%E5%BA%A6%E9%99%90%E5%88%B6%2F</url>
     <content type="text"><![CDATA[一、HTTP协议HTTP协议不对url的长度设置任何先验限制 服务器必须能够处理它们所服务的任何资源的URI，并且如果它们提供可以生成这种URI的基于GET的表单，则应该能够处理无限长度的URI。 如果URI长于服务器可以处理的长度，服务器应该返回414（Request-URI Too Long）状态 。 二、浏览器1、IE：IE浏览器对url长度限制是2083（2K+53）字符，超过这个限制，则自动截断 若是form提交则提交按钮不起作用 注：实测超过2048字符会截断（2018-12-3） 2、firefox：firefox浏览器对url长度限制为 65,536字符 实际上有效的URL最大长度不少于100,000个字符 3、chrome：chrome浏览器对url长度限制为8182字符 4、Safari：Safari浏览器对url长度限制至少为80,000字符 5、Opera：Opera 浏览器对url长度限制为190 000字符 注： URL只能使用英文字母、阿拉伯数字和某些标点符号。不能使用其他文字和符号，否则必须编码后使用 即使是2048个ASCII字符也能满足大多数的使用场景，可以放心使用。 三、服务器1、Apache：Apache能接受url长度限制为8,192 字符 2、ngnix：可以通过修改配置来改变url长度限制 12client_header_buffer_size 1k # 默认值large_client_header_buffers 4 4k/8k # 默认值 四、URL编码原文 网页路径的编码，用的是utf-8编码 1http://zh.wikipedia.org/wiki/春节 查询字符串的编码，用的是操作系统的默认编码 1http://www.baidu.com/s?wd=春节 GET和POST方法的编码，用的是网页的编码 12// 在已打开的网页上，直接用Get或Post方法发出HTTP请求&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;charset=xxxx&quot;&gt; 在Ajax调用中，IE总是采用GB2312编码（操作系统的默认编码），而Firefox总是采用utf-8编码 1三种情况都是由浏览器发出HTTP请求，最后一种情况则是由Javascript生成HTTP请求，也就是Ajax调用 注：文章太久远了，可能都默认utf-8了（猜测，未验证2018-12-30）]]></content>
