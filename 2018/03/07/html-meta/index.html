@@ -88,7 +88,7 @@
 <meta property="og:description" content="一、name属性name属性主要用于描述网页，与之对应的属性值为content content中的内容是对name填入类型的具体描述，便于搜索引擎查找以及分类信息 meta标签中name属性语法格式是： 1&amp;lt;meta name=&quot;参数&quot; content=&quot;具体的描述&quot;&amp;gt;  A. keywords(关键字)说明：用于告诉搜索引擎，你网页的关键字 1&amp;lt;meta name=&quot;keywo">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://www.yf-gz.cn/2018/03/07/html-meta/D:/littleDemo/blogs/source/_posts/html-meta/1.png">
-<meta property="og:updated_time" content="2018-06-23T11:31:23.933Z">
+<meta property="og:updated_time" content="2019-01-03T05:54:27.787Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="html-meta">
 <meta name="twitter:description" content="一、name属性name属性主要用于描述网页，与之对应的属性值为content content中的内容是对name填入类型的具体描述，便于搜索引擎查找以及分类信息 meta标签中name属性语法格式是： 1&amp;lt;meta name=&quot;参数&quot; content=&quot;具体的描述&quot;&amp;gt;  A. keywords(关键字)说明：用于告诉搜索引擎，你网页的关键字 1&amp;lt;meta name=&quot;keywo">
@@ -395,6 +395,60 @@
 <li><code>X-UA-Compatible</code> 中的<code>IE=edge</code>指令，可以让IE或者调用IE内核的浏览器，使用<strong>标准模式</strong>渲染网页，注意这里和“Edge浏览器”无关，只是恰巧重名罢了。</li>
 <li><code>Google Chrome Frame</code>(谷歌内嵌浏览器框架GCF)：使用的是Google Chrome浏览器内核来渲染，而且支持IE6、7、8等多个版本的IE浏览器 </li>
 </ul>
+<table>
+<thead>
+<tr>
+<th>X-UA-Compatible值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IE=5</td>
+<td>让浏览器使用Quirks mode来显示，实际上是使用Internet Explorer 7 的 Quirks 模式来显示内容，这个模式和IE5非常相似。</td>
+</tr>
+<tr>
+<td>IE=edge</td>
+<td>这个设置是让IE使用当前的最高版本进行文档的解析，官方文档指明，edge模式仅适用在测试环境，不建议在生产环境中使用</td>
+</tr>
+<tr>
+<td>IE=7</td>
+<td>使用标准IE7来处理</td>
+</tr>
+<tr>
+<td>IE=EmulateIE7</td>
+<td>模拟IE7来处理，遵循 &lt;!DOCTYPE&gt; 指令，如果文档有当前有一个合法的&lt;!DOCTYPE&gt;，就使用IE7模式，否者使用Quirks模式（Internet Explorer 5 Quirks），对于大部分网站来说，这是首选的兼容性模式</td>
+</tr>
+<tr>
+<td>IE=8</td>
+<td>标准IE8</td>
+</tr>
+<tr>
+<td>IE=EmulateIE8</td>
+<td>模拟IE8，遵循 &lt;!DOCTYPE&gt; 指令，参照IE=EmulateIE7说明</td>
+</tr>
+<tr>
+<td>IE=9</td>
+<td>标准IE9</td>
+</tr>
+<tr>
+<td>IE=EmulateIE9</td>
+<td>模拟IE9，遵循 &lt;!DOCTYPE&gt; 指令，参照IE=EmulateIE7说明</td>
+</tr>
+<tr>
+<td>chrome=1</td>
+<td>强制使用Chrome，需要IE下Chrome插件支持</td>
+</tr>
+<tr>
+<td>IE=EmulateIE10</td>
+<td>模拟IE10</td>
+</tr>
+<tr>
+<td>IE=10</td>
+<td>标准IE10，遵循 &lt;!DOCTYPE&gt; 指令，参照IE=EmulateIE7说明</td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
 <h4 id="C-cache-control-指定请求和响应遵循的缓存机制"><a href="#C-cache-control-指定请求和响应遵循的缓存机制" class="headerlink" title="C. cache-control(指定请求和响应遵循的缓存机制)"></a>C. cache-control(指定请求和响应遵循的缓存机制)</h4><p>说明：指导浏览器如何缓存某个响应以及缓存多长时间</p>
 <p><img src="/2018/03/07/html-meta/D:/littleDemo\blogs\source\_posts\html-meta\1.png" alt=""></p>
