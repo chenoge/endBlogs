@@ -266,6 +266,137 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/04/30/linux-ln链接/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/30/linux-ln链接/" itemprop="url">linux-ln链接</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-30T17:04:03+08:00">
+                2018-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="一、使用方式：ln-option-source-file-dist-file"><a href="#一、使用方式：ln-option-source-file-dist-file" class="headerlink" title="一、使用方式：ln [option] source_file dist_file"></a>一、使用方式：ln [option] source_file dist_file</h1><ul>
+<li>-f 建立时，将同档案名删除</li>
+<li>-i 删除前进行询问</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>建立abc的软连接 </span><br><span class="line">ln -s abc cde</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>建立abc的硬连接</span><br><span class="line">ln abc cde</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h1 id="二、软链接与硬链接的区别"><a href="#二、软链接与硬链接的区别" class="headerlink" title="二、软链接与硬链接的区别"></a>二、软链接与硬链接的区别</h1><p>硬链接可认为是一个文件拥有两个文件名，而软链接则是系统新建一个链接文件，此文件指向其所要指的文件 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln  -s   /root/lntest/source/    /root/lntest/dist/</span><br></pre></td></tr></table></figure>
+<p>（1）软连接可以跨文件系统 ，硬连接不可以 。实践的方法就是用共享文件把windows下的 aa.txt文本文档连接到linux下/root目录下。ln -s  aa.txt  /root连接成功 。ln  aa.txt  /root失败 。 </p>
+<p>（2）关于 I节点的问题 。硬连接不管有多少个，都指向的是同一个I节点，会把 结点连接数增加，只要结点的连接数不是 0，文件就一直存在，不管你删除的是源文件还是 连接的文件 。只要有一个存在 ，文件就存在（其实也不分什么源文件连接文件的 ，因为他们指向都是同一个 I节点）。 当你修改源文件或者连接文件任何一个的时候 ，其他的文件都会做同步的修改。</p>
+<p>（3）软链接不直接使用i节点号作为文件指针,而是使用文件路径名作为指针。所以删除连接文件对源文件无影响，但是删除源文件，连接文件就会找不到要指向的文件 。软链接有自己的inode,并在磁盘上有一小片空间存放路径名. </p>
+<p>​                             </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/04/29/JS-replace/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1433,151 +1564,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/04/14/mysql-事务/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/14/mysql-事务/" itemprop="url">mysql-事务</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-14T20:11:32+08:00">
-                2018-04-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="事务控制语句"><a href="#事务控制语句" class="headerlink" title="事务控制语句"></a>事务控制语句</h1><ul>
-<li><strong>BEGIN</strong>或<strong>START TRANSACTION</strong>；显式地开启一个事务；</li>
-</ul>
-<ul>
-<li><strong>COMMIT</strong>或<strong>COMMIT WORK</strong>，COMMIT提交事务，并使已对数据库进行的所有修改称为永久性的；</li>
-</ul>
-<ul>
-<li><strong>ROLLBACK</strong>或<strong>ROLLBACK WORK</strong>，结束用户的事务，并撤销正在进行的所有未提交的修改；</li>
-</ul>
-<ul>
-<li><strong>SAVEPOINT identifier</strong>；SAVEPOINT允许在事务中创建一个保存点，一个事务中可以有多个SAVEPOINT；</li>
-</ul>
-<ul>
-<li><strong>RELEASE SAVEPOINT identifier</strong>；删除一个事务的保存点，当没有指定的保存点时，执行该语句会抛出一个异常；</li>
-</ul>
-<ul>
-<li><strong>ROLLBACK TO identifier</strong>；把事务回滚到标记点；</li>
-</ul>
-<ul>
-<li><strong>SET TRANSACTION</strong>；用来设置事务的隔离级别。InnoDB存储引擎提供事务的隔离级别有READ UNCOMMITTED、READ COMMITTED、REPEATABLE READ和SERIALIZABLE。</li>
-</ul>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/14/mysql-事务/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1628,7 +1614,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">189</span>
+                  <span class="site-state-item-count">190</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1641,7 +1627,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">305</span>
+                  <span class="site-state-item-count">306</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

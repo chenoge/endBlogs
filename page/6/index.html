@@ -266,6 +266,140 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/07/25/offsetParent-offsetTop-offsetHeight/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/25/offsetParent-offsetTop-offsetHeight/" itemprop="url">offsetParent-offsetTop-offsetHeight</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-25T13:31:30+08:00">
+                2018-07-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="offsetParent"><a href="#offsetParent" class="headerlink" title="offsetParent"></a>offsetParent</h1><p><strong>HTMLElement.offsetParent</strong> 是一个只读属性，返回一个指向<strong>最近的</strong>包含该元素的<strong>定位元素</strong>。</p>
+<ul>
+<li>如果没有定位的元素，则 <code>offsetParent</code> 为最近的 <code>table</code>, <code>table cell</code> 或根元素（标准模式下为 <code>html</code>；quirks 模式下为 <code>body</code>）</li>
+<li>当元素的 <code>style.display</code> 设置为 “none” 时，<code>offsetParent</code> 返回 <code>null</code>。</li>
+<li><code>offsetParent</code> 很有用，因为 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetTop" target="_blank" rel="noopener"><code>offsetTop</code></a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetLeft" target="_blank" rel="noopener"><code>offsetLeft</code></a> 都是相对于其内边距边界的</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">parentObj = element.offsetParent;</span><br><span class="line"><span class="comment">//parentObj 是一个对象引用，当前元素相对于该对象偏移（offset）。</span></span><br></pre></td></tr></table></figure>
+<h4 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性:"></a>兼容性:</h4><ul>
+<li>在 Webkit 中，如果元素为隐藏的（该元素或其祖先元素的 <code>style.display</code> 为 “none”），或者该元素的 <code>style.position</code> 被设为 “fixed”，则该属性返回 <code>null</code>。</li>
+<li>在 IE 9 中，如果该元素的 <code>style.position</code> 被设置为 “fixed”，则该属性返回 <code>null</code>。（<code>display:none</code> 无影响。）</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/25/offsetParent-offsetTop-offsetHeight/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/07/21/点击取词-Selection和Range/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1405,133 +1539,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/06/27/nginx-limit限速/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/27/nginx-limit限速/" itemprop="url">nginx-limit限速</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-27T21:27:03+08:00">
-                2018-06-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="一、limit-conn"><a href="#一、limit-conn" class="headerlink" title="一、limit_conn"></a>一、<strong>limit_conn</strong></h1><h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Syntax:	limit_conn zone number;</span><br><span class="line">Context:	http, server, location</span><br><span class="line"><span class="comment"># zone 特定键值</span></span><br><span class="line"><span class="comment"># number 最大允许连接数</span></span><br></pre></td></tr></table></figure>
-<p>设置<code>特定键值</code>的<code>共享内存区域</code>和<code>最大允许连接数</code>。超过此限制时，服务器将返回错误以回复请求。</p>
-<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">limit_conn_zone</span> <span class="variable">$binary_remote_addr</span> zone=perip:<span class="number">10m</span>;</span><br><span class="line">    <span class="attribute">limit_conn_zone</span> <span class="variable">$server_name</span> zone=perserver:<span class="number">10m</span>;</span><br><span class="line">    <span class="attribute">limit_conn_zone</span> <span class="variable">$server_name</span> zone=peradd:<span class="number">10m</span>;</span><br><span class="line">    </span><br><span class="line">    ...</span><br><span class="line">        </span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">limit_conn</span> perip <span class="number">10</span>;</span><br><span class="line">        <span class="attribute">limit_conn</span> perserver <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> /download/ &#123;</span><br><span class="line">            <span class="attribute">limit_conn</span> peradd <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># perip 、perserver 和 peradd  是自定义的特定键值</span></span><br><span class="line"><span class="comment"># 分别标志着某个共享内存区域</span></span><br></pre></td></tr></table></figure>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/27/nginx-limit限速/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1582,7 +1589,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">189</span>
+                  <span class="site-state-item-count">190</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1595,7 +1602,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">305</span>
+                  <span class="site-state-item-count">306</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
