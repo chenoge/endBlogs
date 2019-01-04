@@ -266,6 +266,428 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/30/CSS-flex瀑布流布局/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/30/CSS-flex瀑布流布局/" itemprop="url">flex瀑布流布局</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-30T15:42:05+08:00">
+                2018-05-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"masonry"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item__content"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item__content item__content--small"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.masonry</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">flex-flow</span>: column wrap;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: auto;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*缺点：需要设置一个固定的height*/</span></span><br><span class="line">    @<span class="keyword">media</span> screen and (min-width: 400px) &#123;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">1600px</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @<span class="keyword">media</span> screen and (min-width: 600px) &#123;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">1300px</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @<span class="keyword">media</span> screen and (min-width: 800px) &#123;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">1100px</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @<span class="keyword">media</span> screen and (min-width: 1100px) &#123;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">800px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/29/CSS-自定义webkit滑动条/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/29/CSS-自定义webkit滑动条/" itemprop="url">自定义scrollbar</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-29T18:51:55+08:00">
+                2018-05-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="一、滚动条相关伪元素"><a href="#一、滚动条相关伪元素" class="headerlink" title="一、滚动条相关伪元素"></a>一、滚动条相关伪元素</h4><ul>
+<li><strong>::-webkit-scrollbar</strong> —      整个滚动条.</li>
+<li><strong>::-webkit-scrollbar-button</strong> —      滚动条上的按钮 (上下箭头).</li>
+<li><strong>::-webkit-scrollbar-thumb</strong> —      滚动条上的滚动滑块.</li>
+<li><strong>::-webkit-scrollbar-track</strong> —      滚动条轨道.</li>
+<li><strong>::-webkit-scrollbar-track-piece</strong> —      滚动条没有滑块的轨道部分.</li>
+<li><strong>::-webkit-scrollbar-corner</strong> —      当同时有垂直滚动条和水平滚动条时交汇的部分.</li>
+<li><strong>::-webkit-resizer</strong> —      某些元素的corner部分的部分样式(例:textarea的可拖动按钮).</li>
+</ul>
+<p><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/29/CSS-自定义webkit滑动条/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/27/CSS-line-height继承问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/27/CSS-line-height继承问题/" itemprop="url">line-height继承问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-27T23:21:48+08:00">
+                2018-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="一、line-height值"><a href="#一、line-height值" class="headerlink" title="一、line-height值"></a>一、line-height值</h4><table>
+<thead>
+<tr>
+<th>normal</th>
+<th>默认。设置合理的行间距。</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>number</td>
+<td>设置数字，此数字会与当前的字体尺寸相乘来设置行间距。</td>
+</tr>
+<tr>
+<td>length</td>
+<td>设置固定的行间距。</td>
+</tr>
+<tr>
+<td>%</td>
+<td>基于当前字体尺寸的百分比行间距。</td>
+</tr>
+<tr>
+<td>inherit</td>
+<td>规定应该从父元素继承 <code>line-height</code> 属性的值。</td>
+</tr>
+</tbody>
+</table>
+<p>注：<code>normal</code>我们常常认为它是（或者应该是）<code>1</code>或者<code>1.2</code>，甚至也可以说，<a href="https://www.w3.org/TR/CSS2/visudet.html#propdef-line-height" target="_blank" rel="noopener">CSS规范</a>都不清楚是哪一个。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">normal: Tells user agents to set the used value to a &quot;reasonable&quot; value based on the font of the element. The value has the same meaning as &lt;number&gt;. We recommend a used value for &apos;normal&apos; between 1.0 to 1.2. The computed value is &apos;normal&apos;.</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h3 id="二、继承问题"><a href="#二、继承问题" class="headerlink" title="二、继承问题"></a>二、继承问题</h3><ul>
+<li>如果父级的<code>line-height</code>属性值<strong>有单位或百分比</strong>，那么<strong>子级继承的值则是换算后的一个具体的px级别的值</strong>； </li>
+<li>而如果父级的<code>line-height</code>属性值<strong>没有单位</strong>，则<strong>子级会直接继承这个“数值”</strong>，而非计算后的具体值，此时子级的<code>line-height</code>会根据本身的<code>font-size</code>值重新计算得到新的<code>line-height</code>值。</li>
+</ul>
+<p><br></p>
+<h3 id="三、font-size-与line-height"><a href="#三、font-size-与line-height" class="headerlink" title="三、font-size 与line-height"></a>三、font-size 与line-height</h3><p>每个元素使用相同的<code>font-size</code>，但使用不同的<code>font-family</code>，但渲染出来的<code>line-height</code>是不同的。</p>
+<p>CSS 权威指南<code>基本视觉格式化</code>一章中讲到：对于行内非替换元素或者匿名文本来说， <code>font-size</code> 指定了它们的 <code>content area</code>的高度，由于<code>inline box</code> 是由 <code>content area</code> 加上<code>上下</code>的 <code>half-leading</code>构成的，那么如果元素的<code>leading</code>为 0，在这种情况下，<code>font-size</code> 指定了<code>inline box</code> 的高度。</p>
+<p><br></p>
+<h3 id="四、leading"><a href="#四、leading" class="headerlink" title="四、leading"></a>四、<a href="http://www.ituring.com.cn/article/18076" target="_blank" rel="noopener">leading</a></h3><p>1、英文字体有<strong>基线</strong>（<code>baseline</code>）和<strong>中线</strong>（<code>meanline</code>），这两条线之间就是所谓的<code>x-height</code>，即<code>小写字母x</code>的高度。基线之上的部分是<strong>上伸区域</strong>（<code>ascent</code>），基线之下的部分是<strong>下伸区域</strong>（<code>descent</code>）。</p>
+<p>2、两种说法</p>
+<p><img src="/2018/05/27/CSS-line-height继承问题/01RTdJhLw8R4.png" alt=""></p>
+<ul>
+<li><strong>现代排版软件</strong> ：两行文本的基线之间的距离是<strong>现代排版软件</strong>中所说的行距（leading） </li>
+</ul>
+<p><br></p>
+<ul>
+<li><strong>CSS</strong> ： <code>leading = line-height - font-size</code> </li>
+</ul>
+<p><img src="/2018/05/27/CSS-line-height继承问题/01RTdOdi3s7A.png" alt=""></p>
+<p><br></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/27/JS-整页滚动/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1152,391 +1574,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/21/HTML-iframe/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/21/HTML-iframe/" itemprop="url">HTML-iframe</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-21T11:53:42+08:00">
-                2018-05-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="一、通过window获取iframe"><a href="#一、通过window获取iframe" class="headerlink" title="一、通过window获取iframe"></a>一、通过window获取iframe</h1><p>window.frames是个伪数组，可以通过window.frames[index]或window.frames[name]来获取iframe </p>
-<p><br></p>
-<h1 id="二、通过iframe获取window、document"><a href="#二、通过iframe获取window、document" class="headerlink" title="二、通过iframe获取window、document"></a>二、通过iframe获取window、document</h1><p>如果想获取iframe里的window或者document，可以使用 </p>
-<ul>
-<li>iframe.contentWindow</li>
-<li>iframe.contentDocument </li>
-</ul>
-<font color="#A52A2A" size="4"><strong>注：跨域iframe没有操作权限</strong></font>
-
-<p><br></p>
-<h1 id="三、window获取顶级窗口、父窗口"><a href="#三、window获取顶级窗口、父窗口" class="headerlink" title="三、window获取顶级窗口、父窗口"></a>三、window获取顶级窗口、父窗口</h1><ul>
-<li>获取顶级窗口：window.top </li>
-<li>获取父级窗口：window.parent </li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/21/HTML-节点/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/21/HTML-节点/" itemprop="url">HTML-节点</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-21T11:48:04+08:00">
-                2018-05-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="一、节点类型"><a href="#一、节点类型" class="headerlink" title="一、节点类型"></a>一、节点类型</h1><p>节点分为不同的类型：<strong>元素节点、属性节点和文本节点等</strong>。文档里几乎每一样东西都是一个节点，甚至连<font color="#A52A2A" size="4">空格和换行符都会解释为节点</font>。属<strong>性节点和文本节点总是被包含在元素节点的内部。</strong></p>
-<p><img src="/2018/05/21/HTML-节点/domTree.png" alt="domTree"></p>
-<p><strong>style属性只能返回拿些内嵌在HTML内容里面的样式信息。</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/18/防卫性编程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/18/防卫性编程/" itemprop="url">防卫性编程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-18T12:40:39+08:00">
-                2018-05-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="一、边界清晰，御敌于国门之外"><a href="#一、边界清晰，御敌于国门之外" class="headerlink" title="一、边界清晰，御敌于国门之外"></a>一、边界清晰，御敌于国门之外</h1><p>在模块的边界处，<strong>无论别人调用你还是你调用别人，一定要明确约定调用规范</strong>，一旦违反规范，立即启用错误处理流程（注意不是防卫流程），不要让错误在自己的模块内部流窜。</p>
-<p><br> </p>
-<h1 id="二、不给错误做二传手"><a href="#二、不给错误做二传手" class="headerlink" title="二、不给错误做二传手"></a>二、不给错误做二传手</h1><p>如果发现错误，让错误到此为止，非必要不接力传递错误码。</p>
-<p><br> </p>
-<h1 id="三、当断则断，早死早超生"><a href="#三、当断则断，早死早超生" class="headerlink" title="三、当断则断，早死早超生"></a>三、当断则断，早死早超生</h1><p>所有程序的正确运行都是依赖于一定的前提条件的，如果你发现外部模块不工作了，遵从系统的错误处理策略，<strong>该报异常就报异常，该立即退出就退出</strong>，重要的是搜集好现场的证据。一味的容错处理既不能解决问题还会掩盖问题，导致错误扩散，变形，拖延定位问题的时机。</p>
-<p><br></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1582,7 +1624,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-count">193</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1595,7 +1637,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">306</span>
+                  <span class="site-state-item-count">314</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
