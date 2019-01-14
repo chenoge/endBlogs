@@ -266,6 +266,236 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/12/20/Performance/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/20/Performance/" itemprop="url">Performance</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-20T20:07:46+08:00">
+                2018-12-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="一、performance"><a href="#一、performance" class="headerlink" title="一、performance"></a>一、performance</h3><p><code>performace</code>允许访问当前页面性能相关的信息，主要功能都是由<code>Performance Timeline API</code>、<code>the Navigation Timing API</code>、<code>the User Timing API</code>、  <code>the Resource Timing API</code>提供的。</p>
+<h5 id="1、performance-timing，提供了各种与浏览器处理相关的时间数据"><a href="#1、performance-timing，提供了各种与浏览器处理相关的时间数据" class="headerlink" title="1、performance.timing，提供了各种与浏览器处理相关的时间数据"></a>1、performance.timing，提供了各种与浏览器处理相关的时间数据</h5><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>作用（这里所有时间戳都代表UNIX毫秒时间戳）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>connectEnd</td>
+<td>浏览器与服务器之间的连接建立时的时间戳，连接建立指的是所有握手和认证过程全部结束</td>
+</tr>
+<tr>
+<td>connectStart</td>
+<td>HTTP请求开始向服务器发送时的时间戳，如果是持久连接，则等同于fetchStart。</td>
+</tr>
+<tr>
+<td>domComplete</td>
+<td>当前网页DOM结构生成时，也就是Document.readyState属性变为“complete”,并且相应的readystatechange事件触发时的时间戳。</td>
+</tr>
+<tr>
+<td>domContentLoadedEventEnd</td>
+<td>当前网页DOMContentLoaded事件发生时，也就是DOM结构解析完毕、所有脚本运行完成时的时间戳。</td>
+</tr>
+<tr>
+<td>domContentLoadedEventStart</td>
+<td>当前网页DOMContentLoaded事件发生时，也就是DOM结构解析完毕、所有脚本开始运行时的时间戳。</td>
+</tr>
+<tr>
+<td>domInteractive</td>
+<td>当前网页DOM结构结束解析、开始加载内嵌资源时，也就是Document.readyState属性变为“interactive”、并且相应的readystatechange事件触发时的时间戳。</td>
+</tr>
+<tr>
+<td>domLoading</td>
+<td>当前网页DOM结构开始解析时,也就是Document.readyState属性变为“loading”、并且相应的readystatechange事件触发时的时间戳。</td>
+</tr>
+<tr>
+<td>domainLookupEnd</td>
+<td>域名查询结束时的时间戳。如果使用持久连接，或者从本地缓存获取信息的，等同于fetchStart</td>
+</tr>
+<tr>
+<td>domainLookupStart</td>
+<td>域名查询开始时的时间戳。如果使用持久连接，或者从本地缓存获取信息的，等同于fetchStart</td>
+</tr>
+<tr>
+<td>fetchStart</td>
+<td>浏览器准备通过HTTP请求去获取页面的时间戳。在检查应用缓存之前发生。</td>
+</tr>
+<tr>
+<td>loadEventEnd</td>
+<td>当前网页load事件的回调函数结束时的时间戳。如果该事件还没有发生，返回0。</td>
+</tr>
+<tr>
+<td>loadEventStart</td>
+<td>当前网页load事件的回调函数开始时的时间戳。如果该事件还没有发生，返回0。</td>
+</tr>
+<tr>
+<td>navigationStart</td>
+<td>当前浏览器窗口的前一个网页关闭，发生unload事件时的时间戳。如果没有前一个网页，就等于fetchStart</td>
+</tr>
+<tr>
+<td>redirectEnd</td>
+<td>最后一次重定向完成，也就是Http响应的最后一个字节返回时的时间戳。如果没有重定向，或者上次重定向不是同源的。则为0</td>
+</tr>
+<tr>
+<td>redirectStart</td>
+<td>第一次重定向开始时的时间戳，如果没有重定向，或者上次重定向不是同源的。则为0</td>
+</tr>
+<tr>
+<td>requestStart</td>
+<td>浏览器向服务器发出HTTP请求时（或开始读取本地缓存时）的时间戳。</td>
+</tr>
+<tr>
+<td>responseEnd</td>
+<td>浏览器从服务器收到（或从本地缓存读取）最后一个字节时（如果在此之前HTTP连接已经关闭，则返回关闭时）的时间戳</td>
+</tr>
+<tr>
+<td>responseStart</td>
+<td>浏览器从服务器收到（或从本地缓存读取）第一个字节时的时间戳。</td>
+</tr>
+<tr>
+<td>secureConnectionStart</td>
+<td>浏览器与服务器开始安全链接的握手时的时间戳。如果当前网页不要求安全连接，则返回0。</td>
+</tr>
+<tr>
+<td>unloadEventEnd</td>
+<td>如果前一个网页与当前网页属于同一个域下，则表示前一个网页的unload回调结束时的时间戳。如果没有前一个网页，或者之前的网页跳转不是属于同一个域内，则返回值为0。</td>
+</tr>
+<tr>
+<td>unloadEventStart</td>
+<td>如果前一个网页与当前网页属于同一个域下，则表示前一个网页的unload事件发生时的时间戳。如果没有前一个网页，或者之前的网页跳转不是属于同一个域内，则返回值为0。</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/2018/12/20/Performance/perfomance.png" alt=""></p>
+<p><strong>组合值的意义</strong> </p>
+<blockquote>
+<p>DNS查询耗时 ：domainLookupEnd - domainLookupStart</p>
+<p>TCP链接耗时 ：connectEnd - connectStart</p>
+<p>request请求耗时 ：responseEnd - responseStart</p>
+<p>解析dom树耗时 ： domComplete - domInteractive</p>
+<p>白屏时间 ：responseStart - navigationStart</p>
+<p>domready时间 ：domContentLoadedEventEnd - navigationStart</p>
+<p>onload时间 ：loadEventEnd - navigationStart</p>
+</blockquote>
+<p><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/20/Performance/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/12/19/git分支开发规范/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1485,136 +1715,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/12/05/npm依赖包版本号/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/05/npm依赖包版本号/" itemprop="url">npm依赖包版本号</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-05T13:05:03+08:00">
-                2018-12-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="一、版本号"><a href="#一、版本号" class="headerlink" title="一、版本号"></a>一、版本号</h3><p>给定一个版本号：<code>主版本号(major).次版本号(minor).补丁版本号(patch)</code>， 以下这三种情况需要增加相应的版本号：</p>
-<ul>
-<li><code>主版本号</code>： 当API发生改变，并与之前的版本不兼容的时候</li>
-<li><code>次版本号</code>： 当增加了功能，但是向后兼容的时</li>
-<li><code>补丁版本号</code>： 当做了向后兼容的缺陷修复的时候</li>
-</ul>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/05/npm依赖包版本号/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1665,7 +1765,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">193</span>
+                  <span class="site-state-item-count">194</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1678,7 +1778,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">314</span>
+                  <span class="site-state-item-count">318</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

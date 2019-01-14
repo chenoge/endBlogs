@@ -266,6 +266,131 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/03/26/JS-自定义事件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/26/JS-自定义事件/" itemprop="url">JS-自定义事件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-26T22:24:09+08:00">
+                2018-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> event = <span class="built_in">document</span>.createEvent(type)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>event 就是被创建的 <a href="https://developer.mozilla.org/zh-CN/docs/DOM/event" target="_blank" rel="noopener">Event</a> 对象.</li>
+<li>type 是一个字符串，表示要创建的事件类型。事件类型可能包括”UIEvents”, “MouseEvents”, “MutationEvents”, 或者 “HTMLEvents”。请查看 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createEvent#Notes" target="_blank" rel="noopener">Notes</a> 章节获取详细信息 </li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建事件</span></span><br><span class="line"><span class="keyword">var</span> event = <span class="built_in">document</span>.createEvent(<span class="string">'Event'</span>);</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"><span class="comment">// 定义事件名为'build'.</span></span><br><span class="line"><span class="comment">// 事件类型，是否冒泡，是否阻止浏览器的默认行为</span></span><br><span class="line">event.initEvent(<span class="string">'build'</span>, <span class="literal">true</span>, <span class="literal">true</span>);</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"><span class="comment">// 监听事件</span></span><br><span class="line">elem.addEventListener(<span class="string">'build'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// e.target matches elem</span></span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"><span class="comment">// 触发对象可以是任何元素或其他事件目标</span></span><br><span class="line">elem.dispatchEvent(event);</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/03/25/JS-原型链/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1447,178 +1572,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/03/17/格式化上下文-BFC-IFC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/17/格式化上下文-BFC-IFC/" itemprop="url">格式化上下文-BFC-IFC</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-17T18:15:25+08:00">
-                2018-03-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>想要理解<strong>BFC</strong>与<strong>IFC</strong>，首先要理解另外两个概念：<strong>Box</strong> 和 <strong>FC</strong>（即 formatting context） </p>
-<p><br></p>
-<h1 id="一、Box"><a href="#一、Box" class="headerlink" title="一、Box"></a>一、Box</h1><p>一个页面是由很多个 Box 组成的，元素的类型和 display 属性决定了这个 Box 的类型。不同类型的 Box，会参与不同的 Formatting Context。 </p>
-<ul>
-<li><code>Block level</code>的box会参与形成<strong>BFC</strong>，比如display值为<code>block</code>，<code>list-item</code>，<code>table</code>的元素。</li>
-<li><code>Inline level</code>的box会参与形成<strong>IFC</strong>，比如display值为<code>inline</code>，<code>inline-table</code>，<code>inline-block</code>的元素。</li>
-</ul>
-<p><br></p>
-<h1 id="二、FC（Formatting-Context）"><a href="#二、FC（Formatting-Context）" class="headerlink" title="二、FC（Formatting Context）"></a>二、FC（Formatting Context）</h1><p>它是W3C CSS2.1规范中的一个概念，定义的是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。 常见的Formatting Context 有：</p>
-<ul>
-<li>Block Formatting Context（BFC | 块级格式化上下文）</li>
-<li>Inline Formatting Context（IFC |行内格式化上下文）</li>
-</ul>
-<p><br></p>
-<h1 id="三、IFC布局规则"><a href="#三、IFC布局规则" class="headerlink" title="三、IFC布局规则"></a>三、IFC布局规则</h1><ul>
-<li>在<strong>行内格式化上下文</strong>中，框(boxes)一个接一个地<strong>水平排列</strong>，<strong>起点是<code>包含块</code>的顶部</strong></li>
-<li>水平方向上的 <code>margin</code>，<code>border</code> 和 <code>padding</code>在框之间得到<strong>保留</strong></li>
-<li>框在垂直方向上可以以<strong>不同的方式对齐</strong>：它们的顶部或底部对齐，或根据其中文字的基线对齐</li>
-<li><font color="#A52A2A" size="4">包含那些框的<strong>长方形区域</strong>，会形成一行，叫做<code>行框</code> </font>
-
-</li>
-</ul>
-<p><br></p>
-<h1 id="四、BFC布局规则"><a href="#四、BFC布局规则" class="headerlink" title="四、BFC布局规则"></a>四、BFC布局规则</h1><ul>
-<li><strong>内部的Box</strong>会一个接一个地<strong>垂直放置</strong></li>
-<li>每个元素的左外边缘（margin-left)， 与包含块的左边（contain box left）相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。除非这个元素自己形成了一个新的BFC。</li>
-<li><strong>BFC的区域不会与float box<code>重叠</code></strong>。</li>
-<li>BFC就是页面上的一个隔离的<strong>独立容器</strong>，容器里面的子元素<strong>不会影响到外面的元素</strong>。反之也如此。</li>
-<li><strong>计算BFC的高度时，浮动子元素也参与计算</strong></li>
-</ul>
-<p><br></p>
-<h1 id="五、形成一个BFC"><a href="#五、形成一个BFC" class="headerlink" title="五、形成一个BFC"></a>五、形成一个BFC</h1><p>下列方式会创建<strong>块格式化上下文</strong>：</p>
-<ul>
-<li><strong>根元素</strong>或<strong>包含根元素的元素</strong></li>
-<li><strong>浮动元素</strong>（元素的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/float" target="_blank" rel="noopener"><code>float</code></a> 不是 <code>none</code>）</li>
-<li><strong>绝对定位元素</strong>（元素的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/position" target="_blank" rel="noopener"><code>position</code></a> 为 <code>absolute</code> 或 <code>fixed</code>）</li>
-<li><strong>行内块元素</strong>（元素的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display" target="_blank" rel="noopener"><code>display</code></a> 为 <code>inline-block</code>）</li>
-<li><strong>表格单元格</strong>（元素的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display" target="_blank" rel="noopener"><code>display</code></a>为 <code>table-cell</code>，HTML表格单元格默认为该值）</li>
-<li><strong>表格标题</strong>（元素的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display" target="_blank" rel="noopener"><code>display</code></a> 为 <code>table-caption</code>，HTML表格标题默认为该值）</li>
-<li>匿名表格单元格元素（元素的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display" target="_blank" rel="noopener"><code>display</code></a>为 <code>table、`</code>table-row<code>、</code>table-row-group、<code>table-header-group、</code>table-footer-group<code>（分别是HTML table、row、tbody、thead、tfoot的默认属性）或</code>inline-table`）</li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow" target="_blank" rel="noopener"><code>overflow</code></a> 值不为 <code>visible</code> 的块元素</li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display" target="_blank" rel="noopener"><code>display</code></a> 值为 <code>flow-root</code> 的元素</li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/contain" target="_blank" rel="noopener"><code>contain</code></a> 值为 <code>layout</code>、<code>content</code>或 <code>strict</code> 的元素</li>
-<li><strong>弹性元素</strong>（<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display" target="_blank" rel="noopener"><code>display</code></a>为 <code>flex</code> 或 <code>inline-flex</code>元素的<strong>直接子元</strong>素）</li>
-<li><strong>网格元素</strong>（<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display" target="_blank" rel="noopener"><code>display</code></a>为 <code>grid</code> 或 <code>inline-grid</code> 元素的<strong>直接子元素</strong>）</li>
-<li><strong>多列容器</strong>（元素的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/column-count" target="_blank" rel="noopener"><code>column-count</code></a> 或 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/column-width" target="_blank" rel="noopener"><code>column-width</code></a> 不为 <code>auto，包括 `</code>column-count<code>为</code>1`）</li>
-<li><code>column-span</code> 为 <code>all</code> 的元素始终会创建一个新的BFC，即使该元素没有包裹在一个多列容器中（<a href="https://github.com/w3c/csswg-drafts/commit/a8634b96900279916bd6c505fda88dda71d8ec51" target="_blank" rel="noopener">标准变更</a>，<a href="https://bugs.chromium.org/p/chromium/issues/detail?id=709362" target="_blank" rel="noopener">Chrome bug</a>）</li>
-</ul>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/17/格式化上下文-BFC-IFC/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1669,7 +1622,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">193</span>
+                  <span class="site-state-item-count">194</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1682,7 +1635,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">314</span>
+                  <span class="site-state-item-count">318</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
