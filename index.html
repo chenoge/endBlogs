@@ -266,6 +266,409 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2019/01/19/Proxy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/19/Proxy/" itemprop="url">Proxy</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-19T18:54:15+08:00">
+                2019-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="一、语法"><a href="#一、语法" class="headerlink" title="一、语法"></a>一、语法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, handler);</span><br></pre></td></tr></table></figure>
+<h5 id="传参说明"><a href="#传参说明" class="headerlink" title="传参说明"></a>传参说明</h5><ul>
+<li><code>target</code>：使用<code>Proxy</code>包装的目标对象，它可以是任何类型的对象，包括数组、函数或甚至另一个<code>proxy</code>对象</li>
+<li><code>handler</code>：一个对象，其属性是在对其执行操作时定义代理行为的函数</li>
+</ul>
+<h5 id="对象代理"><a href="#对象代理" class="headerlink" title="对象代理"></a>对象代理</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Proxy</span>(&#123;&#125;, &#123;</span><br><span class="line">    get: <span class="function"><span class="keyword">function</span>(<span class="params">target, key, receiver</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`getting <span class="subst">$&#123;key&#125;</span>!`</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Reflect</span>.get(target, key, receiver);</span><br><span class="line">    &#125;,</span><br><span class="line">    set: <span class="function"><span class="keyword">function</span>(<span class="params">target, key, value, receiver</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`setting <span class="subst">$&#123;key&#125;</span>!`</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Reflect</span>.set(target, key, value, receiver);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<ul>
+<li>要使得<code>Proxy</code>起作用，<strong>必须针对<code>Proxy</code>实例进行操作</strong>，而不是针对目标对象进行操作 </li>
+<li>如果<code>handler</code>没有设置任何拦截，那就等同于<strong>直接通向原对象</strong> </li>
+<li>Proxy 实例可以<strong>作为其他对象的原型对象</strong> </li>
+</ul>
+<h5 id="函数代理"><a href="#函数代理" class="headerlink" title="函数代理"></a>函数代理</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> handler = &#123;</span><br><span class="line">    get: <span class="function"><span class="keyword">function</span>(<span class="params">target, name</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (name === <span class="string">'prototype'</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">Object</span>.prototype;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'Hello, '</span> + name;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    apply: <span class="function"><span class="keyword">function</span>(<span class="params">target, thisBinding, args</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> args[<span class="number">0</span>];</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    construct: <span class="function"><span class="keyword">function</span>(<span class="params">target, args</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123; <span class="attr">value</span>: args[<span class="number">1</span>] &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fproxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(<span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;, handler);</span><br><span class="line"></span><br><span class="line">fproxy(<span class="number">1</span>, <span class="number">2</span>) <span class="comment">// 1</span></span><br><span class="line"><span class="keyword">new</span> fproxy(<span class="number">1</span>, <span class="number">2</span>) <span class="comment">// &#123;value: 2&#125;</span></span><br><span class="line">fproxy.prototype === <span class="built_in">Object</span>.prototype <span class="comment">// true</span></span><br><span class="line">fproxy.foo === <span class="string">"Hello, foo"</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>注：<code>Proxy</code>比<code>Object.defineProperty</code> 的功能更强大。Vue的作者宣称将在Vue3.0版本后加入<code>Proxy</code>从而代替<code>Object.defineProperty</code> 。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/19/Proxy/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2019/01/19/实现bind方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/19/实现bind方法/" itemprop="url">实现bind方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-19T18:35:04+08:00">
+                2019-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h5 id="手写bind方法"><a href="#手写bind方法" class="headerlink" title="手写bind方法"></a>手写bind方法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.bind = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> fn = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">let</span> args = <span class="built_in">Array</span>.prototye.slice.call(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">let</span> context = args.shift();</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> fn.apply(context, args.concat(<span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>)));</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 通过数据劫持(或者装饰模式)，就可以实现vue-methods方法中永远绑定当前实例</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/19/实现bind方法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2019/01/19/关于Vue单向数据流的理解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/19/关于Vue单向数据流的理解/" itemprop="url">关于Vue单向数据流的理解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-19T15:56:24+08:00">
+                2019-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="一、单向数据流"><a href="#一、单向数据流" class="headerlink" title="一、单向数据流"></a>一、单向数据流</h4><p>所有的 prop 都使得其<code>父子 prop</code>之间形成了一个<strong>单向下行绑定</strong>：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外改变父级组件的状态，从而导致你的应用的数据流向难以理解。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注意在 JavaScript 中对象和数组是通过引用传入的，所以对于一个数组或对象类型的 prop 来说，在子组件中改变这个对象或数组本身将会影响到父组件的状态。</span><br></pre></td></tr></table></figure>
+<h5 id="1、保持单向数据流的重要性"><a href="#1、保持单向数据流的重要性" class="headerlink" title="1、保持单向数据流的重要性"></a>1、保持单向数据流的重要性</h5><p>在父组件中，<strong>一个变量往往关联着多个变量或动作</strong> </p>
+<ul>
+<li>如果在子组件中修改了传进来的prop对象，并且没有在父组件中<code>watch</code>该prop对象，不会主动触发其他变量的修改或动作的发生，导致数据局部展示错误。</li>
+<li>如果主动<code>watch</code>该prop对象，由于无法准确预知修改的来源和方式，从而大大增加了父组件的维护难度。</li>
+</ul>
+<h5 id="2、组件的分类"><a href="#2、组件的分类" class="headerlink" title="2、组件的分类"></a>2、组件的分类</h5><ul>
+<li><code>抽象通用组件</code> <ul>
+<li><strong>基本数据</strong>和<strong>默认值</strong>都是通过prop传入，没有在组件内依赖<code>ajax</code>异步数据</li>
+<li><strong>保证不修改prop</strong>，<strong>交互结果</strong>通过<code>v-on</code>等通知方式返回</li>
+</ul>
+</li>
+<li><code>业务通用组件</code> <ul>
+<li>在组件内依赖业务<code>ajax</code>异步数据</li>
+<li>在需要进行<code>增删改查</code>操作的表格中，很难做到完全不修改prop，<code>CURD</code>操作往往依赖于业务逻辑。如果不直接修改，则需要添加N多的<code>v-on</code>事件</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/19/关于Vue单向数据流的理解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2019/01/17/函数扩展-尾调用和尾递归/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1152,399 +1555,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2019/01/02/JS在IE中的兼容问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/02/JS在IE中的兼容问题/" itemprop="url">JS在IE中的兼容问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-02T23:23:26+08:00">
-                2019-01-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="标识符与保留字"><a href="#标识符与保留字" class="headerlink" title="标识符与保留字"></a>标识符与保留字</h4><p><code>保留字</code>是<code>JavaScript</code>语言中定义<code>具有特殊含义的标识符</code>，<strong>保留字不能作为标识符使用</strong>。<code>JavaScript</code>语言中定义了一些<code>具有专门的意义和用途的保留字</code>，这些保留字称为<code>关键字</code>。</p>
-<p><strong>标识符：变量，属性，数组，函数名称 </strong>  </p>
-<p><br></p>
-<h4 id="SCRIPT1010"><a href="#SCRIPT1010" class="headerlink" title="SCRIPT1010"></a>SCRIPT1010</h4><p><code>缺少标识符</code> ，一般在<code>IE浏览器</code>下，使用了保留字就会报这个错误，如： <code>default</code>, <code>delete</code> 等</p>
-<p><br></p>
-<h4 id="SCRIPT1028"><a href="#SCRIPT1028" class="headerlink" title="SCRIPT1028"></a>SCRIPT1028</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对象最后一项是不允许有逗号的，跟json的规则相似</span></span><br><span class="line"><span class="keyword">let</span> point = &#123; <span class="attr">x</span>: <span class="number">1.2</span>, <span class="attr">y</span>: <span class="number">-3.4</span> &#125;; <span class="comment">// 合法声明</span></span><br><span class="line"><span class="keyword">let</span> point = &#123; <span class="attr">x</span>: <span class="number">1.2</span>, <span class="attr">y</span>: <span class="number">-3.4</span>, &#125;; <span class="comment">// 缺少标识符、字符串或数字</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用了保留字</span></span><br><span class="line"><span class="keyword">let</span> point = &#123; <span class="attr">x</span>: <span class="number">1.2</span>, <span class="string">'delete'</span>: <span class="number">-3.4</span> &#125;; <span class="comment">// 合法声明</span></span><br><span class="line"><span class="keyword">let</span> point = &#123; <span class="attr">x</span>: <span class="number">1.2</span>,  <span class="attr">delete</span>: <span class="number">-3.4</span> &#125;; <span class="comment">// 缺少标识符、字符串或数字</span></span><br></pre></td></tr></table></figure>
-<p><code>对象文字值的属性</code>必须是<code>标识符</code>、<code>字符串</code>或<code>数字</code>。 对象文字值（也称为“对象初始值设定项”）由逗号分隔的<code>“属性:值”</code>对的列表构成，其中各对都括在括号中。</p>
-<p>注：使用打包工具会存在<code>&#39;delete&#39;</code>变为<code>delete</code>的情况，最好不要使用保留字作为标识符。</p>
-<p><br></p>
-<h4 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 相同工程：线上环境 </span></span><br><span class="line"><span class="comment">// 存在以上问题</span></span><br><span class="line"><span class="comment">// IE11 浏览器的 navigator.userAgent</span></span><br><span class="line"><span class="string">"Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; Tablet PC 2.0)"</span></span><br></pre></td></tr></table></figure>
-<p>注：<code>IE11</code>不存在以上问题</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 相同工程：开发环境、vue、webpack-dev-server </span></span><br><span class="line"><span class="comment">// 不存在以上问题</span></span><br><span class="line"><span class="comment">// IE11 浏览器的 navigator.userAgent</span></span><br><span class="line"><span class="string">"Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; Tablet PC 2.0; rv:11.0) like Gecko"</span></span><br></pre></td></tr></table></figure>
-<p>注：因为项目中未使用<code>X-UA-Compatible</code>指定<code>IE内核版本</code> </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--使用后，线上环境恢复正常，与开发环境一致--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=Edge"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/02/JS在IE中的兼容问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/12/29/url长度限制/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/29/url长度限制/" itemprop="url">url长度限制</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-29T14:32:04+08:00">
-                2018-12-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="一、HTTP协议"><a href="#一、HTTP协议" class="headerlink" title="一、HTTP协议"></a>一、HTTP协议</h4><p><code>HTTP协议</code>不对<code>url</code>的长度设置任何先验限制</p>
-<ul>
-<li>服务器必须能够处理它们所服务的<code>任何资源的URI</code>，并且<strong>如果它们提供可以生成这种<code>URI</code>的基于<code>GET</code>的表单</strong>，则应该能够处理<code>无限长度的URI</code>。</li>
-<li>如果<code>URI</code>长于服务器可以处理的长度，服务器应该返回<code>414</code>（<code>Request-URI</code> Too Long）状态 。</li>
-</ul>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/29/url长度限制/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/12/26/时间戳、时区以及时间格式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/26/时间戳、时区以及时间格式/" itemprop="url">时间戳、时区以及时间格式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-26T18:24:47+08:00">
-                2018-12-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="一、时间戳"><a href="#一、时间戳" class="headerlink" title="一、时间戳"></a>一、时间戳</h4><p>时间戳是指<code>格林威治时间</code><strong>1970年01月01日00时00分00秒</strong>(<code>北京时间</code><strong>1970年01月01日08时00分00秒</strong>)起至现在的<code>总毫秒数</code>。 </p>
-<p>注：<code>时间戳</code>是不会跟着<code>时区</code>的改变而改变，<code>同一时刻的时间戳</code>都是相同的。</p>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/26/时间戳、时区以及时间格式/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1595,7 +1605,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">196</span>
+                  <span class="site-state-item-count">199</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1608,7 +1618,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">322</span>
+                  <span class="site-state-item-count">328</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
