@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="chenogeの日志">
 <meta property="og:description" content="一、属性描述符ECMAScript对象中目前存在的属性描述符主要有两种，数据描述符(数据属性)和存取描述符(访问器属性)。  数据描述符是一个拥有可写或不可写值的属性。 存取描述符是由一对 getter-setter 函数功能来描述的属性。    二、数据描述符属性当修改或定义对象的某个属性的时候，给这个属性添加一些特性：  123456Object.defineProperty(obj, &quot;ne">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-19T10:33:26.859Z">
+<meta property="og:updated_time" content="2019-01-19T13:24:01.931Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS-属性描述符">
 <meta name="twitter:description" content="一、属性描述符ECMAScript对象中目前存在的属性描述符主要有两种，数据描述符(数据属性)和存取描述符(访问器属性)。  数据描述符是一个拥有可写或不可写值的属性。 存取描述符是由一对 getter-setter 函数功能来描述的属性。    二、数据描述符属性当修改或定义对象的某个属性的时候，给这个属性添加一些特性：  123456Object.defineProperty(obj, &quot;ne">
@@ -369,10 +369,12 @@
 <li><code>Object.defineProperty</code>无法<strong>监听数组元素的变化</strong>  </li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">arr</span>: [] &#125;;</span><br><span class="line"><span class="keyword">var</span> arr1 = obj.arr;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">"arr"</span>, &#123;</span><br><span class="line">    set: <span class="function"><span class="keyword">function</span>(<span class="params">newValue</span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">"set"</span>); &#125;,</span><br><span class="line">    get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">"get"</span>); <span class="keyword">return</span> arr1 &#125;,</span><br><span class="line">    configurable: <span class="literal">true</span>,</span><br><span class="line">    enumerable: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">obj.arr[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line"><span class="comment">// get </span></span><br><span class="line"><span class="comment">// 1 </span></span><br><span class="line"><span class="comment">// 这里并没有走 set 拦截，这里就说明了 Object.defineProperty 对数组的缺陷问题</span></span><br><span class="line"></span><br><span class="line">obj.arr = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line"><span class="comment">// set</span></span><br><span class="line"><span class="comment">// 只有改变整个对象的引用才会走进拦截</span></span><br></pre></td></tr></table></figure>
+<p>注：对数组元素的监测，需要用一些奇技淫巧，把无法监听数组的情况hack掉。如vue提供的<code>[&#39;push&#39;, &#39;pop&#39;, &#39;shift&#39;, &#39;unshift&#39;, &#39;splice&#39;, &#39;sort&#39;, &#39;reverse&#39;]</code>等方法。<a href="https://juejin.im/post/5acd0c8a6fb9a028da7cdfaf#heading-11" target="_blank" rel="noopener">传送门</a>  </p>
+<p><br></p>
 <ul>
-<li>只能劫持对象的属性</li>
+<li><h5 id="只能劫持对象的属性"><a href="#只能劫持对象的属性" class="headerlink" title="只能劫持对象的属性"></a>只能劫持对象的属性</h5></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">因此我们需要对每个对象的每个属性进行遍历，如果属性值也是对象那么需要深度遍历</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">需要对每个对象的每个属性进行遍历，如果属性值也是对象那么需要深度遍历</span><br><span class="line">不能检测到对象属性的添加或删除</span><br></pre></td></tr></table></figure>
 <p><br></p>
 
       
@@ -543,7 +545,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、属性描述符"><span class="nav-number">1.</span> <span class="nav-text">一、属性描述符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、数据描述符属性"><span class="nav-number">2.</span> <span class="nav-text">二、数据描述符属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、存取描述符属性"><span class="nav-number">3.</span> <span class="nav-text">三、存取描述符属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、Object-defineProperties"><span class="nav-number">4.</span> <span class="nav-text">四、Object.defineProperties</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五、defineProperty的缺陷"><span class="nav-number">5.</span> <span class="nav-text">五、defineProperty的缺陷</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、属性描述符"><span class="nav-number">1.</span> <span class="nav-text">一、属性描述符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、数据描述符属性"><span class="nav-number">2.</span> <span class="nav-text">二、数据描述符属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、存取描述符属性"><span class="nav-number">3.</span> <span class="nav-text">三、存取描述符属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、Object-defineProperties"><span class="nav-number">4.</span> <span class="nav-text">四、Object.defineProperties</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五、defineProperty的缺陷"><span class="nav-number">5.</span> <span class="nav-text">五、defineProperty的缺陷</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#只能劫持对象的属性"><span class="nav-number">5.1.</span> <span class="nav-text">只能劫持对象的属性</span></a></li></ol></li></ol></div>
             
 
           </div>
