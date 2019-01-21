@@ -266,6 +266,132 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2017/10/29/JS-valueOf与toString/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/29/JS-valueOf与toString/" itemprop="url">JS-valueOf与toString</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-29T18:50:48+08:00">
+                2017-10-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="一、抛题"><a href="#一、抛题" class="headerlink" title="一、抛题"></a>一、抛题</h1><p>实现一个函数，运算结果可以满足如下预期结果：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">add(<span class="number">1</span>)(<span class="number">2</span>) <span class="comment">// 3</span></span><br><span class="line">add(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)(<span class="number">10</span>) <span class="comment">// 16</span></span><br><span class="line">add(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)(<span class="number">4</span>)(<span class="number">5</span>) <span class="comment">// 15</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/29/JS-valueOf与toString/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2017/10/27/JS-addEventListener和on/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1391,137 +1517,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2017/08/07/CSS-圆角半径值/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/07/CSS-圆角半径值/" itemprop="url">CSS-圆角半径值</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-07T20:12:59+08:00">
-                2017-08-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="格式和类型"><a href="#格式和类型" class="headerlink" title="格式和类型"></a>格式和类型</h1><ul>
-<li><p>border-*-radius属性的值可分别设定水平半径和垂直半径；若省略垂直半径，则垂直半径默认采用水平半径的值。</p>
-</li>
-<li><p>而每个值，支持的单位有固定长度和百分比。若设置百分比格式，则水平半径的百分比是指边框的宽度，而垂直半径的百分比是指边框的高度。</p>
-</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*表示圆角的水平半径和垂直半径都为20px长度。*/</span></span><br><span class="line"><span class="selector-tag">border-radius</span><span class="selector-pseudo">:20px</span>;	</span><br><span class="line"></span><br><span class="line"><span class="comment">/*表示圆角的水平半径的长度为20px，垂直半径的长度为40px。*/</span></span><br><span class="line">border-radius:20px/40px; </span><br><span class="line"></span><br><span class="line"><span class="comment">/*表示圆角的水平半径和垂直半径都为各自边框长度的20%。*/</span></span><br><span class="line"><span class="selector-tag">border-radius</span><span class="selector-pseudo">:20</span>%;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*表示圆角的水平半径为边框宽度的20%，垂直半径都为边框高度的30%。*/</span></span><br><span class="line">border-radius:20%/30%;	</span><br><span class="line"></span><br><span class="line"><span class="comment">/*表示圆角的水平半径长度200px，垂直半径都为边框高度的300px。*/</span></span><br><span class="line">border-radius: 200px 0px 0px 0px/300px 0px 0px 0px;</span><br></pre></td></tr></table></figure>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/07/CSS-圆角半径值/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1572,7 +1567,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">199</span>
+                  <span class="site-state-item-count">200</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1585,7 +1580,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">328</span>
+                  <span class="site-state-item-count">329</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
