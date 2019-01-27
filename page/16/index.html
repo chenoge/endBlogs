@@ -266,6 +266,141 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/03/10/css-几点原则/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/10/css-几点原则/" itemprop="url">css-几点原则</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-10T19:47:22+08:00">
+                2018-03-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="1-不要写不需要的样式定义"><a href="#1-不要写不需要的样式定义" class="headerlink" title="1.不要写不需要的样式定义"></a>1.不要写不需要的样式定义</h1><ul>
+<li>减少CSS文件的长度，以便浏览。</li>
+<li>明确你的CSS类需要做什么，而不是定义一堆已经产生的垃圾。</li>
+</ul>
+<p><br></p>
+<h1 id="2-将CSS看作可重用组件"><a href="#2-将CSS看作可重用组件" class="headerlink" title="2.将CSS看作可重用组件"></a>2.将CSS看作可重用组件</h1><p>定义可重用的CSS和组件以供自己使用，则可以减少很多复杂性，重用类的作用：</p>
+<ul>
+<li>确保你的设计风格在不同的页面之间保持一致</li>
+<li>提高编写CSS效率</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.hide</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.text-center</span> &#123;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.padding-0</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.padding-xxs</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.padding-xs</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.padding-sm</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.padding-md</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">30px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.padding-lg</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">40px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.padding-xl</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">50px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.padding-xxl</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">60px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/10/css-几点原则/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/03/09/video与audio对象/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1480,139 +1615,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/01/30/Http-form-data/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/30/Http-form-data/" itemprop="url">Http-form-data</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-30T22:18:43+08:00">
-                2018-01-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="一、演变"><a href="#一、演变" class="headerlink" title="一、演变"></a>一、演变</h1><p>http协议本身的原始方法不支持<code>multipart/form-data</code>请求，是由一些原始的方法演变而来的</p>
-<p>1、<code>multipart/form-data</code>的<strong>基础方法是post</strong>，也就是说是由<code>post</code>方法来组合实现的 </p>
-<p>2、<code>multipart/form-data</code>与<code>post</code>方法的不同之处：<strong>请求头，请求体</strong>。 </p>
-<p>3、<code>multipart/form-data</code>的请求头必须包含一个特殊的头信息：<code>Content-Type</code>，且其值也必须规定为<code>multipart/form-data</code> </p>
-<p>4、规定一个<strong>内容分割符</strong>用于分割请求体中的多个post的内容</p>
-<p>具体的头信息如下：<code>Content-Type: multipart/form-data; boundary=${bound}</code>，其中<code>${bound}</code> 是一个占位符，代表我们规定的分割符，可以自己任意规定，但为了避免和正常文本重复了，尽量要使用复杂一点的内容。</p>
-<p><br></p>
-<h1 id="二、请求体"><a href="#二、请求体" class="headerlink" title="二、请求体"></a>二、请求体</h1><p><code>multipart/form-data</code>的请求体也是一个字符串，不过和post的请求体不同的是它的构造方式，<strong>post是简单的<code>name=value</code>值连接</strong>，而<code>multipart/form-data</code>则是<strong>添加了分隔符</strong>等内容的构造体。具体格式如下: </p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">--$&#123;bound&#125;</span><br><span class="line">Content-Disposition: form-data; name="Filename"</span><br><span class="line">HTTP.pdf</span><br><span class="line"><span class="code">		</span></span><br><span class="line"><span class="code">		</span></span><br><span class="line">--$&#123;bound&#125;</span><br><span class="line">Content-Disposition: form-data; name="file000"; filename="HTTP协议详解.pdf"</span><br><span class="line">Content-Type: application/octet-stream</span><br><span class="line"><span class="code">		</span></span><br><span class="line">%PDF-1.5</span><br><span class="line">file content</span><br><span class="line">%%EOF</span><br><span class="line"><span class="code">		</span></span><br><span class="line">--$&#123;bound&#125;</span><br><span class="line">Content-Disposition: form-data; name="Upload"</span><br><span class="line"><span class="code">		</span></span><br><span class="line">Submit Query</span><br><span class="line">--$&#123;bound&#125;--</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1658,7 +1665,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">200</span>
+                  <span class="site-state-item-count">201</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1671,7 +1678,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">329</span>
+                  <span class="site-state-item-count">330</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
