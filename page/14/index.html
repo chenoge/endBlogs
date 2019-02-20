@@ -266,6 +266,130 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/04/12/koa2-中间组件middleware/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/12/koa2-中间组件middleware/" itemprop="url">koa2-中间组件middleware</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-12T19:26:36+08:00">
+                2018-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="一、中间组件"><a href="#一、中间组件" class="headerlink" title="一、中间组件"></a>一、中间组件</h1><p>Koa2通过<strong>app.use()</strong>把很多<font color="#A52A2A" size="4"><strong>async函数</strong></font>组成一个<font color="#A52A2A" size="4"><strong>处理链</strong></font>，每个async函数都可以做一些自己的事情，然后用await next()来调用下一个async函数。<strong>我们把每个async函数称为middleware</strong>。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在koa2中，我们导入的是一个class，因此用大写的Koa表示:</span></span><br><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个Koa对象表示web app本身:</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;ctx.request.method&#125;</span> <span class="subst">$&#123;ctx.request.url&#125;</span>`</span>); <span class="comment">// 打印URL</span></span><br><span class="line">    <span class="keyword">await</span> next(); <span class="comment">// 调用下一个middleware</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> start = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime(); <span class="comment">// 当前时间</span></span><br><span class="line">    <span class="keyword">await</span> next(); <span class="comment">// 调用下一个middleware</span></span><br><span class="line">    <span class="keyword">const</span> ms = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime() - start; <span class="comment">// 耗费时间</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Time: <span class="subst">$&#123;ms&#125;</span>ms`</span>); <span class="comment">// 打印耗费时间</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">    <span class="keyword">await</span> next();</span><br><span class="line">    ctx.response.type = <span class="string">'text/html'</span>;</span><br><span class="line">    ctx.response.body = <span class="string">'&lt;h1&gt;Hello, koa2!&lt;/h1&gt;'</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在端口3000监听:</span></span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/04/12/koa2-中间组件middleware/3663059-03622ea2a9ffce2a.jpg" alt=""></p>
+<p><br></p>
+<h1 id="二、数据传递"><a href="#二、数据传递" class="headerlink" title="二、数据传递"></a>二、数据传递</h1><p>koa约定了一个<strong>中间件</strong>的存储空间<strong>ctx.state</strong>，通过这个state可以<strong>共享</strong>一些的数据。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/04/12/koa2-mysql连接池/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1437,158 +1561,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/03/25/JS-原型链/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/25/JS-原型链/" itemprop="url">JS-原型链</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-25T12:45:54+08:00">
-                2018-03-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="一-无中生有"><a href="#一-无中生有" class="headerlink" title="一. 无中生有"></a>一. 无中生有</h1><p>起初，什么都没有。</p>
-<p>造物主说：没有东西本身也是一种东西啊，于是就有了null：</p>
-<p><img src="/2018/03/25/JS-原型链/v2-11ae989e2db3a380ffe225e382652671_hd.jpg" alt=""></p>
-<p>现在我们要造点儿东西出来。但是没有原料怎么办？</p>
-<p>有一个声音说：不是有null嘛？</p>
-<p>另一个声音说：可是null代表无啊。</p>
-<p>造物主说：那就无中生有吧！</p>
-<p>于是：</p>
-<p><img src="/2018/03/25/JS-原型链/v2-4305232695aafb0ffb3df63caec39dd1_hd.jpg" alt=""></p>
-<p>JavaScript中的1号对象产生了，不妨把它叫做<strong>No. 1</strong>。</p>
-<p>这个No. 1对象可不得了，<font color="#A52A2A" size="4"><strong>No. 1是真正的万物始祖。它拥有的性质，是所有的对象都有的</strong></font>。</p>
-<p><strong>proto</strong>是什么呢？是“生”的意思，或者叫做<font color="#A52A2A" size="4"><strong>继承</strong></font>。</p>
-<p><br></p>
-<h1 id="二-制造对象的机器"><a href="#二-制造对象的机器" class="headerlink" title="二. 制造对象的机器"></a>二. 制造对象的机器</h1><p>既然已经有了一个对象，剩下就好办了，因为一生二，二生三，三生万物嘛。</p>
-<p>不过造物主很懒，他不想一个一个地亲手制造对象。于是他做了一台能够制造对象的机器：</p>
-<p><img src="/2018/03/25/JS-原型链/v2-2458a871bafadca8b0551e2252d69fec_hd.jpg" alt=""></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.__proto__ === <span class="literal">null</span>;</span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<p>他给这台机器起了一个名字：<strong>Object</strong>。</p>
-<p>这台机器并不能凭空造出对象，它需要一个模板对象，按照这个模板对象来制造对象。很自然的，它把目前仅有的No. 1对象作为模板。图中的<font color="#A52A2A" size="4"><strong>prototype就代表机器的模板对象</strong></font>。</p>
-<p>机器如何启动呢？通过new命令。你对着机器喊一声：“new！”，对象就造出来了。</p>
-<p>机器的产生，实现了对象的批量化自动化生产，解放了造物主的双手。于是造物主忙别的去了。</p>
-<p>如果机器只是按照模板的样子，机械地复制出一模一样的对象，那就太笨了。</p>
-<p>人类的后代在继承了父辈的性状的基础上，可以产生父辈没有的性状。同样地，机器在制造对象时，除了继承模板对象的属性外，还可以添加新的属性。这使得JavaScript世界越来越多样化。</p>
-<p>比如说，有一天Object机器制造一个对象，它有一个特殊的属性，叫做flag，属性值是10。用图形表示是这样的：</p>
-<p><img src="/2018/03/25/JS-原型链/v2-6d345dec589e84311315a3decaa21d8b_hd.jpg" alt=""></p>
-<p>写成代码就是：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>(&#123; <span class="attr">flag</span>: <span class="number">10</span> &#125;);</span><br></pre></td></tr></table></figure>
-<p>轰轰烈烈的造物运动开始了……</p>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/25/JS-原型链/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1639,7 +1611,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">202</span>
+                  <span class="site-state-item-count">203</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1652,7 +1624,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">332</span>
+                  <span class="site-state-item-count">335</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

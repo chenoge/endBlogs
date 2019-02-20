@@ -266,6 +266,150 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/11/30/tcp三次握手/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/30/tcp三次握手/" itemprop="url">tcp三次握手</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-30T14:01:40+08:00">
+                2018-11-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="一、TCP报文格式"><a href="#一、TCP报文格式" class="headerlink" title="一、TCP报文格式"></a>一、TCP报文格式</h3><p>  TCP报文格式图：</p>
+<p><img src="/2018/11/30/tcp三次握手/1.png" alt=""></p>
+<p>上图中有几个字段需要重点介绍下：</p>
+<ol>
+<li>序号：<code>Seq序号</code>，占32位，用来标识从TCP源端向目的端发送的字节流，发起方发送数据时对此进行标记。</li>
+<li>确认序号：<code>Ack序号</code>，占32位，只有<code>ACK标志位</code>为1时，确认序号字段才有效，<code>Ack=Seq+1</code>。</li>
+<li>标志位：共6个，即<code>URG、ACK、PSH、RST、SYN、FIN</code>等，具体含义如下：<ul>
+<li><code>URG</code>：紧急指针（urgent pointer）有效。</li>
+<li><code>ACK</code>：确认序号有效。</li>
+<li><code>PSH</code>：接收方应该尽快将这个报文交给应用层。</li>
+<li><code>RST</code>：重置连接。</li>
+<li><code>SYN</code>：发起一个新连接。</li>
+<li><code>FIN</code>：释放一个连接。 </li>
+</ul>
+</li>
+</ol>
+<p>注：</p>
+<ul>
+<li>不要将<code>确认序号Ack</code>与<code>标志位中的ACK</code>搞混了。</li>
+<li><code>确认方Ack=发起方Req+1</code>，<strong>两端配对</strong>。 </li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/30/tcp三次握手/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/11/28/缓动公式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1420,131 +1564,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/11/14/CommonJS-AMD-CMD区别/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/14/CommonJS-AMD-CMD区别/" itemprop="url">CommonJS/AMD/CMD区别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-14T17:28:02+08:00">
-                2018-11-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="一、概括"><a href="#一、概括" class="headerlink" title="一、概括"></a>一、概括</h3><p><code>CommonJs</code>用在服务器端，<code>AMD</code>和<code>CMD</code>用在浏览器环境。<code>AMD</code> 是 <code>RequireJS</code> 在推广过程中对模块定义的规范化产出。<code>CMD</code> 是 <code>SeaJS</code> 在推广过程中对模块定义的规范化产出。</p>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/14/CommonJS-AMD-CMD区别/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1595,7 +1614,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">202</span>
+                  <span class="site-state-item-count">203</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1608,7 +1627,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">332</span>
+                  <span class="site-state-item-count">335</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
