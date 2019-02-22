@@ -266,6 +266,134 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2017/09/30/nginx-try-files/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/30/nginx-try-files/" itemprop="url">nginx-try_files</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-30T16:04:03+08:00">
+                2017-09-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="一、try-files指令"><a href="#一、try-files指令" class="headerlink" title="一、try_files指令"></a>一、try_files指令</h1><ul>
+<li>语法：<strong>try_files file … uri</strong>  或  <strong>try_files file … = code</strong></li>
+<li>默认值：无</li>
+<li>作用域：<strong>server location</strong> </li>
+</ul>
+<p><strong>按顺序检查文件是否存在，<font color="#A52A2A" size="4">返回第一个找到的文件或文件夹</font>(结尾加斜线表示为文件夹)，如果所有的文件或文件夹都找不到，会<font color="#A52A2A" size="4">进行一个内部重定向到最后一个参数</font>。</strong></p>
+<p><br></p>
+<h1 id="二、例子说明"><a href="#二、例子说明" class="headerlink" title="二、例子说明"></a>二、例子说明</h1><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">try_files</span> /app/cache/   <span class="variable">$uri</span>   <span class="variable">@fallback</span>;</span><br></pre></td></tr></table></figure>
+<p>它将检测<strong>/app/cache/index.php</strong>、<strong>/app/cache/index.html</strong>、<strong>$uri</strong>是否存在，如果不存在着内部重定向到<strong>@fallback</strong>(＠表示配置文件中预定义标记点) 。你也可以使用<strong>一个文件或者状态码</strong>(<strong>=404</strong>)作为最后一个参数，如果是最后一个参数是文件，那么这个文件必须存在。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2017/09/27/Nginx-alias/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1402,143 +1530,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2017/08/05/nodejs-模块原理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/05/nodejs-模块原理/" itemprop="url">nodejs-模块原理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-05T14:52:33+08:00">
-                2017-08-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="零、区别"><a href="#零、区别" class="headerlink" title="零、区别"></a>零、区别</h1><p>Node.js 模块遵循<strong>CommonJS规范</strong>，ES6 模块与CommonJS模块的差异有以下两点 </p>
-<ul>
-<li>CommonJS 模块输出的是一个<strong>值的拷贝</strong>，ES6      模块输出的是<strong>值的引用</strong>。</li>
-<li>CommonJS 模块是<strong>运行时加载</strong>，ES6      模块是<strong>编译时输出接口</strong>。</li>
-</ul>
-<p><br></p>
-<h1 id="一、Node-js-模块实现原理"><a href="#一、Node-js-模块实现原理" class="headerlink" title="一、Node.js 模块实现原理"></a>一、Node.js 模块实现原理</h1><p> <font color="#A52A2A" size="4"><strong>实现“模块”功能的奥妙就在于JavaScript是一种函数式编程语言，它支持闭包。</strong></font>如果我们把一段JavaScript代码用一个函数包装起来，这段代码的所有“全局”变量就变成了函数内部的局部变量。假如我们编写的hello.js代码是这样的：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello'</span>;</span><br><span class="line"><span class="keyword">var</span> name = <span class="string">'world'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(s + <span class="string">' '</span> + name + <span class="string">'!'</span>);</span><br></pre></td></tr></table></figure>
-<p>Node.js加载了hello.js后，它可以把代码包装一下，变成这样执行： </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 读取的hello.js代码:</span></span><br><span class="line">    <span class="keyword">var</span> s = <span class="string">'Hello'</span>;</span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">'world'</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(s + <span class="string">' '</span> + name + <span class="string">'!'</span>);</span><br><span class="line">    <span class="comment">// hello.js代码结束</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-<p>所以，Node利用JavaScript的函数式编程的特性，轻而易举地实现了模块的隔离。  但是，模块的输出module.exports怎么实现？这个也很容易实现，<strong>Node可以先准备一个对象module</strong>：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 准备module对象:</span></span><br><span class="line"><span class="keyword">var</span> <span class="built_in">module</span> = &#123;</span><br><span class="line">    id: <span class="string">'hello'</span>,</span><br><span class="line">    exports: &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line">	</span><br><span class="line"><span class="keyword">var</span> load = <span class="function"><span class="keyword">function</span> (<span class="params">module</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 读取的hello.js代码:</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Hello, '</span> + name + <span class="string">'!'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">module</span>.exports = greet;</span><br><span class="line">    <span class="comment">// hello.js代码结束</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">module</span>.exports;</span><br><span class="line">&#125;;</span><br><span class="line">	</span><br><span class="line"><span class="keyword">var</span> exported = load(<span class="built_in">module</span>);</span><br><span class="line"><span class="comment">// 保存module:</span></span><br><span class="line">save(<span class="built_in">module</span>, exported);</span><br></pre></td></tr></table></figure>
-<p>可见，变量module是Node在加载js文件前准备的一个变量，并将其传入加载函数，我们在hello.js中 <font color="#A52A2A" size="4"><strong>可以直接使用变量module原因就在于它实际上是函数的一个参数</strong></font>： </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = greet;</span><br></pre></td></tr></table></figure>
-<p>通过把参数module传递给load()函数，hello.js就顺利地把一个变量传递给了Node执行环境，<strong>Node会把module变量保存到某个地方</strong>。 </p>
-<p>由于Node保存了所有导入的module，当我们用require()获取module时，Node找到对应的module，把这个module的exports变量返回，这样，另一个模块就顺利拿到了模块的输出： </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> greet = <span class="built_in">require</span>(<span class="string">'./hello'</span>);</span><br></pre></td></tr></table></figure>
-<p>以上是Node实现JavaScript模块的一个简单的原理介绍。 </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1589,7 +1580,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">204</span>
+                  <span class="site-state-item-count">205</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1602,7 +1593,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">336</span>
+                  <span class="site-state-item-count">337</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

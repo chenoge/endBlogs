@@ -266,6 +266,133 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/07/04/javaScript运行机制，从浏览器多进程到JS单线程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/04/javaScript运行机制，从浏览器多进程到JS单线程/" itemprop="url">javaScript运行机制，从浏览器多进程到JS单线程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-04T11:52:36+08:00">
+                2018-07-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="区分进程和线程"><a href="#区分进程和线程" class="headerlink" title="区分进程和线程"></a>区分进程和线程</h1><p>线程和进程区分不清，先看看下面这个形象的比喻：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- 进程是一个工厂，工厂有它的独立资源</span><br><span class="line"></span><br><span class="line">- 工厂之间相互独立</span><br><span class="line"></span><br><span class="line">- 线程是工厂中的工人，多个工人协作完成任务</span><br><span class="line"></span><br><span class="line">- 工厂内有一个或多个工人</span><br><span class="line"></span><br><span class="line">- 工人之间共享空间</span><br></pre></td></tr></table></figure>
+<p>再完善完善概念：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- 工厂的资源 -&gt; 系统分配的内存（独立的一块内存）</span><br><span class="line"></span><br><span class="line">- 工厂之间的相互独立 -&gt; 进程之间相互独立</span><br><span class="line"></span><br><span class="line">- 多个工人协作完成任务 -&gt; 多个线程在进程中协作完成任务</span><br><span class="line"></span><br><span class="line">- 工厂内有一个或多个工人 -&gt; 一个进程由一个或多个线程组成</span><br><span class="line"></span><br><span class="line">- 工人之间共享空间 -&gt; 同一进程下的各个线程之间共享程序的内存空间（包括代码段、数据集、堆等）</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/04/javaScript运行机制，从浏览器多进程到JS单线程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/07/04/javaScript易忽略语法集/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1410,162 +1537,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/06/20/鼠标事件与触摸事件/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/20/鼠标事件与触摸事件/" itemprop="url">鼠标事件与触摸事件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-20T15:19:20+08:00">
-                2018-06-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="一、鼠标事件"><a href="#一、鼠标事件" class="headerlink" title="一、鼠标事件"></a>一、鼠标事件</h1><ul>
-<li><strong>mousedown：</strong>鼠标按钮被按下时触发。不能通过键盘触发。</li>
-<li><strong>mouseup：</strong>鼠标按钮被释放弹起时触发。不能通过键盘触发。</li>
-<li><strong>click：</strong>单击鼠标<strong>左键</strong>或者按下回车键时触发。</li>
-<li><strong>dblclick</strong>：双击鼠标<strong>左键</strong>时触发。</li>
-</ul>
-<p><br></p>
-<ul>
-<li><strong>mouseover：</strong>鼠标移入<strong>目标元素</strong>或<strong>后代元素</strong>上时会触发。</li>
-<li><strong>mouseout：</strong>鼠标离开目<strong>标元素</strong>或<strong>后代元素</strong>时会触发 。</li>
-<li><strong>mouseenter：</strong>鼠标移入元素范围内触发，<strong>该事件不冒泡</strong>，即鼠标移到其后代元素上时不会触发。</li>
-<li><strong>mouseleave：</strong>鼠标移出元素范围时触发，<strong>该事件不冒泡</strong>，即鼠标移到其后代元素时不会触发。</li>
-<li><strong>mousemove：</strong>当鼠标移入被选元素内后，<strong>任意移动一个像素点都会触发</strong> 。</li>
-</ul>
-<p>注：</p>
-<ul>
-<li><p>在一个元素上相继触发mousedown和mouseup事件，才会触发click事件。两次click事件相继触发才会触发dblclick事件。</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mousedown -&gt;  mouseup -&gt; click -&gt;mousedown -&gt;  mouseup -&gt; click -&gt; dblclick</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果取消 了mousedown或mouseup中的一个，click事件就不会被触发。直接或间接取消了click事件，dblclick事件就不会被触发了。</p>
-</li>
-</ul>
-<p><br></p>
-<h1 id="二、触摸事件"><a href="#二、触摸事件" class="headerlink" title="二、触摸事件"></a>二、触摸事件</h1><ul>
-<li><strong>touchstart</strong>：当手指触摸屏幕时触发；即使已经有一个手指放在了屏幕上也会触发。</li>
-<li><strong>touchmove</strong>：当手指在屏幕上滑动时连续地触发。调用preventDefault()可以阻止滚动。</li>
-<li><strong>touchend</strong>：当手指在屏幕上移开时触发。</li>
-<li><strong>touchcancel</strong>：当系统停止跟踪触摸时触发。关于此事件的确切触发时间，文档中没有明确说明。</li>
-</ul>
-<p>注：</p>
-<ul>
-<li><p>点一下的触发顺序</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touchstart -&gt; touchend -&gt; mouseover-&gt; mousedown -&gt;  mouseup -&gt; click</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>移动端的click事件会延迟300ms左右触发事件回调。等待 300 毫秒，以判断用户是否再次点击了屏幕 </p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1616,7 +1587,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">204</span>
+                  <span class="site-state-item-count">205</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1629,7 +1600,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">336</span>
+                  <span class="site-state-item-count">337</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

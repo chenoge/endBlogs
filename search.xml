@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[HTTP-Content-Disposition]]></title>
+    <url>%2F2019%2F02%2F22%2FHTTP-Content-Disposition%2F</url>
+    <content type="text"><![CDATA[在常规的HTTP应答中，Content-Disposition 消息头指示回复的内容该以何种形式展示，是以内联的形式（即网页或者页面的一部分），还是以附件的形式下载并保存到本地。 1、作为消息主体中的消息头在HTTP场景中，第一个参数或者是inline（默认值，表示回复中的消息体会以页面的一部分或者整个页面的形式展示），或者是attachment（意味着消息体应该被下载到本地；大多数浏览器会呈现一个“保存为”的对话框，将filename的值预填为下载后的文件名，假如它存在的话）。 123Content-Disposition: inlineContent-Disposition: attachmentContent-Disposition: attachment; filename="filename.jpg" 2、作为multipart body中的消息头在HTTP场景中。第一个参数总是固定不变的form-data；附加的参数不区分大小写，并且拥有参数值，参数名与参数值用等号(=)连接，参数值用双引号括起来。参数之间用分号(;)分隔。 123Content-Disposition: form-dataContent-Disposition: form-data; name="fieldName"Content-Disposition: form-data; name="fieldName"; filename="filename.jpg" 3、示例以下是一则可以触发”保存为”对话框的服务器应答： 123456200 OKContent-Type: text/html; charset=utf-8Content-Disposition: attachment; filename="cool.html"Content-Length: 22&lt;HTML&gt;Save me!&lt;/HTML&gt; 这个简单的HTML文件会被下载到本地而不是在浏览器中展示。 大多数浏览器默认会建议将cool.html作为文件名。 以下是一个HTML表单的示例，展示了在 multipart/form-data format 格式的报文中使用Content-Disposition 消息头的情况： 12345678910111213POST /test.html HTTP/1.1Host: example.orgContent-Type: multipart/form-data;boundary="boundary"--boundaryContent-Disposition: form-data; name="field1"value1--boundaryContent-Disposition: form-data; name="field2"; filename="example.txt"value2--boundary--]]></content>
+      <tags>
+        <tag>http</tag>
+        <tag>Content-Disposition</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[nginx-serverName]]></title>
     <url>%2F2019%2F02%2F21%2Fnginx-serverName%2F</url>
     <content type="text"><![CDATA[1234567891011121314151617181920212223# 确切的server_name匹配server &#123; listen 80; server_name example.org www.example.org;&#125;# 以*通配符开始的最长字符串server &#123; listen 80; server_name *.example.org;&#125;# 以*通配符结束的最长字符串server &#123; listen 80; server_name mail.*;&#125;# 匹配正则表达式server &#123; listen 80; server_name ~^(?&lt;user&gt;.+)\.example\.net$;&#125; nginx将按照以下顺序对server_name进行匹配，和配置文件中的出现顺序无关 确切的名字 以星号开头的最长通配符名称 最长的通配符名称以星号结尾 第一个匹配正则表达式（按配置文件中的出现顺序） 注：只要有一项匹配以后就会停止搜索 通配符 通配符名称只可以在名称的起始处或结尾处包含一个星号，并且星号与其他字符之间用点分隔 www.*.example.org和w*.example.org都是非法的，请使用~^www\..+\.example\.org$ 和~^w.*\.example\.org$代替 正则表达式 为了使用正则表达式，虚拟主机名必须以波浪线~起始否则该名字会被认为是个确切的名字 如果表达式含星号，则会被认为是个通配符名称 不要忘记设置“^”和“$”锚点， 语法上它们不是必须的，但是逻辑上是的 域名中的点.需要用反斜线\转义。含有{和}的正则表达式需要被引用 1server_name "~^(?&lt;name&gt;\w\d&#123;1,3&#125;+)\.example\.net$"; 命名的正则表达式捕获组在后面可以作为变量使用： 123456server &#123; server_name ~^(www\.)?(?&lt;domain&gt;.+)$; location / &#123; root /sites/$domain; &#125;&#125; PCRE使用下面语法支持命名捕获组： ?&lt;name&gt; 从PCRE-7.0开始支持，兼容Perl 5.10语法 ?&#39;name&#39; 从PCRE-7.0开始支持，兼容Perl 5.10语法 ?P&lt;name&gt; 从PCRE-4.0开始支持，兼容Python语法 或者 123456server &#123; server_name ~^(www\.)?(.+)$; location / &#123; root /sites/$2; &#125;&#125; 杂项名称空：&quot;&quot;如果服务器块中未定义server_name，则nginx使用空名称作为服务器名称 1234server &#123; listen 80; server_name example.org www.example.org "";&#125; 下划线：_1234567server &#123; listen 80 default_server; server_name _; return 444;&#125;# 这个名称没什么特别之处，它只是无数域名之一，永远不会与任何真实姓名相交# 使用"--"、"!@#"效果也是一样 default_server1234567891011121314http &#123; server &#123; listen 80; server_name www.a.com; &#125; # 显示的定义一个 default server server &#123; listen 80 default_server; server_name _; return 403; # 403 forbidden &#125; &#125; 12345678910111213http &#123; # 如果没有显式声明 default server 则第一个 server 会被隐式的设为 default server server &#123; listen 80; server_name _; # _ 并不是重点 return 403; # 403 forbidden &#125; server &#123; listen 80; server_name www.a.com; &#125;&#125;]]></content>
@@ -42,9 +51,9 @@
     <url>%2F2019%2F01%2F21%2FNginx%E9%85%8D%E7%BD%AEHost%E5%AD%97%E6%AE%B5%E5%87%BA%E9%94%99%2F</url>
     <content type="text"><![CDATA[一、Host为空12# 虚拟主机的主域名proxy_set_header Host $proxy_host; 123# 请求头中'Host'的值# 如果请求头中没有携带Host值，那传到服务器的请求也不含这个字段proxy_set_header Host $http_host; 123# 请求包含'Host'请求头时为'Host'字段的值# 在请求未携带'Host'请求头时为虚拟主机的主域名proxy_set_header Host $host; 注：使用$http_host变量时，在http1.1协议中，如果请求不带Host字段值，会报错400错误 客户端必须在所有HTTP1.1请求消息中包含Host头字段 如果请求的URI不包含所请求服务的主机名，则必须为Host头字段指定一个空值 HTTP1.1代理必须确保它转发的任何请求消息，都包含一个适当的主机头字段，用于标识代理请求的服务 所有基于HTTP1.1服务器必须以400状态代码响应任何缺少主机头字段的HTTP1.1请求消息 二、Host重复配置123# proxy.conf文件proxy_set_header Host $host;proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 123include conf/proxy.conf; # proxy.conf文件中已经设置了Host字段值proxy_set_header Host $host;proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 注：两个proxy_set_header Host $host;语句，配置在同一个语句块中，不存在子语句块覆盖父语句块的情况 HTTP RFC2616 可以存在具有相同字段名的多个消息头字段在消息中，当且仅当该标头的整个字段值字段被定义为以逗号分隔的列表。通过将每个后续字段值附加到第一个，每个用逗号分隔。因此代理不得改变转发时这些字段值的顺序 。 1234Cache-Control: no-cacheCache-Control: no-store# 相当于Cache-Control: no-cache, no-store 由于Host字段值不允许以逗号分隔，nginx会报400状态码错误。]]></content>
       <tags>
+        <tag>http</tag>
         <tag>nginx</tag>
         <tag>Host</tag>
-        <tag>http</tag>
       </tags>
   </entry>
   <entry>
