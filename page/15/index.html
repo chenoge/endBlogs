@@ -266,6 +266,295 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/04/10/nginx-CORS跨域/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/10/nginx-CORS跨域/" itemprop="url">nginx-CORS跨域</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-10T10:22:29+08:00">
+                2018-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="一、CORS"><a href="#一、CORS" class="headerlink" title="一、CORS"></a>一、CORS</h1><p><strong>CORS</strong>全称<code>Cross-Origin Resource Sharing</code>，是HTML5规范定义的如何跨域访问资源。 </p>
+<p><strong>Origin</strong>（<strong>本域</strong>）表示浏览器当前页面的域。当JavaScript向<strong>外域</strong>发起请求后，浏览器收到响应后，首先检查<code>Access-Control-Allow-Origin</code>是否包含<strong>本域</strong>，如果是，则此次跨域请求成功，如果不是，则请求失败，JavaScript将无法获取到响应的任何数据。 </p>
+<p><img src="/2018/04/10/nginx-CORS跨域/l.png" alt=""></p>
+<p>上面这种跨域请求，称之为“<strong>简单请求</strong>”。若请求满足所有下述条件，则该请求可视为“简单请求”： </p>
+<h5 id="1-使用下列方法之一"><a href="#1-使用下列方法之一" class="headerlink" title="1.使用下列方法之一"></a>1.使用下列方法之一</h5><ul>
+<li><code>GET</code></li>
+<li><code>HEAD</code></li>
+<li><code>POST</code></li>
+</ul>
+<h5 id="2-Fetch-规范定义了对-CORS-安全的首部字段集合，不得人为设置该集合之外的其他首部字段。该集合为"><a href="#2-Fetch-规范定义了对-CORS-安全的首部字段集合，不得人为设置该集合之外的其他首部字段。该集合为" class="headerlink" title="2.Fetch 规范定义了对 CORS 安全的首部字段集合，不得人为设置该集合之外的其他首部字段。该集合为"></a>2.Fetch 规范定义了对 CORS 安全的首部字段集合，不得人为设置该集合之外的其他首部字段。该集合为</h5><ul>
+<li><code>Accept</code></li>
+<li><code>Accept-Language</code></li>
+<li><code>Content-Language</code></li>
+<li><code>Content-Type</code></li>
+<li><code>DPR</code></li>
+<li><code>Downlink</code></li>
+<li><code>Save-Data</code></li>
+<li><code>Viewport-Width</code></li>
+<li><code>Width</code></li>
+</ul>
+<h5 id="3-Content-Type的值仅限于下列三者之一"><a href="#3-Content-Type的值仅限于下列三者之一" class="headerlink" title="3.Content-Type的值仅限于下列三者之一"></a>3.<code>Content-Type</code>的值仅限于下列三者之一</h5><ul>
+<li><code>text/plain</code></li>
+<li><code>multipart/form-data</code></li>
+<li><code>application/x-www-form-urlencoded</code></li>
+</ul>
+<h5 id="4-请求中的任意XMLHttpRequestUpload对象均没有注册任何事件监听器"><a href="#4-请求中的任意XMLHttpRequestUpload对象均没有注册任何事件监听器" class="headerlink" title="4.请求中的任意XMLHttpRequestUpload对象均没有注册任何事件监听器"></a>4.请求中的任意<code>XMLHttpRequestUpload</code>对象均没有注册任何事件监听器</h5><ul>
+<li><code>XMLHttpRequestUpload</code>对象可以使用 <code>XMLHttpRequest.upload</code>属性访问</li>
+</ul>
+<h5 id="5-请求中没有使用-ReadableStream-对象"><a href="#5-请求中没有使用-ReadableStream-对象" class="headerlink" title="5.请求中没有使用 ReadableStream 对象"></a>5.请求中没有使用 <code>ReadableStream</code> 对象</h5><p><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/10/nginx-CORS跨域/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/04/09/html-不使用table布局/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/09/html-不使用table布局/" itemprop="url">html-不使用table布局</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-09T20:56:15+08:00">
+                2018-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>Table要比其它html标记占更多的字节 </li>
+</ul>
+<ul>
+<li>Tablle会阻挡浏览器渲染引擎的渲染顺序<ul>
+<li><strong>table是中的内容是自适应的，它要计算嵌套最深的节点以满足自适应，所以会出现空白后才显示内容。</strong> </li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>在某些浏览器中Table里的文字的拷贝会出现问题。 </li>
+</ul>
+<ul>
+<li>Table会影响其内部的某些布局属性的生效(比如<td>里的元素的height:100%) </td></li>
+</ul>
+<ul>
+<li>table对对于页面布局来说，从语义上看是不正确的。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/03/29/css-响应式表单/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1310,260 +1599,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/03/19/css-视差滚动效果/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/19/css-视差滚动效果/" itemprop="url">css-视差滚动效果</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-19T19:30:32+08:00">
-                2018-03-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.demo</span> &#123;</span><br><span class="line">    <span class="attribute">perspective</span>: <span class="number">2px</span>; </span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>; </span><br><span class="line">    <span class="attribute">height</span>: <span class="number">600px</span>; </span><br><span class="line">    <span class="attribute">height</span>: <span class="built_in">calc</span>(100vh - 300px); </span><br><span class="line">    <span class="attribute">overflow</span>: auto;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">1280px</span>;</span><br><span class="line">    <span class="attribute">transform-style</span>: preserve-<span class="number">3</span>d;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.iphone</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute; <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate3D</span>(-50%, -120px, -4px) <span class="built_in">scale</span>(3);</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"><span class="selector-class">.smile</span>, <span class="selector-class">.flower</span>, <span class="selector-class">.music</span>, <span class="selector-class">.pdf</span> &#123; </span><br><span class="line">    <span class="comment">/* 略... */</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"mobile_1_iphone.jpg"</span> <span class="attr">class</span>=<span class="string">"iphone"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"smile"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"flower"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"music"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"pdf"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="3D视角示意图"><a href="#3D视角示意图" class="headerlink" title="3D视角示意图"></a>3D视角示意图</h1><p><img src="/2018/03/19/css-视差滚动效果/css3d-edited.png" alt=""></p>
-<p>当我们在屏幕前面<strong>2个单位(perspective: 2px; )</strong>的地方，看屏幕后面<strong>4个单位(transform: translate3D(-50%, -120px, -4px) scale(3);)</strong>的元素，肉眼所见的画面大小只有<strong>实际的1/3</strong>，即所谓的近大远小。此时<strong>scale(3)</strong>让内容放大到原来3倍，正好在平面上看上去好像是原来大小。</p>
-<p><br></p>
-<p>虽然肉眼所见体积似乎是1:1，但是，滚动时候的位移变化还是1:3。网页中的3D就是模拟真实世界的3D效果，因此，也会有这种视差体验。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/03/18/js-简单工厂模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/18/js-简单工厂模式/" itemprop="url">js-简单工厂模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T16:38:48+08:00">
-                2018-03-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="一、工厂模式"><a href="#一、工厂模式" class="headerlink" title="一、工厂模式"></a>一、工厂模式</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createBlog</span>(<span class="params">name, url</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">    obj.name = name;</span><br><span class="line">    obj.url = url;</span><br><span class="line">    obj.sayUrl= <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.url);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> blog1 = createBlog(<span class="string">'wuyuchang'</span>, <span class="string">'http://www.jb51.net/'</span>);</span><br></pre></td></tr></table></figure>
-<p><br></p>
-<h1 id="二、构造函数模式"><a href="#二、构造函数模式" class="headerlink" title="二、构造函数模式"></a>二、构造函数模式</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Blog</span>(<span class="params">name, url</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.url = url;</span><br><span class="line">    <span class="keyword">this</span>.alertUrl = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.url);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> blog = <span class="keyword">new</span> Blog(<span class="string">'wuyuchang'</span>, <span class="string">'http://www.jb51.net/'</span>);</span><br></pre></td></tr></table></figure>
-<p><br></p>
-<h1 id="三、原型模式"><a href="#三、原型模式" class="headerlink" title="三、原型模式"></a>三、原型模式</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Blog</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Blog.prototype.name = <span class="string">'wuyuchang'</span>;</span><br><span class="line"></span><br><span class="line">Blog.prototype.url = <span class="string">'http://tools.jb51.net/'</span>;</span><br><span class="line"></span><br><span class="line">Blog.prototype.friend = [<span class="string">'fr1'</span>, <span class="string">'fr2'</span>, <span class="string">'fr3'</span>, <span class="string">'fr4'</span>];</span><br><span class="line"></span><br><span class="line">Blog.prototype.alertInfo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name + <span class="keyword">this</span>.url + <span class="keyword">this</span>.friend);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/18/js-简单工厂模式/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1614,7 +1649,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">205</span>
+                  <span class="site-state-item-count">207</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1627,7 +1662,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">337</span>
+                  <span class="site-state-item-count">342</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
