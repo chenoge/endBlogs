@@ -266,6 +266,131 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/04/10/nginx-rewrite/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/10/nginx-rewrite/" itemprop="url">nginx-rewrite</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-10T17:41:04+08:00">
+                2018-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="一、ngx-http-rewrite-module"><a href="#一、ngx-http-rewrite-module" class="headerlink" title="一、ngx_http_rewrite_module"></a>一、ngx_http_rewrite_module</h1><p><code>rewrite</code>模块即<code>ngx_http_rewrite_module</code>模块，主要功能是改写请求URI，是Nginx默认安装的模块。rewrite模块会根据<code>PCRE正则</code>匹配重写URI，或者直接返回资源（<code>200|404</code>），或者发起内部跳转再匹配location，或者直接做30x重定向返回客户端。 <code>ngx_http_rewrite_module</code>模块的指令有<code>break</code>, <code>if</code>, <code>return</code>, <code>rewrite</code>, <code>set</code>。</p>
+<p><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/10/nginx-rewrite/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/04/10/nginx-CORS跨域/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1468,137 +1593,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/03/21/css-transform与坐标系统/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/21/css-transform与坐标系统/" itemprop="url">css-transform与坐标系统</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T11:55:31+08:00">
-                2018-03-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="一、-坐标系统"><a href="#一、-坐标系统" class="headerlink" title="一、 坐标系统"></a>一、 坐标系统</h1><p>我们很熟悉的网页是平面的，一个DOM元素会有一个初始坐标系（initial coordinate system）： </p>
-<p><img src="/2018/03/21/css-transform与坐标系统/bVrVnk.png" alt=""></p>
-<p><strong>每一个DOM元素都有一个这样的初始坐标系。其中，原点位于元素的左上角，z轴指向观察者。</strong>初始坐标系的z轴并不算是三维空间，而是像z-index那样作为参照，决定网页元素的绘制顺序，绘制顺序靠后的元素将覆盖绘制顺序靠前的。 </p>
-<p><br></p>
-<p>在使用transform的时候，情况则有所不同。transform所参照的并不是初始坐标系，而是一个新的坐标系： </p>
-<p><img src="/2018/03/21/css-transform与坐标系统/bVrVnl.png" alt=""></p>
-<p>transform所用的这个坐标系，相比初始坐标系，x、y、z轴的指向都不变，只是原点位置移动到了元素的正中心。<strong>如果想要改变这个坐标系的原点位置，使用transform-origin</strong>。<strong>transform-origin的默认值是50% 50%</strong>，因此，默认情况下，transform坐标系的原点位于元素中心。 </p>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/21/css-transform与坐标系统/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1649,7 +1643,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">207</span>
+                  <span class="site-state-item-count">208</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1662,7 +1656,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">342</span>
+                  <span class="site-state-item-count">344</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

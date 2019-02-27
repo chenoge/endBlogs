@@ -266,6 +266,135 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/12/29/url长度限制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/29/url长度限制/" itemprop="url">url长度限制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-29T14:32:04+08:00">
+                2018-12-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="一、HTTP协议"><a href="#一、HTTP协议" class="headerlink" title="一、HTTP协议"></a>一、HTTP协议</h4><p><code>HTTP协议</code>不对<code>url</code>的长度设置任何先验限制</p>
+<ul>
+<li>服务器必须能够处理它们所服务的<code>任何资源的URI</code>，并且<strong>如果它们提供可以生成这种<code>URI</code>的基于<code>GET</code>的表单</strong>，则应该能够处理<code>无限长度的URI</code>。</li>
+<li>如果<code>URI</code>长于服务器可以处理的长度，服务器应该返回<code>414</code>（<code>Request-URI</code> Too Long）状态 。</li>
+</ul>
+<p><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/29/url长度限制/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/12/26/时间戳、时区以及时间格式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1588,162 +1717,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/12/07/console格式化输出/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/07/console格式化输出/" itemprop="url">console.log格式化输出</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T16:43:54+08:00">
-                2018-12-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="字符串替代和格式设置"><a href="#字符串替代和格式设置" class="headerlink" title="字符串替代和格式设置"></a>字符串替代和格式设置</h4><p>传递到任何记录方法的<strong>第一个参数可能包含一个或多个格式说明符</strong>。格式说明符由一个 <code>%</code> 符号与后面紧跟的一个字母组成，字母指示应用到值的格式。<strong>字符串后面的参数会按顺序应用到占位符</strong>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// Sam has 100 points</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"%s has %d points"</span>, <span class="string">"Sam"</span>, <span class="number">100</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Node count: 2, and the time is 1544184144238.</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"Node count: %d, and the time is %f."</span>, <span class="built_in">document</span>.childNodes.length, <span class="built_in">Date</span>.now());</span><br></pre></td></tr></table></figure>
-<p>格式说明符的完整列表为： </p>
-<table>
-<thead>
-<tr>
-<th>说明符</th>
-<th>输出</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>%s</td>
-<td>将值格式化为字符串</td>
-</tr>
-<tr>
-<td>%i 或 %d</td>
-<td>将值格式化为整型</td>
-</tr>
-<tr>
-<td>%f</td>
-<td>将值格式化为浮点值</td>
-</tr>
-<tr>
-<td>%o</td>
-<td>将值格式化为可扩展 DOM 元素。如同在 Elements 面板中显示的一样</td>
-</tr>
-<tr>
-<td>%O</td>
-<td>将值格式化为可扩展 JavaScript 对象</td>
-</tr>
-<tr>
-<td>%c</td>
-<td>将 CSS 样式规则应用到第二个参数指定的输出字符串</td>
-</tr>
-</tbody>
-</table>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1794,7 +1767,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">207</span>
+                  <span class="site-state-item-count">208</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1807,7 +1780,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">342</span>
+                  <span class="site-state-item-count">344</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
