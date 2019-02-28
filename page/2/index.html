@@ -266,6 +266,143 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2019/01/19/Proxy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/19/Proxy/" itemprop="url">Proxy</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-19T18:54:15+08:00">
+                2019-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="一、语法"><a href="#一、语法" class="headerlink" title="一、语法"></a>一、语法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, handler);</span><br></pre></td></tr></table></figure>
+<h5 id="传参说明"><a href="#传参说明" class="headerlink" title="传参说明"></a>传参说明</h5><ul>
+<li><code>target</code>：使用<code>Proxy</code>包装的目标对象，它可以是任何类型的对象，包括数组、函数或甚至另一个<code>proxy</code>对象</li>
+<li><code>handler</code>：一个对象，其属性是在对其执行操作时定义代理行为的函数</li>
+</ul>
+<h5 id="对象代理"><a href="#对象代理" class="headerlink" title="对象代理"></a>对象代理</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Proxy</span>(&#123;&#125;, &#123;</span><br><span class="line">    get: <span class="function"><span class="keyword">function</span>(<span class="params">target, key, receiver</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`getting <span class="subst">$&#123;key&#125;</span>!`</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Reflect</span>.get(target, key, receiver);</span><br><span class="line">    &#125;,</span><br><span class="line">    set: <span class="function"><span class="keyword">function</span>(<span class="params">target, key, value, receiver</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`setting <span class="subst">$&#123;key&#125;</span>!`</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Reflect</span>.set(target, key, value, receiver);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<ul>
+<li>要使得<code>Proxy</code>起作用，<strong>必须针对<code>Proxy</code>实例进行操作</strong>，而不是针对目标对象进行操作 </li>
+<li>如果<code>handler</code>没有设置任何拦截，那就等同于<strong>直接通向原对象</strong> </li>
+<li>Proxy 实例可以<strong>作为其他对象的原型对象</strong> </li>
+</ul>
+<h5 id="函数代理"><a href="#函数代理" class="headerlink" title="函数代理"></a>函数代理</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> handler = &#123;</span><br><span class="line">    get: <span class="function"><span class="keyword">function</span>(<span class="params">target, name</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (name === <span class="string">'prototype'</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">Object</span>.prototype;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'Hello, '</span> + name;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    apply: <span class="function"><span class="keyword">function</span>(<span class="params">target, thisBinding, args</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> args[<span class="number">0</span>];</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    construct: <span class="function"><span class="keyword">function</span>(<span class="params">target, args</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123; <span class="attr">value</span>: args[<span class="number">1</span>] &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fproxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(<span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;, handler);</span><br><span class="line"></span><br><span class="line">fproxy(<span class="number">1</span>, <span class="number">2</span>) <span class="comment">// 1</span></span><br><span class="line"><span class="keyword">new</span> fproxy(<span class="number">1</span>, <span class="number">2</span>) <span class="comment">// &#123;value: 2&#125;</span></span><br><span class="line">fproxy.prototype === <span class="built_in">Object</span>.prototype <span class="comment">// true</span></span><br><span class="line">fproxy.foo === <span class="string">"Hello, foo"</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>注：<code>Proxy</code>比<code>Object.defineProperty</code> 的功能更强大。Vue的作者宣称将在Vue3.0版本后加入<code>Proxy</code>从而代替<code>Object.defineProperty</code> 。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/19/Proxy/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2019/01/19/实现bind方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1418,144 +1555,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2019/01/02/JS在IE中的兼容问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/02/JS在IE中的兼容问题/" itemprop="url">JS在IE中的兼容问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-02T23:23:26+08:00">
-                2019-01-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="标识符与保留字"><a href="#标识符与保留字" class="headerlink" title="标识符与保留字"></a>标识符与保留字</h4><p><code>保留字</code>是<code>JavaScript</code>语言中定义<code>具有特殊含义的标识符</code>，<strong>保留字不能作为标识符使用</strong>。<code>JavaScript</code>语言中定义了一些<code>具有专门的意义和用途的保留字</code>，这些保留字称为<code>关键字</code>。</p>
-<p><strong>标识符：变量，属性，数组，函数名称 </strong>  </p>
-<p><br></p>
-<h4 id="SCRIPT1010"><a href="#SCRIPT1010" class="headerlink" title="SCRIPT1010"></a>SCRIPT1010</h4><p><code>缺少标识符</code> ，一般在<code>IE浏览器</code>下，使用了保留字就会报这个错误，如： <code>default</code>, <code>delete</code> 等</p>
-<p><br></p>
-<h4 id="SCRIPT1028"><a href="#SCRIPT1028" class="headerlink" title="SCRIPT1028"></a>SCRIPT1028</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对象最后一项是不允许有逗号的，跟json的规则相似</span></span><br><span class="line"><span class="keyword">let</span> point = &#123; <span class="attr">x</span>: <span class="number">1.2</span>, <span class="attr">y</span>: <span class="number">-3.4</span> &#125;; <span class="comment">// 合法声明</span></span><br><span class="line"><span class="keyword">let</span> point = &#123; <span class="attr">x</span>: <span class="number">1.2</span>, <span class="attr">y</span>: <span class="number">-3.4</span>, &#125;; <span class="comment">// 缺少标识符、字符串或数字</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用了保留字</span></span><br><span class="line"><span class="keyword">let</span> point = &#123; <span class="attr">x</span>: <span class="number">1.2</span>, <span class="string">'delete'</span>: <span class="number">-3.4</span> &#125;; <span class="comment">// 合法声明</span></span><br><span class="line"><span class="keyword">let</span> point = &#123; <span class="attr">x</span>: <span class="number">1.2</span>,  <span class="attr">delete</span>: <span class="number">-3.4</span> &#125;; <span class="comment">// 缺少标识符、字符串或数字</span></span><br></pre></td></tr></table></figure>
-<p><code>对象文字值的属性</code>必须是<code>标识符</code>、<code>字符串</code>或<code>数字</code>。 对象文字值（也称为“对象初始值设定项”）由逗号分隔的<code>“属性:值”</code>对的列表构成，其中各对都括在括号中。</p>
-<p>注：使用打包工具会存在<code>&#39;delete&#39;</code>变为<code>delete</code>的情况，最好不要使用保留字作为标识符。</p>
-<p><br></p>
-<h4 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 相同工程：线上环境 </span></span><br><span class="line"><span class="comment">// 存在以上问题</span></span><br><span class="line"><span class="comment">// IE11 浏览器的 navigator.userAgent</span></span><br><span class="line"><span class="string">"Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; Tablet PC 2.0)"</span></span><br></pre></td></tr></table></figure>
-<p>注：<code>IE11</code>不存在以上问题</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 相同工程：开发环境、vue、webpack-dev-server </span></span><br><span class="line"><span class="comment">// 不存在以上问题</span></span><br><span class="line"><span class="comment">// IE11 浏览器的 navigator.userAgent</span></span><br><span class="line"><span class="string">"Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; Tablet PC 2.0; rv:11.0) like Gecko"</span></span><br></pre></td></tr></table></figure>
-<p>注：因为项目中未使用<code>X-UA-Compatible</code>指定<code>IE内核版本</code> </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--使用后，线上环境恢复正常，与开发环境一致--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=Edge"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/02/JS在IE中的兼容问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1606,7 +1605,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">208</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

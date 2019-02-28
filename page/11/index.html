@@ -266,6 +266,139 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/25/CSS-background-clip与background-origin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/25/CSS-background-clip与background-origin/" itemprop="url">CSS-background-clip与background-origin</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-25T23:33:37+08:00">
+                2018-05-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="一、CSS3新属性"><a href="#一、CSS3新属性" class="headerlink" title="一、CSS3新属性"></a>一、CSS3新属性</h1><p>在CSS2中，背景图片定义的位置是相对于其包含元素的填充(padding)的外部界限的，所有的溢出都会扩展到边框之下。CSS3引入了两个新的属性，可以对其进行更精细的控制。</p>
+<ul>
+<li><p>第一个属性是：background-clip </p>
+</li>
+<li><p>第二个属性是：background-origin</p>
+</li>
+</ul>
+<p>对于这两个新属性，其对应的属性值是相同的：<strong>border-box, padding-box, content-box</strong>。它们的最根本的区别就是：<font color="#A52A2A" size="4"><strong>background-clip 是对背景图片的裁剪，background-origin是对背景图片设置起始点&lt;</strong>/font&gt;。 <br></font></p>
+<p><strong>对于background-clip, 其关键字是指将背景图片以border的尺寸、以padding的尺寸，以content的尺寸进行切割，其得到的结果是不完整的背景，也就是其中的一部分(原理与截图差不多)。而且有一点要注意，background-clip的切割是对这个容器背景的切割(包括图片与背景颜色)。</strong><br> </p>
+<p><strong>对于background-origin，其关键字是指将背景图片放置到border范围内，padding范围内、content范围内，其得到的结果是完整的背景(原理与图片的缩放相似)。与background-clip不同的是，它只是单纯设置背景图片的边界，并不会对背景颜色造成影响。</strong><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/25/CSS-background-clip与background-origin/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/25/CSS-background-position/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1417,140 +1550,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/16/JS-代码异常监控/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/16/JS-代码异常监控/" itemprop="url">JS-代码异常监控</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-16T12:43:53+08:00">
-                2018-05-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="一、window-onerror"><a href="#一、window-onerror" class="headerlink" title="一、window.onerror"></a>一、window.onerror</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onerror = <span class="function"><span class="keyword">function</span>(<span class="params">message, source, lineno, colno, error</span>) </span>&#123; ... &#125;</span><br></pre></td></tr></table></figure>
-<p>函数参数：</p>
-<ul>
-<li>message：错误信息（字符串）。可用于HTML onerror=””处理程序中的event。</li>
-<li>source：发生错误的脚本URL（字符串）</li>
-<li>lineno：发生错误的行号（数字）</li>
-<li>colno：发生错误的列号（数字）</li>
-<li>error：<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" target="_blank" rel="noopener">Error对象</a>（对象）</li>
-</ul>
-<p><strong>若该函数返回true，则阻止执行默认事件处理函数。</strong> </p>
-<p><br></p>
-<h1 id="二、window-addEventListener-‘error’"><a href="#二、window-addEventListener-‘error’" class="headerlink" title="二、window.addEventListener(‘error’)"></a>二、window.addEventListener(‘error’)</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123; ... &#125;)</span><br></pre></td></tr></table></figure>
-<p>**<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/ErrorEvent" target="_blank" rel="noopener">ErrorEvent</a> 类型的event包含有关事件和错误的所有信息。<br></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onerror = <span class="function"><span class="keyword">function</span>(<span class="params">msg, url, lineNo, columnNo, error</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> message = [</span><br><span class="line">        <span class="string">'Message: '</span> + msg,</span><br><span class="line">        <span class="string">'URL: '</span> + url,</span><br><span class="line">        <span class="string">'Line: '</span> + lineNo,</span><br><span class="line">        <span class="string">'Column: '</span> + columnNo,</span><br><span class="line">        <span class="string">'Error object: '</span> + <span class="built_in">JSON</span>.stringify(error)</span><br><span class="line">    ].join(<span class="string">' - '</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(message);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/05/16/JS-代码异常监控/前端代码异常监控曲线示例图2.png" alt="前端代码异常监控曲线示例图"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1601,7 +1600,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">208</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
