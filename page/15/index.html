@@ -266,6 +266,130 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/04/12/koa2-mysql连接池/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/12/koa2-mysql连接池/" itemprop="url">koa2-mysql连接池</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-12T15:09:51+08:00">
+                2018-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="一、创建数据库会话"><a href="#一、创建数据库会话" class="headerlink" title="一、创建数据库会话"></a>一、创建数据库会话</h1><p><a href="https://github.com/mysqljs/mysql#install" target="_blank" rel="noopener">mysql.js</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>)</span><br><span class="line"><span class="keyword">const</span> connection = mysql.createConnection(&#123;</span><br><span class="line">  host     : <span class="string">'127.0.0.1'</span>,   <span class="comment">// 数据库地址</span></span><br><span class="line">  user     : <span class="string">'root'</span>,    <span class="comment">// 数据库用户</span></span><br><span class="line">  password : <span class="string">'123456'</span>   <span class="comment">// 数据库密码</span></span><br><span class="line">  database : <span class="string">'my_database'</span>  <span class="comment">// 选中数据库</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">connection.connect();</span><br><span class="line">	</span><br><span class="line"><span class="comment">// 执行sql脚本对数据库进行读写 </span></span><br><span class="line">connection.query(<span class="string">'SELECT * FROM my_table'</span>,  (error, results, fields) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (error) <span class="keyword">throw</span> error</span><br><span class="line">    <span class="comment">// connected! </span></span><br><span class="line">    <span class="comment">// 结束会话</span></span><br><span class="line">    connection.release() </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h1 id="二、创建数据连接池"><a href="#二、创建数据连接池" class="headerlink" title="二、创建数据连接池"></a>二、创建数据连接池</h1><p>一般情况下操作数据库是很复杂的读写过程，不只是一个会话，如果直接用会话操作，就需要每次会话都要配置连接参数。所以这时候就需要连接池管理会话。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>)</span><br><span class="line"><span class="comment">// 创建数据池</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pool  = mysql.createPool(&#123;</span><br><span class="line">  host     : <span class="string">'127.0.0.1'</span>,   <span class="comment">// 数据库地址</span></span><br><span class="line">  user     : <span class="string">'root'</span>,    <span class="comment">// 数据库用户</span></span><br><span class="line">  password : <span class="string">'123456'</span>   <span class="comment">// 数据库密码</span></span><br><span class="line">  database : <span class="string">'my_database'</span>  <span class="comment">// 选中数据库</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在数据池中进行会话操作</span></span><br><span class="line">pool.getConnection(<span class="function"><span class="keyword">function</span>(<span class="params">err, connection</span>) </span>&#123;</span><br><span class="line">    connection.query(<span class="string">'SELECT * FROM my_table'</span>,  (error, results, fields) =&gt; &#123;</span><br><span class="line">        <span class="comment">// 结束会话</span></span><br><span class="line">        connection.release();</span><br><span class="line">        <span class="comment">// 如果有错误就抛出</span></span><br><span class="line">        <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/04/12/koa2-session/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1465,143 +1589,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/03/23/css-权重/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/23/css-权重/" itemprop="url">css-权重</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-23T21:59:46+08:00">
-                2018-03-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="权重等级"><a href="#权重等级" class="headerlink" title="权重等级"></a>权重等级</h1><p>根据选择器种类的不同可以分为四类，也决定了四种不同等级的权重值。</p>
-<h5 id="0、-important（10-000）"><a href="#0、-important（10-000）" class="headerlink" title="0、!important（10,000）"></a>0、!important（10,000）</h5><h5 id="1、行内样式style（1-000）"><a href="#1、行内样式style（1-000）" class="headerlink" title="1、行内样式style（1,000）"></a>1、行内样式style（1,000）</h5><h5 id="2、ID选择器（100）"><a href="#2、ID选择器（100）" class="headerlink" title="2、ID选择器（100）"></a>2、ID选择器（100）</h5><h5 id="3、类、属性选择器、伪类选择器（10）"><a href="#3、类、属性选择器、伪类选择器（10）" class="headerlink" title="3、类、属性选择器、伪类选择器（10）"></a>3、类、属性选择器、伪类选择器（10）</h5><p>伪类选择器</p>
-<ul>
-<li>:hover</li>
-<li>:focus</li>
-</ul>
-<h5 id="4、元素、伪元素（1）"><a href="#4、元素、伪元素（1）" class="headerlink" title="4、元素、伪元素（1）"></a>4、元素、伪元素（1）</h5><p>伪元素选择器:</p>
-<ul>
-<li>::after </li>
-<li>::before </li>
-<li>::first-letter </li>
-<li>::first-line </li>
-<li>::selecton</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/23/css-权重/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1652,7 +1639,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">211</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1665,7 +1652,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">349</span>
+                  <span class="site-state-item-count">352</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
