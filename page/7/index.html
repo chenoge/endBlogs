@@ -266,6 +266,264 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/10/11/柯里化-currying/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/11/柯里化-currying/" itemprop="url">柯里化-currying</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-11T20:20:12+08:00">
+                2018-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="什么是柯里化？"><a href="#什么是柯里化？" class="headerlink" title="什么是柯里化？"></a>什么是柯里化？</h1><p>在计算机科学中，柯里化<strong>（Currying）</strong>是把接受<strong>多个参数</strong>的函数变换成接受一个<strong>单一参数</strong>（最初函数的第一个参数）的函数，并且返回接受<strong>余下的参数</strong>且返回结果的新函数的技术。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">currying</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> slice = <span class="built_in">Array</span>.prototype.slice,</span><br><span class="line">        __args = slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> __inargs = slice.call(<span class="built_in">arguments</span>);</span><br><span class="line">        <span class="keyword">return</span> fn.apply(<span class="literal">null</span>, __args.concat(__inargs));</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：柯里化主要是利用闭包，将<strong>单一参数</strong>封装起来。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> i * i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">map</span>(<span class="params">handeler, list</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> list.map(handeler);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通用性写法</span></span><br><span class="line">map(square, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</span><br><span class="line">map(square, [<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>]);</span><br><span class="line">map(square, [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 柯里化写法</span></span><br><span class="line"><span class="comment">// 固定mapSQ的单一参数，降低通用性，提高适用性</span></span><br><span class="line"><span class="keyword">var</span> mapSQ = currying(map, square);  <span class="comment">// square 为单一参数</span></span><br><span class="line">mapSQ([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</span><br><span class="line">mapSQ([<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>]);</span><br><span class="line">mapSQ([<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通用设计与专门设计相比，功能更多，但效率却更低。</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/11/柯里化-currying/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/10/10/减少if-else和switch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/10/减少if-else和switch/" itemprop="url">减少if-else和switch</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-10T23:01:31+08:00">
+                2018-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><a href="https://juejin.im/post/5bb9e3085188255c352d7326" target="_blank" rel="noopener">原文</a><br></p>
+<h2 id="1-使用-Array-includes-来处理多重条件"><a href="#1-使用-Array-includes-来处理多重条件" class="headerlink" title="1. 使用 Array.includes 来处理多重条件"></a>1. 使用 Array.includes 来处理多重条件</h2><p>举个栗子 🌰：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 条件语句</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">fruit</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (fruit == <span class="string">'apple'</span> || fruit == <span class="string">'strawberry'</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'red'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>乍一看，这么写似乎没什么大问题。然而，如果我们想要匹配更多的红色水果呢，比方说『樱桃』和『蔓越莓』？我们是不是得用更多的 <code>||</code> 来扩展这条语句？</p>
+<p>我们可以使用 <code>Array.includes</code><a href="https://link.juejin.im/?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FWeb%2FJavaScript%2FReference%2FGlobal_Objects%2FArray%2Fincludes" target="_blank" rel="noopener">(Array.includes)</a> 重写以上条件句。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">fruit</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 把条件提取到数组中</span></span><br><span class="line">  <span class="keyword">const</span> redFruits = [<span class="string">'apple'</span>, <span class="string">'strawberry'</span>, <span class="string">'cherry'</span>, <span class="string">'cranberries'</span>];</span><br><span class="line">  <span class="keyword">if</span> (redFruits.includes(fruit)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'red'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们把<code>红色的水果</code>（条件）都提取到一个数组中，这使得我们的代码看起来更加整洁。</p>
+<p><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/10/减少if-else和switch/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/10/10/微信问题专题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1371,278 +1629,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/07/31/层叠上下文-块格式化上下文-包含块/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/31/层叠上下文-块格式化上下文-包含块/" itemprop="url">层叠上下文-块格式化上下文-包含块</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-31T16:42:19+08:00">
-                2018-07-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="层叠上下文-the-stacking-context"><a href="#层叠上下文-the-stacking-context" class="headerlink" title="层叠上下文(the stacking context)"></a><a href="https://chenoge.github.io/2018/01/21/css-%E5%B1%82%E5%8F%A0%E4%B8%8A%E4%B8%8B%E6%96%87/" target="_blank" rel="noopener">层叠上下文(the stacking context)</a></h1><p>职责：处理元素层叠的顺序问题</p>
-<h4 id="父层叠上下文：拥有层叠上下文的最近祖父元素，与position无关。"><a href="#父层叠上下文：拥有层叠上下文的最近祖父元素，与position无关。" class="headerlink" title="父层叠上下文：拥有层叠上下文的最近祖父元素，与position无关。"></a>父层叠上下文：拥有层叠上下文的最近祖父元素，与position无关。</h4><p><br></p>
-<h1 id="块格式化上下文-formatting-context"><a href="#块格式化上下文-formatting-context" class="headerlink" title="块格式化上下文(formatting-context)"></a><a href="https://chenoge.github.io/2018/03/17/%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%B8%8A%E4%B8%8B%E6%96%87-BFC-IFC/" target="_blank" rel="noopener">块格式化上下文(formatting-context)</a></h1><p>职责：决定了其<strong>子元素将如何定位</strong>，以及<strong>和其他元素的关系</strong></p>
-<p><br></p>
-<h1 id="包含块-containing-block"><a href="#包含块-containing-block" class="headerlink" title="包含块(containing-block)"></a><a href="https://chenoge.github.io/2018/06/12/css-position/" target="_blank" rel="noopener">包含块(containing-block)</a></h1><p>职责：由定位(<code>position</code>)决定元素<strong>大小与位置</strong></p>
-<p><strong>注：</strong></p>
-<ul>
-<li><strong>事件的捕获与冒泡仍是根据祖先元素传递，与包含块无关，与position无关</strong></li>
-</ul>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/07/31/层叠上下文-块格式化上下文-包含块/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/07/25/offsetParent-offsetTop-offsetHeight/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/25/offsetParent-offsetTop-offsetHeight/" itemprop="url">offsetParent-offsetTop-offsetHeight</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-25T13:31:30+08:00">
-                2018-07-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="offsetParent"><a href="#offsetParent" class="headerlink" title="offsetParent"></a>offsetParent</h1><p><strong>HTMLElement.offsetParent</strong> 是一个只读属性，返回一个指向<strong>最近的</strong>包含该元素的<strong>定位元素</strong>。</p>
-<ul>
-<li>如果没有定位的元素，则 <code>offsetParent</code> 为最近的 <code>table</code>, <code>table cell</code> 或根元素（标准模式下为 <code>html</code>；quirks 模式下为 <code>body</code>）</li>
-<li>当元素的 <code>style.display</code> 设置为 “none” 时，<code>offsetParent</code> 返回 <code>null</code>。</li>
-<li><code>offsetParent</code> 很有用，因为 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetTop" target="_blank" rel="noopener"><code>offsetTop</code></a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetLeft" target="_blank" rel="noopener"><code>offsetLeft</code></a> 都是相对于其内边距边界的</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">parentObj = element.offsetParent;</span><br><span class="line"><span class="comment">//parentObj 是一个对象引用，当前元素相对于该对象偏移（offset）。</span></span><br></pre></td></tr></table></figure>
-<h4 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性:"></a>兼容性:</h4><ul>
-<li>在 Webkit 中，如果元素为隐藏的（该元素或其祖先元素的 <code>style.display</code> 为 “none”），或者该元素的 <code>style.position</code> 被设为 “fixed”，则该属性返回 <code>null</code>。</li>
-<li>在 IE 9 中，如果该元素的 <code>style.position</code> 被设置为 “fixed”，则该属性返回 <code>null</code>。（<code>display:none</code> 无影响。）</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/07/25/offsetParent-offsetTop-offsetHeight/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1688,7 +1679,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">209</span>
+                  <span class="site-state-item-count">211</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1701,7 +1692,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">344</span>
+                  <span class="site-state-item-count">349</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

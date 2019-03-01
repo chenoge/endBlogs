@@ -266,6 +266,268 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2019/03/01/余弦相似性/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/01/余弦相似性/" itemprop="url">余弦相似性</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-01T14:20:51+08:00">
+                2019-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="余弦相似性"><a href="#余弦相似性" class="headerlink" title="余弦相似性"></a>余弦相似性</h4><p><code>余弦相似性</code>大家都非常熟悉，它是定义在向量空间模型（VSM）中的，定义如下： </p>
+<p><img src="/2019/03/01/余弦相似性/1.png" alt=""> </p>
+<p>其中，<code>A、B</code>为向量中间中的两个向量。</p>
+<p><br></p>
+<p> 在使用它来做<strong>字符串相似性度量</strong>的时候，需要先将字符串<strong>向量化</strong>，通常使用<code>词袋模型（BOW）</code>来向量化。</p>
+<p>举个例子如下： <code>String1 = &#39;apple&#39;   String2 = &#39;app&#39;</code> ，则词包为<code>{&#39;a&#39;,&#39;e&#39;,&#39;l&#39;,&#39;p&#39;}</code>，若使用<code>0,1</code>判断元素是否在词包中，<code>字符串1、2</code>可以转化为： </p>
+<p><code>StringA = [1111]  StringB = [1001]</code> 。根据余弦公式，可以计算字符串相似性为：<code>0.707</code> </p>
+<p><a href="https://github.com/hankcs/HanLP/blob/master/README.md" target="_blank" rel="noopener">词袋模型工具</a> </p>
+<p><br></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2019/03/01/字符串的相似度/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/01/字符串的相似度/" itemprop="url">字符串的相似度</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-01T09:49:42+08:00">
+                2019-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="Levenshtein-Distance算法"><a href="#Levenshtein-Distance算法" class="headerlink" title="Levenshtein Distance算法"></a>Levenshtein Distance算法</h4><p><code>Levenshtein Distance</code> 算法，又叫<strong>编辑距离算法</strong>，是指两个字符串之间，<strong>由一个转成另一个所需的最少编辑操作次数</strong>。许可的编辑操作包括：</p>
+<ul>
+<li><p>替换一个字符</p>
+</li>
+<li><p>插入一个字符</p>
+</li>
+<li><p>删除一个字符</p>
+</li>
+</ul>
+<p>一般来说，编辑距离越小，两个串的相似度越大。相似度计算方式为：<code>1 - (distance / maxLen)</code> </p>
+<p>注：<code>distance</code> 是所需的最少操作次数，<code>maxLen</code>是两个字符串长度的最大值。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/01/字符串的相似度/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2019/02/28/git常用命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1341,268 +1603,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2019/01/27/渐变色值/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/27/渐变色值/" itemprop="url">渐变色值</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-27T14:02:04+08:00">
-                2019-01-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="rgb-to-hex"><a href="#rgb-to-hex" class="headerlink" title="rgb to hex"></a>rgb to hex</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">rgbToHex</span>(<span class="params">r, g, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> hex = ((r&lt;&lt;<span class="number">16</span>) | (g&lt;&lt;<span class="number">8</span>) | b).toString(<span class="number">16</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"#"</span> + <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="built_in">Math</span>.abs(hex.length<span class="number">-7</span>)).join(<span class="string">"0"</span>) + hex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/27/渐变色值/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2019/01/21/Nginx配置Host字段出错/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/21/Nginx配置Host字段出错/" itemprop="url">Nginx配置Host字段出错</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-21T19:41:18+08:00">
-                2019-01-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="一、Host为空"><a href="#一、Host为空" class="headerlink" title="一、Host为空"></a>一、Host为空</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 虚拟主机的主域名</span></span><br><span class="line"><span class="attribute">proxy_set_header</span> Host       <span class="variable">$proxy_host</span>;</span><br></pre></td></tr></table></figure>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 请求头中'Host'的值</span></span><br><span class="line"><span class="comment"># 如果请求头中没有携带Host值，那传到服务器的请求也不含这个字段</span></span><br><span class="line"><span class="attribute">proxy_set_header</span> Host       <span class="variable">$http_host</span>;</span><br></pre></td></tr></table></figure>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 请求包含'Host'请求头时为'Host'字段的值</span></span><br><span class="line"><span class="comment"># 在请求未携带'Host'请求头时为虚拟主机的主域名</span></span><br><span class="line"><span class="attribute">proxy_set_header</span> Host       <span class="variable">$host</span>;</span><br></pre></td></tr></table></figure>
-<p>注：使用<code>$http_host</code>变量时，在<code>http1.1</code>协议中，如果请求不带<code>Host</code>字段值，会报错<code>400</code>错误</p>
-<ul>
-<li>客户端必须在所有<code>HTTP1.1</code>请求消息中包含<code>Host</code>头字段</li>
-<li>如果请求的<code>URI</code>不包含所请求服务的主机名，则必须为<code>Host</code>头字段指定一个空值</li>
-<li><code>HTTP1.1</code>代理必须确保它转发的任何请求消息，都包含一个适当的主机头字段，用于标识代理请求的服务</li>
-<li>所有基于<code>HTTP1.1</code>服务器必须以<code>400</code>状态代码响应任何缺少主机头字段的<code>HTTP1.1</code>请求消息</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/21/Nginx配置Host字段出错/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1648,7 +1653,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">209</span>
+                  <span class="site-state-item-count">211</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1661,7 +1666,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">344</span>
+                  <span class="site-state-item-count">349</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
