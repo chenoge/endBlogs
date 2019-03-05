@@ -266,6 +266,139 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/21/HTML-iframe/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/21/HTML-iframe/" itemprop="url">HTML-iframe</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-21T11:53:42+08:00">
+                2018-05-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="一、通过window获取iframe"><a href="#一、通过window获取iframe" class="headerlink" title="一、通过window获取iframe"></a>一、通过window获取iframe</h1><p>window.frames是个伪数组，可以通过window.frames[index]或window.frames[name]来获取iframe </p>
+<p><br></p>
+<h1 id="二、通过iframe获取window、document"><a href="#二、通过iframe获取window、document" class="headerlink" title="二、通过iframe获取window、document"></a>二、通过iframe获取window、document</h1><p>如果想获取iframe里的window或者document，可以使用 </p>
+<ul>
+<li>iframe.contentWindow</li>
+<li>iframe.contentDocument </li>
+</ul>
+<font color="#A52A2A" size="4"><strong>注：跨域iframe没有操作权限</strong></font>
+
+<p><br></p>
+<h1 id="三、window获取顶级窗口、父窗口"><a href="#三、window获取顶级窗口、父窗口" class="headerlink" title="三、window获取顶级窗口、父窗口"></a>三、window获取顶级窗口、父窗口</h1><ul>
+<li>获取顶级窗口：window.top </li>
+<li>获取父级窗口：window.parent </li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/21/HTML-节点/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1434,148 +1567,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/08/CSS-object-fit/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/08/CSS-object-fit/" itemprop="url">CSS-object-fit</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-08T15:49:02+08:00">
-                2018-05-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">object-fit : css property specifies how the contents of a replaced element should be fitted to the box established by its used height and width.</span><br><span class="line"></span><br><span class="line">object-position : css property determines the alignment of the replaced element inside its box.</span><br></pre></td></tr></table></figure>
-<p><strong><font color="#A52A2A" size="4">这里的object实际上指的是replaced element</font></strong> 。</p>
-<p><br></p>
-<h1 id="二、替换元素"><a href="#二、替换元素" class="headerlink" title="二、替换元素"></a>二、替换元素</h1><ul>
-<li><p>其内容不受CSS视觉<font color="#A52A2A" size="4"><strong>格式化模型</strong></font>控制的元素。</p>
-<ul>
-<li>比如image, 嵌入的文档(iframe之类)或者applet。</li>
-<li>比如，img元素的内容通常会被其src属性指定的图像替换掉。</li>
-<li>替换元素通常有其固有的尺寸：一个固有的宽度，一个固有的高度和一个固有的比率。比如一幅位图有固有用绝对单位指定的宽度和高度，从而也有固有的宽高比率。另一方面，其他文档也可能没有固有的尺寸，比如一个空白的html文档。</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><strong>CSS渲染模型不考虑<font color="#A52A2A" size="4">替换元素内容</font>的渲染</strong>。这些替换元素的展现独立于CSS。<strong>object, video, textarea, input也是替换元素，audio和canvas在某些特定情形下为替换元素。</strong></li>
-</ul>
-<ul>
-<li><strong>使用CSS的content属性插入的对象是匿名替换元素。</strong></li>
-</ul>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/08/CSS-object-fit/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1626,7 +1617,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">212</span>
+                  <span class="site-state-item-count">213</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1639,7 +1630,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">352</span>
+                  <span class="site-state-item-count">354</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

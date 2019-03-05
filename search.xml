@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[active伪类的LVHA顺序]]></title>
+    <url>%2F2019%2F03%2F05%2Factive%E4%BC%AA%E7%B1%BB%E7%9A%84LVHA%E9%A1%BA%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[层叠样式表CSS(Cascading Style Sheets )层叠样式表，所谓层叠就是后面的样式会覆盖前面的样式。所以在样式表中，各样式排列的顺序很有讲究。 :active:active伪类匹配被用户激活的元素，让页面能在浏览器监测到激活时给出反馈。 当用鼠标交互时，它代表的是用户按下按键和松开按键之间的时间。 :active 伪类通常用来匹配tab键交互。 注：通常用于但并不限于 a 和 buttonHTML元素 LVHA顺序:active伪类可能会被后声明的其他链接相关的伪类覆盖，这些伪类包括 :link，:hover和 :visited。为了正常加上样式，需要把 :active的样式放在所有链接相关的样式后，这种链接伪类先后顺序被称为LVHA顺序： 1:link —&gt; :visited —&gt; :hover —&gt; :active :link对指向未被访问页面的链接设置样式，根据浏览器的浏览历史 :visited对指向已被访问页面的链接设置样式，根据浏览器的浏览历史 注：:link和:visited 调换位置不影响样式 :visited出于隐私原因，使用此选择器修改的样式有较多限制 注： 未设置颜色或透明的属性不能使用:visited]]></content>
+      <tags>
+        <tag>LVHA</tag>
+        <tag>伪类</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[SimHash与汉明距离]]></title>
     <url>%2F2019%2F03%2F01%2FSimHash%E4%B8%8E%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB%2F</url>
     <content type="text"><![CDATA[SimHashSimHash是Google处理海量网页采用的文本相似判定方法。算法的主要思想是降维，将高维的特征向量映射成一个f-bit的指纹(fingerprint)，通过比较两篇文章的f-bit指纹的Hamming Distance来确定文章是否重复或者高度近似。 具体的simhash过程如下： 首先基于传统的IR方法，将文章转换为一组加权的特征值构成的向量。 初始化一个f维的向量V，其中每一个元素初始值为0。 对于文章的特征向量集中的每一个特征，做如下计算： 利用传统的hash算法映射到一个f-bit的签名。对于这个f- bit的签名，如果签名的第i位上为1，则对向量V中第i维加上这个特征的权值，否则对向量的第i维减去该特征的权值。 对整个特征向量集合迭代上述运算后，根据向量V中每一维向量的符号来确定生成的f-bit指纹的值，如果向量V的第i维为正数，则生成f-bit指纹的第i维为1，否则为0。 ​ SimHash为Google处理海量网页的采用的文本相似判定方法。该方法的主要目的是降维，即将高维的特征向量映射成f-bit的指纹，通过比较两篇文档指纹的汉明距离来表征文档重复或相似性。 汉明距离-Hamming Distance汉明距离用来计算两个向量的相似度，即通过比较向量每一位是否相同，若不同则汉明距离加1。 这样得到汉明距离。向量相似度越高，对应的汉明距离越小。如10001001和10110001有3位不同。 与余弦相似性算法的区别余弦相似性算法：通过对两个文本分词，TF-IDF算法向量化，对比两者的余弦夹角，夹角越小相似度越高，但由于有可能一个文章的特征向量词特别多导致整个向量维度很高，使得计算的代价太大不适合大数据量的计算。 余弦相似性算法适合于短文本 SimHash算法适合于长文本，并且能应用于大数据环境中]]></content>

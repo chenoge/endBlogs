@@ -266,6 +266,137 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2019/01/04/如何写出符合开放封闭原则的代码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/04/如何写出符合开放封闭原则的代码/" itemprop="url">如何写出符合开放封闭原则的代码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T21:05:06+08:00">
+                2019-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在面向对象的程序设计中，开放封闭原则(OCP)是最重要的一条原则。很多时候，一个程序具有良好的设计，往往说明它是符合开放封闭原则的。 当需要改变一个程序的功能或者给这个程序增加新功能的时候，可以使用增加代码的方式，但是<strong>不允许改动程序的源代码</strong>。 </p>
+<p><br></p>
+<h4 id="一、故事背景"><a href="#一、故事背景" class="headerlink" title="一、故事背景"></a>一、故事背景</h4><p>假设我们是一个大型 Web 项目的维护人员，在接手这个项目时，发现它已经拥有10万行以上的JavaScript代码和数百个 JS 文件。 不久后接到了一个新的需求，即在 window.onload 函数中打印出页面中的所有节点数量。这 当然难不倒我们了。于是我们打开文本编辑器，搜索window.onload函数在文件中的位置，在函数内部添加以下代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">    <span class="comment">// 原有代码略</span></span><br><span class="line">    <span class="built_in">console</span>.log( <span class="built_in">document</span>.getElementsByTagName( <span class="string">'*'</span> ).length ); </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="二、应用AOP"><a href="#二、应用AOP" class="headerlink" title="二、应用AOP"></a>二、应用AOP</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.after = <span class="function"><span class="keyword">function</span>(<span class="params"> afterfn </span>)</span>&#123; </span><br><span class="line">    <span class="keyword">var</span> __self = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> ret = __self.apply( <span class="keyword">this</span>, <span class="built_in">arguments</span> ); </span><br><span class="line">        afterfn.apply( <span class="keyword">this</span>, <span class="built_in">arguments</span> );</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.onload = ( <span class="built_in">window</span>.onload || <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125; ).after(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">    <span class="built_in">console</span>.log( <span class="built_in">document</span>.getElementsByTagName( <span class="string">'*'</span> ).length );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>通过AOP装饰函数的方式，我们完全不用理会从前 window.onload 函数的内部实现，就算拿到的是一份混淆压缩过的代码也没有关系。只要它从前是个稳定运行的函数，那么以后也不会因为我们的新增需求而产生错误。新增的代码和原有的代码可以互不影响。</p>
+<p><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/04/如何写出符合开放封闭原则的代码/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2019/01/04/JavaScript设计模式-装饰者模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1552,135 +1683,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/12/19/git分支开发规范/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/19/git分支开发规范/" itemprop="url">git分支开发规范</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-19T22:15:49+08:00">
-                2018-12-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h4><p>1、master分支</p>
-<pre><code>部署生产环境的分支，这个分支只能从其他分支合并，如develop/release/hotfix，不能在这个分支直接修改
-</code></pre><p><br> </p>
-<p>2、develop分支</p>
-<pre><code>我们的主开发分支，是一个稳定的版本，通常由release分支合并过来，通常发到sit/uat环境进行测试，然后合并到master分支
-</code></pre><p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/19/git分支开发规范/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1731,7 +1733,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">212</span>
+                  <span class="site-state-item-count">213</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1744,7 +1746,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">352</span>
+                  <span class="site-state-item-count">354</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
