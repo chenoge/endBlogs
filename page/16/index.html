@@ -266,6 +266,389 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/04/09/html-不使用table布局/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/09/html-不使用table布局/" itemprop="url">html-不使用table布局</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-09T20:56:15+08:00">
+                2018-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>Table要比其它html标记占更多的字节 </li>
+</ul>
+<ul>
+<li>Tablle会阻挡浏览器渲染引擎的渲染顺序<ul>
+<li><strong>table是中的内容是自适应的，它要计算嵌套最深的节点以满足自适应，所以会出现空白后才显示内容。</strong> </li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>在某些浏览器中Table里的文字的拷贝会出现问题。 </li>
+</ul>
+<ul>
+<li>Table会影响其内部的某些布局属性的生效(比如<td>里的元素的height:100%) </td></li>
+</ul>
+<ul>
+<li>table对对于页面布局来说，从语义上看是不正确的。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/03/29/css-响应式表单/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/29/css-响应式表单/" itemprop="url">css-响应式表单</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-29T22:12:36+08:00">
+                2018-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>css3的@media检测到屏幕尺寸，将表格元素设置为block块状，并且隐藏表头，将td设置下边框看起来跟一行行的一样。最后我们使用css3的:before { content: “姓名”; }生成每行对应的标签定义，这样就能知道每行数据的意义。 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> only screen and (max-width: <span class="number">760px</span>),</span><br><span class="line">(min-device-width: <span class="number">768px</span>) and (max-device-width: <span class="number">1024px</span>) &#123;</span><br><span class="line">    <span class="comment">/* Force table to not be like tables anymore */</span></span><br><span class="line">    <span class="selector-tag">table</span>,</span><br><span class="line">    <span class="selector-tag">thead</span>,</span><br><span class="line">    <span class="selector-tag">tbody</span>,</span><br><span class="line">    <span class="selector-tag">th</span>,</span><br><span class="line">    <span class="selector-tag">td</span>,</span><br><span class="line">    <span class="selector-tag">tr</span> &#123;</span><br><span class="line">        <span class="attribute">display</span>: block;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-tag">thead</span> <span class="selector-tag">tr</span> &#123;</span><br><span class="line">        <span class="attribute">position</span>: absolute;</span><br><span class="line">        <span class="attribute">top</span>: -<span class="number">9999px</span>;</span><br><span class="line">        <span class="attribute">left</span>: -<span class="number">9999px</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">tr</span> &#123;</span><br><span class="line">        <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">td</span> &#123;</span><br><span class="line">        <span class="comment">/* Behave  like a "row" */</span></span><br><span class="line">        <span class="attribute">border</span>: none;</span><br><span class="line">        <span class="attribute">border-bottom</span>: <span class="number">1px</span> solid <span class="number">#eee</span>;</span><br><span class="line">        <span class="attribute">position</span>: relative;</span><br><span class="line">        <span class="attribute">padding-left</span>: <span class="number">50%</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">td</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">        <span class="comment">/* Now like a table header */</span></span><br><span class="line">        <span class="attribute">position</span>: absolute;</span><br><span class="line">        <span class="comment">/* Top/left values mimic padding */</span></span><br><span class="line">        <span class="attribute">top</span>: <span class="number">6px</span>;</span><br><span class="line">        <span class="attribute">left</span>: <span class="number">6px</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">45%</span>;</span><br><span class="line">        <span class="attribute">padding-right</span>: <span class="number">10px</span>;</span><br><span class="line">        <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*Label the data*/</span></span><br><span class="line">    <span class="selector-tag">td</span><span class="selector-pseudo">:nth-of-type(1)</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">        <span class="attribute">content</span>: <span class="string">"姓名"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-tag">td</span><span class="selector-pseudo">:nth-of-type(2)</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">        <span class="attribute">content</span>: <span class="string">"性别"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-tag">td</span><span class="selector-pseudo">:nth-of-type(3)</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">        <span class="attribute">content</span>: <span class="string">"出生年月"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/03/26/JS-自定义事件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/26/JS-自定义事件/" itemprop="url">JS-自定义事件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-26T22:24:09+08:00">
+                2018-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> event = <span class="built_in">document</span>.createEvent(type)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>event 就是被创建的 <a href="https://developer.mozilla.org/zh-CN/docs/DOM/event" target="_blank" rel="noopener">Event</a> 对象.</li>
+<li>type 是一个字符串，表示要创建的事件类型。事件类型可能包括”UIEvents”, “MouseEvents”, “MutationEvents”, 或者 “HTMLEvents”。请查看 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createEvent#Notes" target="_blank" rel="noopener">Notes</a> 章节获取详细信息 </li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建事件</span></span><br><span class="line"><span class="keyword">var</span> event = <span class="built_in">document</span>.createEvent(<span class="string">'Event'</span>);</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"><span class="comment">// 定义事件名为'build'.</span></span><br><span class="line"><span class="comment">// 事件类型，是否冒泡，是否阻止浏览器的默认行为</span></span><br><span class="line">event.initEvent(<span class="string">'build'</span>, <span class="literal">true</span>, <span class="literal">true</span>);</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"><span class="comment">// 监听事件</span></span><br><span class="line">elem.addEventListener(<span class="string">'build'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// e.target matches elem</span></span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"><span class="comment">// 触发对象可以是任何元素或其他事件目标</span></span><br><span class="line">elem.dispatchEvent(event);</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/03/25/JS-原型链/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1189,436 +1572,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/03/18/js-简单工厂模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/18/js-简单工厂模式/" itemprop="url">js-简单工厂模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T16:38:48+08:00">
-                2018-03-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="一、工厂模式"><a href="#一、工厂模式" class="headerlink" title="一、工厂模式"></a>一、工厂模式</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createBlog</span>(<span class="params">name, url</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">    obj.name = name;</span><br><span class="line">    obj.url = url;</span><br><span class="line">    obj.sayUrl= <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.url);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> blog1 = createBlog(<span class="string">'wuyuchang'</span>, <span class="string">'http://www.jb51.net/'</span>);</span><br></pre></td></tr></table></figure>
-<p><br></p>
-<h1 id="二、构造函数模式"><a href="#二、构造函数模式" class="headerlink" title="二、构造函数模式"></a>二、构造函数模式</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Blog</span>(<span class="params">name, url</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.url = url;</span><br><span class="line">    <span class="keyword">this</span>.alertUrl = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.url);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> blog = <span class="keyword">new</span> Blog(<span class="string">'wuyuchang'</span>, <span class="string">'http://www.jb51.net/'</span>);</span><br></pre></td></tr></table></figure>
-<p><br></p>
-<h1 id="三、原型模式"><a href="#三、原型模式" class="headerlink" title="三、原型模式"></a>三、原型模式</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Blog</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Blog.prototype.name = <span class="string">'wuyuchang'</span>;</span><br><span class="line"></span><br><span class="line">Blog.prototype.url = <span class="string">'http://tools.jb51.net/'</span>;</span><br><span class="line"></span><br><span class="line">Blog.prototype.friend = [<span class="string">'fr1'</span>, <span class="string">'fr2'</span>, <span class="string">'fr3'</span>, <span class="string">'fr4'</span>];</span><br><span class="line"></span><br><span class="line">Blog.prototype.alertInfo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name + <span class="keyword">this</span>.url + <span class="keyword">this</span>.friend);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/18/js-简单工厂模式/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/03/18/js-单例模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/18/js-单例模式/" itemprop="url">js-单例模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T16:35:04+08:00">
-                2018-03-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="单体模式提供了一种将代码组织为一个逻辑单元的手段，这个逻辑单元中的代码可以通过单一变量进行访问。单体模式的优点是："><a href="#单体模式提供了一种将代码组织为一个逻辑单元的手段，这个逻辑单元中的代码可以通过单一变量进行访问。单体模式的优点是：" class="headerlink" title="单体模式提供了一种将代码组织为一个逻辑单元的手段，这个逻辑单元中的代码可以通过单一变量进行访问。单体模式的优点是："></a>单体模式提供了一种将代码组织为一个逻辑单元的手段，这个逻辑单元中的代码可以通过单一变量进行访问。单体模式的优点是：</h4><ul>
-<li><p>可以用来划分命名空间，减少全局变量的数量 </p>
-</li>
-<li><p>使用单体模式可以使代码组织的更为一致，使代码容易阅读和维护 </p>
-</li>
-<li><p>可以被实例化，且实例化一次</p>
-</li>
-</ul>
-<p><br></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单体模式</span></span><br><span class="line"><span class="keyword">var</span> CreateDiv = <span class="function"><span class="keyword">function</span>(<span class="params">html</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.html = html;</span><br><span class="line">    <span class="keyword">this</span>.init();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CreateDiv.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line">    div.innerHTML = <span class="keyword">this</span>.html;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(div);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 代理实现单体模式</span></span><br><span class="line"><span class="keyword">var</span> ProxyMode = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> instance;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">html</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!instance) &#123;</span><br><span class="line">            instance = <span class="keyword">new</span> CreateDiv(<span class="string">"我来测试下"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> ProxyMode(<span class="string">"aaa"</span>);</span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> ProxyMode(<span class="string">"bbb"</span>);</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/03/17/格式化上下文-BFC-IFC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/17/格式化上下文-BFC-IFC/" itemprop="url">格式化上下文-BFC-IFC</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-17T18:15:25+08:00">
-                2018-03-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>想要理解<strong>BFC</strong>与<strong>IFC</strong>，首先要理解另外两个概念：<strong>Box</strong> 和 <strong>FC</strong>（即 formatting context） </p>
-<p><br></p>
-<h1 id="一、Box"><a href="#一、Box" class="headerlink" title="一、Box"></a>一、Box</h1><p>一个页面是由很多个 Box 组成的，元素的类型和 display 属性决定了这个 Box 的类型。不同类型的 Box，会参与不同的 Formatting Context。 </p>
-<ul>
-<li><code>Block level</code>的box会参与形成<strong>BFC</strong>，比如display值为<code>block</code>，<code>list-item</code>，<code>table</code>的元素。</li>
-<li><code>Inline level</code>的box会参与形成<strong>IFC</strong>，比如display值为<code>inline</code>，<code>inline-table</code>，<code>inline-block</code>的元素。</li>
-</ul>
-<p><br></p>
-<h1 id="二、FC（Formatting-Context）"><a href="#二、FC（Formatting-Context）" class="headerlink" title="二、FC（Formatting Context）"></a>二、FC（Formatting Context）</h1><p>它是W3C CSS2.1规范中的一个概念，定义的是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。 常见的Formatting Context 有：</p>
-<ul>
-<li>Block Formatting Context（BFC | 块级格式化上下文）</li>
-<li>Inline Formatting Context（IFC |行内格式化上下文）</li>
-</ul>
-<p><br></p>
-<h1 id="三、IFC布局规则"><a href="#三、IFC布局规则" class="headerlink" title="三、IFC布局规则"></a>三、IFC布局规则</h1><ul>
-<li>在<strong>行内格式化上下文</strong>中，框(boxes)一个接一个地<strong>水平排列</strong>，<strong>起点是<code>包含块</code>的顶部</strong></li>
-<li>水平方向上的 <code>margin</code>，<code>border</code> 和 <code>padding</code>在框之间得到<strong>保留</strong></li>
-<li>框在垂直方向上可以以<strong>不同的方式对齐</strong>：它们的顶部或底部对齐，或根据其中文字的基线对齐</li>
-<li><font color="#A52A2A" size="4">包含那些框的<strong>长方形区域</strong>，会形成一行，叫做<code>行框</code> </font>
-
-</li>
-</ul>
-<p><br></p>
-<h1 id="四、BFC布局规则"><a href="#四、BFC布局规则" class="headerlink" title="四、BFC布局规则"></a>四、BFC布局规则</h1><ul>
-<li><strong>内部的Box</strong>会一个接一个地<strong>垂直放置</strong></li>
-<li>每个元素的左外边缘（margin-left)， 与包含块的左边（contain box left）相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。除非这个元素自己形成了一个新的BFC。</li>
-<li><strong>BFC的区域不会与float box<code>重叠</code></strong>。</li>
-<li>BFC就是页面上的一个隔离的<strong>独立容器</strong>，容器里面的子元素<strong>不会影响到外面的元素</strong>。反之也如此。</li>
-<li><strong>计算BFC的高度时，浮动子元素也参与计算</strong></li>
-</ul>
-<p><br></p>
-<h1 id="五、形成一个BFC"><a href="#五、形成一个BFC" class="headerlink" title="五、形成一个BFC"></a>五、形成一个BFC</h1><p>下列方式会创建<strong>块格式化上下文</strong>：</p>
-<ul>
-<li><strong>根元素</strong>或<strong>包含根元素的元素</strong></li>
-<li><strong>浮动元素</strong>（元素的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/float" target="_blank" rel="noopener"><code>float</code></a> 不是 <code>none</code>）</li>
-<li><strong>绝对定位元素</strong>（元素的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/position" target="_blank" rel="noopener"><code>position</code></a> 为 <code>absolute</code> 或 <code>fixed</code>）</li>
-<li><strong>行内块元素</strong>（元素的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display" target="_blank" rel="noopener"><code>display</code></a> 为 <code>inline-block</code>）</li>
-<li><strong>表格单元格</strong>（元素的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display" target="_blank" rel="noopener"><code>display</code></a>为 <code>table-cell</code>，HTML表格单元格默认为该值）</li>
-<li><strong>表格标题</strong>（元素的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display" target="_blank" rel="noopener"><code>display</code></a> 为 <code>table-caption</code>，HTML表格标题默认为该值）</li>
-<li>匿名表格单元格元素（元素的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display" target="_blank" rel="noopener"><code>display</code></a>为 <code>table、`</code>table-row<code>、</code>table-row-group、<code>table-header-group、</code>table-footer-group<code>（分别是HTML table、row、tbody、thead、tfoot的默认属性）或</code>inline-table`）</li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow" target="_blank" rel="noopener"><code>overflow</code></a> 值不为 <code>visible</code> 的块元素</li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display" target="_blank" rel="noopener"><code>display</code></a> 值为 <code>flow-root</code> 的元素</li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/contain" target="_blank" rel="noopener"><code>contain</code></a> 值为 <code>layout</code>、<code>content</code>或 <code>strict</code> 的元素</li>
-<li><strong>弹性元素</strong>（<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display" target="_blank" rel="noopener"><code>display</code></a>为 <code>flex</code> 或 <code>inline-flex</code>元素的<strong>直接子元</strong>素）</li>
-<li><strong>网格元素</strong>（<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display" target="_blank" rel="noopener"><code>display</code></a>为 <code>grid</code> 或 <code>inline-grid</code> 元素的<strong>直接子元素</strong>）</li>
-<li><strong>多列容器</strong>（元素的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/column-count" target="_blank" rel="noopener"><code>column-count</code></a> 或 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/column-width" target="_blank" rel="noopener"><code>column-width</code></a> 不为 <code>auto，包括 `</code>column-count<code>为</code>1`）</li>
-<li><code>column-span</code> 为 <code>all</code> 的元素始终会创建一个新的BFC，即使该元素没有包裹在一个多列容器中（<a href="https://github.com/w3c/csswg-drafts/commit/a8634b96900279916bd6c505fda88dda71d8ec51" target="_blank" rel="noopener">标准变更</a>，<a href="https://bugs.chromium.org/p/chromium/issues/detail?id=709362" target="_blank" rel="noopener">Chrome bug</a>）</li>
-</ul>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/17/格式化上下文-BFC-IFC/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1669,7 +1622,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">213</span>
+                  <span class="site-state-item-count">216</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1682,7 +1635,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">354</span>
+                  <span class="site-state-item-count">364</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

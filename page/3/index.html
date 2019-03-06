@@ -266,6 +266,387 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2019/01/17/函数扩展-尾调用和尾递归/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/17/函数扩展-尾调用和尾递归/" itemprop="url">函数扩展-尾调用和尾递归</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-17T10:50:20+08:00">
+                2019-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="一、尾调用"><a href="#一、尾调用" class="headerlink" title="一、尾调用"></a>一、尾调用</h4><p><code>尾调用（Tail Call）</code>是<strong>函数式编程</strong>的一个重要概念，本身非常简单，一句话就能说清楚，就是指<strong>某个函数的最后一步是调用另一个函数</strong>。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数f的最后一步是调用函数g，这就叫尾调用</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> g(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 尾调用不一定出现在函数尾部，只要是最后一步操作即可</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> m(x)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以下三种情况，都不属于尾调用</span></span><br><span class="line"><span class="comment">// 情况一</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> y = g(x);</span><br><span class="line">    <span class="keyword">return</span> y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 情况二</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> g(x) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 情况三</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    g(x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/17/函数扩展-尾调用和尾递归/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2019/01/16/运算符优先级和短路运算/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/16/运算符优先级和短路运算/" itemprop="url">运算符优先级和短路运算</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-16T13:10:20+08:00">
+                2019-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="一、短路运算"><a href="#一、短路运算" class="headerlink" title="一、短路运算"></a>一、短路运算</h4><p>当<code>逻辑与&amp;&amp;</code>的第一个操作数的值是<code>false</code>时，直接返回第一个操作数的值，不再对第二个操作数进行计算</p>
+<p>当<code>逻辑或||</code>的第一个操作数的值是<code>true</code>时，直接返回第一个操作数的值，不再对第二个操作数进行计算</p>
+<p><br></p>
+<h4 id="二、运算符优先级"><a href="#二、运算符优先级" class="headerlink" title="二、运算符优先级"></a>二、运算符优先级</h4><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#Table" target="_blank" rel="noopener">优先级表格</a> </p>
+<p><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/16/运算符优先级和短路运算/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2019/01/12/常量对象/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/12/常量对象/" itemprop="url">常量对象</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-12T13:22:53+08:00">
+                2019-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="一、freeze"><a href="#一、freeze" class="headerlink" title="一、freeze"></a>一、freeze</h3><p><code>Object.freeze()</code>方法可以冻结<code>（浅冻结 ）</code>一个对象，冻结指的是<strong>不能向这个对象添加新的属性<code>（增）</code>，不能修改其已有属性的值<code>（改）</code>，不能删除已有属性<code>（删）</code>，以及不能修改该对象已有属性的可枚举性、可配置性、可写性</strong>。该方法返回传递的对象，而不是创建一个被冻结的副本 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 浅冻结</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj1 = <span class="built_in">Object</span>.freeze(&#123;<span class="attr">internal</span>: &#123;&#125;&#125;);</span><br><span class="line">obj1.internal.a = <span class="string">'aValue'</span>;</span><br><span class="line">obj1.freeze = <span class="string">'freeze'</span>; <span class="comment">// 在严格模式，会抛出TypeErrors错误</span></span><br><span class="line"></span><br><span class="line">obj1.internal.a; <span class="comment">// 'aValue'</span></span><br><span class="line">obj1.freeze; <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p>注：通过<code>Object.isFrozen(obj)</code>可以判断对象是否被冻结</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/12/常量对象/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2019/01/04/如何写出符合开放封闭原则的代码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1164,525 +1545,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/12/24/pushState和replaceState/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/24/pushState和replaceState/" itemprop="url">pushState和replaceState</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-24T21:33:52+08:00">
-                2018-12-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><code>window</code> 对象通过 <code>history</code> 对象提供了对浏览器历史的访问。它暴露了很多有用的方法和属性，允许你在用户浏览历史中向前和向后跳转，同时——从<code>HTML5</code>开始——提供了对<code>history栈</code>中内容的操作。 </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.history.back(); <span class="comment">// 与点击浏览器回退按钮的效果相同</span></span><br><span class="line"><span class="built_in">window</span>.history.forward(); <span class="comment">// 与点击浏览器前进按钮的效果相同</span></span><br><span class="line"><span class="built_in">window</span>.history.go(<span class="number">-1</span>); <span class="comment">// 通过与当前页面相对位置，来标志某一特定页面</span></span><br></pre></td></tr></table></figure>
-<p><br></p>
-<h4 id="一、pushState"><a href="#一、pushState" class="headerlink" title="一、pushState"></a>一、pushState</h4><p><code>pushState()</code> 需要三个参数: <code>一个状态对象</code>， <code>一个标题 (目前被忽略)</code>，和 <code>(可选的) 一个URL</code>。让我们来解释下这三个参数详细内容：</p>
-<ul>
-<li><strong>状态对象</strong><ul>
-<li>状态对象state是一个JavaScript对象</li>
-<li><code>popstate事件</code>被触发时，该事件的state属性包含<code>该历史记录</code><strong>状态对象</strong>的<strong>副本</strong></li>
-<li>状态对象可以是能被序列化的任何东西，但有<code>640k</code>的大小限制</li>
-</ul>
-</li>
-<li><strong>标题</strong><ul>
-<li>Firefox 目前忽略这个参数，但未来可能会用到。传递一个空字符串在这里是安全的，而在将来这是不安全的。二选一的话，你可以为跳转的state传递一个短标题。</li>
-</ul>
-</li>
-<li><strong>URL</strong><ul>
-<li>该参数定义了新的历史URL记录</li>
-<li>注意，调用 <code>pushState()</code> 后浏览器并不会立即加载这个URL</li>
-<li>新URL不必须为绝对路径。如果新URL是相对路径，那么它将被作为相对于当前URL处理</li>
-<li>新URL必须与当前URL<strong>同源</strong>，否则 <code>pushState()</code> 会抛出一个异常。该参数是可选的，缺省为当前URL</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// http://mozilla.org/foo.html 假设当前url</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> stateObj = &#123; <span class="attr">foo</span>: <span class="string">"bar"</span> &#125;;</span><br><span class="line">history.pushState(stateObj, <span class="string">"page 2"</span>, <span class="string">"bar.html"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这将使浏览器地址栏显示为 http://mozilla.org/bar.html</span></span><br><span class="line"><span class="comment">// 但并不会导致浏览器加载 bar.html ，甚至不会检查bar.html 是否存在。</span></span><br></pre></td></tr></table></figure>
-<p>注： <code>pushState()</code> 绝对不会触发 <code>hashchange</code> 事件，即使新的URL与旧的URL仅哈希不同也是如此。<code>vue-router</code> 底层调用的正是<code>history.pushState</code>和<code>history.replaceState</code>。</p>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/24/pushState和replaceState/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/12/20/visibilityState/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/20/visibilityState/" itemprop="url">visibilityState</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-20T21:59:14+08:00">
-                2018-12-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="一、document-visibilityState"><a href="#一、document-visibilityState" class="headerlink" title="一、document.visibilityState"></a>一、document.visibilityState</h4><p><code>Page Visibility API</code> 在<code>document</code>对象上，新增了一个<code>document.visibilityState</code>属性。该属性返回一个字符串，表示页面当前的可见性状态，共有三个可能的值。</p>
-<ul>
-<li><code>hidden</code>：页面彻底不可见</li>
-<li><code>visible</code>：页面至少一部分可见</li>
-<li><code>prerender</code>：页面即将或正在渲染，处于不可见状态</li>
-</ul>
-<p>其中，<code>hidden</code>状态和<code>visible</code>状态是所有浏览器都必须支持的。<code>prerender</code>状态只在支持”预渲染”的浏览器上才会出现，比如 Chrome 浏览器就有预渲染功能，可以在用户不可见的状态下，预先把页面渲染出来，等到用户要浏览的时候，直接展示渲染好的网页。 </p>
-<p><br></p>
-<p>只要页面可见，哪怕只露出一个角，<code>document.visibilityState</code>属性就返回<code>visible</code>。只有以下四种情况，才会返回<code>hidden</code>。</p>
-<ul>
-<li>浏览器最小化</li>
-<li>浏览器没有最小化，但是当前页面切换成了背景页</li>
-<li>浏览器将要卸载（unload）页面</li>
-<li>操作系统触发锁屏屏幕</li>
-</ul>
-<p><br></p>
-<p>注意，<code>document.visibilityState</code>属性只针对顶层窗口，内嵌的<code>&lt;iframe&gt;</code>页面的<code>document.visibilityState</code>属性由顶层窗口决定。使用 CSS 属性隐藏<code>&lt;iframe&gt;</code>页面（比如<code>display: none;</code>），并不会影响内嵌页面的可见性。 </p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/20/visibilityState/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/12/20/Performance/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/20/Performance/" itemprop="url">Performance</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-20T20:07:46+08:00">
-                2018-12-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="一、performance"><a href="#一、performance" class="headerlink" title="一、performance"></a>一、performance</h3><p><code>performace</code>允许访问当前页面性能相关的信息，主要功能都是由<code>Performance Timeline API</code>、<code>the Navigation Timing API</code>、<code>the User Timing API</code>、  <code>the Resource Timing API</code>提供的。</p>
-<h5 id="1、performance-timing，提供了各种与浏览器处理相关的时间数据"><a href="#1、performance-timing，提供了各种与浏览器处理相关的时间数据" class="headerlink" title="1、performance.timing，提供了各种与浏览器处理相关的时间数据"></a>1、performance.timing，提供了各种与浏览器处理相关的时间数据</h5><table>
-<thead>
-<tr>
-<th>名称</th>
-<th>作用（这里所有时间戳都代表UNIX毫秒时间戳）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>connectEnd</td>
-<td>浏览器与服务器之间的连接建立时的时间戳，连接建立指的是所有握手和认证过程全部结束</td>
-</tr>
-<tr>
-<td>connectStart</td>
-<td>HTTP请求开始向服务器发送时的时间戳，如果是持久连接，则等同于fetchStart。</td>
-</tr>
-<tr>
-<td>domComplete</td>
-<td>当前网页DOM结构生成时，也就是Document.readyState属性变为“complete”,并且相应的readystatechange事件触发时的时间戳。</td>
-</tr>
-<tr>
-<td>domContentLoadedEventEnd</td>
-<td>当前网页DOMContentLoaded事件发生时，也就是DOM结构解析完毕、所有脚本运行完成时的时间戳。</td>
-</tr>
-<tr>
-<td>domContentLoadedEventStart</td>
-<td>当前网页DOMContentLoaded事件发生时，也就是DOM结构解析完毕、所有脚本开始运行时的时间戳。</td>
-</tr>
-<tr>
-<td>domInteractive</td>
-<td>当前网页DOM结构结束解析、开始加载内嵌资源时，也就是Document.readyState属性变为“interactive”、并且相应的readystatechange事件触发时的时间戳。</td>
-</tr>
-<tr>
-<td>domLoading</td>
-<td>当前网页DOM结构开始解析时,也就是Document.readyState属性变为“loading”、并且相应的readystatechange事件触发时的时间戳。</td>
-</tr>
-<tr>
-<td>domainLookupEnd</td>
-<td>域名查询结束时的时间戳。如果使用持久连接，或者从本地缓存获取信息的，等同于fetchStart</td>
-</tr>
-<tr>
-<td>domainLookupStart</td>
-<td>域名查询开始时的时间戳。如果使用持久连接，或者从本地缓存获取信息的，等同于fetchStart</td>
-</tr>
-<tr>
-<td>fetchStart</td>
-<td>浏览器准备通过HTTP请求去获取页面的时间戳。在检查应用缓存之前发生。</td>
-</tr>
-<tr>
-<td>loadEventEnd</td>
-<td>当前网页load事件的回调函数结束时的时间戳。如果该事件还没有发生，返回0。</td>
-</tr>
-<tr>
-<td>loadEventStart</td>
-<td>当前网页load事件的回调函数开始时的时间戳。如果该事件还没有发生，返回0。</td>
-</tr>
-<tr>
-<td>navigationStart</td>
-<td>当前浏览器窗口的前一个网页关闭，发生unload事件时的时间戳。如果没有前一个网页，就等于fetchStart</td>
-</tr>
-<tr>
-<td>redirectEnd</td>
-<td>最后一次重定向完成，也就是Http响应的最后一个字节返回时的时间戳。如果没有重定向，或者上次重定向不是同源的。则为0</td>
-</tr>
-<tr>
-<td>redirectStart</td>
-<td>第一次重定向开始时的时间戳，如果没有重定向，或者上次重定向不是同源的。则为0</td>
-</tr>
-<tr>
-<td>requestStart</td>
-<td>浏览器向服务器发出HTTP请求时（或开始读取本地缓存时）的时间戳。</td>
-</tr>
-<tr>
-<td>responseEnd</td>
-<td>浏览器从服务器收到（或从本地缓存读取）最后一个字节时（如果在此之前HTTP连接已经关闭，则返回关闭时）的时间戳</td>
-</tr>
-<tr>
-<td>responseStart</td>
-<td>浏览器从服务器收到（或从本地缓存读取）第一个字节时的时间戳。</td>
-</tr>
-<tr>
-<td>secureConnectionStart</td>
-<td>浏览器与服务器开始安全链接的握手时的时间戳。如果当前网页不要求安全连接，则返回0。</td>
-</tr>
-<tr>
-<td>unloadEventEnd</td>
-<td>如果前一个网页与当前网页属于同一个域下，则表示前一个网页的unload回调结束时的时间戳。如果没有前一个网页，或者之前的网页跳转不是属于同一个域内，则返回值为0。</td>
-</tr>
-<tr>
-<td>unloadEventStart</td>
-<td>如果前一个网页与当前网页属于同一个域下，则表示前一个网页的unload事件发生时的时间戳。如果没有前一个网页，或者之前的网页跳转不是属于同一个域内，则返回值为0。</td>
-</tr>
-</tbody>
-</table>
-<p><img src="/2018/12/20/Performance/perfomance.png" alt=""></p>
-<p><strong>组合值的意义</strong> </p>
-<blockquote>
-<p>DNS查询耗时 ：domainLookupEnd - domainLookupStart</p>
-<p>TCP链接耗时 ：connectEnd - connectStart</p>
-<p>request请求耗时 ：responseEnd - responseStart</p>
-<p>解析dom树耗时 ： domComplete - domInteractive</p>
-<p>白屏时间 ：responseStart - navigationStart</p>
-<p>domready时间 ：domContentLoadedEventEnd - navigationStart</p>
-<p>onload时间 ：loadEventEnd - navigationStart</p>
-</blockquote>
-<p><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/20/Performance/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1733,7 +1595,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">213</span>
+                  <span class="site-state-item-count">216</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1746,7 +1608,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">354</span>
+                  <span class="site-state-item-count">364</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
