@@ -266,6 +266,136 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/06/12/css-flow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/12/css-flow/" itemprop="url">css-flow</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-12T18:53:43+08:00">
+                2018-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="in-flow和out-of-flow"><a href="#in-flow和out-of-flow" class="headerlink" title="in-flow和out-of-flow"></a>in-flow和out-of-flow</h2><h3 id="规范规定"><a href="#规范规定" class="headerlink" title="规范规定"></a><a href="http://www.w3.org/TR/CSS2/visuren.html#positioning-scheme" target="_blank" rel="noopener">规范规定</a></h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">An element is called out of flow if it is floated, absolutely positioned, or is the root element. An element is called in-flow if it is not out-of-flow.</span><br></pre></td></tr></table></figure>
+<p>如果一个元素是<strong>浮动</strong>的(float:left/right)，<strong>绝对定位</strong>的(position:absolute/fixed)或者是<strong>根元素</strong>(html)，那么它被称之为<strong>流外的元素</strong>(out-of-flow)。如果一个元素不是流外的元素，那么它被称之为<strong>流内的元素</strong>(in-flow)。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The flow of an element A is the set consisting of A and all in-flow elements whose nearest out-of-flow ancestor is A.</span><br></pre></td></tr></table></figure>
+<p>元素 A 的流是一个集合，包含 A 元素本身，以及元素 A 的流内的子元素且这些子元素最近的流外祖先是 A 元素。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"A"</span> <span class="attr">style</span>=<span class="string">"position: absolute;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"B"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"C"</span> <span class="attr">style</span>=<span class="string">"position:absolute"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"D"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"E"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"F"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>以上示例中，A 元素的流包含分析如下：</p>
+<ol>
+<li>A 和 C 是流外的元素，所以 C 被排除</li>
+<li>D 元素由于最近的流外祖先是 C，所以他也不是 A 的流</li>
+<li>所以最终 A 元素流内的元素只剩下：ABEF</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/06/01/JS-根据规范重写Promise/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1467,130 +1597,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/2018/05/24/JS-offsetWidth和clientWidth/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/24/JS-offsetWidth和clientWidth/" itemprop="url">offsetWidth和clientWidth</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-24T15:42:44+08:00">
-                2018-05-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="一、border-box模式"><a href="#一、border-box模式" class="headerlink" title="一、border-box模式"></a>一、border-box模式</h1><h4 id="offsetWidth-width"><a href="#offsetWidth-width" class="headerlink" title="offsetWidth = width"></a>offsetWidth = width</h4><h4 id="clientWidth-width-border-scrollBar"><a href="#clientWidth-width-border-scrollBar" class="headerlink" title="clientWidth = width - border - scrollBar"></a>clientWidth = width - border - scrollBar</h4><h4 id="注："><a href="#注：" class="headerlink" title="注："></a>注：</h4><ul>
-<li>Width:盒子css属性定义的宽度</li>
-<li>Border:盒子边框的大小</li>
-<li>scrollBar:盒子滚动条的宽度，默认17px</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1641,7 +1647,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">216</span>
+                  <span class="site-state-item-count">217</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1654,7 +1660,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">364</span>
+                  <span class="site-state-item-count">366</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

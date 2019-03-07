@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[linux中su和sudo命令]]></title>
+    <url>%2F2019%2F03%2F07%2Flinux%E4%B8%ADsu%E5%92%8Csudo%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[su命令Linux su命令用于变更为其他使用者的身份，除 root 外，需要键入该使用者的密码。 1su [-fmp] [-c command] [-s shell] [--help] [--version] [-] [USER [ARG]] -f或--fast 不必读启动档（如 csh.cshrc 等），仅用于 csh 或 tcsh -m -p 或 --preserve-environment 执行 su 时不改变环境变数 -c command 或--command=command 变更帐号为 USER 的使用者，并执行指令（command）后再变回原来使用者 -s shell 或 --shell=shell 指定要执行的 shell （bash csh tcsh 等） 预设值为/etc/passwd 内的该使用者（USER） shell --help 显示说明文件 --version 显示版本资讯 - 、-l或--login 这个参数加了之后，就好像是重新 login 为该使用者一样 大部份环境变数都是以该使用者（USER）为主，并且工作目录也会改变 如果没有指定 USER ，内定是 root USER 欲变更的使用者帐号 ARG 传入新的 shell 参数 123su -c ls root # 变更帐号为 root 并在执行 ls 指令后退出变回原使用者su root -f # 变更帐号为 root 并传入 -f 参数给新执行的 shellsu - nginx # 变更帐号为 nginx 并改变工作目录至 nginx 的家目录（home dir） su和su - 区别su username 切换到指定用户，但是当前目录不会变化 环境变量还是上一个用户的环境变量 su - username 切换到指定用户，当前目录即刻切换成指定用户的家目录 环境变量即刻切换到指定目录的环境变量 sudo命令1sudo command 通过sudo命令，我们能把某些超级权限有针对性的下放，并且不需要普通用户知道root密码，而是验证当前用户的密码 。sudo是需要授权许可的，所以也被称为授权许可的su。 sudo执行命令的流程是当前用户切换到root，然后以root身份执行命令，执行完成后，直接退回到当前用户，而这些的前提是要通过sudo的配置文件`/etc/sudoers来进行授权。]]></content>
+      <tags>
+        <tag>linux</tag>
+        <tag>su</tag>
+        <tag>sudo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[linux用户账号相关操作]]></title>
     <url>%2F2019%2F03%2F06%2Flinux%E7%94%A8%E6%88%B7%E8%B4%A6%E5%8F%B7%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C%2F</url>
     <content type="text"><![CDATA[useradd | adduser命令useradd | adduser命令用来建立用户帐号和创建用户的起始目录，使用权限是超级用户。 12useradd [-d home] [-s shell] [-c comment] [-m [-k template]] [-f inactive] [-e expire ] [-p passwd] [-r] name -c：加上备注文字，备注文字保存在passwd的备注栏中 -d：指定用户登入时的主目录，替换系统默认值/home/&lt;用户名&gt; -D：变更预设值 -e：指定账号的失效日期，日期格式为MM/DD/YY，例如06/30/12。缺省表示永久有效 -f：指定在密码过期后多少天即关闭该账号。 默认值为-1 如果为0账号立即被停用 如果为-1则账号一直可用 -g：指定用户所属的群组。值可以使组名也可以是GID 用户组必须已经存在的，期默认值为100，即users -G：指定用户所属的附加群组 -m：自动建立用户的登入目录 -M：不要自动建立用户的登入目录 -n：取消建立以用户名称为名的群组 -r：建立系统账号 -s：指定用户登入后所使用的shell。默认值为/bin/bash -u：指定用户ID号。该值在系统中必须是唯一的 0~499默认是保留给系统用户账号使用的，所以该值必须大于499 注：账号建好之后，再用passwd命令设定账号的密码 passwd命令1passwd [-k] [-l] [-u [-f]] [-d] [-S] [username] -d 删除密码 -f 强制执行 -k 更新只能发送在过期之后 -l 停止账号使用 -S 显示密码信息 -u 启用已被停止的账户 -x 设置密码的有效期 -g 修改群组密码 -i 过期后停止用户账号 id命令1id [-gGnru][--help][--version][用户名称] -g或--group 显示用户所属群组的ID -G或--groups 显示用户所属附加群组的ID -n或--name 显示用户，所属群组或附加群组的名称 -r或--real 显示实际ID -u或--user 显示用户ID -help 显示帮助 -version 显示版本信息 usermod 命令1usermod [options] user_name 12345678910111213141516171819202122232425- a | -- append 把用户追加到某些组中，仅与-G选项一起使用- c | -- comment 修改用户帐号的备注文字- d | -- home 修改用户的家目录通常和-m选项一起使用- e | -- expiredate 指定用户帐号禁用的日期，格式YY-MM-DD- f | -- inactive 用户密码过期多少天后采用就禁用该帐号- g | -- gid 修改用户的gid，改组一定存在- G | -- groups 把用户追加到某些组中，仅与-a选项一起使用- l | -- login 修改用户的登录名称- L | -- lock 锁定用户的密码- m | -- move - home 修改用户的家目录通常和-d选项一起使用- s | -- shell 修改用户的shell- u | -- uid 修改用户的uid，该uid必须唯一- U | -- unlock 解锁用户的密码 1usermod -a -G www hexu # 将hexu添加到www用户组]]></content>
