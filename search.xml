@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title><![CDATA[java类名与文件名]]></title>
-    <url>%2F2019%2F03%2F07%2Fjava%E7%B1%BB%E5%90%8D%E4%B8%8E%E6%96%87%E4%BB%B6%E5%90%8D%2F</url>
+    <url>%2FendBlogs%2F2019%2F03%2F07%2Fjava%E7%B1%BB%E5%90%8D%E4%B8%8E%E6%96%87%E4%BB%B6%E5%90%8D%2F</url>
     <content type="text"><![CDATA[类名与文件名 一个Java文件中只能有一个public类 如果文件中存在public类，文件名必须与public类名一致 如果文件中没有public类，文件名与类名可以不一致]]></content>
       <tags>
         <tag>java</tag>
