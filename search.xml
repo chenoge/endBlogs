@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[java类名与文件名]]></title>
-    <url>%2FendBlogs%2F2019%2F03%2F07%2Fjava%E7%B1%BB%E5%90%8D%E4%B8%8E%E6%96%87%E4%BB%B6%E5%90%8D%2F</url>
-    <content type="text"><![CDATA[类名与文件名 一个Java文件中只能有一个public类 如果文件中存在public类，文件名必须与public类名一致 如果文件中没有public类，文件名与类名可以不一致]]></content>
+    <title><![CDATA[java基本知识]]></title>
+    <url>%2FendBlogs%2F2019%2F03%2F07%2Fjava%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%2F</url>
+    <content type="text"><![CDATA[类名与文件名 一个Java文件中只能有一个public类 如果文件中存在public类，文件名必须与public类名一致 如果文件中没有public类，文件名与类名可以不一致 注：一个源文件中，用class关键字定义了几个类，编译的时候就会产生几个字节码文件 包名与文件名.java文件中的包名必须与物理文件夹对应 123// Something.java 文件package net.java.util;public class Something&#123;&#125; 物理存储位置应该是：net/java/util/Something.java 注： 同一个包中的类名字不能相同 同级包下的类引用不需要import，可以直接调用 Java编译器默认导入java.lang包 主入口方法1public static void main(String[] args) &#123;&#125; 该java类由java虚拟机调用，所以java类应把该方法暴露，故用public 既然由JVM调用该方法，肯定不能new 一个对象再由对象调用该方法，应直接由JVM调用故用static 给JVM返回东西是无意义的 ，故用void 括号里的参数是由JVM传给该方法的，具体可为： 从cmd控制台传入 从开发环境IDE配置参数传入 装箱与拆箱所有的包装类（Integer、Long、Byte、Double、Float、Short）都是抽象类 Number 的子类。 由编译器特别支持的包装称为装箱，所以当内置数据类型被当作对象使用的时候，编译器会把内置类型装箱为包装类。相似的，编译器也可以把一个对象拆箱为内置类型 。 12345678910public class Test &#123; public static void main(String args[]) &#123; Integer x = 5; x = x + 10; System.out.println(x); &#125;&#125;// 当 x 被赋为整型值时，由于x是一个对象，所以编译器要对x进行装箱// 然后，为了使x能进行加运算，所以要对x进行拆箱 创建数组1dataType[] arrayRefVar = new dataType[arraySize]; 1dataType[] arrayRefVar = &#123;value0, value1, ..., valuek&#125;; 重写与重载重写(Override)是子类对父类的允许访问的方法的实现过程进行重新编写, 返回值和形参都不能改变 重载(overloading) 是在一个类里面，方法名字相同，而参数不同，返回类型可以相同也可以不同]]></content>
       <tags>
         <tag>java</tag>
-        <tag>类名</tag>
-        <tag>文件名</tag>
       </tags>
   </entry>
 </search>
