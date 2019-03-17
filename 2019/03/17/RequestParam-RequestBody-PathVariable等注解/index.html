@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="java,ClassLoader,类加载器," />
+  <meta name="keywords" content="RequestParam,RequestBody,PathVariable,RequestAttribute," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="类加载器类加载器负责将.class文件加载到内存中，并为类生成一个java.lang.Class实例。 一旦一个类被加载入JVM中，同一个类就不会被再次加入了。在JVM中用来判断类的唯一性标识是：类名、类所在的包名和类加载器。 当JVM启动时，会形成由三个类加载器组成的初始类加载器层次结构：  BootStrap ClassLoader：根类加载器 Extension ClassLoader：扩展">
-<meta name="keywords" content="java,ClassLoader,类加载器">
+<meta name="description" content="注解类型handler method参数绑定常用的注解，根据处理的Request内容部分不同分为四类：  处理requet uri 部分的注解：@PathVariable   ​    注：指uri template中variable，不含queryString部分  处理request header部分的注解：   @RequestHeader、@CookieValue  处理request b">
+<meta name="keywords" content="RequestParam,RequestBody,PathVariable,RequestAttribute">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java类加载器">
-<meta property="og:url" content="https://www.yf-gz.cn/2019/03/15/java类加载器/index.html">
+<meta property="og:title" content="RequestParam、RequestBody、PathVariable等注解">
+<meta property="og:url" content="https://www.yf-gz.cn/2019/03/17/RequestParam-RequestBody-PathVariable等注解/index.html">
 <meta property="og:site_name" content="chenogeの日志">
-<meta property="og:description" content="类加载器类加载器负责将.class文件加载到内存中，并为类生成一个java.lang.Class实例。 一旦一个类被加载入JVM中，同一个类就不会被再次加入了。在JVM中用来判断类的唯一性标识是：类名、类所在的包名和类加载器。 当JVM启动时，会形成由三个类加载器组成的初始类加载器层次结构：  BootStrap ClassLoader：根类加载器 Extension ClassLoader：扩展">
+<meta property="og:description" content="注解类型handler method参数绑定常用的注解，根据处理的Request内容部分不同分为四类：  处理requet uri 部分的注解：@PathVariable   ​    注：指uri template中variable，不含queryString部分  处理request header部分的注解：   @RequestHeader、@CookieValue  处理request b">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-15T03:10:09.855Z">
+<meta property="og:updated_time" content="2019-03-17T13:20:30.073Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java类加载器">
-<meta name="twitter:description" content="类加载器类加载器负责将.class文件加载到内存中，并为类生成一个java.lang.Class实例。 一旦一个类被加载入JVM中，同一个类就不会被再次加入了。在JVM中用来判断类的唯一性标识是：类名、类所在的包名和类加载器。 当JVM启动时，会形成由三个类加载器组成的初始类加载器层次结构：  BootStrap ClassLoader：根类加载器 Extension ClassLoader：扩展">
+<meta name="twitter:title" content="RequestParam、RequestBody、PathVariable等注解">
+<meta name="twitter:description" content="注解类型handler method参数绑定常用的注解，根据处理的Request内容部分不同分为四类：  处理requet uri 部分的注解：@PathVariable   ​    注：指uri template中variable，不含queryString部分  处理request header部分的注解：   @RequestHeader、@CookieValue  处理request b">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://www.yf-gz.cn/2019/03/15/java类加载器/"/>
+  <link rel="canonical" href="https://www.yf-gz.cn/2019/03/17/RequestParam-RequestBody-PathVariable等注解/"/>
 
 
 
 
 
-  <title>java类加载器 | chenogeの日志</title>
+  <title>RequestParam、RequestBody、PathVariable等注解 | chenogeの日志</title>
   
 
 
@@ -267,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/15/java类加载器/">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/17/RequestParam-RequestBody-PathVariable等注解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chenoge">
@@ -284,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java类加载器</h1>
+          <h1 class="post-title" itemprop="name headline">RequestParam、RequestBody、PathVariable等注解</h1>
         
 
         <div class="post-meta">
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T10:31:05+08:00">
-                2019-03-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-17T19:44:34+08:00">
+                2019-03-17
               </time>
             
 
@@ -334,36 +334,77 @@
       
 
       
-        <h3 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h3><p>类加载器负责将<code>.class文件</code>加载到内存中，并为类生成一个<code>java.lang.Class</code>实例。</p>
-<p>一旦一个类被加载入<code>JVM</code>中，同一个类就不会被再次加入了。在<code>JVM</code>中用来判断类的唯一性标识是：<strong>类名、类所在的包名和类加载器</strong>。</p>
-<p>当<code>JVM</code>启动时，会形成由三个类加载器组成的初始类加载器层次结构：</p>
-<ul>
-<li><code>BootStrap ClassLoader</code>：根类加载器</li>
-<li><code>Extension ClassLoader</code>：扩展类加载器</li>
-<li><code>System ClassLoader</code>：系统类加载器</li>
-</ul>
+        <h4 id="注解类型"><a href="#注解类型" class="headerlink" title="注解类型"></a>注解类型</h4><p><code>handler method</code>参数绑定常用的注解，根据处理的<strong>Request内容部分</strong>不同分为四类：</p>
+<ol>
+<li>处理<code>requet uri</code> 部分的注解：<code>@PathVariable</code> </li>
+</ol>
+<p>​    注：指<code>uri template</code>中<code>variable</code>，不含<code>queryString</code>部分</p>
+<ol start="2">
+<li>处理<code>request header</code>部分的注解：   <code>@RequestHeader</code>、<code>@CookieValue</code> </li>
+<li>处理<code>request body</code>部分的注解：<code>@RequestParam</code>、<code>@RequestBody</code> </li>
+<li>处理<code>attribute</code>类型是注解： <code>@SessionAttributes</code>、 <code>@ModelAttribute</code> </li>
+</ol>
 <a id="more"></a>
 <p><br></p>
-<h5 id="根类加载器-（bootstrap-class-loader）："><a href="#根类加载器-（bootstrap-class-loader）：" class="headerlink" title="根类加载器 （bootstrap class loader）："></a>根类加载器 （bootstrap class loader）：</h5><p>它用来加载 Java 的核心库(<code>jre/lib/rt.jar</code>)，是用原生<code>C++</code>代码来实现的，并不继承自<code>java.lang.ClassLoader</code>。<strong>没有父加载器</strong> </p>
-<p><br></p>
-<h5 id="扩展类加载器（extensions-class-loader）："><a href="#扩展类加载器（extensions-class-loader）：" class="headerlink" title="扩展类加载器（extensions class loader）："></a>扩展类加载器（extensions class loader）：</h5><p>它用来加载 Java 的扩展库(<code>jre/ext/*.jar</code>)。Java 虚拟机的实现会提供一个扩展库目录。该类加载器在此目录里面查找并加载 Java 类。 <strong>父加载器为根类加载器</strong> </p>
-<p>扩展类加载器是纯Java类，是<strong>java.lang.ClassLoader</strong>类的子类</p>
-<p><br></p>
-<h5 id="系统类加载器（system-class-loader）："><a href="#系统类加载器（system-class-loader）：" class="headerlink" title="系统类加载器（system class loader）："></a>系统类加载器（system class loader）：</h5><p>它根据 Java 应用的类路径（<code>CLASSPATH</code>）来加载 Java 类。一般来说，Java 应用的类都是由它来完成加载的。可以通过 <code>ClassLoader.getSystemClassLoader()</code>来获取它。<strong>父加载器为扩展类加载器 </strong> </p>
-<p>系统类加载器是纯Java类，是<strong>java.lang.ClassLoader</strong>类的子类</p>
-<p><br></p>
-<h5 id="自定义类加载器（custom-class-loader）："><a href="#自定义类加载器（custom-class-loader）：" class="headerlink" title="自定义类加载器（custom class loader）："></a>自定义类加载器（custom class loader）：</h5><p>除了系统提供的类加载器以外，开发人员可以通过继承 <code>java.lang.ClassLoader</code>类的方式实现自己的类加载器，以满足一些特殊的需求。</p>
-<p><br></p>
-<h3 id="类加载的父委托机制"><a href="#类加载的父委托机制" class="headerlink" title="类加载的父委托机制"></a>类加载的父委托机制</h3><p>从<code>JDK 1.2</code>版本开始，类的加载过程采用<strong>父亲委托机制</strong>，这种机制能更好地保证Java平台的安全。</p>
-<p>在父委托机制中，除了Java虚拟机自带的<strong>根类加载器</strong>以外，其余的类加载器都<strong>有且只有一个</strong>父加载器，各个加载器按照父子关系形成了树形结构。</p>
-<p>当Java程序请求<code>加载器loader1</code>加载<code>Sample类</code>时，<code>loader1</code>首先委托自己的父加载器去加载<code>Sample类</code>，若父加载器能加载，则由父加载器完成加载任务，否则才由<code>loader1</code>本身加载<code>Sample类</code>。</p>
+<h5 id="PathVariable"><a href="#PathVariable" class="headerlink" title="@PathVariable"></a><code>@PathVariable</code></h5><p>当使用<code>@RequestMapping URI template</code> 样式映射时， 即 <code>someUrl/{paramId}</code>, 这时的<code>paramId</code>可通过 <code>@Pathvariable</code>注解<strong>绑定传过来的值到方法的参数上</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/owners/&#123;ownerId&#125;"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RelativePathUriTemplateController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// @RequestMapping("/pets/&#123;petId&#125;")</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/pets/&#123;petId&#125;"</span>, method = RequestMethod.POST)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">findPet</span><span class="params">(@PathVariable String ownerId, @PathVariable String petId)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// implementation omitted</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注：</p>
-<ul>
-<li><p><strong>这里的父加载器概念并不是指类的继承关系，子加载器不一定继承了父加载器（其实是组合的关系）</strong> </p>
+<p>若方法参数名称和需要绑定的<code>uri template中</code>变量名称不一致，需要在<code>@PathVariable(&quot;name&quot;)</code>指定<code>uri template</code>中的名称。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PathVariable</span>(<span class="string">"ownerId"</span>) String owner_id</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="RequestHeader"><a href="#RequestHeader" class="headerlink" title="@RequestHeader"></a><code>@RequestHeader</code></h5><p><code>@RequestHeader</code> 注解，可以把<code>Request</code>请求<code>header</code>部分的值绑定到方法的参数上</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Host                    localhost:8080</span><br><span class="line">Accept                  text/html,application/xhtml+xml,application/xml;q=0.9</span><br><span class="line">Accept-Language         fr,en-gb;q=0.7,en;q=0.3</span><br><span class="line">Accept-Encoding         gzip,deflate</span><br><span class="line">Accept-Charset          ISO-8859-1,utf-8;q=0.7,*;q=0.7</span><br><span class="line">Keep-Alive              300</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/displayHeaderInfo.do"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayHeaderInfo</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    @RequestHeader(<span class="string">"Accept-Encoding"</span>)</span> String encoding,</span></span><br><span class="line"><span class="function">    @<span class="title">RequestHeader</span><span class="params">(<span class="string">"Keep-Alive"</span>)</span> <span class="keyword">long</span> keepAlive) </span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="CookieValue"><a href="#CookieValue" class="headerlink" title="@CookieValue"></a><code>@CookieValue</code></h5><p><code>@CookieValue</code>可以把<code>Request header</code>中关于<code>cookie</code>的值绑定到方法的参数上</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JSESSIONID=415A4AC178C59DACE0B2C9CA727CDD84</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/displayHeaderInfo.do"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayHeaderInfo</span><span class="params">(@CookieValue(<span class="string">"JSESSIONID"</span>)</span> String cookie) </span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="RequestParam"><a href="#RequestParam" class="headerlink" title="@RequestParam"></a><code>@RequestParam</code></h5><ul>
+<li>常用来处理<strong>简单类型的绑定</strong>，通过<code>Request.getParameter()</code>获取的<code>String</code>可直接转换为简单类型的情况<ul>
+<li>可以处理<code>get 方式</code>中<code>queryString</code>的值</li>
+<li>可以处理<code>post方式</code>中<code>body data</code>的值</li>
+</ul>
 </li>
-<li><p><strong>每个加载器都优先尝试用父类加载，若父类不能加载则自己尝试加载；若成功则返回Class对象给子类，若失败则告诉子类让子类自己加载。所有都失败则抛出<code>ClassNotFoundException</code>异常</strong> </p>
+<li>用来处理<code>Content-Type</code>: 为 <code>application/x-www-form-urlencoded</code>编码的内容，提交方式<code>GET、POST</code> </li>
+<li>该注解有两个属性： <code>value、required</code> <ul>
+<li><code>value</code>用来指定要传入值的<code>id名称</code> </li>
+<li><code>required</code>用来指示参数是否必须绑定</li>
+</ul>
 </li>
 </ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/pets"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EditPetForm</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">setupForm</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">        @RequestParam(value = <span class="string">"petId"</span>, required = <span class="keyword">false</span>)</span> <span class="keyword">int</span> petId) </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<p>可以不使用<code>@RequestParam</code>，直接接收。此时要求<code>controller方法</code>中的<strong>参数名称</strong>要一致</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/pets"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EditPetForm</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">setupForm</span><span class="params">(<span class="keyword">int</span> petId)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="RequestBody"><a href="#RequestBody" class="headerlink" title="@RequestBody"></a><code>@RequestBody</code></h5><p>常用来处理<code>Content-Type</code>: 不是<code>application/x-www-form-urlencoded</code>编码的内容</p>
+<ul>
+<li><code>application/json</code> </li>
+<li><code>application/xml</code> </li>
+</ul>
+<p>通过使用<code>HandlerAdapter</code>配置的<code>HttpMessageConverters</code>来解析<code>post data body</code>，然后绑定到相应的<code>bean</code>上的。</p>
+<p><strong>字符串解析：</strong> </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="string">"/login"</span>,</span><br><span class="line">    type: <span class="string">"POST"</span>,</span><br><span class="line">    data: <span class="string">'&#123;"userName":"admin","pwd","admin123"&#125;'</span>,</span><br><span class="line">    content - type: <span class="string">"application/json charset=utf-8"</span>,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">        alert(<span class="string">"request success ! "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@requestMapping</span>(<span class="string">"/login"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">(@requestBody String userName, @requestBody String pwd)</span> </span>&#123;</span><br><span class="line">    System.out.println(userName + <span class="string">" ："</span> + pwd);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 将JSON字符串中的两个变量的值分别赋予了两个字符串</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><strong>对象解析：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/something"</span>, method = RequestMethod.PUT)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handle</span><span class="params">(@RequestBody User user)</span> </span>&#123;</span><br><span class="line">    System.out.println(user.userName + <span class="string">" ："</span> + user.pwd);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 将JSON字符串中的值赋予user中对应的属性上</span></span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<ul>
+<li><code>JSON</code>字符串中的<code>key</code>必须对应<code>user</code>中的<strong>属性名</strong>，否则是请求不过去的</li>
+<li><code>@RequestBody</code>最多只能有一个，而<code>@RequestParam()</code>可以有多个</li>
+</ul>
+<p><br></p>
+<h5 id="SessionAttributes"><a href="#SessionAttributes" class="headerlink" title="@SessionAttributes"></a><code>@SessionAttributes</code></h5><p>用来绑定<code>HttpSession</code>中的<code>attribute</code>对象的值，便于在方法中的参数里使用。该注解有<code>value、types</code>两个属性，可以通过名字和类型指定要使用的<code>attribute</code> 对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/editPet.do"</span>)</span><br><span class="line"><span class="comment">// @SessionAttributes("pet")</span></span><br><span class="line"><span class="meta">@SessionAttributes</span>(value = &#123; <span class="string">"pet"</span> &#125;, types = &#123; Integer.class &#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EditPetForm</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：<code>@SessionAttributes</code>注解只能在类上使用，不能在方法上使用</p>
+<p><br></p>
+<h5 id="ModelAttribute、-RequestAttribute"><a href="#ModelAttribute、-RequestAttribute" class="headerlink" title="@ModelAttribute、@RequestAttribute"></a><code>@ModelAttribute、@RequestAttribute</code></h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ModelAttribute</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">beforeInvokingHandlerMethod</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">    request.setAttribute(<span class="string">"foo"</span>, <span class="string">"hello world"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/data/custom"</span>, method = RequestMethod.GET)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@ResponseBody</span> <span class="function">String <span class="title">custom</span><span class="params">(@RequestAttribute(<span class="string">"foo"</span>)</span> String foo) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Got 'foo' request attribute value '"</span> + foo + <span class="string">"'"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"customArgs"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>Custom Resolvable Web Arguments<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"customArg"</span> <span class="attr">class</span>=<span class="string">"textLink"</span> <span class="attr">href</span>=<span class="string">"/data/custom"</span>&gt;</span>Custom<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"a.textLink"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> link = $(<span class="keyword">this</span>);</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        url: link.attr(<span class="string">"href"</span>),</span><br><span class="line">        dataType: <span class="string">"text"</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span>(<span class="params">text</span>) </span>&#123;</span><br><span class="line">            alert(text)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Got &apos;foo&apos; request attribute value &apos;hello world&apos;</span><br></pre></td></tr></table></figure>
+<p><br></p>
 
       
     </div>
@@ -381,11 +422,13 @@
       
         <div class="post-tags">
           
-            <a href="/endBlogs/tags/java/" rel="tag"># java</a>
+            <a href="/endBlogs/tags/RequestParam/" rel="tag"># RequestParam</a>
           
-            <a href="/endBlogs/tags/ClassLoader/" rel="tag"># ClassLoader</a>
+            <a href="/endBlogs/tags/RequestBody/" rel="tag"># RequestBody</a>
           
-            <a href="/endBlogs/tags/类加载器/" rel="tag"># 类加载器</a>
+            <a href="/endBlogs/tags/PathVariable/" rel="tag"># PathVariable</a>
+          
+            <a href="/endBlogs/tags/RequestAttribute/" rel="tag"># RequestAttribute</a>
           
         </div>
       
@@ -398,8 +441,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/endBlogs/2019/03/11/Elasticsearch基本使用/" rel="next" title="Elasticsearch基本使用">
-                <i class="fa fa-chevron-left"></i> Elasticsearch基本使用
+              <a href="/endBlogs/2019/03/15/jar-MANIFEST-MF文件/" rel="next" title="jar-MANIFEST.MF文件">
+                <i class="fa fa-chevron-left"></i> jar-MANIFEST.MF文件
               </a>
             
           </div>
@@ -407,10 +450,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/endBlogs/2019/03/15/java-生成jar包/" rel="prev" title="java-生成jar包">
-                java-生成jar包 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -533,7 +572,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#类加载器"><span class="nav-number">1.</span> <span class="nav-text">类加载器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#根类加载器-（bootstrap-class-loader）："><span class="nav-number">1.0.1.</span> <span class="nav-text">根类加载器 （bootstrap class loader）：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#扩展类加载器（extensions-class-loader）："><span class="nav-number">1.0.2.</span> <span class="nav-text">扩展类加载器（extensions class loader）：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#系统类加载器（system-class-loader）："><span class="nav-number">1.0.3.</span> <span class="nav-text">系统类加载器（system class loader）：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#自定义类加载器（custom-class-loader）："><span class="nav-number">1.0.4.</span> <span class="nav-text">自定义类加载器（custom class loader）：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类加载的父委托机制"><span class="nav-number">2.</span> <span class="nav-text">类加载的父委托机制</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#注解类型"><span class="nav-number">1.</span> <span class="nav-text">注解类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#PathVariable"><span class="nav-number">1.1.</span> <span class="nav-text">@PathVariable</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RequestHeader"><span class="nav-number">1.2.</span> <span class="nav-text">@RequestHeader</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CookieValue"><span class="nav-number">1.3.</span> <span class="nav-text">@CookieValue</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RequestParam"><span class="nav-number">1.4.</span> <span class="nav-text">@RequestParam</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RequestBody"><span class="nav-number">1.5.</span> <span class="nav-text">@RequestBody</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SessionAttributes"><span class="nav-number">1.6.</span> <span class="nav-text">@SessionAttributes</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ModelAttribute、-RequestAttribute"><span class="nav-number">1.7.</span> <span class="nav-text">@ModelAttribute、@RequestAttribute</span></a></li></ol></li></ol></div>
             
 
           </div>
