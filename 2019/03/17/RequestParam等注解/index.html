@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="jar,MANIFEST.MF," />
+  <meta name="keywords" content="RequestParam,RequestBody,PathVariable,RequestAttribute," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="打开Java的JAR文件我们经常可以看到文件中包含着一个META-INF目录， 这个目录下会有一些文件，其中必有一个MANIFEST.MF，这个文件描述了该Jar文件的很多信息。 下面将详细介绍MANIFEST.MF文件的内容，先来看struts.jar中包含的MANIFEST.MF文件内容： 1234567891011Manifest-Version: 1.0Created-By: Apache">
-<meta name="keywords" content="jar,MANIFEST.MF">
+<meta name="description" content="注解类型handler method参数绑定常用的注解，根据处理的Request内容部分不同分为四类：  处理requet uri 部分的注解：@PathVariable   ​    注：指uri template中variable，不含queryString部分  处理request header部分的注解：   @RequestHeader、@CookieValue  处理request b">
+<meta name="keywords" content="RequestParam,RequestBody,PathVariable,RequestAttribute">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jar-MANIFEST.MF文件">
-<meta property="og:url" content="https://www.yf-gz.cn/2019/03/15/jar-MANIFEST-MF文件/index.html">
+<meta property="og:title" content="RequestParam等注解">
+<meta property="og:url" content="https://www.yf-gz.cn/2019/03/17/RequestParam等注解/index.html">
 <meta property="og:site_name" content="chenogeの日志">
-<meta property="og:description" content="打开Java的JAR文件我们经常可以看到文件中包含着一个META-INF目录， 这个目录下会有一些文件，其中必有一个MANIFEST.MF，这个文件描述了该Jar文件的很多信息。 下面将详细介绍MANIFEST.MF文件的内容，先来看struts.jar中包含的MANIFEST.MF文件内容： 1234567891011Manifest-Version: 1.0Created-By: Apache">
+<meta property="og:description" content="注解类型handler method参数绑定常用的注解，根据处理的Request内容部分不同分为四类：  处理requet uri 部分的注解：@PathVariable   ​    注：指uri template中variable，不含queryString部分  处理request header部分的注解：   @RequestHeader、@CookieValue  处理request b">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-15T06:39:23.803Z">
+<meta property="og:updated_time" content="2019-03-18T02:04:17.010Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jar-MANIFEST.MF文件">
-<meta name="twitter:description" content="打开Java的JAR文件我们经常可以看到文件中包含着一个META-INF目录， 这个目录下会有一些文件，其中必有一个MANIFEST.MF，这个文件描述了该Jar文件的很多信息。 下面将详细介绍MANIFEST.MF文件的内容，先来看struts.jar中包含的MANIFEST.MF文件内容： 1234567891011Manifest-Version: 1.0Created-By: Apache">
+<meta name="twitter:title" content="RequestParam等注解">
+<meta name="twitter:description" content="注解类型handler method参数绑定常用的注解，根据处理的Request内容部分不同分为四类：  处理requet uri 部分的注解：@PathVariable   ​    注：指uri template中variable，不含queryString部分  处理request header部分的注解：   @RequestHeader、@CookieValue  处理request b">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://www.yf-gz.cn/2019/03/15/jar-MANIFEST-MF文件/"/>
+  <link rel="canonical" href="https://www.yf-gz.cn/2019/03/17/RequestParam等注解/"/>
 
 
 
 
 
-  <title>jar-MANIFEST.MF文件 | chenogeの日志</title>
+  <title>RequestParam等注解 | chenogeの日志</title>
   
 
 
@@ -267,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/15/jar-MANIFEST-MF文件/">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/17/RequestParam等注解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chenoge">
@@ -284,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">jar-MANIFEST.MF文件</h1>
+          <h1 class="post-title" itemprop="name headline">RequestParam等注解</h1>
         
 
         <div class="post-meta">
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T14:27:27+08:00">
-                2019-03-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-17T19:44:34+08:00">
+                2019-03-17
               </time>
             
 
@@ -334,29 +334,76 @@
       
 
       
-        <p>打开Java的<code>JAR文件</code>我们经常可以看到文件中包含着一个<code>META-INF目录</code>， 这个目录下会有一些文件，其中必有一个<code>MANIFEST.MF</code>，这个文件描述了该<code>Jar文件</code>的很多信息。</p>
-<p>下面将详细介绍<code>MANIFEST.MF文件</code>的内容，先来看<code>struts.jar</code>中包含的<code>MANIFEST.MF</code>文件内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Manifest-Version: 1.0</span><br><span class="line">Created-By: Apache Ant 1.5.1</span><br><span class="line">Extension-Name: Struts Framework</span><br><span class="line">Specification-Title: Struts Framework</span><br><span class="line">Specification-Vendor: Apache Software Foundation</span><br><span class="line">Specification-Version: 1.1</span><br><span class="line">Implementation-Title: Struts Framework</span><br><span class="line">Implementation-Vendor: Apache Software Foundation</span><br><span class="line">Implementation-Vendor-Id: org.apache</span><br><span class="line">Implementation-Version: 1.1</span><br><span class="line">Class-Path:  commons-beanutils.jar commons-collections.jar commons-digester.jar</span><br></pre></td></tr></table></figure>
+        <h4 id="注解类型"><a href="#注解类型" class="headerlink" title="注解类型"></a>注解类型</h4><p><code>handler method</code>参数绑定常用的注解，根据处理的<strong>Request内容部分</strong>不同分为四类：</p>
+<ol>
+<li>处理<code>requet uri</code> 部分的注解：<code>@PathVariable</code> </li>
+</ol>
+<p>​    注：指<code>uri template</code>中<code>variable</code>，不含<code>queryString</code>部分</p>
+<ol start="2">
+<li>处理<code>request header</code>部分的注解：   <code>@RequestHeader</code>、<code>@CookieValue</code> </li>
+<li>处理<code>request body</code>部分的注解：<code>@RequestParam</code>、<code>@RequestBody</code> </li>
+<li>处理<code>attribute</code>类型是注解： <code>@SessionAttributes</code>、 <code>@ModelAttribute</code> </li>
+</ol>
 <a id="more"></a>
 <p><br></p>
-<h4 id="一般属性"><a href="#一般属性" class="headerlink" title="一般属性"></a>一般属性</h4><ol>
-<li><p><code>Manifest-Version</code> </p>
-<p>用来定义<code>manifest文件</code>的版本，例如：<code>Manifest-Version: 1.0</code> </p>
-</li>
-<li><p><code>Created-By</code> </p>
-<p>   声明该文件的生成者，一般该属性是由jar命令行工具生成的，例如：<code>Created-By: Apache Ant 1.5.1</code> </p>
-</li>
-<li><p><code>Signature-Version</code> ：定义jar文件的签名版本</p>
-</li>
-<li><p><code>Class-Path</code> ：应用程序或者类装载器使用该值来构建内部的类搜索路径</p>
-</li>
-</ol>
+<h5 id="PathVariable"><a href="#PathVariable" class="headerlink" title="@PathVariable"></a><code>@PathVariable</code></h5><p>当使用<code>@RequestMapping URI template</code> 样式映射时， 即 <code>someUrl/{paramId}</code>, 这时的<code>paramId</code>可通过 <code>@Pathvariable</code>注解<strong>绑定传过来的值到方法的参数上</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/owners/&#123;ownerId&#125;"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RelativePathUriTemplateController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// @RequestMapping("/pets/&#123;petId&#125;")</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/pets/&#123;petId&#125;"</span>, method = RequestMethod.POST)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">findPet</span><span class="params">(@PathVariable String ownerId, @PathVariable String petId)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// implementation omitted</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<p>若方法参数名称和需要绑定的<code>uri template中</code>变量名称不一致，需要在<code>@PathVariable(&quot;name&quot;)</code>指定<code>uri template</code>中的名称。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PathVariable</span>(<span class="string">"ownerId"</span>) String owner_id</span><br></pre></td></tr></table></figure>
 <p><br></p>
-<h4 id="应用程序相关属性"><a href="#应用程序相关属性" class="headerlink" title="应用程序相关属性"></a>应用程序相关属性</h4><ol>
-<li><p><code>Main-Class</code> </p>
-<p>定义<code>jar文件</code>的入口类，该类必须是一个可执行的类，一旦定义了该属性即可通过<code>java -jar x.jar</code>来运行该<code>jar文件</code>。</p>
+<h5 id="RequestHeader"><a href="#RequestHeader" class="headerlink" title="@RequestHeader"></a><code>@RequestHeader</code></h5><p><code>@RequestHeader</code> 注解，可以把<code>Request</code>请求<code>header</code>部分的值绑定到方法的参数上</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Host                    localhost:8080</span><br><span class="line">Accept                  text/html,application/xhtml+xml,application/xml;q=0.9</span><br><span class="line">Accept-Language         fr,en-gb;q=0.7,en;q=0.3</span><br><span class="line">Accept-Encoding         gzip,deflate</span><br><span class="line">Accept-Charset          ISO-8859-1,utf-8;q=0.7,*;q=0.7</span><br><span class="line">Keep-Alive              300</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/displayHeaderInfo.do"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayHeaderInfo</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    @RequestHeader(<span class="string">"Accept-Encoding"</span>)</span> String encoding,</span></span><br><span class="line"><span class="function">    @<span class="title">RequestHeader</span><span class="params">(<span class="string">"Keep-Alive"</span>)</span> <span class="keyword">long</span> keepAlive) </span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="CookieValue"><a href="#CookieValue" class="headerlink" title="@CookieValue"></a><code>@CookieValue</code></h5><p><code>@CookieValue</code>可以把<code>Request header</code>中关于<code>cookie</code>的值绑定到方法的参数上</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JSESSIONID=415A4AC178C59DACE0B2C9CA727CDD84</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/displayHeaderInfo.do"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayHeaderInfo</span><span class="params">(@CookieValue(<span class="string">"JSESSIONID"</span>)</span> String cookie) </span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="RequestParam"><a href="#RequestParam" class="headerlink" title="@RequestParam"></a><code>@RequestParam</code></h5><ul>
+<li>常用来处理<strong>简单类型的绑定</strong>，通过<code>Request.getParameter()</code>获取的<code>String</code>可直接转换为简单类型的情况<ul>
+<li>可以处理<code>get 方式</code>中<code>queryString</code>的值</li>
+<li>可以处理<code>post方式</code>中<code>body data</code>的值</li>
+</ul>
 </li>
-</ol>
+<li>用来处理<code>Content-Type</code>: 为 <code>application/x-www-form-urlencoded</code>编码的内容，提交方式<code>GET、POST</code> </li>
+<li>该注解有两个属性： <code>value、required</code> <ul>
+<li><code>value</code>用来指定要传入值的<code>id名称</code> </li>
+<li><code>required</code>用来指示参数是否必须绑定</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/pets"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EditPetForm</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">setupForm</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">        @RequestParam(value = <span class="string">"petId"</span>, required = <span class="keyword">false</span>)</span> <span class="keyword">int</span> petId) </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<p>可以不使用<code>@RequestParam</code>，直接接收。此时要求<code>controller方法</code>中的<strong>参数名称</strong>要一致</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/pets"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EditPetForm</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">setupForm</span><span class="params">(<span class="keyword">int</span> petId)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="RequestBody"><a href="#RequestBody" class="headerlink" title="@RequestBody"></a><code>@RequestBody</code></h5><p>常用来处理<code>Content-Type</code>: 不是<code>application/x-www-form-urlencoded</code>编码的内容</p>
+<ul>
+<li><code>application/json</code> </li>
+<li><code>application/xml</code> </li>
+</ul>
+<p>通过使用<code>HandlerAdapter</code>配置的<code>HttpMessageConverters</code>来解析<code>post data body</code>，然后绑定到相应的<code>bean</code>上的。</p>
+<p><strong>字符串解析：</strong> </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="string">"/login"</span>,</span><br><span class="line">    type: <span class="string">"POST"</span>,</span><br><span class="line">    data: <span class="string">'&#123;"userName":"admin","pwd","admin123"&#125;'</span>,</span><br><span class="line">    content - type: <span class="string">"application/json charset=utf-8"</span>,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">        alert(<span class="string">"request success ! "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@requestMapping</span>(<span class="string">"/login"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">(@requestBody String userName, @requestBody String pwd)</span> </span>&#123;</span><br><span class="line">    System.out.println(userName + <span class="string">" ："</span> + pwd);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 将JSON字符串中的两个变量的值分别赋予了两个字符串</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><strong>对象解析：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/something"</span>, method = RequestMethod.PUT)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handle</span><span class="params">(@RequestBody User user)</span> </span>&#123;</span><br><span class="line">    System.out.println(user.userName + <span class="string">" ："</span> + user.pwd);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 将JSON字符串中的值赋予user中对应的属性上</span></span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<ul>
+<li><code>JSON</code>字符串中的<code>key</code>必须对应<code>user</code>中的<strong>属性名</strong>，否则是请求不过去的</li>
+<li><code>@RequestBody</code>最多只能有一个，而<code>@RequestParam()</code>可以有多个</li>
+</ul>
+<p><br></p>
+<h5 id="SessionAttributes"><a href="#SessionAttributes" class="headerlink" title="@SessionAttributes"></a><code>@SessionAttributes</code></h5><p>用来绑定<code>HttpSession</code>中的<code>attribute</code>对象的值，便于在方法中的参数里使用。该注解有<code>value、types</code>两个属性，可以通过名字和类型指定要使用的<code>attribute</code> 对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/editPet.do"</span>)</span><br><span class="line"><span class="comment">// @SessionAttributes("pet")</span></span><br><span class="line"><span class="meta">@SessionAttributes</span>(value = &#123; <span class="string">"pet"</span> &#125;, types = &#123; Integer.class &#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EditPetForm</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：<code>@SessionAttributes</code>注解只能在类上使用，不能在方法上使用</p>
+<p><br></p>
+<h5 id="ModelAttribute、-RequestAttribute"><a href="#ModelAttribute、-RequestAttribute" class="headerlink" title="@ModelAttribute、@RequestAttribute"></a><code>@ModelAttribute、@RequestAttribute</code></h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ModelAttribute</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">beforeInvokingHandlerMethod</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">    request.setAttribute(<span class="string">"foo"</span>, <span class="string">"hello world"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/data/custom"</span>, method = RequestMethod.GET)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@ResponseBody</span> <span class="function">String <span class="title">custom</span><span class="params">(@RequestAttribute(<span class="string">"foo"</span>)</span> String foo) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Got 'foo' request attribute value '"</span> + foo + <span class="string">"'"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"customArgs"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>Custom Resolvable Web Arguments<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"customArg"</span> <span class="attr">class</span>=<span class="string">"textLink"</span> <span class="attr">href</span>=<span class="string">"/data/custom"</span>&gt;</span>Custom<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"a.textLink"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> link = $(<span class="keyword">this</span>);</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        url: link.attr(<span class="string">"href"</span>),</span><br><span class="line">        dataType: <span class="string">"text"</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span>(<span class="params">text</span>) </span>&#123;</span><br><span class="line">            alert(text)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Got &apos;foo&apos; request attribute value &apos;hello world&apos;</span><br></pre></td></tr></table></figure>
 <p><br></p>
 
       
@@ -375,9 +422,13 @@
       
         <div class="post-tags">
           
-            <a href="/endBlogs/tags/jar/" rel="tag"># jar</a>
+            <a href="/endBlogs/tags/RequestParam/" rel="tag"># RequestParam</a>
           
-            <a href="/endBlogs/tags/MANIFEST-MF/" rel="tag"># MANIFEST.MF</a>
+            <a href="/endBlogs/tags/RequestBody/" rel="tag"># RequestBody</a>
+          
+            <a href="/endBlogs/tags/PathVariable/" rel="tag"># PathVariable</a>
+          
+            <a href="/endBlogs/tags/RequestAttribute/" rel="tag"># RequestAttribute</a>
           
         </div>
       
@@ -390,8 +441,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/endBlogs/2019/03/15/maven配置/" rel="next" title="maven配置">
-                <i class="fa fa-chevron-left"></i> maven配置
+              <a href="/endBlogs/2019/03/15/jar-MANIFEST-MF文件/" rel="next" title="jar-MANIFEST.MF文件">
+                <i class="fa fa-chevron-left"></i> jar-MANIFEST.MF文件
               </a>
             
           </div>
@@ -400,8 +451,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/endBlogs/2019/03/17/RequestParam等注解/" rel="prev" title="RequestParam等注解">
-                RequestParam等注解 <i class="fa fa-chevron-right"></i>
+              <a href="/endBlogs/2019/03/18/java注解/" rel="prev" title="java注解">
+                java注解 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -525,7 +576,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一般属性"><span class="nav-number">1.</span> <span class="nav-text">一般属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用程序相关属性"><span class="nav-number">2.</span> <span class="nav-text">应用程序相关属性</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#注解类型"><span class="nav-number">1.</span> <span class="nav-text">注解类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#PathVariable"><span class="nav-number">1.1.</span> <span class="nav-text">@PathVariable</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RequestHeader"><span class="nav-number">1.2.</span> <span class="nav-text">@RequestHeader</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CookieValue"><span class="nav-number">1.3.</span> <span class="nav-text">@CookieValue</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RequestParam"><span class="nav-number">1.4.</span> <span class="nav-text">@RequestParam</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RequestBody"><span class="nav-number">1.5.</span> <span class="nav-text">@RequestBody</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SessionAttributes"><span class="nav-number">1.6.</span> <span class="nav-text">@SessionAttributes</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ModelAttribute、-RequestAttribute"><span class="nav-number">1.7.</span> <span class="nav-text">@ModelAttribute、@RequestAttribute</span></a></li></ol></li></ol></div>
             
 
           </div>
