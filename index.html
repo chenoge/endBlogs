@@ -266,6 +266,402 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/19/SpringDataJPA-JpaRepository方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/endBlogs/2019/03/19/SpringDataJPA-JpaRepository方法/" itemprop="url">SpringDataJPA-JpaRepository方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-19T21:05:25+08:00">
+                2019-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h5 id="解析方法名创建查询"><a href="#解析方法名创建查询" class="headerlink" title="解析方法名创建查询"></a>解析方法名创建查询</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find + 全局修饰 + By + 实体的属性名称 + 限定词 + 连接词 </span><br><span class="line">	 + …(其它实体属性) + OrderBy + 排序属性 + 排序方向</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 分页查询出符合姓名的记录,同理Sort也可以直接加上</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">findByName</span><span class="params">(String name, Pageable pageable)</span></span>;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/endBlogs/2019/03/19/SpringDataJPA-JpaRepository方法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/19/SpringDataJPA-Query注解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/endBlogs/2019/03/19/SpringDataJPA-Query注解/" itemprop="url">SpringDataJPA-Query注解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-19T20:27:21+08:00">
+                2019-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><code>@Query</code>注解查询适用于所查询的数据无法通过关键字查询得到结果的查询。这种查询可以摆脱像关键字查询那样的约束，将查询直接在相应的接口方法中声明，结构更为清晰，这是<code>Spring Data</code>的特有实现。</p>
+<p><br></p>
+<h5 id="一、索引参数"><a href="#一、索引参数" class="headerlink" title="一、索引参数"></a>一、索引参数</h5><p>索引参数：索引值从1开始，查询中<code>?X</code>个数需要与方法定义的参数个数相一致，并且顺序也要一致。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Query</span>(<span class="string">"SELECT p FROM Person p WHERE p.lastName = ?1 AND p.email = ?2"</span>)</span><br><span class="line"><span class="function">List&lt;Person&gt; <span class="title">testQueryAnnotationParams1</span><span class="params">(String lastName, String email)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>注释：上面代码中的<code>?1 、?2</code>表示参数的占位符，需要和方法中所传递的参数顺序一致。<code>X</code>是从<code>1</code>开始。</p>
+<p><br></p>
+<h5 id="二、命名参数"><a href="#二、命名参数" class="headerlink" title="二、命名参数"></a>二、命名参数</h5><p>命名参数：可以定义好参数名，赋值时使用<code>@Param(&quot;参数名&quot;)</code>，而不用管顺序-推荐使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 为@Query注解传递参数的方式1：命名参数</span></span><br><span class="line"><span class="meta">@Query</span>(<span class="string">"SELECT p FROM Person p WHERE p.lastName = :lastName AND p.email = :email"</span>)</span><br><span class="line"><span class="function">List&lt;Person&gt; <span class="title">testQueryAnnotationParams2</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    @Param(<span class="string">"email"</span>)</span> String email, </span></span><br><span class="line"><span class="function">    @<span class="title">Param</span><span class="params">(<span class="string">"lastName"</span>)</span> String lastName)</span>;</span><br></pre></td></tr></table></figure>
+<p>注释：<code>:lastName</code> 、<code>:email</code>表示为参数命名，方法中所传递的参数使用<code>@Param</code>注解标识命名参数。这种方式不用管参数的顺序。</p>
+<p><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/endBlogs/2019/03/19/SpringDataJPA-Query注解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/19/bean基本属性配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/endBlogs/2019/03/19/bean基本属性配置/" itemprop="url">bean基本属性配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-19T18:25:09+08:00">
+                2019-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>####<code>&lt;beans&gt;</code>标签</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span> </span></span><br><span class="line"><span class="tag">	<span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> </span></span><br><span class="line"><span class="tag">	<span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans  </span></span></span><br><span class="line"><span class="tag"><span class="string">           http://www.springframework.org/schema/beans/spring-beans.xsd"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><h5 id="xmls"><a href="#xmls" class="headerlink" title="xmls"></a><code>xmls</code></h5></li>
+</ul>
+<p><code>xmlns</code>是<code>XMLnameSpace</code>的缩写，<code>xml</code>的<strong>标签名称</strong>是自定义的，可能会和其他人的标签重名，而功能却不一样，所以需要加一个<code>namespace</code>来区分，类似<code>Java</code>中<code>package</code> 。</p>
+<ul>
+<li><h5 id="xmlns-xsi"><a href="#xmlns-xsi" class="headerlink" title="xmlns:xsi"></a><code>xmlns:xsi</code></h5></li>
+</ul>
+<p>是指<code>xml文件</code>遵守<code>xml规范</code>，<code>xsi</code>全名：<code>xml schema instance</code> ，是指具体用到<code>schema</code>资源文件里定义的规范所遵守的规范。即<code>/spring-beans-2.0.xsd</code>这个文件里定义的元素遵守什么标准</p>
+<ul>
+<li><h5 id="xsi-schemaLaction"><a href="#xsi-schemaLaction" class="headerlink" title="xsi:schemaLaction"></a><code>xsi:schemaLaction</code></h5></li>
+</ul>
+<p><code>schemalLaction</code>属性来引用<code>（schema）</code>模式文档，解析器可以在需要的情况下使用这个文档对xml实例文档进行校验。它的值（URL）是成对出现的，第一个值表示命名空间，第二个值则表示描述该命名空间的模式文档的具体位置，两个值之间以空格分隔。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/endBlogs/2019/03/19/bean基本属性配置/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/18/java反射/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1222,444 +1618,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/15/java类加载器/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/endBlogs/2019/03/15/java类加载器/" itemprop="url">java类加载器</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T10:31:05+08:00">
-                2019-03-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h3><p>类加载器负责将<code>.class文件</code>加载到内存中，并为类生成一个<code>java.lang.Class</code>实例。</p>
-<p>一旦一个类被加载入<code>JVM</code>中，同一个类就不会被再次加入了。在<code>JVM</code>中用来判断类的唯一性标识是：<strong>类名、类所在的包名和类加载器</strong>。</p>
-<p>当<code>JVM</code>启动时，会形成由三个类加载器组成的初始类加载器层次结构：</p>
-<ul>
-<li><code>BootStrap ClassLoader</code>：根类加载器</li>
-<li><code>Extension ClassLoader</code>：扩展类加载器</li>
-<li><code>System ClassLoader</code>：系统类加载器</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/endBlogs/2019/03/15/java类加载器/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/11/Elasticsearch基本使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/endBlogs/2019/03/11/Elasticsearch基本使用/" itemprop="url">Elasticsearch基本使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-11T18:44:39+08:00">
-                2019-03-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="面向文档"><a href="#面向文档" class="headerlink" title="面向文档"></a>面向文档</h4><p>通常，应用程序中的<strong>对象拥有复杂的数据结构</strong>，可能包括<strong>日期</strong>、<strong>地理信息</strong>、<strong>其他对象</strong>或者<strong>数组</strong>等。如果要把这些对象存储在<strong>关系型数据库</strong>中，相当于是把一个表现力丰富的对象挤压到一个非常大的电子表格中：你必须<strong>将对象扁平化来适应表结构</strong>，而且又不得不在每次查询时重新构造对象：</p>
-<ul>
-<li>一个简单字段<strong>对应一列</strong> </li>
-<li>一个对象字段需要<strong>新建表、引用主键</strong> </li>
-<li>一个数组字段需要<strong>新建表、引用主键、每个数组元素对应一行</strong>  </li>
-</ul>
-<p><code>Elasticsearch</code>使用<code>JavaScript Object Notation</code>或者<code>JSON</code>作为文档的序列化格式。<code>JSON</code>序列化被大多数编程语言所支持，并且已经成为 <code>NoSQL</code>领域的标准格式。</p>
-<p>注：文档 =》对象</p>
-<p><br></p>
-<h4 id="请求格式"><a href="#请求格式" class="headerlink" title="请求格式"></a>请求格式</h4><p>一个<code>Elasticsearch</code>请求和任何<code>HTTP</code>请求一样由若干相同的部件组成：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X &lt;VERB&gt; &apos;&lt;PROTOCOL&gt;://&lt;HOST&gt;:&lt;PORT&gt;/&lt;PATH&gt;?&lt;QUERY_STRING&gt;&apos; -d &apos;&lt;BODY&gt;&apos;</span><br></pre></td></tr></table></figure>
-<p>被 <code>&lt; &gt;</code> 标记的部件：</p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:left">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>VERB</code></td>
-<td style="text-align:left">适当的 HTTP <em>方法</em> 或 <em>谓词</em> : <code>GET</code>、 <code>POST</code>、 <code>PUT</code>、 <code>HEAD</code> 或者 <code>DELETE</code></td>
-</tr>
-<tr>
-<td><code>PROTOCOL</code></td>
-<td style="text-align:left"><code>http</code> 或者 <code>https</code></td>
-</tr>
-<tr>
-<td><code>HOST</code></td>
-<td style="text-align:left">Elasticsearch 集群中任意节点的主机名</td>
-</tr>
-<tr>
-<td><code>PORT</code></td>
-<td style="text-align:left">运行 Elasticsearch HTTP 服务的端口号，默认是 <code>9200</code> 。</td>
-</tr>
-<tr>
-<td><code>PATH</code></td>
-<td style="text-align:left">API 的终端路径，由<code>index、type、id</code> 等组成</td>
-</tr>
-<tr>
-<td><code>QUERY_STRING</code></td>
-<td style="text-align:left">任意可选的查询字符串参数，<code>?pretty</code> 将格式化地输出 JSON 返回值</td>
-</tr>
-<tr>
-<td><code>BODY</code></td>
-<td style="text-align:left">一个 JSON 格式的请求体 (如果请求需要的话)</td>
-</tr>
-</tbody>
-</table>
-<p>例如，计算集群中文档的数量，我们可以用这个：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -X GET &apos;http://localhost:9200/_count?pretty&apos; -d &apos;</span><br><span class="line">&#123;</span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">        &quot;match_all&quot;: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/endBlogs/2019/03/11/Elasticsearch基本使用/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/07/java基本知识/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/endBlogs/2019/03/07/java基本知识/" itemprop="url">java基本知识</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-07T19:08:54+08:00">
-                2019-03-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="类名与文件名"><a href="#类名与文件名" class="headerlink" title="类名与文件名"></a>类名与文件名</h4><ul>
-<li>一个<code>Java</code>文件中只能有一个<code>public</code>类</li>
-<li>如果文件中存在<code>public</code>类，文件名必须与<code>public</code>类名一致</li>
-<li>如果文件中没有<code>public</code>类，文件名与类名可以不一致</li>
-</ul>
-<p>注：一个源文件中，用<code>class关键字</code>定义了几个类，编译的时候就会产生几个<code>字节码</code>文件</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/endBlogs/2019/03/07/java基本知识/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/endBlogs/page/2/">2</a><a class="extend next" rel="next" href="/endBlogs/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1703,7 +1668,7 @@
               
                 <a href="/endBlogs/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1716,7 +1681,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
