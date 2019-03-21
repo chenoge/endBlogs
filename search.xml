@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[数据库表设计与范式]]></title>
+    <url>%2FendBlogs%2F2019%2F03%2F21%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%8C%83%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[一、表设计 数据库实体间是一对多、多对多关系时，如何进行表设计： 一对多：添加外键 多对多 ：建立关系表 注： 添加外键时，尽量只记录外键，不创建外键约束 推荐业务层级的约束，慎重使用数据库层级的约束，为表结构的重构提供可能性 12# 慎重foreign key(member_id) references member (id); 二、范式第一范式：如果数据库表中的所有字段值都是不可分解的原子值，就说明该数据库表满足了第一范式 1地址：可以拆分为省、市、区、详细地址 第二范式：第二范式在第一范式的基础之上更进一层。 第二范式需要确保数据库表中的每一列都和主键相关，而不能只与主键的某一部分相关，主要针对联合主键而言。 也就是说在一个数据库表中，一个表中只能保存一种数据，不可以把多种数据保存在同一张数据库表中。 第三范式：第三范式需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关。 12# 通过a不能直接获取ca--&gt; b --&gt; c]]></content>
+      <tags>
+        <tag>范式</tag>
+        <tag>多对多</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[SpringDataJPA-JpaRepository方法]]></title>
     <url>%2FendBlogs%2F2019%2F03%2F19%2FSpringDataJPA-JpaRepository%E6%96%B9%E6%B3%95%2F</url>
     <content type="text"><![CDATA[解析方法名创建查询12find + 全局修饰 + By + 实体的属性名称 + 限定词 + 连接词 + …(其它实体属性) + OrderBy + 排序属性 + 排序方向 12// 分页查询出符合姓名的记录,同理Sort也可以直接加上public List&lt;User&gt; findByName(String name, Pageable pageable); 12345678910111213141516171819202122232425262728293031323334353637全局修饰： Distinct， Top， First关键词： IsNull， IsNotNull， Like， NotLike， Containing， In， NotIn，IgnoreCase， Between， Equals， LessThan， GreaterThan， After， Before…排序方向： Asc， Desc连接词： And， OrAnd — 等价于 SQL 中的 and 关键字，比如 findByUsernameAndPassword(String user, Striang pwd)；Or — 等价于 SQL 中的 or 关键字，比如 findByUsernameOrAddress(String user, String addr)；Between — 等价于 SQL 中的 between 关键字，比如 findBySalaryBetween(int max, int min)；LessThan — 等价于 SQL 中的 “&lt;”，比如 findBySalaryLessThan(int max)；GreaterThan — 等价于 SQL 中的”&gt;”，比如 findBySalaryGreaterThan(int min)；IsNull — 等价于 SQL 中的 “is null”，比如 findByUsernameIsNull()；IsNotNull — 等价于 SQL 中的 “is not null”，比如 findByUsernameIsNotNull()；NotNull — 与 IsNotNull 等价；Like — 等价于 SQL 中的 “like”，比如 findByUsernameLike(String user)；NotLike — 等价于 SQL 中的 “not like”，比如 findByUsernameNotLike(String user)；OrderBy — 等价于 SQL 中的 “order by”，比如 findByUsernameOrderBySalaryAsc(String user)；Not — 等价于 SQL 中的 “！ =”，比如 findByUsernameNot(String user)；In — 等价于 SQL 中的 “in”，比如 findByUsernameIn(Collection userList) ，方法的参数可以是 Collection 类型，也可以是数组或者不定长参数；NotIn — 等价于 SQL 中的 “not in”，比如 findByUsernameNotIn(Collection userList) ，方法的参数可以是 Collection 类型，也可以是数组或者不定长参数；]]></content>
