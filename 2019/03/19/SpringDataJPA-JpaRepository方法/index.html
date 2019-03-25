@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="解析方法名创建查询12find + 全局修饰 + By + 实体的属性名称 + 限定词 + 连接词 	 + …(其它实体属性) + OrderBy + 排序属性 + 排序方向 12// 分页查询出符合姓名的记录,同理Sort也可以直接加上public List&amp;lt;User&amp;gt; findByName(String name, Pageable pageable);">
+<meta name="description" content="解析方法名创建查询12find + 全局修饰 + By + 实体的属性名称 + 限定词 + 连接词	 + …(其它实体属性) + OrderBy + 排序属性 + 排序方向 12// 分页查询出符合姓名的记录,同理Sort也可以直接加上public List&amp;lt;User&amp;gt; findByName(String name, Pageable pageable);">
 <meta name="keywords" content="JPA,Spring,Repository">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringDataJPA-JpaRepository方法">
 <meta property="og:url" content="https://www.yf-gz.cn/2019/03/19/SpringDataJPA-JpaRepository方法/index.html">
 <meta property="og:site_name" content="chenogeの日志">
-<meta property="og:description" content="解析方法名创建查询12find + 全局修饰 + By + 实体的属性名称 + 限定词 + 连接词 	 + …(其它实体属性) + OrderBy + 排序属性 + 排序方向 12// 分页查询出符合姓名的记录,同理Sort也可以直接加上public List&amp;lt;User&amp;gt; findByName(String name, Pageable pageable);">
+<meta property="og:description" content="解析方法名创建查询12find + 全局修饰 + By + 实体的属性名称 + 限定词 + 连接词	 + …(其它实体属性) + OrderBy + 排序属性 + 排序方向 12// 分页查询出符合姓名的记录,同理Sort也可以直接加上public List&amp;lt;User&amp;gt; findByName(String name, Pageable pageable);">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-19T13:09:26.287Z">
+<meta property="og:updated_time" content="2019-03-25T06:31:12.947Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringDataJPA-JpaRepository方法">
-<meta name="twitter:description" content="解析方法名创建查询12find + 全局修饰 + By + 实体的属性名称 + 限定词 + 连接词 	 + …(其它实体属性) + OrderBy + 排序属性 + 排序方向 12// 分页查询出符合姓名的记录,同理Sort也可以直接加上public List&amp;lt;User&amp;gt; findByName(String name, Pageable pageable);">
+<meta name="twitter:description" content="解析方法名创建查询12find + 全局修饰 + By + 实体的属性名称 + 限定词 + 连接词	 + …(其它实体属性) + OrderBy + 排序属性 + 排序方向 12// 分页查询出符合姓名的记录,同理Sort也可以直接加上public List&amp;lt;User&amp;gt; findByName(String name, Pageable pageable);">
 
 
 
@@ -334,10 +334,10 @@
       
 
       
-        <h5 id="解析方法名创建查询"><a href="#解析方法名创建查询" class="headerlink" title="解析方法名创建查询"></a>解析方法名创建查询</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find + 全局修饰 + By + 实体的属性名称 + 限定词 + 连接词 </span><br><span class="line">	 + …(其它实体属性) + OrderBy + 排序属性 + 排序方向</span><br></pre></td></tr></table></figure>
+        <h5 id="解析方法名创建查询"><a href="#解析方法名创建查询" class="headerlink" title="解析方法名创建查询"></a>解析方法名创建查询</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find + 全局修饰 + By + 实体的属性名称 + 限定词 + 连接词</span><br><span class="line">	 + …(其它实体属性) + OrderBy + 排序属性 + 排序方向</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 分页查询出符合姓名的记录,同理Sort也可以直接加上</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">findByName</span><span class="params">(String name, Pageable pageable)</span></span>;</span><br></pre></td></tr></table></figure>
-<p><br></p>
 <a id="more"></a>
+<p><br></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">全局修饰： Distinct， Top， First</span><br><span class="line"></span><br><span class="line">关键词： IsNull， IsNotNull， Like， NotLike， Containing， In， NotIn，</span><br><span class="line"></span><br><span class="line">IgnoreCase， Between， Equals， LessThan， GreaterThan， After， Before…</span><br><span class="line"></span><br><span class="line">排序方向： Asc， Desc</span><br><span class="line"></span><br><span class="line">连接词： And， Or</span><br><span class="line"></span><br><span class="line">And — 等价于 SQL 中的 and 关键字，比如 findByUsernameAndPassword(String user, Striang pwd)；</span><br><span class="line"></span><br><span class="line">Or — 等价于 SQL 中的 or 关键字，比如 findByUsernameOrAddress(String user, String addr)；</span><br><span class="line"></span><br><span class="line">Between — 等价于 SQL 中的 between 关键字，比如 findBySalaryBetween(int max, int min)；</span><br><span class="line"></span><br><span class="line">LessThan — 等价于 SQL 中的 “&lt;”，比如 findBySalaryLessThan(int max)；</span><br><span class="line"></span><br><span class="line">GreaterThan — 等价于 SQL 中的”&gt;”，比如 findBySalaryGreaterThan(int min)；</span><br><span class="line"></span><br><span class="line">IsNull — 等价于 SQL 中的 “is null”，比如 findByUsernameIsNull()；</span><br><span class="line"></span><br><span class="line">IsNotNull — 等价于 SQL 中的 “is not null”，比如 findByUsernameIsNotNull()；</span><br><span class="line"></span><br><span class="line">NotNull — 与 IsNotNull 等价；</span><br><span class="line"></span><br><span class="line">Like — 等价于 SQL 中的 “like”，比如 findByUsernameLike(String user)；</span><br><span class="line"></span><br><span class="line">NotLike — 等价于 SQL 中的 “not like”，比如 findByUsernameNotLike(String user)；</span><br><span class="line"></span><br><span class="line">OrderBy — 等价于 SQL 中的 “order by”，比如 findByUsernameOrderBySalaryAsc(String user)；</span><br><span class="line"></span><br><span class="line">Not — 等价于 SQL 中的 “！ =”，比如 findByUsernameNot(String user)；</span><br><span class="line"></span><br><span class="line">In — 等价于 SQL 中的 “in”，比如 findByUsernameIn(Collection userList) ，方法的参数可以是 Collection 类型，也可以是数组或者不定长参数；</span><br><span class="line"></span><br><span class="line">NotIn — 等价于 SQL 中的 “not in”，比如 findByUsernameNotIn(Collection userList) ，方法的参数可以是 Collection 类型，也可以是数组或者不定长参数；</span><br></pre></td></tr></table></figure>
 
       
@@ -383,8 +383,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/endBlogs/2019/03/21/数据库表设计与范式/" rel="prev" title="数据库表设计与范式">
-                数据库表设计与范式 <i class="fa fa-chevron-right"></i>
+              <a href="/endBlogs/2019/03/21/数据库表格设计与范式/" rel="prev" title="数据库表格设计与范式">
+                数据库表格设计与范式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -475,7 +475,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

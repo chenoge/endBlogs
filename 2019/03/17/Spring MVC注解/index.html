@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="maven,pom," />
+  <meta name="keywords" content="Spring,MVC," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="POM是项目对象模型(Project Object Model)的简称,它是Maven项目中的文件。  maven的协作相关属性一个pom.xml的定义必须包含modelVersion、groupId、artifactId和version这四个元素，当然这其中的元素也是可以从它的父项目中继承的。使用groupdId:artifactId:version`的形式来唯一确定一个项目。 12345678">
-<meta name="keywords" content="maven,pom">
+<meta name="description" content="注解类型handler method参数绑定常用的注解，根据处理的Request内容部分不同分为四类：  处理requet uri 部分的注解：@PathVariable  注：指uri template中variable，不含queryString部分  处理request header部分的注解：   @RequestHeader、@CookieValue   处理request body部分">
+<meta name="keywords" content="Spring,MVC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="maven-pom配置">
-<meta property="og:url" content="https://www.yf-gz.cn/2019/03/15/maven-pom配置/index.html">
+<meta property="og:title" content="Spring MVC注解">
+<meta property="og:url" content="https://www.yf-gz.cn/2019/03/17/Spring MVC注解/index.html">
 <meta property="og:site_name" content="chenogeの日志">
-<meta property="og:description" content="POM是项目对象模型(Project Object Model)的简称,它是Maven项目中的文件。  maven的协作相关属性一个pom.xml的定义必须包含modelVersion、groupId、artifactId和version这四个元素，当然这其中的元素也是可以从它的父项目中继承的。使用groupdId:artifactId:version`的形式来唯一确定一个项目。 12345678">
+<meta property="og:description" content="注解类型handler method参数绑定常用的注解，根据处理的Request内容部分不同分为四类：  处理requet uri 部分的注解：@PathVariable  注：指uri template中variable，不含queryString部分  处理request header部分的注解：   @RequestHeader、@CookieValue   处理request body部分">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-25T06:25:51.428Z">
+<meta property="og:updated_time" content="2019-03-25T06:39:24.798Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="maven-pom配置">
-<meta name="twitter:description" content="POM是项目对象模型(Project Object Model)的简称,它是Maven项目中的文件。  maven的协作相关属性一个pom.xml的定义必须包含modelVersion、groupId、artifactId和version这四个元素，当然这其中的元素也是可以从它的父项目中继承的。使用groupdId:artifactId:version`的形式来唯一确定一个项目。 12345678">
+<meta name="twitter:title" content="Spring MVC注解">
+<meta name="twitter:description" content="注解类型handler method参数绑定常用的注解，根据处理的Request内容部分不同分为四类：  处理requet uri 部分的注解：@PathVariable  注：指uri template中variable，不含queryString部分  处理request header部分的注解：   @RequestHeader、@CookieValue   处理request body部分">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://www.yf-gz.cn/2019/03/15/maven-pom配置/"/>
+  <link rel="canonical" href="https://www.yf-gz.cn/2019/03/17/Spring MVC注解/"/>
 
 
 
 
 
-  <title>maven-pom配置 | chenogeの日志</title>
+  <title>Spring MVC注解 | chenogeの日志</title>
   
 
 
@@ -267,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/15/maven-pom配置/">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/17/Spring MVC注解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chenoge">
@@ -284,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">maven-pom配置</h1>
+          <h1 class="post-title" itemprop="name headline">Spring MVC注解</h1>
         
 
         <div class="post-meta">
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T12:04:24+08:00">
-                2019-03-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-17T19:44:34+08:00">
+                2019-03-17
               </time>
             
 
@@ -334,14 +334,74 @@
       
 
       
-        <p><code>POM</code>是项目对象模型(<code>Project Object Model</code>)的简称,它是<code>Maven项目</code>中的文件。</p>
+        <h4 id="注解类型"><a href="#注解类型" class="headerlink" title="注解类型"></a>注解类型</h4><p><code>handler method</code>参数绑定常用的注解，根据处理的<strong>Request内容部分</strong>不同分为四类：</p>
+<ol>
+<li><p>处理<code>requet uri</code> 部分的注解：<code>@PathVariable</code> </p>
+<p>注：指<code>uri template</code>中<code>variable</code>，不含<code>queryString</code>部分</p>
+</li>
+<li><p>处理<code>request header</code>部分的注解：   <code>@RequestHeader</code>、<code>@CookieValue</code> </p>
+</li>
+<li>处理<code>request body</code>部分的注解：<code>@RequestParam</code>、<code>@RequestBody</code> </li>
+<li>处理<code>attribute</code>类型是注解： <code>@SessionAttributes</code>、 <code>@ModelAttribute</code> </li>
+</ol>
 <p><br></p>
-<h4 id="maven的协作相关属性"><a href="#maven的协作相关属性" class="headerlink" title="maven的协作相关属性"></a>maven的协作相关属性</h4><p>一个<code>pom.xml</code>的定义必须包含<code>modelVersion</code>、<code>groupId</code>、<code>artifactId</code>和<code>version</code>这四个元素，当然这其中的元素也是可以从它的父项目中继承的。使用groupdId:artifactId:version`的形式来唯一确定一个项目。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0  </span></span></span><br><span class="line"><span class="tag"><span class="string">                      http://maven.apache.org/maven-v4_0_0.xsd"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">        含义：组织标识，定义了项目属于哪个组</span></span><br><span class="line"><span class="comment">        用途：此名称则是本地仓库中的路径</span></span><br><span class="line"><span class="comment">        例如：otowa.user.dao，在M2_REPO目录下，将是: otowa/user/dao目录</span></span><br><span class="line"><span class="comment">        命名规范:项目名称，模块，子模块</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>otowa.user.dao<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">        含义：项目名称，定义当前Maven项目在组中唯一的ID</span></span><br><span class="line"><span class="comment">        用途：例如：user-dao，在M2_REPO目录下，将是：otowa/user/dao/user-dao目录</span></span><br><span class="line"><span class="comment">        命名规范:唯一就好</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>user-dao<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">        含义：项目当前的版本号</span></span><br><span class="line"><span class="comment">        用途：例如：0.0.1-SNAPSHOT</span></span><br><span class="line"><span class="comment">		在M2_REPO目录下，将是：otowa/user/dao/user-dao/0.0.1-SNAPSHOT目录</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 打包的格式，可以为：pom , jar , maven-plugin , ejb , war , ear , rar , par --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>war<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 元素声明了一个对用户更为友好的项目名称 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h5 id="PathVariable"><a href="#PathVariable" class="headerlink" title="@PathVariable"></a><code>@PathVariable</code></h5><p>当使用<code>@RequestMapping URI template</code> 样式映射时， 即 <code>someUrl/{paramId}</code>, 这时的<code>paramId</code>可通过 <code>@Pathvariable</code>注解<strong>绑定传过来的值到方法的参数上</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/owners/&#123;ownerId&#125;"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RelativePathUriTemplateController</span> </span>&#123;</span><br><span class="line">    <span class="comment">// @RequestMapping("/pets/&#123;petId&#125;")</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/pets/&#123;petId&#125;"</span>, method = RequestMethod.POST)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">findPet</span><span class="params">(@PathVariable String ownerId, @PathVariable String petId)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// implementation omitted</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：若方法参数名称和需要绑定的<code>uri template中</code>变量名称不一致，需要在<code>@PathVariable(&quot;name&quot;)</code>指定<code>uri template</code>中的名称。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PathVariable</span>(<span class="string">"ownerId"</span>) String owner_id</span><br></pre></td></tr></table></figure>
 <p><br></p>
-<h4 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">&lt;!-- 定义本项目的依赖关系 --&gt;</span>  </span><br><span class="line"> <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line">     <span class="comment">&lt;!-- 每个dependency都对应这一个jar包 --&gt;</span>  </span><br><span class="line">     <span class="tag">&lt;<span class="name">dependency</span>&gt;</span>  </span><br><span class="line">         <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.winner.trade<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </span><br><span class="line">         <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>trade-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </span><br><span class="line">         <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line">         <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">	maven认为，程序对外部的依赖会随着程序的所处阶段和应用场景而变化</span></span><br><span class="line"><span class="comment">	所以maven中的依赖关系有作用域(scope)的限制。 </span></span><br><span class="line"><span class="comment">--&gt;</span>  </span><br><span class="line">         </span><br><span class="line">         <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	scope包含如下的取值：compile（编译范围）、provided（已提供范围）</span></span><br><span class="line"><span class="comment">	runtime（运行时范围）、test（测试范围）、system（系统范围） </span></span><br><span class="line"><span class="comment">--&gt;</span>  </span><br><span class="line">         <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line">         <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">	设置指依赖是否可选，默认为false,即子项目默认都继承:为true</span></span><br><span class="line"><span class="comment">	则子项目必需显示的引入，与dependencyManagement里定义的依赖类似  </span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">optional</span>&gt;</span>false<span class="tag">&lt;/<span class="name">optional</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line">         <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">	屏蔽依赖关系。 比如项目中使用的libA依赖某个库的1.0版，</span></span><br><span class="line"><span class="comment">	libB依赖某个库的2.0版，现在想统一使用2.0版，就应该屏蔽掉对1.0版的依赖 </span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">     <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"> <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="RequestHeader"><a href="#RequestHeader" class="headerlink" title="@RequestHeader"></a><code>@RequestHeader</code></h5><p><code>@RequestHeader</code> 注解，可以把<code>Request</code>请求<code>header</code>部分的值绑定到方法的参数上</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Host                    localhost:8080</span><br><span class="line">Accept                  text/html,application/xhtml+xml,application/xml;q=0.9</span><br><span class="line">Accept-Language         fr,en-gb;q=0.7,en;q=0.3</span><br><span class="line">Accept-Encoding         gzip,deflate</span><br><span class="line">Accept-Charset          ISO-8859-1,utf-8;q=0.7,*;q=0.7</span><br><span class="line">Keep-Alive              300</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/displayHeaderInfo.do"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayHeaderInfo</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    @RequestHeader(<span class="string">"Accept-Encoding"</span>)</span> String encoding,</span></span><br><span class="line"><span class="function">    @<span class="title">RequestHeader</span><span class="params">(<span class="string">"Keep-Alive"</span>)</span> <span class="keyword">long</span> keepAlive) </span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><br></p>
-<h4 id="定义常量"><a href="#定义常量" class="headerlink" title="定义常量"></a>定义常量</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 为pom定义一些常量，在pom中的其它地方可以直接引用 使用方式 如下 ：$&#123;file.encoding&#125; --&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">file.encoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">file.encoding</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">java.source.version</span>&gt;</span>1.5<span class="tag">&lt;/<span class="name">java.source.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">java.target.version</span>&gt;</span>1.5<span class="tag">&lt;/<span class="name">java.target.version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="CookieValue"><a href="#CookieValue" class="headerlink" title="@CookieValue"></a><code>@CookieValue</code></h5><p><code>@CookieValue</code>可以把<code>Request header</code>中关于<code>cookie</code>的值绑定到方法的参数上</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JSESSIONID=415A4AC178C59DACE0B2C9CA727CDD84</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/displayHeaderInfo.do"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayHeaderInfo</span><span class="params">(@CookieValue(<span class="string">"JSESSIONID"</span>)</span> String cookie) </span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="RequestParam"><a href="#RequestParam" class="headerlink" title="@RequestParam"></a><code>@RequestParam</code></h5><ul>
+<li>常用来处理<strong>简单类型的绑定</strong>，通过<code>Request.getParameter()</code>获取的<code>String</code>可直接转换为简单类型的情况<ul>
+<li>可以处理<code>get 方式</code>中<code>queryString</code>的值</li>
+<li>可以处理<code>post方式</code>中<code>body data</code>的值</li>
+</ul>
+</li>
+<li>用来处理<code>Content-Type</code>: 为 <code>application/x-www-form-urlencoded</code>编码的内容，提交方式<code>GET、POST</code> </li>
+<li>该注解有两个属性： <code>value、required</code> <ul>
+<li><code>value</code>用来指定要传入值的<code>id名称</code> </li>
+<li><code>required</code>用来指示参数是否必须绑定</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/pets"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EditPetForm</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">setupForm</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">        @RequestParam(value = <span class="string">"petId"</span>, required = <span class="keyword">false</span>)</span> <span class="keyword">int</span> petId) </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：可以不使用<code>@RequestParam</code>，直接接收。此时要求<code>controller方法</code>中的<strong>参数名称</strong>要一致</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/pets"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EditPetForm</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">setupForm</span><span class="params">(<span class="keyword">int</span> petId)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="RequestBody"><a href="#RequestBody" class="headerlink" title="@RequestBody"></a><code>@RequestBody</code></h5><p>常用来处理<code>Content-Type</code>: 不是<code>application/x-www-form-urlencoded</code>编码的内容</p>
+<ul>
+<li><code>application/json</code> </li>
+<li><code>application/xml</code> </li>
+</ul>
+<p>使用<code>HandlerAdapter</code>配置的<code>HttpMessageConverters</code>来解析<code>post data body</code>，然后绑定到<code>bean</code>上</p>
+<p><strong>字符串解析：</strong> </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="string">"/login"</span>,</span><br><span class="line">    type: <span class="string">"POST"</span>,</span><br><span class="line">    data: <span class="string">'&#123;"userName":"admin","pwd","admin123"&#125;'</span>,</span><br><span class="line">    content - type: <span class="string">"application/json charset=utf-8"</span>,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">        alert(<span class="string">"request success ! "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@requestMapping</span>(<span class="string">"/login"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">(@requestBody String userName, @requestBody String pwd)</span> </span>&#123;</span><br><span class="line">    System.out.println(userName + <span class="string">" ："</span> + pwd);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 将JSON字符串中的两个变量的值分别赋予了两个字符串</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><strong>对象解析：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/something"</span>, method = RequestMethod.PUT)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handle</span><span class="params">(@RequestBody User user)</span> </span>&#123;</span><br><span class="line">    System.out.println(user.userName + <span class="string">" ："</span> + user.pwd);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 将JSON字符串中的值赋予user中对应的属性上</span></span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<ul>
+<li><code>JSON</code>字符串中的<code>key</code>必须对应<code>user</code>中的<strong>属性名</strong>，否则是请求不过去的</li>
+<li><code>@RequestBody</code>最多只能有一个，而<code>@RequestParam()</code>可以有多个</li>
+</ul>
+<p><br></p>
+<h5 id="SessionAttributes"><a href="#SessionAttributes" class="headerlink" title="@SessionAttributes"></a><code>@SessionAttributes</code></h5><p>用来绑定<code>HttpSession</code>中的<code>attribute</code>对象的值，便于在方法中的参数里使用。该注解有<code>value、types</code>两个属性，可以通过名字和类型指定要使用的<code>attribute</code> 对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/editPet.do"</span>)</span><br><span class="line"><span class="comment">// @SessionAttributes("pet")</span></span><br><span class="line"><span class="meta">@SessionAttributes</span>(value = &#123; <span class="string">"pet"</span> &#125;, types = &#123; Integer.class &#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EditPetForm</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：<code>@SessionAttributes</code>注解只能在类上使用，不能在方法上使用</p>
+<p><br></p>
+<h5 id="ModelAttribute、-RequestAttribute"><a href="#ModelAttribute、-RequestAttribute" class="headerlink" title="@ModelAttribute、@RequestAttribute"></a><code>@ModelAttribute、@RequestAttribute</code></h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ModelAttribute</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">beforeInvokingHandlerMethod</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">    request.setAttribute(<span class="string">"foo"</span>, <span class="string">"hello world"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/data/custom"</span>, method = RequestMethod.GET)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@ResponseBody</span> <span class="function">String <span class="title">custom</span><span class="params">(@RequestAttribute(<span class="string">"foo"</span>)</span> String foo) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Got 'foo' request attribute value '"</span> + foo + <span class="string">"'"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"customArgs"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>Custom Resolvable Web Arguments<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"customArg"</span> <span class="attr">class</span>=<span class="string">"textLink"</span> <span class="attr">href</span>=<span class="string">"/data/custom"</span>&gt;</span>Custom<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"a.textLink"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> link = $(<span class="keyword">this</span>);</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        url: link.attr(<span class="string">"href"</span>),</span><br><span class="line">        dataType: <span class="string">"text"</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span>(<span class="params">text</span>) </span>&#123;</span><br><span class="line">            alert(text)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Got &apos;foo&apos; request attribute value &apos;hello world&apos;</span><br></pre></td></tr></table></figure>
 <p><br></p>
 
       
@@ -360,9 +420,9 @@
       
         <div class="post-tags">
           
-            <a href="/endBlogs/tags/maven/" rel="tag"># maven</a>
+            <a href="/endBlogs/tags/Spring/" rel="tag"># Spring</a>
           
-            <a href="/endBlogs/tags/pom/" rel="tag"># pom</a>
+            <a href="/endBlogs/tags/MVC/" rel="tag"># MVC</a>
           
         </div>
       
@@ -375,8 +435,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/endBlogs/2019/03/15/jar包/" rel="next" title="jar包">
-                <i class="fa fa-chevron-left"></i> jar包
+              <a href="/endBlogs/2019/03/15/jar-MANIFEST-MF文件/" rel="next" title="jar-MANIFEST.MF文件">
+                <i class="fa fa-chevron-left"></i> jar-MANIFEST.MF文件
               </a>
             
           </div>
@@ -385,8 +445,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/endBlogs/2019/03/15/maven配置/" rel="prev" title="maven配置">
-                maven配置 <i class="fa fa-chevron-right"></i>
+              <a href="/endBlogs/2019/03/18/java注解/" rel="prev" title="java注解">
+                java注解 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -510,7 +570,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#maven的协作相关属性"><span class="nav-number">1.</span> <span class="nav-text">maven的协作相关属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引入依赖"><span class="nav-number">2.</span> <span class="nav-text">引入依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义常量"><span class="nav-number">3.</span> <span class="nav-text">定义常量</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#注解类型"><span class="nav-number">1.</span> <span class="nav-text">注解类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#PathVariable"><span class="nav-number">1.1.</span> <span class="nav-text">@PathVariable</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RequestHeader"><span class="nav-number">1.2.</span> <span class="nav-text">@RequestHeader</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CookieValue"><span class="nav-number">1.3.</span> <span class="nav-text">@CookieValue</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RequestParam"><span class="nav-number">1.4.</span> <span class="nav-text">@RequestParam</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RequestBody"><span class="nav-number">1.5.</span> <span class="nav-text">@RequestBody</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SessionAttributes"><span class="nav-number">1.6.</span> <span class="nav-text">@SessionAttributes</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ModelAttribute、-RequestAttribute"><span class="nav-number">1.7.</span> <span class="nav-text">@ModelAttribute、@RequestAttribute</span></a></li></ol></li></ol></div>
             
 
           </div>

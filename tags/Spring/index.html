@@ -270,9 +270,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/endBlogs/2019/03/19/bean基本属性配置/" itemprop="url">
+            <a class="post-title-link" href="/endBlogs/2019/03/19/beans标签与属性/" itemprop="url">
               
-                <span itemprop="name">bean基本属性配置</span>
+                <span itemprop="name">beans标签与属性</span>
               
             </a>
         
@@ -355,7 +355,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -892,7 +892,47 @@
 
 </body>
 </html>
+ }
 
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
 
   
 

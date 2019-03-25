@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="面向文档通常，应用程序中的对象拥有复杂的数据结构，可能包括日期、地理信息、其他对象或者数组等。如果要把这些对象存储在关系型数据库中，相当于是把一个表现力丰富的对象挤压到一个非常大的电子表格中：你必须将对象扁平化来适应表结构，而且又不得不在每次查询时重新构造对象：  一个简单字段对应一列  一个对象字段需要新建表、引用主键  一个数组字段需要新建表、引用主键、每个数组元素对应一行    Elasti">
+<meta name="description" content="文档   面向文档通常，应用程序中的对象拥有复杂的数据结构，可能包括日期、地理信息、其他对象或者数组等。如果要把这些对象存储在关系型数据库中，相当于是把一个表现力丰富的对象挤压到一个非常大的电子表格中：你必须将对象扁平化来适应表结构，而且又不得不在每次查询时重新构造对象：  一个简单字段对应一列  一个对象字段需要新建表、引用主键  一个数组字段需要新建表、引用主键、每个数组元素对应一行    E">
 <meta name="keywords" content="Elasticsearch,ES">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Elasticsearch基本使用">
+<meta property="og:title" content="Elasticsearch使用">
 <meta property="og:url" content="https://www.yf-gz.cn/2019/03/11/Elasticsearch基本使用/index.html">
 <meta property="og:site_name" content="chenogeの日志">
-<meta property="og:description" content="面向文档通常，应用程序中的对象拥有复杂的数据结构，可能包括日期、地理信息、其他对象或者数组等。如果要把这些对象存储在关系型数据库中，相当于是把一个表现力丰富的对象挤压到一个非常大的电子表格中：你必须将对象扁平化来适应表结构，而且又不得不在每次查询时重新构造对象：  一个简单字段对应一列  一个对象字段需要新建表、引用主键  一个数组字段需要新建表、引用主键、每个数组元素对应一行    Elasti">
+<meta property="og:description" content="文档   面向文档通常，应用程序中的对象拥有复杂的数据结构，可能包括日期、地理信息、其他对象或者数组等。如果要把这些对象存储在关系型数据库中，相当于是把一个表现力丰富的对象挤压到一个非常大的电子表格中：你必须将对象扁平化来适应表结构，而且又不得不在每次查询时重新构造对象：  一个简单字段对应一列  一个对象字段需要新建表、引用主键  一个数组字段需要新建表、引用主键、每个数组元素对应一行    E">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-21T12:12:45.637Z">
+<meta property="og:updated_time" content="2019-03-25T06:18:09.162Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Elasticsearch基本使用">
-<meta name="twitter:description" content="面向文档通常，应用程序中的对象拥有复杂的数据结构，可能包括日期、地理信息、其他对象或者数组等。如果要把这些对象存储在关系型数据库中，相当于是把一个表现力丰富的对象挤压到一个非常大的电子表格中：你必须将对象扁平化来适应表结构，而且又不得不在每次查询时重新构造对象：  一个简单字段对应一列  一个对象字段需要新建表、引用主键  一个数组字段需要新建表、引用主键、每个数组元素对应一行    Elasti">
+<meta name="twitter:title" content="Elasticsearch使用">
+<meta name="twitter:description" content="文档   面向文档通常，应用程序中的对象拥有复杂的数据结构，可能包括日期、地理信息、其他对象或者数组等。如果要把这些对象存储在关系型数据库中，相当于是把一个表现力丰富的对象挤压到一个非常大的电子表格中：你必须将对象扁平化来适应表结构，而且又不得不在每次查询时重新构造对象：  一个简单字段对应一列  一个对象字段需要新建表、引用主键  一个数组字段需要新建表、引用主键、每个数组元素对应一行    E">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>Elasticsearch基本使用 | chenogeの日志</title>
+  <title>Elasticsearch使用 | chenogeの日志</title>
   
 
 
@@ -284,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Elasticsearch基本使用</h1>
+          <h1 class="post-title" itemprop="name headline">Elasticsearch使用</h1>
         
 
         <div class="post-meta">
@@ -334,7 +334,9 @@
       
 
       
-        <h4 id="面向文档"><a href="#面向文档" class="headerlink" title="面向文档"></a>面向文档</h4><p>通常，应用程序中的<strong>对象拥有复杂的数据结构</strong>，可能包括<strong>日期</strong>、<strong>地理信息</strong>、<strong>其他对象</strong>或者<strong>数组</strong>等。如果要把这些对象存储在<strong>关系型数据库</strong>中，相当于是把一个表现力丰富的对象挤压到一个非常大的电子表格中：你必须<strong>将对象扁平化来适应表结构</strong>，而且又不得不在每次查询时重新构造对象：</p>
+        <p><a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/intro.html" target="_blank" rel="noopener">文档</a> </p>
+<p><br></p>
+<h4 id="面向文档"><a href="#面向文档" class="headerlink" title="面向文档"></a>面向文档</h4><p>通常，应用程序中的<strong>对象拥有复杂的数据结构</strong>，可能包括<strong>日期</strong>、<strong>地理信息</strong>、<strong>其他对象</strong>或者<strong>数组</strong>等。如果要把这些对象存储在<strong>关系型数据库</strong>中，相当于是把一个表现力丰富的对象挤压到一个非常大的电子表格中：你必须<strong>将对象扁平化来适应表结构</strong>，而且又不得不在每次查询时重新构造对象：</p>
 <ul>
 <li>一个简单字段<strong>对应一列</strong> </li>
 <li>一个对象字段需要<strong>新建表、引用主键</strong> </li>
@@ -432,8 +434,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/endBlogs/2019/03/07/java基本知识/" rel="next" title="java基本知识">
-                <i class="fa fa-chevron-left"></i> java基本知识
+              <a href="/endBlogs/2019/03/07/java知识/" rel="next" title="java知识">
+                <i class="fa fa-chevron-left"></i> java知识
               </a>
             
           </div>
@@ -534,7 +536,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
