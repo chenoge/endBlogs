@@ -3,6 +3,21 @@
   
     
     <entry>
+      <title>java-static块</title>
+      <link href="/endBlogs/2019/03/26/java-static%E5%9D%97/"/>
+      <url>/endBlogs/2019/03/26/java-static%E5%9D%97/</url>
+      <content type="html"><![CDATA[<h4 id="static块"><a href="#static块" class="headerlink" title="static块"></a><code>static块</code></h4><p><code>static{}</code>，会<strong>在类被加载的时候执行且仅会被执行一次</strong>，一般用来初始化静态变量和调用静态方法</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestStatic</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="number">4</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="number">3</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><a id="more"></a><p><br></p><h4 id="类加载特性"><a href="#类加载特性" class="headerlink" title="类加载特性"></a>类加载特性</h4><ol><li>在虚拟机的生命周期中一个类只被加载一次</li><li>类加载的原则：延迟加载，能少加载就少加载，因为虚拟机的空间是有限的</li></ol><p><br></p><h4 id="类加载的时机"><a href="#类加载的时机" class="headerlink" title="类加载的时机"></a>类加载的时机</h4><ol><li>第一次创建对象要加载类</li><li>调用静态方法时要加载类,访问静态属性时会加载类</li><li>加载子类时必定会先加载父类</li><li>创建对象引用不加载类</li><li><p>子类调用父类的静态方法时</p><ol><li>当子类没有覆盖父类的静态方法时，只加载父类，不加载子类</li><li>当子类有覆盖父类的静态方法时，既加载父类，又加载子类</li></ol></li><li><p>访问静态常量，如果编译器可以计算出常量的值，则不会加载类,例如:<code>public static final int a =123;</code>否则会加载类,例如:<code>public static final int a = math.PI</code>。</p></li></ol><p><br></p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> static </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>redis入门</title>
       <link href="/endBlogs/2019/03/22/redis%E5%85%A5%E9%97%A8/"/>
       <url>/endBlogs/2019/03/22/redis%E5%85%A5%E9%97%A8/</url>
