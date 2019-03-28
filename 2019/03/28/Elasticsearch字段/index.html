@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="java,ClassLoader,类加载器," />
+  <meta name="keywords" content="Elasticsearch,ES," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="类加载器类加载器负责将.class文件加载到内存中，并为类生成一个java.lang.Class实例。 一旦一个类被加载入JVM中，同一个类就不会被再次加入了。在JVM中用来判断类的唯一性标识是：类名、类所在的包名和类加载器。 当JVM启动时，会形成由三个类加载器组成的初始类加载器层次结构：  BootStrap ClassLoader：根类加载器 Extension ClassLoader：扩展">
-<meta name="keywords" content="java,ClassLoader,类加载器">
+<meta name="description" content="辅助字段1234567891011121314151617181920_index：文档在哪存放_type：档表示的对象类别_id：文档唯一标识_cluster：集群_shards：分片_aliases：别名_mapping_source_search：搜索_count：总数_score_all_create?q=?_source=?pretty?op_type=">
+<meta name="keywords" content="Elasticsearch,ES">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java类加载器">
-<meta property="og:url" content="https://www.yf-gz.cn/2019/03/15/java类加载器/index.html">
+<meta property="og:title" content="Elasticsearch字段">
+<meta property="og:url" content="https://www.yf-gz.cn/2019/03/28/Elasticsearch字段/index.html">
 <meta property="og:site_name" content="chenogeの日志">
-<meta property="og:description" content="类加载器类加载器负责将.class文件加载到内存中，并为类生成一个java.lang.Class实例。 一旦一个类被加载入JVM中，同一个类就不会被再次加入了。在JVM中用来判断类的唯一性标识是：类名、类所在的包名和类加载器。 当JVM启动时，会形成由三个类加载器组成的初始类加载器层次结构：  BootStrap ClassLoader：根类加载器 Extension ClassLoader：扩展">
+<meta property="og:description" content="辅助字段1234567891011121314151617181920_index：文档在哪存放_type：档表示的对象类别_id：文档唯一标识_cluster：集群_shards：分片_aliases：别名_mapping_source_search：搜索_count：总数_score_all_create?q=?_source=?pretty?op_type=">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-21T12:14:18.965Z">
+<meta property="og:updated_time" content="2019-03-28T05:04:20.273Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java类加载器">
-<meta name="twitter:description" content="类加载器类加载器负责将.class文件加载到内存中，并为类生成一个java.lang.Class实例。 一旦一个类被加载入JVM中，同一个类就不会被再次加入了。在JVM中用来判断类的唯一性标识是：类名、类所在的包名和类加载器。 当JVM启动时，会形成由三个类加载器组成的初始类加载器层次结构：  BootStrap ClassLoader：根类加载器 Extension ClassLoader：扩展">
+<meta name="twitter:title" content="Elasticsearch字段">
+<meta name="twitter:description" content="辅助字段1234567891011121314151617181920_index：文档在哪存放_type：档表示的对象类别_id：文档唯一标识_cluster：集群_shards：分片_aliases：别名_mapping_source_search：搜索_count：总数_score_all_create?q=?_source=?pretty?op_type=">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://www.yf-gz.cn/2019/03/15/java类加载器/"/>
+  <link rel="canonical" href="https://www.yf-gz.cn/2019/03/28/Elasticsearch字段/"/>
 
 
 
 
 
-  <title>java类加载器 | chenogeの日志</title>
+  <title>Elasticsearch字段 | chenogeの日志</title>
   
 
 
@@ -267,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/15/java类加载器/">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/28/Elasticsearch字段/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chenoge">
@@ -284,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java类加载器</h1>
+          <h1 class="post-title" itemprop="name headline">Elasticsearch字段</h1>
         
 
         <div class="post-meta">
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T10:31:05+08:00">
-                2019-03-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-28T10:53:27+08:00">
+                2019-03-28
               </time>
             
 
@@ -334,36 +334,20 @@
       
 
       
-        <h3 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h3><p>类加载器负责将<code>.class文件</code>加载到内存中，并为类生成一个<code>java.lang.Class</code>实例。</p>
-<p>一旦一个类被加载入<code>JVM</code>中，同一个类就不会被再次加入了。在<code>JVM</code>中用来判断类的唯一性标识是：<strong>类名、类所在的包名和类加载器</strong>。</p>
-<p>当<code>JVM</code>启动时，会形成由三个类加载器组成的初始类加载器层次结构：</p>
-<ul>
-<li><code>BootStrap ClassLoader</code>：根类加载器</li>
-<li><code>Extension ClassLoader</code>：扩展类加载器</li>
-<li><code>System ClassLoader</code>：系统类加载器</li>
-</ul>
+        <h4 id="辅助字段"><a href="#辅助字段" class="headerlink" title="辅助字段"></a>辅助字段</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">_index：文档在哪存放</span><br><span class="line">_type：档表示的对象类别</span><br><span class="line">_id：文档唯一标识</span><br><span class="line"></span><br><span class="line">_cluster：集群</span><br><span class="line">_shards：分片</span><br><span class="line">_aliases：别名</span><br><span class="line">_mapping</span><br><span class="line">_source</span><br><span class="line"></span><br><span class="line">_search：搜索</span><br><span class="line">_count：总数</span><br><span class="line">_score</span><br><span class="line">_all</span><br><span class="line">_create</span><br><span class="line"></span><br><span class="line">?q=</span><br><span class="line">?_source=</span><br><span class="line">?pretty</span><br><span class="line">?op_type=</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GET /_cluster/health</span><br><span class="line">GET /_search?q=mary</span><br><span class="line">GET /_all/tweet/_search?q=tweet:elasticsearch</span><br><span class="line">GET /_search?q=%2Bname%3Ajohn+%2Btweet%3Amary</span><br></pre></td></tr></table></figure>
 <p><br></p>
-<h5 id="根类加载器-（bootstrap-class-loader）："><a href="#根类加载器-（bootstrap-class-loader）：" class="headerlink" title="根类加载器 （bootstrap class loader）："></a>根类加载器 （bootstrap class loader）：</h5><p>它用来加载 Java 的核心库(<code>jre/lib/rt.jar</code>)，是用原生<code>C++</code>代码来实现的，并不继承自<code>java.lang.ClassLoader</code>。<strong>没有父加载器</strong> </p>
-<p><br></p>
-<h5 id="扩展类加载器（extensions-class-loader）："><a href="#扩展类加载器（extensions-class-loader）：" class="headerlink" title="扩展类加载器（extensions class loader）："></a>扩展类加载器（extensions class loader）：</h5><p>它用来加载 Java 的扩展库(<code>jre/ext/*.jar</code>)。Java 虚拟机的实现会提供一个扩展库目录。该类加载器在此目录里面查找并加载 Java 类。 <strong>父加载器为根类加载器</strong> </p>
-<p>扩展类加载器是纯Java类，是<strong>java.lang.ClassLoader</strong>类的子类</p>
-<p><br></p>
-<h5 id="系统类加载器（system-class-loader）："><a href="#系统类加载器（system-class-loader）：" class="headerlink" title="系统类加载器（system class loader）："></a>系统类加载器（system class loader）：</h5><p>它根据 Java 应用的类路径（<code>CLASSPATH</code>）来加载 Java 类。一般来说，Java 应用的类都是由它来完成加载的。可以通过 <code>ClassLoader.getSystemClassLoader()</code>来获取它。<strong>父加载器为扩展类加载器 </strong> </p>
-<p>系统类加载器是纯Java类，是<strong>java.lang.ClassLoader</strong>类的子类</p>
-<p><br></p>
-<h5 id="自定义类加载器（custom-class-loader）："><a href="#自定义类加载器（custom-class-loader）：" class="headerlink" title="自定义类加载器（custom class loader）："></a>自定义类加载器（custom class loader）：</h5><p>除了系统提供的类加载器以外，开发人员可以通过继承 <code>java.lang.ClassLoader</code>类的方式实现自己的类加载器，以满足一些特殊的需求。</p>
-<p><br></p>
-<h3 id="类加载的父委托机制"><a href="#类加载的父委托机制" class="headerlink" title="类加载的父委托机制"></a>类加载的父委托机制</h3><p>从<code>JDK 1.2</code>版本开始，类的加载过程采用<strong>父亲委托机制</strong>，这种机制能更好地保证Java平台的安全。</p>
-<p>在父委托机制中，除了Java虚拟机自带的<strong>根类加载器</strong>以外，其余的类加载器都<strong>有且只有一个</strong>父加载器，各个加载器按照父子关系形成了树形结构。</p>
-<p>当Java程序请求<code>加载器loader1</code>加载<code>Sample类</code>时，<code>loader1</code>首先委托自己的父加载器去加载<code>Sample类</code>，若父加载器能加载，则由父加载器完成加载任务，否则才由<code>loader1</code>本身加载<code>Sample类</code>。</p>
-<p>注：</p>
-<ul>
-<li><p><strong>这里的父加载器概念并不是指类的继承关系，子加载器不一定继承了父加载器（其实是组合的关系）</strong> </p>
-</li>
-<li><p><strong>每个加载器都优先尝试用父类加载，若父类不能加载则自己尝试加载；若成功则返回Class对象给子类，若失败则告诉子类让子类自己加载。所有都失败则抛出<code>ClassNotFoundException</code>异常</strong> </p>
-</li>
+<h4 id="多索引、多类型"><a href="#多索引、多类型" class="headerlink" title="多索引、多类型"></a>多索引、多类型</h4><ul>
+<li><code>/_search</code>：在所有的索引中搜索所有的类型</li>
+<li><code>/gb/_search</code>：在 gb 索引中搜索所有的类型</li>
+<li><code>/gb,us/_search</code>：在 gb 和 us 索引中搜索所有的文档</li>
+<li><code>/g*,u*/_search</code>：在任何以 g 或者 u 开头的索引中搜索所有的类型</li>
+<li><code>/gb/user/_search</code>：在 gb 索引中搜索 user 类型</li>
+<li><code>/gb,us/user,tweet/_search</code>：在 gb 和 us 索引中搜索 user 和 tweet 类型</li>
+<li><code>/_all/user,tweet/_search</code>：在所有的索引中搜索 user 和 tweet 类型</li>
 </ul>
+<p><br></p>
 
       
     </div>
@@ -381,11 +365,9 @@
       
         <div class="post-tags">
           
-            <a href="/endBlogs/tags/java/" rel="tag"># java</a>
+            <a href="/endBlogs/tags/Elasticsearch/" rel="tag"># Elasticsearch</a>
           
-            <a href="/endBlogs/tags/ClassLoader/" rel="tag"># ClassLoader</a>
-          
-            <a href="/endBlogs/tags/类加载器/" rel="tag"># 类加载器</a>
+            <a href="/endBlogs/tags/ES/" rel="tag"># ES</a>
           
         </div>
       
@@ -398,8 +380,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/endBlogs/2019/03/11/Elasticsearch基本使用/" rel="next" title="Elasticsearch使用">
-                <i class="fa fa-chevron-left"></i> Elasticsearch使用
+              <a href="/endBlogs/2019/03/26/java-static块/" rel="next" title="java-static块">
+                <i class="fa fa-chevron-left"></i> java-static块
               </a>
             
           </div>
@@ -407,10 +389,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/endBlogs/2019/03/15/jar包/" rel="prev" title="jar包">
-                jar包 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -533,7 +511,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#类加载器"><span class="nav-number">1.</span> <span class="nav-text">类加载器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#根类加载器-（bootstrap-class-loader）："><span class="nav-number">1.0.1.</span> <span class="nav-text">根类加载器 （bootstrap class loader）：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#扩展类加载器（extensions-class-loader）："><span class="nav-number">1.0.2.</span> <span class="nav-text">扩展类加载器（extensions class loader）：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#系统类加载器（system-class-loader）："><span class="nav-number">1.0.3.</span> <span class="nav-text">系统类加载器（system class loader）：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#自定义类加载器（custom-class-loader）："><span class="nav-number">1.0.4.</span> <span class="nav-text">自定义类加载器（custom class loader）：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类加载的父委托机制"><span class="nav-number">2.</span> <span class="nav-text">类加载的父委托机制</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#辅助字段"><span class="nav-number">1.</span> <span class="nav-text">辅助字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多索引、多类型"><span class="nav-number">2.</span> <span class="nav-text">多索引、多类型</span></a></li></ol></div>
             
 
           </div>
