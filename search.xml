@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Lambda表达式]]></title>
+    <url>%2FendBlogs%2F2019%2F03%2F29%2FLambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[12Runnable noArguments = () -&gt; System.out.println("Hello World");// Runnable 12ActionListener oneArgument = event -&gt; System.out.println("button clicked");// ActionListener 12345Runnable multiStatement = () -&gt; &#123; System.out.print("Hello"); System.out.println(" World");&#125;;// Runnable 12BinaryOperator&lt;Long&gt; add = (x, y) -&gt; x + y;// BinaryOperator 12BinaryOperator&lt;Long&gt; addExplicit = (Long x, Long y) -&gt; x + y;// BinaryOperator 注：Lambda 表达式都可以扩写为原始的匿名类形式]]></content>
+      <tags>
+        <tag>Lambda</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[java匿名内部类]]></title>
+    <url>%2FendBlogs%2F2019%2F03%2F29%2Fjava%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB%2F</url>
+    <content type="text"><![CDATA[匿名内部类123new 父类构造器（参数列表）| 实现接口（）&#123; //匿名内部类的类体部分 &#125; 12345button.addActionListener(new ActionListener() &#123; public void actionPerformed(ActionEvent event) &#123; System.out.println("button clicked"); &#125;&#125;); 使用匿名内部类时，我们必须且只能继承一个类或者实现一个接口 匿名内部类中是不能定义构造函数的 匿名内部类中不能存在任何的静态成员变量和静态方法 匿名内部类为局部内部类，所以局部内部类的所有限制同样对匿名内部类生效 匿名内部类不能是抽象的，它必须要实现继承的类或者实现的接口的所有抽象方法 匿名内部类初始化利用构造代码块能够达到为匿名内部类创建一个构造器的效果 123456789101112131415161718return new InnerClass() &#123; int age_; String name_; //构造代码块完成初始化工作 &#123; if (0 &lt; age &amp;&amp; age &lt; 200) &#123; age_ = age; name_ = name; &#125; &#125; public String getName() &#123; return name_; &#125; public int getAge() &#123; return age_; &#125;&#125;; 注：内部类编译成功后，它会产生一个class文件，该class文件与外部类并不是同一class文件，仅仅只保留对外部类的引用。]]></content>
+      <tags>
+        <tag>java</tag>
+        <tag>内部类</tag>
+        <tag>匿名内部类</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Elasticsearch字段]]></title>
     <url>%2FendBlogs%2F2019%2F03%2F28%2FElasticsearch%E5%AD%97%E6%AE%B5%2F</url>
     <content type="text"><![CDATA[辅助字段1234567891011121314151617181920_index：文档在哪存放_type：档表示的对象类别_id：文档唯一标识_cluster：集群_shards：分片_aliases：别名_mapping_source_search：搜索_count：总数_score_all_create?q=?_source=?pretty?op_type= 1234GET /_cluster/healthGET /_search?q=maryGET /_all/tweet/_search?q=tweet:elasticsearchGET /_search?q=%2Bname%3Ajohn+%2Btweet%3Amary 多索引、多类型 /_search：在所有的索引中搜索所有的类型 /gb/_search：在 gb 索引中搜索所有的类型 /gb,us/_search：在 gb 和 us 索引中搜索所有的文档 /g*,u*/_search：在任何以 g 或者 u 开头的索引中搜索所有的类型 /gb/user/_search：在 gb 索引中搜索 user 类型 /gb,us/user,tweet/_search：在 gb 和 us 索引中搜索 user 和 tweet 类型 /_all/user,tweet/_search：在所有的索引中搜索 user 和 tweet 类型]]></content>
@@ -39,8 +57,8 @@
     <url>%2FendBlogs%2F2019%2F03%2F19%2FSpringDataJPA-JpaRepository%E6%96%B9%E6%B3%95%2F</url>
     <content type="text"><![CDATA[解析方法名创建查询12find + 全局修饰 + By + 实体的属性名称 + 限定词 + 连接词 + …(其它实体属性) + OrderBy + 排序属性 + 排序方向 12// 分页查询出符合姓名的记录,同理Sort也可以直接加上public List&lt;User&gt; findByName(String name, Pageable pageable); 12345678910111213141516171819202122232425262728293031323334353637全局修饰： Distinct， Top， First关键词： IsNull， IsNotNull， Like， NotLike， Containing， In， NotIn，IgnoreCase， Between， Equals， LessThan， GreaterThan， After， Before…排序方向： Asc， Desc连接词： And， OrAnd — 等价于 SQL 中的 and 关键字，比如 findByUsernameAndPassword(String user, Striang pwd)；Or — 等价于 SQL 中的 or 关键字，比如 findByUsernameOrAddress(String user, String addr)；Between — 等价于 SQL 中的 between 关键字，比如 findBySalaryBetween(int max, int min)；LessThan — 等价于 SQL 中的 “&lt;”，比如 findBySalaryLessThan(int max)；GreaterThan — 等价于 SQL 中的”&gt;”，比如 findBySalaryGreaterThan(int min)；IsNull — 等价于 SQL 中的 “is null”，比如 findByUsernameIsNull()；IsNotNull — 等价于 SQL 中的 “is not null”，比如 findByUsernameIsNotNull()；NotNull — 与 IsNotNull 等价；Like — 等价于 SQL 中的 “like”，比如 findByUsernameLike(String user)；NotLike — 等价于 SQL 中的 “not like”，比如 findByUsernameNotLike(String user)；OrderBy — 等价于 SQL 中的 “order by”，比如 findByUsernameOrderBySalaryAsc(String user)；Not — 等价于 SQL 中的 “！ =”，比如 findByUsernameNot(String user)；In — 等价于 SQL 中的 “in”，比如 findByUsernameIn(Collection userList) ，方法的参数可以是 Collection 类型，也可以是数组或者不定长参数；NotIn — 等价于 SQL 中的 “not in”，比如 findByUsernameNotIn(Collection userList) ，方法的参数可以是 Collection 类型，也可以是数组或者不定长参数；]]></content>
       <tags>
-        <tag>Spring</tag>
         <tag>JPA</tag>
+        <tag>Spring</tag>
         <tag>Repository</tag>
       </tags>
   </entry>
