@@ -266,6 +266,134 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/04/10/java遍历/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/endBlogs/2019/04/10/java遍历/" itemprop="url">java遍历</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-10T22:06:08+08:00">
+                2019-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="遍历数组的传统方式"><a href="#遍历数组的传统方式" class="headerlink" title="遍历数组的传统方式"></a>遍历数组的传统方式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] integers = &#123; <span class="number">1</span>， <span class="number">2</span>， <span class="number">3</span>， <span class="number">4</span> &#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; integers.length; j++) &#123;</span><br><span class="line">    <span class="keyword">int</span> i = integers[j];</span><br><span class="line">    System.out.println(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="遍历Collection对象的传统方式"><a href="#遍历Collection对象的传统方式" class="headerlink" title="遍历Collection对象的传统方式"></a>遍历Collection对象的传统方式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 建立一个Collection */</span></span><br><span class="line">String[] strings = &#123; <span class="string">"A"</span>， <span class="string">"B"</span>， <span class="string">"C"</span>， <span class="string">"D"</span> &#125;;</span><br><span class="line">Collection stringList = java.util.Arrays.asList(strings);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (Iterator itr = stringList.iterator(); itr.hasNext();) &#123;</span><br><span class="line">    Object str = itr.next();</span><br><span class="line">    System.out.println(str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="for-循环-foreach"><a href="#for-循环-foreach" class="headerlink" title="for(:)循环-foreach"></a>for(:)循环-foreach</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] integers = &#123; <span class="number">1</span>， <span class="number">2</span>， <span class="number">3</span>， <span class="number">4</span> &#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i: integers) &#123;</span><br><span class="line">    System.out.println(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String[] strings = &#123; <span class="string">"A"</span>， <span class="string">"B"</span>， <span class="string">"C"</span>， <span class="string">"D"</span> &#125;;</span><br><span class="line">Collection list = java.util.Arrays.asList(strings);</span><br><span class="line"><span class="keyword">for</span> (Object str: list) &#123;</span><br><span class="line">    System.out.println(str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="遍历Map"><a href="#遍历Map" class="headerlink" title="遍历Map"></a>遍历Map</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Map &lt; Integer, Integer &gt; map = <span class="keyword">new</span> HashMap &lt; Integer, Integer &gt; ();</span><br><span class="line"></span><br><span class="line"><span class="comment">//遍历map中的键 </span></span><br><span class="line"><span class="keyword">for</span> (Integer key: map.keySet()) &#123;</span><br><span class="line">    System.out.println(<span class="string">"Key = "</span> + key);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//遍历map中的值 </span></span><br><span class="line"><span class="keyword">for</span> (Integer value: map.values()) &#123;</span><br><span class="line">    System.out.println(<span class="string">"Value = "</span> + value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/29/Lambda表达式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1436,131 +1564,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/18/java反射/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/endBlogs/2019/03/18/java反射/" itemprop="url">java反射</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-18T11:18:07+08:00">
-                2019-03-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="一、java-的反射机制"><a href="#一、java-的反射机制" class="headerlink" title="一、java 的反射机制"></a>一、java 的反射机制</h4><p>Java 反射机制在程序<strong>运行时</strong>，对于<strong>任意一个类</strong>，都能够知道这个类的所有属性和方法；对于<strong>任意一个对象</strong>，都能够调用它的任意一个方法和属性。这种 <strong>动态的获取信息</strong> 以及 <strong>动态调用对象的方法</strong> 的功能称为 <strong>java 的反射机制</strong>。</p>
-<p>注：反射机制很重要的一点就是“运行时”，其使得我们可以在程序运行时加载、探索以及使用编译期间完全未知的 <code>.class</code> 文件。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/endBlogs/2019/03/18/java反射/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1611,7 +1614,7 @@
               
                 <a href="/endBlogs/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1624,7 +1627,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

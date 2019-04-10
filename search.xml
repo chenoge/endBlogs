@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[java遍历]]></title>
+    <url>%2FendBlogs%2F2019%2F04%2F10%2Fjava%E9%81%8D%E5%8E%86%2F</url>
+    <content type="text"><![CDATA[遍历数组的传统方式12345int[] integers = &#123; 1， 2， 3， 4 &#125;;for (int j = 0; j &lt; integers.length; j++) &#123; int i = integers[j]; System.out.println(i);&#125; 遍历Collection对象的传统方式12345678/* 建立一个Collection */String[] strings = &#123; "A"， "B"， "C"， "D" &#125;;Collection stringList = java.util.Arrays.asList(strings);for (Iterator itr = stringList.iterator(); itr.hasNext();) &#123; Object str = itr.next(); System.out.println(str);&#125; for(:)循环-foreach1234int[] integers = &#123; 1， 2， 3， 4 &#125;;for (int i: integers) &#123; System.out.println(i);&#125; 12345String[] strings = &#123; "A"， "B"， "C"， "D" &#125;;Collection list = java.util.Arrays.asList(strings);for (Object str: list) &#123; System.out.println(str);&#125; 遍历Map1234567891011Map &lt; Integer, Integer &gt; map = new HashMap &lt; Integer, Integer &gt; ();//遍历map中的键 for (Integer key: map.keySet()) &#123; System.out.println("Key = " + key);&#125;//遍历map中的值 for (Integer value: map.values()) &#123; System.out.println("Value = " + value);&#125;]]></content>
+      <tags>
+        <tag>for</tag>
+        <tag>Collection</tag>
+        <tag>Iterator</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Lambda表达式]]></title>
     <url>%2FendBlogs%2F2019%2F03%2F29%2FLambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%2F</url>
     <content type="text"><![CDATA[12Runnable noArguments = () -&gt; System.out.println("Hello World");// Runnable 12ActionListener oneArgument = event -&gt; System.out.println("button clicked");// ActionListener 12345Runnable multiStatement = () -&gt; &#123; System.out.print("Hello"); System.out.println(" World");&#125;;// Runnable 12BinaryOperator&lt;Long&gt; add = (x, y) -&gt; x + y;// BinaryOperator 12BinaryOperator&lt;Long&gt; addExplicit = (Long x, Long y) -&gt; x + y;// BinaryOperator 注：Lambda 表达式都可以扩写为原始的匿名类形式]]></content>
@@ -57,8 +67,8 @@
     <url>%2FendBlogs%2F2019%2F03%2F19%2FSpringDataJPA-JpaRepository%E6%96%B9%E6%B3%95%2F</url>
     <content type="text"><![CDATA[解析方法名创建查询12find + 全局修饰 + By + 实体的属性名称 + 限定词 + 连接词 + …(其它实体属性) + OrderBy + 排序属性 + 排序方向 12// 分页查询出符合姓名的记录,同理Sort也可以直接加上public List&lt;User&gt; findByName(String name, Pageable pageable); 12345678910111213141516171819202122232425262728293031323334353637全局修饰： Distinct， Top， First关键词： IsNull， IsNotNull， Like， NotLike， Containing， In， NotIn，IgnoreCase， Between， Equals， LessThan， GreaterThan， After， Before…排序方向： Asc， Desc连接词： And， OrAnd — 等价于 SQL 中的 and 关键字，比如 findByUsernameAndPassword(String user, Striang pwd)；Or — 等价于 SQL 中的 or 关键字，比如 findByUsernameOrAddress(String user, String addr)；Between — 等价于 SQL 中的 between 关键字，比如 findBySalaryBetween(int max, int min)；LessThan — 等价于 SQL 中的 “&lt;”，比如 findBySalaryLessThan(int max)；GreaterThan — 等价于 SQL 中的”&gt;”，比如 findBySalaryGreaterThan(int min)；IsNull — 等价于 SQL 中的 “is null”，比如 findByUsernameIsNull()；IsNotNull — 等价于 SQL 中的 “is not null”，比如 findByUsernameIsNotNull()；NotNull — 与 IsNotNull 等价；Like — 等价于 SQL 中的 “like”，比如 findByUsernameLike(String user)；NotLike — 等价于 SQL 中的 “not like”，比如 findByUsernameNotLike(String user)；OrderBy — 等价于 SQL 中的 “order by”，比如 findByUsernameOrderBySalaryAsc(String user)；Not — 等价于 SQL 中的 “！ =”，比如 findByUsernameNot(String user)；In — 等价于 SQL 中的 “in”，比如 findByUsernameIn(Collection userList) ，方法的参数可以是 Collection 类型，也可以是数组或者不定长参数；NotIn — 等价于 SQL 中的 “not in”，比如 findByUsernameNotIn(Collection userList) ，方法的参数可以是 Collection 类型，也可以是数组或者不定长参数；]]></content>
       <tags>
-        <tag>JPA</tag>
         <tag>Spring</tag>
+        <tag>JPA</tag>
         <tag>Repository</tag>
       </tags>
   </entry>
