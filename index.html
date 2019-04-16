@@ -654,7 +654,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/28/Elasticsearch字段/">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/28/Elasticsearch搜索/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chenoge">
@@ -673,7 +673,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/endBlogs/2019/03/28/Elasticsearch字段/" itemprop="url">Elasticsearch字段</a></h1>
+                <a class="post-title-link" href="/endBlogs/2019/03/28/Elasticsearch搜索/" itemprop="url">Elasticsearch搜索</a></h1>
         
 
         <div class="post-meta">
@@ -724,10 +724,20 @@
 
       
         
-          <h4 id="辅助字段"><a href="#辅助字段" class="headerlink" title="辅助字段"></a>辅助字段</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">_index：文档在哪存放</span><br><span class="line">_type：档表示的对象类别</span><br><span class="line">_id：文档唯一标识</span><br><span class="line"></span><br><span class="line">_cluster：集群</span><br><span class="line">_shards：分片</span><br><span class="line">_aliases：别名</span><br><span class="line">_mapping</span><br><span class="line">_source</span><br><span class="line"></span><br><span class="line">_search：搜索</span><br><span class="line">_count：总数</span><br><span class="line">_score</span><br><span class="line">_all</span><br><span class="line">_create</span><br><span class="line"></span><br><span class="line">?q=</span><br><span class="line">?_source=</span><br><span class="line">?pretty</span><br><span class="line">?op_type=</span><br></pre></td></tr></table></figure>
+          <p>有两种形式的 <code>搜索 API</code>：一种是<code>轻量的查询字符串版本</code>，要求在查询字符串中传递所有的参数，另一种是更完整的<code>请求体版本</code>，要求使用 JSON 格式和更丰富的查询表达式作为搜索语言。</p>
+<h4 id="查询字符串"><a href="#查询字符串" class="headerlink" title="查询字符串"></a>查询字符串</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET /_all/tweet/_search?q=+name:john+tweet:mary</span><br><span class="line"># 查询在 name 字段中包含 john 并且在 tweet 字段中包含 mary 的文档</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>+</code> 前缀表示必须与查询条件匹配</li>
+<li><code>-</code> 前缀表示一定不与查询条件匹配</li>
+<li>没有 <code>+</code> 或者 <code>-</code> 的所有其他条件都是可选的</li>
+<li>匹配的越多，文档就越相关</li>
+<li>取所有字段的值拼接成一个大的字符串，作为 <code>_all</code> 字段进行索引</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+name:(mary john) +date:&gt;2014-09-10 +(aggregations geo)</span><br><span class="line"># name 字段中包含 mary 或者 john</span><br><span class="line"># date 值大于 2014-09-10</span><br><span class="line"># _all 字段包含 aggregations 或者 geo</span><br></pre></td></tr></table></figure>
+<p>注：查询字符串搜索允许任何用户在索引的<strong>任意字段</strong>上执行可能<strong>较慢且重量级</strong>的查询，这可能会暴露隐私信息，甚至将集群拖垮。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/endBlogs/2019/03/28/Elasticsearch字段/#more" rel="contents">
+            <a class="btn" href="/endBlogs/2019/03/28/Elasticsearch搜索/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

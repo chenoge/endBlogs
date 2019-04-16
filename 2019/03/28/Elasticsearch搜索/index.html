@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="JPA,Spring,Repository," />
+  <meta name="keywords" content="Elasticsearch,ES," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="解析方法名创建查询12find + 全局修饰 + By + 实体的属性名称 + 限定词 + 连接词	 + …(其它实体属性) + OrderBy + 排序属性 + 排序方向 12// 分页查询出符合姓名的记录,同理Sort也可以直接加上public List&amp;lt;User&amp;gt; findByName(String name, Pageable pageable);">
-<meta name="keywords" content="JPA,Spring,Repository">
+<meta name="description" content="有两种形式的 搜索 API：一种是轻量的查询字符串版本，要求在查询字符串中传递所有的参数，另一种是更完整的请求体版本，要求使用 JSON 格式和更丰富的查询表达式作为搜索语言。 查询字符串12GET /_all/tweet/_search?q=+name:john+tweet:mary# 查询在 name 字段中包含 john 并且在 tweet 字段中包含 mary 的文档  + 前缀表示必须与">
+<meta name="keywords" content="Elasticsearch,ES">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringDataJPA-JpaRepository方法">
-<meta property="og:url" content="https://www.yf-gz.cn/2019/03/19/SpringDataJPA-JpaRepository方法/index.html">
+<meta property="og:title" content="Elasticsearch搜索">
+<meta property="og:url" content="https://www.yf-gz.cn/2019/03/28/Elasticsearch搜索/index.html">
 <meta property="og:site_name" content="chenogeの日志">
-<meta property="og:description" content="解析方法名创建查询12find + 全局修饰 + By + 实体的属性名称 + 限定词 + 连接词	 + …(其它实体属性) + OrderBy + 排序属性 + 排序方向 12// 分页查询出符合姓名的记录,同理Sort也可以直接加上public List&amp;lt;User&amp;gt; findByName(String name, Pageable pageable);">
+<meta property="og:description" content="有两种形式的 搜索 API：一种是轻量的查询字符串版本，要求在查询字符串中传递所有的参数，另一种是更完整的请求体版本，要求使用 JSON 格式和更丰富的查询表达式作为搜索语言。 查询字符串12GET /_all/tweet/_search?q=+name:john+tweet:mary# 查询在 name 字段中包含 john 并且在 tweet 字段中包含 mary 的文档  + 前缀表示必须与">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-16T08:02:07.669Z">
+<meta property="og:updated_time" content="2019-04-16T10:55:41.913Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SpringDataJPA-JpaRepository方法">
-<meta name="twitter:description" content="解析方法名创建查询12find + 全局修饰 + By + 实体的属性名称 + 限定词 + 连接词	 + …(其它实体属性) + OrderBy + 排序属性 + 排序方向 12// 分页查询出符合姓名的记录,同理Sort也可以直接加上public List&amp;lt;User&amp;gt; findByName(String name, Pageable pageable);">
+<meta name="twitter:title" content="Elasticsearch搜索">
+<meta name="twitter:description" content="有两种形式的 搜索 API：一种是轻量的查询字符串版本，要求在查询字符串中传递所有的参数，另一种是更完整的请求体版本，要求使用 JSON 格式和更丰富的查询表达式作为搜索语言。 查询字符串12GET /_all/tweet/_search?q=+name:john+tweet:mary# 查询在 name 字段中包含 john 并且在 tweet 字段中包含 mary 的文档  + 前缀表示必须与">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://www.yf-gz.cn/2019/03/19/SpringDataJPA-JpaRepository方法/"/>
+  <link rel="canonical" href="https://www.yf-gz.cn/2019/03/28/Elasticsearch搜索/"/>
 
 
 
 
 
-  <title>SpringDataJPA-JpaRepository方法 | chenogeの日志</title>
+  <title>Elasticsearch搜索 | chenogeの日志</title>
   
 
 
@@ -267,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/19/SpringDataJPA-JpaRepository方法/">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/28/Elasticsearch搜索/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chenoge">
@@ -284,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SpringDataJPA-JpaRepository方法</h1>
+          <h1 class="post-title" itemprop="name headline">Elasticsearch搜索</h1>
         
 
         <div class="post-meta">
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-19T21:05:25+08:00">
-                2019-03-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-28T10:53:27+08:00">
+                2019-03-28
               </time>
             
 
@@ -334,11 +334,62 @@
       
 
       
-        <h5 id="解析方法名创建查询"><a href="#解析方法名创建查询" class="headerlink" title="解析方法名创建查询"></a>解析方法名创建查询</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find + 全局修饰 + By + 实体的属性名称 + 限定词 + 连接词</span><br><span class="line">	 + …(其它实体属性) + OrderBy + 排序属性 + 排序方向</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 分页查询出符合姓名的记录,同理Sort也可以直接加上</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">findByName</span><span class="params">(String name, Pageable pageable)</span></span>;</span><br></pre></td></tr></table></figure>
+        <p>有两种形式的 <code>搜索 API</code>：一种是<code>轻量的查询字符串版本</code>，要求在查询字符串中传递所有的参数，另一种是更完整的<code>请求体版本</code>，要求使用 JSON 格式和更丰富的查询表达式作为搜索语言。</p>
+<h4 id="查询字符串"><a href="#查询字符串" class="headerlink" title="查询字符串"></a>查询字符串</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET /_all/tweet/_search?q=+name:john+tweet:mary</span><br><span class="line"># 查询在 name 字段中包含 john 并且在 tweet 字段中包含 mary 的文档</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>+</code> 前缀表示必须与查询条件匹配</li>
+<li><code>-</code> 前缀表示一定不与查询条件匹配</li>
+<li>没有 <code>+</code> 或者 <code>-</code> 的所有其他条件都是可选的</li>
+<li>匹配的越多，文档就越相关</li>
+<li>取所有字段的值拼接成一个大的字符串，作为 <code>_all</code> 字段进行索引</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+name:(mary john) +date:&gt;2014-09-10 +(aggregations geo)</span><br><span class="line"># name 字段中包含 mary 或者 john</span><br><span class="line"># date 值大于 2014-09-10</span><br><span class="line"># _all 字段包含 aggregations 或者 geo</span><br></pre></td></tr></table></figure>
+<p>注：查询字符串搜索允许任何用户在索引的<strong>任意字段</strong>上执行可能<strong>较慢且重量级</strong>的查询，这可能会暴露隐私信息，甚至将集群拖垮。</p>
 <a id="more"></a>
 <p><br></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">全局修饰： Distinct， Top， First</span><br><span class="line"></span><br><span class="line">关键词： IsNull， IsNotNull， Like， NotLike， Containing， In， NotIn，</span><br><span class="line"></span><br><span class="line">IgnoreCase， Between， Equals， LessThan， GreaterThan， After， Before…</span><br><span class="line"></span><br><span class="line">排序方向： Asc， Desc</span><br><span class="line"></span><br><span class="line">连接词： And， Or</span><br><span class="line"></span><br><span class="line">And — 等价于 SQL 中的 and 关键字，比如 findByUsernameAndPassword(String user, Striang pwd)；</span><br><span class="line"></span><br><span class="line">Or — 等价于 SQL 中的 or 关键字，比如 findByUsernameOrAddress(String user, String addr)；</span><br><span class="line"></span><br><span class="line">Between — 等价于 SQL 中的 between 关键字，比如 findBySalaryBetween(int max, int min)；</span><br><span class="line"></span><br><span class="line">LessThan — 等价于 SQL 中的 “&lt;”，比如 findBySalaryLessThan(int max)；</span><br><span class="line"></span><br><span class="line">GreaterThan — 等价于 SQL 中的”&gt;”，比如 findBySalaryGreaterThan(int min)；</span><br><span class="line"></span><br><span class="line">IsNull — 等价于 SQL 中的 “is null”，比如 findByUsernameIsNull()；</span><br><span class="line"></span><br><span class="line">IsNotNull — 等价于 SQL 中的 “is not null”，比如 findByUsernameIsNotNull()；</span><br><span class="line"></span><br><span class="line">NotNull — 与 IsNotNull 等价；</span><br><span class="line"></span><br><span class="line">Like — 等价于 SQL 中的 “like”，比如 findByUsernameLike(String user)；</span><br><span class="line"></span><br><span class="line">NotLike — 等价于 SQL 中的 “not like”，比如 findByUsernameNotLike(String user)；</span><br><span class="line"></span><br><span class="line">OrderBy — 等价于 SQL 中的 “order by”，比如 findByUsernameOrderBySalaryAsc(String user)；</span><br><span class="line"></span><br><span class="line">Not — 等价于 SQL 中的 “！ =”，比如 findByUsernameNot(String user)；</span><br><span class="line"></span><br><span class="line">In — 等价于 SQL 中的 “in”，比如 findByUsernameIn(Collection userList) ，方法的参数可以是 Collection 类型，也可以是数组或者不定长参数；</span><br><span class="line"></span><br><span class="line">NotIn — 等价于 SQL 中的 “not in”，比如 findByUsernameNotIn(Collection userList) ，方法的参数可以是 Collection 类型，也可以是数组或者不定长参数；</span><br></pre></td></tr></table></figure>
+<h4 id="请求体查询"><a href="#请求体查询" class="headerlink" title="请求体查询"></a>请求体查询</h4><p>请求体查询，不仅可以处理自身的查询请求，还允许你对结果进行片段强调（高亮）、对所有或部分结果进行聚合分析，同时还可以给出 你是不是想找的建议。</p>
+<h5 id="match-all-查询"><a href="#match-all-查询" class="headerlink" title="match_all 查询"></a>match_all 查询</h5><p><code>match_all</code> 查询简单的 匹配所有文档。在没有指定查询方式时，它是默认的查询：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="string">"match_all"</span>: &#123;&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="match-查询"><a href="#match-查询" class="headerlink" title="match 查询"></a>match 查询</h5><p>无论你在任何字段上进行的是全文搜索还是精确查询，<code>match</code> 查询是你可用的标准查询。</p>
+<p>如果你在一个全文字段上使用 <code>match</code> 查询，在执行查询前，它将用正确的分析器去分析查询字符串：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="string">"match"</span>: &#123; <span class="string">"tweet"</span>: <span class="string">"About Search"</span> &#125;&#125;</span><br><span class="line"><span class="comment">// 如果你在一个全文字段上使用 match 查询，在执行查询前，它将用正确的分析器去分析查询字符串</span></span><br><span class="line"><span class="comment">// 如果在一个精确值的字段上使用它， 例如数字、日期、布尔或者一个 not_analyzed 字符串字段</span></span><br><span class="line"><span class="comment">// 那么它将会精确匹配给定的值</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="multi-match-查询"><a href="#multi-match-查询" class="headerlink" title="multi_match 查询"></a>multi_match 查询</h5><p><code>multi_match</code> 查询可以在多个字段上执行相同的 <code>match</code> 查询：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"multi_match"</span>: &#123;</span><br><span class="line">        <span class="string">"query"</span>:    <span class="string">"full text search"</span>,</span><br><span class="line">        <span class="string">"fields"</span>:   [ <span class="string">"title"</span>, <span class="string">"body"</span> ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="range-查询"><a href="#range-查询" class="headerlink" title="range 查询"></a>range 查询</h5><p><code>range</code> 查询找出那些落在指定区间内的数字或者时间：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"range"</span>: &#123;</span><br><span class="line">        <span class="string">"age"</span>: &#123;</span><br><span class="line">            <span class="string">"gte"</span>:  <span class="number">20</span>,</span><br><span class="line">            <span class="string">"lt"</span>:   <span class="number">30</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// gt 	大于</span></span><br><span class="line"><span class="comment">// gte 	大于等于</span></span><br><span class="line"><span class="comment">// lt 	小于</span></span><br><span class="line"><span class="comment">// lte 	小于等于</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="term-查询"><a href="#term-查询" class="headerlink" title="term 查询"></a>term 查询</h5><p><code>term</code> 查询被用于精确值匹配，这些精确值可能是数字、时间、布尔或者那些 <code>not_analyzed</code> 的字符串：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="string">"term"</span>: &#123; <span class="string">"age"</span>:    <span class="number">26</span>           &#125;&#125;</span><br><span class="line">&#123; <span class="string">"term"</span>: &#123; <span class="string">"date"</span>:   <span class="string">"2014-09-01"</span> &#125;&#125;</span><br><span class="line">&#123; <span class="string">"term"</span>: &#123; <span class="string">"public"</span>: <span class="literal">true</span>         &#125;&#125;</span><br><span class="line">&#123; <span class="string">"term"</span>: &#123; <span class="string">"tag"</span>:    <span class="string">"full_text"</span>  &#125;&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="terms-查询"><a href="#terms-查询" class="headerlink" title="terms 查询"></a>terms 查询</h5><p><code>terms</code> 查询和 <code>term</code> 查询一样，但它允许你指定多值进行匹配。如果这个字段包含了指定值中的任何一个值，那么这个文档满足条件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="string">"terms"</span>: &#123; <span class="string">"tag"</span>: [ <span class="string">"search"</span>, <span class="string">"full_text"</span>, <span class="string">"nosql"</span> ] &#125;&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="exists-查询和-missing-查询"><a href="#exists-查询和-missing-查询" class="headerlink" title="exists 查询和 missing 查询"></a>exists 查询和 missing 查询</h5><p><code>exists</code> 查询和 <code>missing</code> 查询被用于查找那些指定字段中有值 (<code>exists</code>) 或无值 (<code>missing</code>) 的文档。这与SQL中的 <code>IS_NULL</code> (<code>missing</code>) 和 <code>NOT IS_NULL</code> (<code>exists</code>) 在本质上具有共性：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"exists"</span>:   &#123;</span><br><span class="line">        <span class="string">"field"</span>:    <span class="string">"title"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="组合多查询-bool"><a href="#组合多查询-bool" class="headerlink" title="组合多查询 bool"></a>组合多查询 <code>bool</code></h5><p> <code>bool</code> 查询将多个查询组合在一起，成为用户自己想要的布尔查询。它接收以下参数：</p>
+<ul>
+<li><code>must</code>：文档 必须 匹配这些条件才能被包含进来</li>
+<li><code>must_not</code>：文档 必须不匹配这些条件才能被包含进来</li>
+<li><code>should</code>：如果满足这些语句中的任意语句，将增加 <code>_score</code> ，否则，无任何影响</li>
+<li><code>filter</code>：必须匹配，但它以不评分、过滤模式来进行</li>
+</ul>
+<p>一条复合语句可以合并 <em>任何</em> 其它查询语句，包括复合语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;query&quot;:&#123;</span><br><span class="line">        &quot;match_phrase&quot;:&#123;</span><br><span class="line">            &quot;about&quot;:&quot;rock climbing&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;match&quot;:&#123;</span><br><span class="line">            &quot;last_name&quot;:&quot;Smith&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;bool&quot;:&#123;</span><br><span class="line">            &quot;must&quot;:&#123;</span><br><span class="line">                &quot;match&quot;:&#123;</span><br><span class="line">                    &quot;tweet&quot;:&quot;elasticsearch&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;must_not&quot;:&#123;</span><br><span class="line">                &quot;match&quot;:&#123;</span><br><span class="line">                    &quot;name&quot;:&quot;mary&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;should&quot;:[</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;match&quot;:&#123;</span><br><span class="line">                        &quot;starred&quot;:true</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;bool&quot;:&#123;</span><br><span class="line">                        &quot;must&quot;:&#123;</span><br><span class="line">                            &quot;match&quot;:&#123;</span><br><span class="line">                                &quot;folder&quot;:&quot;inbox&quot;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;,</span><br><span class="line">                        &quot;must_not&quot;:&#123;</span><br><span class="line">                            &quot;match&quot;:&#123;</span><br><span class="line">                                &quot;spam&quot;:true</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            &quot;filter&quot;:&#123;</span><br><span class="line">                &quot;range&quot;:&#123;</span><br><span class="line">                    &quot;age&quot;:&#123;</span><br><span class="line">                        &quot;gt&quot;:30</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;minimum_should_match&quot;:1</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;highlight&quot;:&#123;</span><br><span class="line">        &quot;fields&quot;:&#123;</span><br><span class="line">            &quot;about&quot;:&#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;aggs&quot;:&#123;</span><br><span class="line">        &quot;all_interests&quot;:&#123;</span><br><span class="line">            &quot;terms&quot;:&#123;</span><br><span class="line">                &quot;field&quot;:&quot;interests&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;aggs&quot;:&#123;</span><br><span class="line">                &quot;avg_age&quot;:&#123;</span><br><span class="line">                    &quot;avg&quot;:&#123;</span><br><span class="line">                        &quot;field&quot;:&quot;age&quot;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="多索引、多类型"><a href="#多索引、多类型" class="headerlink" title="多索引、多类型"></a>多索引、多类型</h4><ul>
+<li><code>/_search</code>：在所有的索引中搜索所有的类型</li>
+<li><code>/gb/_search</code>：在 gb 索引中搜索所有的类型</li>
+<li><code>/gb,us/_search</code>：在 gb 和 us 索引中搜索所有的文档</li>
+<li><code>/g*,u*/_search</code>：在任何以 g 或者 u 开头的索引中搜索所有的类型</li>
+<li><code>/gb/user/_search</code>：在 gb 索引中搜索 user 类型</li>
+<li><code>/gb,us/user,tweet/_search</code>：在 gb 和 us 索引中搜索 user 和 tweet 类型</li>
+<li><code>/_all/user,tweet/_search</code>：在所有的索引中搜索 user 和 tweet 类型</li>
+</ul>
+<p><br></p>
 
       
     </div>
@@ -356,11 +407,9 @@
       
         <div class="post-tags">
           
-            <a href="/endBlogs/tags/JPA/" rel="tag"># JPA</a>
+            <a href="/endBlogs/tags/Elasticsearch/" rel="tag"># Elasticsearch</a>
           
-            <a href="/endBlogs/tags/Spring/" rel="tag"># Spring</a>
-          
-            <a href="/endBlogs/tags/Repository/" rel="tag"># Repository</a>
+            <a href="/endBlogs/tags/ES/" rel="tag"># ES</a>
           
         </div>
       
@@ -373,8 +422,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/endBlogs/2019/03/19/SpringDataJPA-Query注解/" rel="next" title="SpringDataJPA-Query注解">
-                <i class="fa fa-chevron-left"></i> SpringDataJPA-Query注解
+              <a href="/endBlogs/2019/03/26/java-static块/" rel="next" title="java-static块">
+                <i class="fa fa-chevron-left"></i> java-static块
               </a>
             
           </div>
@@ -383,8 +432,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/endBlogs/2019/03/21/数据库表格设计与范式/" rel="prev" title="数据库表格设计与范式">
-                数据库表格设计与范式 <i class="fa fa-chevron-right"></i>
+              <a href="/endBlogs/2019/03/29/java匿名内部类/" rel="prev" title="java匿名内部类">
+                java匿名内部类 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -508,7 +557,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#解析方法名创建查询"><span class="nav-number">1.</span> <span class="nav-text">解析方法名创建查询</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#查询字符串"><span class="nav-number">1.</span> <span class="nav-text">查询字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求体查询"><span class="nav-number">2.</span> <span class="nav-text">请求体查询</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#match-all-查询"><span class="nav-number">2.1.</span> <span class="nav-text">match_all 查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#match-查询"><span class="nav-number">2.2.</span> <span class="nav-text">match 查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#multi-match-查询"><span class="nav-number">2.3.</span> <span class="nav-text">multi_match 查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#range-查询"><span class="nav-number">2.4.</span> <span class="nav-text">range 查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#term-查询"><span class="nav-number">2.5.</span> <span class="nav-text">term 查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#terms-查询"><span class="nav-number">2.6.</span> <span class="nav-text">terms 查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#exists-查询和-missing-查询"><span class="nav-number">2.7.</span> <span class="nav-text">exists 查询和 missing 查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#组合多查询-bool"><span class="nav-number">2.8.</span> <span class="nav-text">组合多查询 bool</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多索引、多类型"><span class="nav-number">3.</span> <span class="nav-text">多索引、多类型</span></a></li></ol></div>
             
 
           </div>
