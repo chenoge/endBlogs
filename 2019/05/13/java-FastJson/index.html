@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="####简单说明 FastJson对于json格式字符串的解析主要用到了下面三个类：   JSON：fastJson的解析器，用于JSON格式字符串与JSON对象及javaBean之间的转换   JSONObject：fastJson提供的json对象   JSONArray：fastJson提供json数组对象    用法首先定义三个json格式的字符串 12345678//json字符串-简单">
+<meta name="description" content="####简单说明 FastJson对于json格式字符串的解析主要用到了下面三个类：   JSON：fastJson的解析器，用于JSON格式字符串与JSON对象及javaBean之间的转换  JSONObject：fastJson提供的json对象  JSONArray：fastJson提供json数组对象">
 <meta name="keywords" content="FastJson">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java-FastJson">
 <meta property="og:url" content="https://www.yf-gz.cn/2019/05/13/java-FastJson/index.html">
 <meta property="og:site_name" content="chenogeの日志">
-<meta property="og:description" content="####简单说明 FastJson对于json格式字符串的解析主要用到了下面三个类：   JSON：fastJson的解析器，用于JSON格式字符串与JSON对象及javaBean之间的转换   JSONObject：fastJson提供的json对象   JSONArray：fastJson提供json数组对象    用法首先定义三个json格式的字符串 12345678//json字符串-简单">
+<meta property="og:description" content="####简单说明 FastJson对于json格式字符串的解析主要用到了下面三个类：   JSON：fastJson的解析器，用于JSON格式字符串与JSON对象及javaBean之间的转换  JSONObject：fastJson提供的json对象  JSONArray：fastJson提供json数组对象">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T12:11:02.902Z">
+<meta property="og:updated_time" content="2019-05-13T12:14:50.653Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java-FastJson">
-<meta name="twitter:description" content="####简单说明 FastJson对于json格式字符串的解析主要用到了下面三个类：   JSON：fastJson的解析器，用于JSON格式字符串与JSON对象及javaBean之间的转换   JSONObject：fastJson提供的json对象   JSONArray：fastJson提供json数组对象    用法首先定义三个json格式的字符串 12345678//json字符串-简单">
+<meta name="twitter:description" content="####简单说明 FastJson对于json格式字符串的解析主要用到了下面三个类：   JSON：fastJson的解析器，用于JSON格式字符串与JSON对象及javaBean之间的转换  JSONObject：fastJson提供的json对象  JSONArray：fastJson提供json数组对象">
 
 
 
@@ -337,13 +337,11 @@
         <p>####简单说明</p>
 <p>FastJson对于json格式字符串的解析主要用到了下面三个类： </p>
 <ul>
-<li><p>JSON：fastJson的解析器，用于JSON格式字符串与JSON对象及javaBean之间的转换 </p>
-</li>
-<li><p>JSONObject：fastJson提供的json对象 </p>
-</li>
-<li><p>JSONArray：fastJson提供json数组对象</p>
-</li>
+<li>JSON：fastJson的解析器，用于JSON格式字符串与JSON对象及javaBean之间的转换 </li>
+<li>JSONObject：fastJson提供的json对象 </li>
+<li>JSONArray：fastJson提供json数组对象</li>
 </ul>
+<a id="more"></a>
 <p><br></p>
 <h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><p>首先定义三个json格式的字符串</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//json字符串-简单对象型</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String JSON_OBJ_STR = <span class="string">"&#123;\"studentName\":\"lily\",\"studentAge\":12&#125;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//json字符串-数组类型</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String JSON_ARRAY_STR = <span class="string">"[&#123;\"studentName\":\"lily\",\"studentAge\":12&#125;,&#123;\"studentName\":\"lucy\",\"studentAge\":15&#125;]"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//复杂格式json字符串</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String COMPLEX_JSON_STR = <span class="string">"&#123;\"teacherName\":\"crystall\",\"teacherAge\":27,\"course\":&#123;\"courseName\":\"english\",\"code\":1270&#125;,\"students\":[&#123;\"studentName\":\"lily\",\"studentAge\":12&#125;,&#123;\"studentName\":\"lucy\",\"studentAge\":15&#125;]&#125;"</span>;</span><br></pre></td></tr></table></figure>
