@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="linux,chkconfig," />
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="一个程序猿和一支笔的故事">
-<meta property="og:type" content="website">
-<meta property="og:title" content="chenogeの日志">
-<meta property="og:url" content="https://www.yf-gz.cn/tags/ClassLoader/index.html">
+<meta name="description" content="chkconfig命令主要用来更新（启动或停止）和查询系统服务的运行级信息，谨记chkconfig不是立即自动禁止或激活一个服务，它只是简单的改变了符号（ln）连接。 12chkconfig [--add][--del][--list][系统服务]chkconfig [--level &amp;lt;等级代号&amp;gt;][系统服务][on/off/reset]">
+<meta name="keywords" content="linux,chkconfig">
+<meta property="og:type" content="article">
+<meta property="og:title" content="chkconfig">
+<meta property="og:url" content="https://www.yf-gz.cn/2019/05/27/linux-chkconfig/index.html">
 <meta property="og:site_name" content="chenogeの日志">
-<meta property="og:description" content="一个程序猿和一支笔的故事">
+<meta property="og:description" content="chkconfig命令主要用来更新（启动或停止）和查询系统服务的运行级信息，谨记chkconfig不是立即自动禁止或激活一个服务，它只是简单的改变了符号（ln）连接。 12chkconfig [--add][--del][--list][系统服务]chkconfig [--level &amp;lt;等级代号&amp;gt;][系统服务][on/off/reset]">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-27T14:35:00.294Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="chenogeの日志">
-<meta name="twitter:description" content="一个程序猿和一支笔的故事">
+<meta name="twitter:title" content="chkconfig">
+<meta name="twitter:description" content="chkconfig命令主要用来更新（启动或停止）和查询系统服务的运行级信息，谨记chkconfig不是立即自动禁止或激活一个服务，它只是简单的改变了符号（ln）连接。 12chkconfig [--add][--del][--list][系统服务]chkconfig [--level &amp;lt;等级代号&amp;gt;][系统服务][on/off/reset]">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://www.yf-gz.cn/tags/ClassLoader/"/>
+  <link rel="canonical" href="https://www.yf-gz.cn/2019/05/27/linux-chkconfig/"/>
 
 
 
 
 
-  <title>标签: ClassLoader | chenogeの日志</title>
+  <title>chkconfig | chenogeの日志</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -251,54 +253,162 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>ClassLoader<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/05/27/linux-chkconfig/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/endBlogs/2019/03/15/java类加载器/" itemprop="url">
-              
-                <span itemprop="name">java类加载器</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">chkconfig</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-03-15T10:31:05+08:00"
-              content="2019-03-15" >
-          03-15
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-27T22:25:17+08:00">
+                2019-05-27
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>chkconfig命令主要用来更新（启动或停止）和查询系统服务的运行级信息，谨记chkconfig不是立即自动禁止或激活一个服务，它只是简单的改变了符号（ln）连接。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chkconfig [--add][--del][--list][系统服务]</span><br><span class="line">chkconfig [--level &lt;等级代号&gt;][系统服务][on/off/reset]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><br></p>
+<h4 id="参数用法"><a href="#参数用法" class="headerlink" title="参数用法"></a>参数用法</h4><p><strong>–add</strong>：增加所指定的系统服务，让chkconfig指令得以管理它，并同时在系统启动的叙述文件内增加相关数据。</p>
+<p><strong>–del</strong>：删除所指定的系统服务，不再由chkconfig指令管理，并同时在系统启动的叙述文件内删除相关数据。</p>
+<p><strong>–level&lt;等级代号&gt;</strong>：指定读系统服务要在哪一个执行等级中开启或关毕。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">等级0表示：表示关机</span><br><span class="line"></span><br><span class="line">等级1表示：单用户模式</span><br><span class="line"></span><br><span class="line">等级2表示：无网络连接的多用户命令行模式</span><br><span class="line"></span><br><span class="line">等级3表示：有网络连接的多用户命令行模式</span><br><span class="line"></span><br><span class="line">等级4表示：不可用</span><br><span class="line"></span><br><span class="line">等级5表示：带图形界面的多用户模式</span><br><span class="line"></span><br><span class="line">等级6表示：重新启动</span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<ul>
+<li>对于每个运行级，只能有一个启动脚本或者停止脚本。当切换运行级时，init不会重新启动已经启动的服务，也不会再次去停止已经停止的服务</li>
+<li>on和off开 关，系统默认只对运行级<code>3，4，5</code>有效，但是<code>reset</code>可以对所有运行级有效</li>
+<li>由于现在的Linux系统安装完后就运行在第5个级别，即系统启动后直接进入图形界面，而不用在字符模式下登录后用startx或者xinit 来起动图形界面</li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/endBlogs/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/endBlogs/tags/chkconfig/" rel="tag"># chkconfig</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/endBlogs/2019/05/27/linux-开机自启动服务/" rel="next" title="linux-开机自启动服务">
+                <i class="fa fa-chevron-left"></i> linux-开机自启动服务
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -306,6 +416,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -326,8 +440,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -378,6 +501,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数用法"><span class="nav-number">1.</span> <span class="nav-text">参数用法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -511,6 +650,10 @@
   
 
   
+  <script type="text/javascript" src="/endBlogs/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/endBlogs/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
