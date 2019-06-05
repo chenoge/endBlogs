@@ -266,6 +266,773 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/15/maven配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/endBlogs/2019/03/15/maven配置/" itemprop="url">maven配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T12:19:40+08:00">
+                2019-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Maven 提倡使用一个共同的标准目录结构，Maven 使用约定优于配置的原则，大家尽可能的遵守这样的目录结构。如下所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">目录</th>
+<th style="text-align:left">目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">${basedir}</td>
+<td style="text-align:left"><strong>存放pom.xml和所有的子目录</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">${basedir}/src/main/java</td>
+<td style="text-align:left"><strong>项目的java源代码 </strong></td>
+</tr>
+<tr>
+<td style="text-align:left">${basedir}/src/main/resources</td>
+<td style="text-align:left"><strong>项目的资源，比如说property文件，springmvc.xml</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">${basedir}/src/test/java</td>
+<td style="text-align:left">项目的测试类，比如说Junit代码</td>
+</tr>
+<tr>
+<td style="text-align:left">${basedir}/src/test/resources</td>
+<td style="text-align:left">测试用的资源</td>
+</tr>
+<tr>
+<td style="text-align:left">${basedir}/src/main/webapp/WEB-INF</td>
+<td style="text-align:left"><strong>web应用文件目录，web项目的信息，比如存放web.xml、本地图片、jsp视图页面</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">${basedir}/target</td>
+<td style="text-align:left"><strong>打包输出目录</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">${basedir}/target/classes</td>
+<td style="text-align:left">编译输出目录</td>
+</tr>
+<tr>
+<td style="text-align:left">${basedir}/target/test-classes</td>
+<td style="text-align:left">测试编译输出目录</td>
+</tr>
+<tr>
+<td style="text-align:left">Test.java</td>
+<td style="text-align:left">Maven只会自动运行符合该命名规则的测试类</td>
+</tr>
+<tr>
+<td style="text-align:left">~/.m2/repository</td>
+<td style="text-align:left"><strong>Maven默认的本地仓库目录位置</strong></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/endBlogs/2019/03/15/maven配置/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/15/maven-pom配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/endBlogs/2019/03/15/maven-pom配置/" itemprop="url">maven-pom配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T12:04:24+08:00">
+                2019-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>POM</code>是项目对象模型(<code>Project Object Model</code>)的简称,它是<code>Maven项目</code>中的文件。</p>
+<p><br></p>
+<h4 id="maven的协作相关属性"><a href="#maven的协作相关属性" class="headerlink" title="maven的协作相关属性"></a>maven的协作相关属性</h4><p>一个<code>pom.xml</code>的定义必须包含<code>modelVersion</code>、<code>groupId</code>、<code>artifactId</code>和<code>version</code>这四个元素，当然这其中的元素也是可以从它的父项目中继承的。使用groupdId:artifactId:version`的形式来唯一确定一个项目。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0  </span></span></span><br><span class="line"><span class="tag"><span class="string">                      http://maven.apache.org/maven-v4_0_0.xsd"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">        含义：组织标识，定义了项目属于哪个组</span></span><br><span class="line"><span class="comment">        用途：此名称则是本地仓库中的路径</span></span><br><span class="line"><span class="comment">        例如：otowa.user.dao，在M2_REPO目录下，将是: otowa/user/dao目录</span></span><br><span class="line"><span class="comment">        命名规范:项目名称，模块，子模块</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>otowa.user.dao<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">        含义：项目名称，定义当前Maven项目在组中唯一的ID</span></span><br><span class="line"><span class="comment">        用途：例如：user-dao，在M2_REPO目录下，将是：otowa/user/dao/user-dao目录</span></span><br><span class="line"><span class="comment">        命名规范:唯一就好</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>user-dao<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">        含义：项目当前的版本号</span></span><br><span class="line"><span class="comment">        用途：例如：0.0.1-SNAPSHOT</span></span><br><span class="line"><span class="comment">		在M2_REPO目录下，将是：otowa/user/dao/user-dao/0.0.1-SNAPSHOT目录</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 打包的格式，可以为：pom , jar , maven-plugin , ejb , war , ear , rar , par --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>war<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 元素声明了一个对用户更为友好的项目名称 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">&lt;!-- 定义本项目的依赖关系 --&gt;</span>  </span><br><span class="line"> <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line">     <span class="comment">&lt;!-- 每个dependency都对应这一个jar包 --&gt;</span>  </span><br><span class="line">     <span class="tag">&lt;<span class="name">dependency</span>&gt;</span>  </span><br><span class="line">         <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.winner.trade<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </span><br><span class="line">         <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>trade-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </span><br><span class="line">         <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line">         <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">	maven认为，程序对外部的依赖会随着程序的所处阶段和应用场景而变化</span></span><br><span class="line"><span class="comment">	所以maven中的依赖关系有作用域(scope)的限制。 </span></span><br><span class="line"><span class="comment">--&gt;</span>  </span><br><span class="line">         </span><br><span class="line">         <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	scope包含如下的取值：compile（编译范围）、provided（已提供范围）</span></span><br><span class="line"><span class="comment">	runtime（运行时范围）、test（测试范围）、system（系统范围） </span></span><br><span class="line"><span class="comment">--&gt;</span>  </span><br><span class="line">         <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line">         <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">	设置指依赖是否可选，默认为false,即子项目默认都继承:为true</span></span><br><span class="line"><span class="comment">	则子项目必需显示的引入，与dependencyManagement里定义的依赖类似  </span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">optional</span>&gt;</span>false<span class="tag">&lt;/<span class="name">optional</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line">         <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">	屏蔽依赖关系。 比如项目中使用的libA依赖某个库的1.0版，</span></span><br><span class="line"><span class="comment">	libB依赖某个库的2.0版，现在想统一使用2.0版，就应该屏蔽掉对1.0版的依赖 </span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">     <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"> <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="定义常量"><a href="#定义常量" class="headerlink" title="定义常量"></a>定义常量</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 为pom定义一些常量，在pom中的其它地方可以直接引用 使用方式 如下 ：$&#123;file.encoding&#125; --&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">file.encoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">file.encoding</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">java.source.version</span>&gt;</span>1.5<span class="tag">&lt;/<span class="name">java.source.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">java.target.version</span>&gt;</span>1.5<span class="tag">&lt;/<span class="name">java.target.version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="多环境配置"><a href="#多环境配置" class="headerlink" title="多环境配置"></a>多环境配置</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 开发环境 --&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>dev<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">conf.dir</span>&gt;</span>profile/dev/<span class="tag">&lt;/<span class="name">conf.dir</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">activeByDefault</span>&gt;</span>true<span class="tag">&lt;/<span class="name">activeByDefault</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 生成环境 --&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>prod<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">conf.dir</span>&gt;</span>profile/prod/<span class="tag">&lt;/<span class="name">conf.dir</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/15/jar包/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/endBlogs/2019/03/15/jar包/" itemprop="url">jar包</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T11:10:54+08:00">
+                2019-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="一、制作只含有字节码文件的jar包"><a href="#一、制作只含有字节码文件的jar包" class="headerlink" title="一、制作只含有字节码文件的jar包"></a>一、制作只含有字节码文件的jar包</h3><p>我们先来看只含有字节码文件，即只含有<code>.class文件</code>的<code>jar包</code>怎么制作，这是最简单的形式</p>
+<h5 id="1、最简单的jar包——直接输出hello"><a href="#1、最简单的jar包——直接输出hello" class="headerlink" title="1、最简单的jar包——直接输出hello"></a>1、最简单的jar包——直接输出hello</h5><p>最终生成的jar包结构</p>
+<blockquote>
+<p>META-INF</p>
+<p>Hello.class</p>
+</blockquote>
+<p>方法步骤</p>
+<p>（1）用记事本写一个<code>Hello.java</code>的文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span></span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] agrs)</span></span>&#123;</span><br><span class="line">   	System.out.println(<span class="string">"hello"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（2）用命令行进入到该目录下，编译这个文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac Hello.java</span><br></pre></td></tr></table></figure>
+<p>（3）将编译后的<code>Hello.class</code>文件打成<code>jar包</code> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jar -cvf hello.jar Hello.class</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>c</code> 表示要创建一个新的<code>jar包</code> </p>
+</li>
+<li><p><code>v</code> 表示创建的过程中在控制台输出创建过程的一些信息</p>
+</li>
+<li><p><code>f</code> 表示给生成的<code>jar包命名</code> </p>
+</li>
+</ul>
+<p>（4）运行jar包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java -jar hello.jar</span><br><span class="line"># 这时会报如下错误  hello.jar中没有主清单属性</span><br></pre></td></tr></table></figure>
+<p>（5）添加<code>Main-Class</code>属性</p>
+<p>用压缩软件打开<code>hello.jar</code>，会发现里面多了一个<code>META-INF</code>文件夹，里面有一个<code>MENIFEST.MF</code>的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Manifest-Version: 1.0</span><br><span class="line">Created-By: 1.8.0_121 (Oracle Corporation)</span><br></pre></td></tr></table></figure>
+<p>添加<code>Main-Class: Hello</code> ，再次运行<code>java -jar hello.jar</code> ，此时成功在控制台看到 <code>hello</code> </p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/endBlogs/2019/03/15/jar包/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/15/java类加载器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/endBlogs/2019/03/15/java类加载器/" itemprop="url">java类加载器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T10:31:05+08:00">
+                2019-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h3><p>类加载器负责将<code>.class文件</code>加载到内存中，并为类生成一个<code>java.lang.Class</code>实例。</p>
+<p>一旦一个类被加载入<code>JVM</code>中，同一个类就不会被再次加入了。在<code>JVM</code>中用来判断类的唯一性标识是：<strong>类名、类所在的包名和类加载器</strong>。</p>
+<p>当<code>JVM</code>启动时，会形成由三个类加载器组成的初始类加载器层次结构：</p>
+<ul>
+<li><code>BootStrap ClassLoader</code>：根类加载器</li>
+<li><code>Extension ClassLoader</code>：扩展类加载器</li>
+<li><code>System ClassLoader</code>：系统类加载器</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/endBlogs/2019/03/15/java类加载器/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/11/Elasticsearch基本使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/endBlogs/2019/03/11/Elasticsearch基本使用/" itemprop="url">Elasticsearch使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-11T18:44:39+08:00">
+                2019-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/intro.html" target="_blank" rel="noopener">文档</a> </p>
+<p><br></p>
+<h4 id="面向文档"><a href="#面向文档" class="headerlink" title="面向文档"></a>面向文档</h4><p>通常，应用程序中的<strong>对象拥有复杂的数据结构</strong>，可能包括<strong>日期</strong>、<strong>地理信息</strong>、<strong>其他对象</strong>或者<strong>数组</strong>等。如果要把这些对象存储在<strong>关系型数据库</strong>中，相当于是把一个表现力丰富的对象挤压到一个非常大的电子表格中：你必须<strong>将对象扁平化来适应表结构</strong>，而且又不得不在每次查询时重新构造对象：</p>
+<ul>
+<li>一个简单字段<strong>对应一列</strong> </li>
+<li>一个对象字段需要<strong>新建表、引用主键</strong> </li>
+<li>一个数组字段需要<strong>新建表、引用主键、每个数组元素对应一行</strong>  </li>
+</ul>
+<p><code>Elasticsearch</code>使用<code>JavaScript Object Notation</code>或者<code>JSON</code>作为文档的序列化格式。<code>JSON</code>序列化被大多数编程语言所支持，并且已经成为 <code>NoSQL</code>领域的标准格式。</p>
+<p>注：文档 =》对象</p>
+<p><br></p>
+<h4 id="请求格式"><a href="#请求格式" class="headerlink" title="请求格式"></a>请求格式</h4><p>一个<code>Elasticsearch</code>请求和任何<code>HTTP</code>请求一样由若干相同的部件组成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X &lt;VERB&gt; &apos;&lt;PROTOCOL&gt;://&lt;HOST&gt;:&lt;PORT&gt;/&lt;PATH&gt;?&lt;QUERY_STRING&gt;&apos; -d &apos;&lt;BODY&gt;&apos;</span><br></pre></td></tr></table></figure>
+<p>被 <code>&lt; &gt;</code> 标记的部件：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VERB</code></td>
+<td style="text-align:left">适当的 HTTP <em>方法</em> 或 <em>谓词</em> : <code>GET</code>、 <code>POST</code>、 <code>PUT</code>、 <code>HEAD</code> 或者 <code>DELETE</code></td>
+</tr>
+<tr>
+<td><code>PROTOCOL</code></td>
+<td style="text-align:left"><code>http</code> 或者 <code>https</code></td>
+</tr>
+<tr>
+<td><code>HOST</code></td>
+<td style="text-align:left">Elasticsearch 集群中任意节点的主机名</td>
+</tr>
+<tr>
+<td><code>PORT</code></td>
+<td style="text-align:left">运行 Elasticsearch HTTP 服务的端口号，默认是 <code>9200</code> 。</td>
+</tr>
+<tr>
+<td><code>PATH</code></td>
+<td style="text-align:left">API 的终端路径，由<code>index、type、id</code> 等组成</td>
+</tr>
+<tr>
+<td><code>QUERY_STRING</code></td>
+<td style="text-align:left">任意可选的查询字符串参数，<code>?pretty</code> 将格式化地输出 JSON 返回值</td>
+</tr>
+<tr>
+<td><code>BODY</code></td>
+<td style="text-align:left">一个 JSON 格式的请求体 (如果请求需要的话)</td>
+</tr>
+</tbody>
+</table>
+<p>例如，计算集群中文档的数量，我们可以用这个：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -X GET &apos;http://localhost:9200/_count?pretty&apos; -d &apos;</span><br><span class="line">&#123;</span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">        &quot;match_all&quot;: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/endBlogs/2019/03/11/Elasticsearch基本使用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/07/java知识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -432,7 +1199,7 @@
               
                 <a href="/endBlogs/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -445,7 +1212,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
