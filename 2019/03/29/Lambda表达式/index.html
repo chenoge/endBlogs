@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Lambda," />
+  <meta name="keywords" content="Java,Lambda," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="12Runnable noArguments = () -&amp;gt; System.out.println(&quot;Hello World&quot;);// Runnable 12ActionListener oneArgument = event -&amp;gt; System.out.println(&quot;button clicked&quot;);// ActionListener 12345Runnable multiSta">
-<meta name="keywords" content="Lambda">
+<meta name="description" content="语法lambda 表达式的语法格式如下： 12345(parameters) -&amp;gt; expression或(parameters) -&amp;gt;&amp;#123; statements; &amp;#125;  可选类型声明：不需要声明参数类型，编译器可以统一识别参数值 可选的参数圆括号：一个参数无需定义圆括号，但多个参数需要定义圆括号 可选的大括号：如果主体包含了一个语句，就不需要使用大括号 可选的返回关">
+<meta name="keywords" content="Java,Lambda">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lambda表达式">
+<meta property="og:title" content="Java Lambda表达式">
 <meta property="og:url" content="https://www.yf-gz.cn/2019/03/29/Lambda表达式/index.html">
 <meta property="og:site_name" content="chenogeの日志">
-<meta property="og:description" content="12Runnable noArguments = () -&amp;gt; System.out.println(&quot;Hello World&quot;);// Runnable 12ActionListener oneArgument = event -&amp;gt; System.out.println(&quot;button clicked&quot;);// ActionListener 12345Runnable multiSta">
+<meta property="og:description" content="语法lambda 表达式的语法格式如下： 12345(parameters) -&amp;gt; expression或(parameters) -&amp;gt;&amp;#123; statements; &amp;#125;  可选类型声明：不需要声明参数类型，编译器可以统一识别参数值 可选的参数圆括号：一个参数无需定义圆括号，但多个参数需要定义圆括号 可选的大括号：如果主体包含了一个语句，就不需要使用大括号 可选的返回关">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-05T10:16:28.771Z">
+<meta property="og:updated_time" content="2019-07-26T05:26:28.630Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lambda表达式">
-<meta name="twitter:description" content="12Runnable noArguments = () -&amp;gt; System.out.println(&quot;Hello World&quot;);// Runnable 12ActionListener oneArgument = event -&amp;gt; System.out.println(&quot;button clicked&quot;);// ActionListener 12345Runnable multiSta">
+<meta name="twitter:title" content="Java Lambda表达式">
+<meta name="twitter:description" content="语法lambda 表达式的语法格式如下： 12345(parameters) -&amp;gt; expression或(parameters) -&amp;gt;&amp;#123; statements; &amp;#125;  可选类型声明：不需要声明参数类型，编译器可以统一识别参数值 可选的参数圆括号：一个参数无需定义圆括号，但多个参数需要定义圆括号 可选的大括号：如果主体包含了一个语句，就不需要使用大括号 可选的返回关">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>Lambda表达式 | chenogeの日志</title>
+  <title>Java Lambda表达式 | chenogeの日志</title>
   
 
 
@@ -284,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Lambda表达式</h1>
+          <h1 class="post-title" itemprop="name headline">Java Lambda表达式</h1>
         
 
         <div class="post-meta">
@@ -334,12 +334,35 @@
       
 
       
-        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Runnable noArguments = () -&gt; System.out.println(<span class="string">"Hello World"</span>);</span><br><span class="line"><span class="comment">// Runnable</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ActionListener oneArgument = event -&gt; System.out.println(<span class="string">"button clicked"</span>);</span><br><span class="line"><span class="comment">// ActionListener</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Runnable multiStatement = () -&gt; &#123;</span><br><span class="line">    System.out.print(<span class="string">"Hello"</span>);</span><br><span class="line">    System.out.println(<span class="string">" World"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// Runnable</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BinaryOperator&lt;Long&gt; add = (x, y) -&gt; x + y;</span><br><span class="line"><span class="comment">// BinaryOperator</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BinaryOperator&lt;Long&gt; addExplicit = (Long x, Long y) -&gt; x + y;</span><br><span class="line"><span class="comment">// BinaryOperator</span></span><br></pre></td></tr></table></figure>
-<p>注：Lambda 表达式都可以扩写为原始的<code>匿名类</code>形式</p>
+        <h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p>lambda 表达式的语法格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(parameters) -&gt; expression</span><br><span class="line"></span><br><span class="line">或</span><br><span class="line"></span><br><span class="line">(parameters) -&gt;&#123; statements; &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>可选类型声明：</strong>不需要声明参数类型，编译器可以统一识别参数值</li>
+<li><strong>可选的参数圆括号：</strong>一个参数无需定义圆括号，但多个参数需要定义圆括号</li>
+<li><strong>可选的大括号：</strong>如果主体包含了一个语句，就不需要使用大括号</li>
+<li><strong>可选的返回关键字：</strong>如果主体只有一个表达式返回值则编译器会自动返回值，大括号需要指定明表达式返回了一个数值</li>
+</ul>
+<a id="more"></a>
+<p><br></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Java8Tester</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">      Java8Tester tester = <span class="keyword">new</span> Java8Tester();</span><br><span class="line">       </span><br><span class="line">      <span class="comment">// 类型声明</span></span><br><span class="line">      MathOperation addition = (<span class="keyword">int</span> a, <span class="keyword">int</span> b) -&gt; a + b;</span><br><span class="line">        </span><br><span class="line">      <span class="comment">// 不用类型声明</span></span><br><span class="line">      MathOperation subtraction = (a, b) -&gt; a - b;</span><br><span class="line">        </span><br><span class="line">      <span class="comment">// 大括号中的返回语句</span></span><br><span class="line">      MathOperation multiplication = (<span class="keyword">int</span> a, <span class="keyword">int</span> b) -&gt; &#123; <span class="keyword">return</span> a * b; &#125;;</span><br><span class="line">        </span><br><span class="line">      <span class="comment">// 没有大括号及返回语句</span></span><br><span class="line">      MathOperation division = (<span class="keyword">int</span> a, <span class="keyword">int</span> b) -&gt; a / b;</span><br><span class="line">        </span><br><span class="line">      System.out.println(<span class="string">"10 + 5 = "</span> + tester.operate(<span class="number">10</span>, <span class="number">5</span>, addition));</span><br><span class="line">      System.out.println(<span class="string">"10 - 5 = "</span> + tester.operate(<span class="number">10</span>, <span class="number">5</span>, subtraction));</span><br><span class="line">      System.out.println(<span class="string">"10 x 5 = "</span> + tester.operate(<span class="number">10</span>, <span class="number">5</span>, multiplication));</span><br><span class="line">      System.out.println(<span class="string">"10 / 5 = "</span> + tester.operate(<span class="number">10</span>, <span class="number">5</span>, division));</span><br><span class="line">   &#125;</span><br><span class="line">    </span><br><span class="line">   <span class="class"><span class="keyword">interface</span> <span class="title">MathOperation</span> </span>&#123;</span><br><span class="line">      <span class="function"><span class="keyword">int</span> <span class="title">operation</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>;</span><br><span class="line">   &#125;</span><br><span class="line">    </span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">operate</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, MathOperation mathOperation)</span></span>&#123;</span><br><span class="line">      <span class="keyword">return</span> mathOperation.operation(a, b);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：Lambda表达式只支持函数式接口（只有一个抽象方法）</p>
+<p><br></p>
+<h4 id="FunctionalInterface注解"><a href="#FunctionalInterface注解" class="headerlink" title="@FunctionalInterface注解"></a><strong>@FunctionalInterface</strong>注解</h4><p>Java 8为函数式接口引入了一个新注解@FunctionalInterface，主要用于<strong>编译级错误检查</strong>，加上该注解，当你写的接口不符合函数式接口定义的时候，编译器会报错。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">GreetingService</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sayMessage</span><span class="params">(String message)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：@FunctionalInterface对于接口是不是函数式接口没有影响，该注解知识提醒编译器去检查该接口<strong>是否仅包含一个抽象方法</strong>。</p>
+<p><br></p>
+<h5 id="函数式接口里允许定义默认方法"><a href="#函数式接口里允许定义默认方法" class="headerlink" title="函数式接口里允许定义默认方法"></a>函数式接口里允许定义默认方法</h5><p>函数式接口里是可以包含默认方法，因为默认方法不是抽象方法，其有一个默认实现，所以是符合函数式接口的定义的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">GreetingService</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sayMessage</span><span class="params">(String message)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">doSomeMoreWork1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Method body</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">doSomeMoreWork2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Method body</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="函数式接口里允许定义静态方法"><a href="#函数式接口里允许定义静态方法" class="headerlink" title="函数式接口里允许定义静态方法"></a>函数式接口里允许定义静态方法</h5><p>函数式接口里是可以包含静态方法，因为静态方法不能是抽象方法，是一个已经实现了的方法，所以是符合函数式接口的定义的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">GreetingService</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sayMessage</span><span class="params">(String message)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="函数式接口里允许定义java-lang-Object里的public方法"><a href="#函数式接口里允许定义java-lang-Object里的public方法" class="headerlink" title="函数式接口里允许定义java.lang.Object里的public方法"></a>函数式接口里允许定义<code>java.lang.Object</code>里的public方法</h5><ul>
+<li>函数式接口里是可以包含<code>Object</code>里的<code>public</code>方法</li>
+<li>任何一个函数式接口的实现，默认都继承了<code>Object</code>类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">GreetingService</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sayMessage</span><span class="params">(String message)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
 
       
     </div>
@@ -356,6 +379,8 @@
     <footer class="post-footer">
       
         <div class="post-tags">
+          
+            <a href="/endBlogs/tags/Java/" rel="tag"># Java</a>
           
             <a href="/endBlogs/tags/Lambda/" rel="tag"># Lambda</a>
           
@@ -434,8 +459,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -450,7 +484,7 @@
               
                 <a href="/endBlogs/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -463,7 +497,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -486,6 +520,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#语法"><span class="nav-number">1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FunctionalInterface注解"><span class="nav-number">2.</span> <span class="nav-text">@FunctionalInterface注解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#函数式接口里允许定义默认方法"><span class="nav-number">2.1.</span> <span class="nav-text">函数式接口里允许定义默认方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#函数式接口里允许定义静态方法"><span class="nav-number">2.2.</span> <span class="nav-text">函数式接口里允许定义静态方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#函数式接口里允许定义java-lang-Object里的public方法"><span class="nav-number">2.3.</span> <span class="nav-text">函数式接口里允许定义java.lang.Object里的public方法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
