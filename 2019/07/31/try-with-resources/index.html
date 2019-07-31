@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="try-with-resources," />
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="一个程序猿和一支笔的故事">
-<meta property="og:type" content="website">
-<meta property="og:title" content="chenogeの日志">
-<meta property="og:url" content="https://www.yf-gz.cn/tags/Transactional/index.html">
+<meta name="description" content="一、背景在Java编程过程中，如果打开了外部资源（文件、数据库连接、网络连接等），我们必须在这些外部资源使用完毕后，手动关闭它们。因为外部资源不由JVM管理，无法享用JVM的垃圾回收机制。 如果我们不在编程时确保在正确的时机关闭外部资源，就会导致外部资源泄露，紧接着就会出现文件被异常占用，数据库连接过多导致连接池溢出等诸多很严重的问题。  二、传统的资源关闭方式为了确保外部资源一定要被关闭，通常关">
+<meta name="keywords" content="try-with-resources">
+<meta property="og:type" content="article">
+<meta property="og:title" content="try-with-resources">
+<meta property="og:url" content="https://www.yf-gz.cn/2019/07/31/try-with-resources/index.html">
 <meta property="og:site_name" content="chenogeの日志">
-<meta property="og:description" content="一个程序猿和一支笔的故事">
+<meta property="og:description" content="一、背景在Java编程过程中，如果打开了外部资源（文件、数据库连接、网络连接等），我们必须在这些外部资源使用完毕后，手动关闭它们。因为外部资源不由JVM管理，无法享用JVM的垃圾回收机制。 如果我们不在编程时确保在正确的时机关闭外部资源，就会导致外部资源泄露，紧接着就会出现文件被异常占用，数据库连接过多导致连接池溢出等诸多很严重的问题。  二、传统的资源关闭方式为了确保外部资源一定要被关闭，通常关">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-31T13:30:19.450Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="chenogeの日志">
-<meta name="twitter:description" content="一个程序猿和一支笔的故事">
+<meta name="twitter:title" content="try-with-resources">
+<meta name="twitter:description" content="一、背景在Java编程过程中，如果打开了外部资源（文件、数据库连接、网络连接等），我们必须在这些外部资源使用完毕后，手动关闭它们。因为外部资源不由JVM管理，无法享用JVM的垃圾回收机制。 如果我们不在编程时确保在正确的时机关闭外部资源，就会导致外部资源泄露，紧接着就会出现文件被异常占用，数据库连接过多导致连接池溢出等诸多很严重的问题。  二、传统的资源关闭方式为了确保外部资源一定要被关闭，通常关">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://www.yf-gz.cn/tags/Transactional/"/>
+  <link rel="canonical" href="https://www.yf-gz.cn/2019/07/31/try-with-resources/"/>
 
 
 
 
 
-  <title>标签: Transactional | chenogeの日志</title>
+  <title>try-with-resources | chenogeの日志</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -251,54 +253,165 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Transactional<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/07/31/try-with-resources/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/endBlogs/2019/03/19/SpringDataJPA-Query注解/" itemprop="url">
-              
-                <span itemprop="name">SpringDataJPA-Query注解</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">try-with-resources</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-03-19T20:27:21+08:00"
-              content="2019-03-19" >
-          03-19
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-31T21:16:46+08:00">
+                2019-07-31
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h5><p>在Java编程过程中，如果打开了外部资源（<strong>文件、数据库连接、网络连接</strong>等），我们必须在这些外部资源使用完毕后，手动关闭它们。因为外部资源不由<strong>JVM</strong>管理，<strong>无法享用JVM的垃圾回收机制</strong>。</p>
+<p>如果我们不在编程时确保在正确的时机关闭外部资源，就会导致<strong>外部资源泄露</strong>，紧接着就会出现<strong>文件被异常占用</strong>，数据库连接过多导致<strong>连接池溢出</strong>等诸多很严重的问题。</p>
+<p><br></p>
+<h5 id="二、传统的资源关闭方式"><a href="#二、传统的资源关闭方式" class="headerlink" title="二、传统的资源关闭方式"></a>二、传统的资源关闭方式</h5><p>为了确保外部资源一定要被关闭，通常关闭代码被写入finally代码块中，当然我们还必须注意到关闭资源时可能抛出的异常，于是变有了下面的经典代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    FileInputStream inputStream = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        inputStream = <span class="keyword">new</span> FileInputStream(<span class="keyword">new</span> File(<span class="string">"test"</span>));</span><br><span class="line">        System.out.println(inputStream.read());</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e.getMessage(), e);</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (inputStream != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                inputStream.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e.getMessage(), e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>在C++中，我们可以把关闭资源的代码放在<strong>析构函数</strong>中，让<strong>外部资源的关闭行为</strong>与<strong>外部资源的句柄对象的生命周期</strong>关联，当外部资源的句柄对象生命周期终结时，外部资源的关闭行为将被自动调用。这样不仅更加符合面向对象的编程理念，也让代码更加简洁易懂。</p>
+<p><br></p>
+<h5 id="三、JDK7及其之后的资源关闭方式"><a href="#三、JDK7及其之后的资源关闭方式" class="headerlink" title="三、JDK7及其之后的资源关闭方式"></a>三、JDK7及其之后的资源关闭方式</h5><p>当一个外部资源的<strong>句柄对象</strong>实现了<code>AutoCloseable</code>接口，那么就可以将上面的板式代码简化为如下形式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> (FileInputStream inputStream = <span class="keyword">new</span> FileInputStream(<span class="keyword">new</span> File(<span class="string">"test"</span>))) &#123;</span><br><span class="line">        System.out.println(inputStream.read());</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e.getMessage(), e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将外部资源的句柄对象的创建放在try关键字后面的括号中，当这个try-catch代码块执行完毕后，Java会确保外部资源的close方法被调用。</p>
+<p><br></p>
+<h4 id="四、原理"><a href="#四、原理" class="headerlink" title="四、原理"></a>四、原理</h4><p><code>try-with-resource</code>并不是JVM虚拟机的新增功能，只是JDK实现了一个语法糖，当你将上面代码反编译后会发现，其实对JVM虚拟机而言，它看到的依然是之前的写法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        FileInputStream inputStream = <span class="keyword">new</span> FileInputStream(<span class="keyword">new</span> File(<span class="string">"test"</span>));</span><br><span class="line">        Throwable var2 = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(inputStream.read());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Throwable var12) &#123;</span><br><span class="line">            var2 = var12;</span><br><span class="line">            <span class="keyword">throw</span> var12;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (inputStream != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (var2 != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        inputStream.close();</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (Throwable var11) &#123;</span><br><span class="line">                        var2.addSuppressed(var11);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    inputStream.close();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException var14) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(var14.getMessage(), var14);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当对外部资源进行处理时，如果遭遇了异常，且在随后的关闭外部资源过程中，又遭遇了异常，那么<strong>你catch到的将会是对外部资源进行处理时遭遇的异常</strong>，关闭资源时遭遇的异常将被“<strong>抑制</strong>”但不是丢弃，通过异常的<code>getSuppressed</code>方法，可以提取出被抑制的异常。</p>
+<p><br></p>
+<h5 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h5><p>1、当一个外部资源的句柄对象实现了<code>AutoCloseable</code>接口，JDK7中便可以利用<code>try-with-resource</code>语法更优雅的关闭资源，消除板式代码。</p>
+<p>2、<code>try-with-resource</code>时，如果对外部资源的处理和对外部资源的关闭均遭遇了异常，“<strong>关闭异常</strong>”将被抑制，“<strong>处理异常</strong>”将被抛出，但“<strong>关闭异常</strong>”并没有丢失，而是存放在“<strong>处理异常</strong>”的被抑制的<strong>异常列表</strong>中。</p>
+<p><br></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/endBlogs/tags/try-with-resources/" rel="tag"># try-with-resources</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/endBlogs/2019/07/26/java默认方法/" rel="next" title="java默认方法">
+                <i class="fa fa-chevron-left"></i> java默认方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -306,6 +419,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -326,8 +443,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -378,6 +504,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#一、背景"><span class="nav-number">1.</span> <span class="nav-text">一、背景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二、传统的资源关闭方式"><span class="nav-number">2.</span> <span class="nav-text">二、传统的资源关闭方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三、JDK7及其之后的资源关闭方式"><span class="nav-number">3.</span> <span class="nav-text">三、JDK7及其之后的资源关闭方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、原理"><span class="nav-number"></span> <span class="nav-text">四、原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#五、总结"><span class="nav-number">1.</span> <span class="nav-text">五、总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -511,6 +653,10 @@
   
 
   
+  <script type="text/javascript" src="/endBlogs/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/endBlogs/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
