@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Elasticsearch,排序," />
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="一个程序猿和一支笔的故事">
-<meta property="og:type" content="website">
-<meta property="og:title" content="chenogeの日志">
-<meta property="og:url" content="https://www.yf-gz.cn/tags/pom/index.html">
+<meta name="description" content="内置排序聚合引入了一个 order 对象， 它允许我们可以根据以下几个值中的一个值进行排序：  _count ：按文档数排序。对 terms 、 histogram 、 date_histogram 有效 _term ： 按词项的字符串值的字母顺序排序。只在 terms 内使用 _key ：按每个桶的键值数值排序。 只在 histogram 和 date_histogram 内使用  123456">
+<meta name="keywords" content="Elasticsearch,排序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Elasticsearch聚合排序">
+<meta property="og:url" content="https://www.yf-gz.cn/2019/08/06/Elasticsearch聚合排序/index.html">
 <meta property="og:site_name" content="chenogeの日志">
-<meta property="og:description" content="一个程序猿和一支笔的故事">
+<meta property="og:description" content="内置排序聚合引入了一个 order 对象， 它允许我们可以根据以下几个值中的一个值进行排序：  _count ：按文档数排序。对 terms 、 histogram 、 date_histogram 有效 _term ： 按词项的字符串值的字母顺序排序。只在 terms 内使用 _key ：按每个桶的键值数值排序。 只在 histogram 和 date_histogram 内使用  123456">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-06T07:34:40.578Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="chenogeの日志">
-<meta name="twitter:description" content="一个程序猿和一支笔的故事">
+<meta name="twitter:title" content="Elasticsearch聚合排序">
+<meta name="twitter:description" content="内置排序聚合引入了一个 order 对象， 它允许我们可以根据以下几个值中的一个值进行排序：  _count ：按文档数排序。对 terms 、 histogram 、 date_histogram 有效 _term ： 按词项的字符串值的字母顺序排序。只在 terms 内使用 _key ：按每个桶的键值数值排序。 只在 histogram 和 date_histogram 内使用  123456">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://www.yf-gz.cn/tags/pom/"/>
+  <link rel="canonical" href="https://www.yf-gz.cn/2019/08/06/Elasticsearch聚合排序/"/>
 
 
 
 
 
-  <title>标签: pom | chenogeの日志</title>
+  <title>Elasticsearch聚合排序 | chenogeの日志</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -251,54 +253,176 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>pom<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/08/06/Elasticsearch聚合排序/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/endBlogs/2019/03/15/maven-pom配置/" itemprop="url">
-              
-                <span itemprop="name">maven-pom配置</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Elasticsearch聚合排序</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-03-15T12:04:24+08:00"
-              content="2019-03-15" >
-          03-15
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-06T14:35:41+08:00">
+                2019-08-06
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="内置排序"><a href="#内置排序" class="headerlink" title="内置排序"></a>内置排序</h4><p>聚合引入了一个 <code>order</code> 对象， 它允许我们可以根据以下几个值中的一个值进行排序：</p>
+<ul>
+<li><strong><code>_count</code></strong> ：按文档数排序。对 <code>terms</code> 、 <code>histogram</code> 、 <code>date_histogram</code> 有效</li>
+<li><strong><code>_term</code></strong> ： 按词项的字符串值的字母顺序排序。只在 <code>terms</code> 内使用</li>
+<li><strong><code>_key</code></strong> ：按每个桶的键值数值排序。 只在 <code>histogram</code> 和 <code>date_histogram</code> 内使用</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">GET /cars/transactions/_search</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"size"</span> : <span class="number">0</span>,</span><br><span class="line">    <span class="string">"aggs"</span> : &#123;</span><br><span class="line">        <span class="string">"colors"</span> : &#123;</span><br><span class="line">            <span class="string">"terms"</span> : &#123;</span><br><span class="line">              <span class="string">"field"</span> : <span class="string">"color"</span>,</span><br><span class="line">              <span class="string">"order"</span>: &#123;</span><br><span class="line">                <span class="string">"_count"</span> : <span class="string">"desc"</span> </span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：Elasticsearch默认的，桶会根据 <code>doc_count</code> 降序排列</p>
+<a id="more"></a>
+<p><br></p>
+<h4 id="按度量排序"><a href="#按度量排序" class="headerlink" title="按度量排序"></a>按度量排序</h4><p><strong>基于度量计算的结果值</strong>进行排序</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">GET /cars/transactions/_search</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"size"</span> : <span class="number">0</span>,</span><br><span class="line">    <span class="string">"aggs"</span> : &#123;</span><br><span class="line">        <span class="string">"colors"</span> : &#123;</span><br><span class="line">            <span class="string">"terms"</span> : &#123;</span><br><span class="line">              <span class="string">"field"</span> : <span class="string">"color"</span>,</span><br><span class="line">              <span class="string">"order"</span>: &#123;</span><br><span class="line">                <span class="string">"avg_price"</span> : <span class="string">"desc"</span> </span><br><span class="line">              &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="comment">// 度量计算</span></span><br><span class="line">            <span class="string">"aggs"</span>: &#123;</span><br><span class="line">                <span class="string">"avg_price"</span>: &#123;</span><br><span class="line">                    <span class="string">"avg"</span>: &#123;<span class="string">"field"</span>: <span class="string">"price"</span>&#125; </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果想使用多值度量进行排序， 我们只需以关心的度量为关键词使用点式路径：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">GET /cars/transactions/_search</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"size"</span> : <span class="number">0</span>,</span><br><span class="line">    <span class="string">"aggs"</span> : &#123;</span><br><span class="line">        <span class="string">"colors"</span> : &#123;</span><br><span class="line">            <span class="string">"terms"</span> : &#123;</span><br><span class="line">              <span class="string">"field"</span> : <span class="string">"color"</span>,</span><br><span class="line">              <span class="string">"order"</span>: &#123;</span><br><span class="line">                <span class="comment">// 根据方差排序</span></span><br><span class="line">                <span class="string">"stats.variance"</span> : <span class="string">"asc"</span> </span><br><span class="line">              &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">"aggs"</span>: &#123;</span><br><span class="line">                <span class="string">"stats"</span>: &#123;</span><br><span class="line">                    <span class="comment">// 多值度量计算</span></span><br><span class="line">                    <span class="string">"extended_stats"</span>: &#123;<span class="string">"field"</span>: <span class="string">"price"</span>&#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="基于“深度”度量排序"><a href="#基于“深度”度量排序" class="headerlink" title="基于“深度”度量排序"></a>基于“深度”度量排序</h4><p>在一定条件下，我们也有可能对<strong>更深的度量</strong>（孙子桶或从孙桶）进行排序。我们可以定义更深的路径，将度量用尖括号（ <code>&gt;</code> ）嵌套起来，像这样： <code>my_bucket&gt;another_bucket&gt;metric</code> 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">GET /cars/transactions/_search</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"size"</span> : <span class="number">0</span>,</span><br><span class="line">    <span class="string">"aggs"</span> : &#123;</span><br><span class="line">        <span class="string">"colors"</span> : &#123;</span><br><span class="line">            <span class="string">"histogram"</span> : &#123;</span><br><span class="line">              <span class="string">"field"</span> : <span class="string">"price"</span>,</span><br><span class="line">              <span class="string">"interval"</span>: <span class="number">20000</span>,</span><br><span class="line">              <span class="string">"order"</span>: &#123;</span><br><span class="line">                <span class="string">"red_green_cars&gt;stats.variance"</span> : <span class="string">"asc"</span> </span><br><span class="line">              &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">"aggs"</span>: &#123;</span><br><span class="line">                <span class="string">"red_green_cars"</span>: &#123;</span><br><span class="line">                    <span class="string">"filter"</span>: &#123; <span class="string">"terms"</span>: &#123;<span class="string">"color"</span>: [<span class="string">"red"</span>, <span class="string">"green"</span>]&#125;&#125;, </span><br><span class="line">                    <span class="string">"aggs"</span>: &#123;</span><br><span class="line">                        <span class="string">"stats"</span>: &#123;<span class="string">"extended_stats"</span>: &#123;<span class="string">"field"</span> : <span class="string">"price"</span>&#125;&#125; </span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：<strong>嵌套路径上的每个桶都必须是单值的</strong></p>
+<ul>
+<li><p><code>filter</code> 桶生成 一个单值桶：所有与过滤条件匹配的文档都在桶中</p>
+<ul>
+<li>目前，只有三个单值桶： <code>filter</code> 、 <code>global</code> 和 <code>reverse_nested</code> </li>
+</ul>
+</li>
+<li><p>多值桶（如：<code>terms</code> ）动态生成许多桶，无法通过指定一个确定路径来识别</p>
+</li>
+</ul>
+<p><br></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/endBlogs/tags/Elasticsearch/" rel="tag"># Elasticsearch</a>
+          
+            <a href="/endBlogs/tags/排序/" rel="tag"># 排序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/endBlogs/2019/08/01/JedisPool配置/" rel="next" title="JedisPool配置">
+                <i class="fa fa-chevron-left"></i> JedisPool配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -306,6 +430,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -326,8 +454,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -378,6 +515,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#内置排序"><span class="nav-number">1.</span> <span class="nav-text">内置排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按度量排序"><span class="nav-number">2.</span> <span class="nav-text">按度量排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于“深度”度量排序"><span class="nav-number">3.</span> <span class="nav-text">基于“深度”度量排序</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -511,6 +664,10 @@
   
 
   
+  <script type="text/javascript" src="/endBlogs/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/endBlogs/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
