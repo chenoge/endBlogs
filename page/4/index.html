@@ -336,14 +336,18 @@
 
       
         
-          <h4 id="Scheduled注解参数"><a href="#Scheduled注解参数" class="headerlink" title="@Scheduled注解参数"></a>@Scheduled注解参数</h4><h5 id="fixedDelay"><a href="#fixedDelay" class="headerlink" title="fixedDelay"></a>fixedDelay</h5><p>上一次<strong>执行完毕时间点</strong>之后多长时间再执行</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//上一次执行完毕时间点之后5秒再执行</span></span><br><span class="line"><span class="meta">@Scheduled</span>(fixedDelay = <span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
-<p><br></p>
-<h5 id="fixedRate"><a href="#fixedRate" class="headerlink" title="fixedRate"></a>fixedRate</h5><p>上一次<strong>开始执行时间点</strong>之后多长时间再执行</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//上一次开始执行时间点之后5秒再执行</span></span><br><span class="line"><span class="meta">@Scheduled</span>(fixedRate = <span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
-<p><br></p>
-<h5 id="initialDelay"><a href="#initialDelay" class="headerlink" title="initialDelay"></a>initialDelay</h5><p><strong>第一次</strong>延迟多长时间后再执行</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一次延迟1秒后执行，之后按fixedRate的规则每5秒执行一次</span></span><br><span class="line"><span class="meta">@Scheduled</span>(initialDelay=<span class="number">1000</span>, fixedRate=<span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
+          <h4 id="Scheduled"><a href="#Scheduled" class="headerlink" title="@Scheduled"></a>@Scheduled</h4><ul>
+<li>fixedDelay：上一次<strong>执行完毕时间点</strong>之后多长时间再执行，单位毫秒</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Scheduled</span>(fixedDelay = <span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>fixedRate：上一次<strong>开始执行时间点</strong>之后多长时间再执行，单位毫秒</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Scheduled</span>(fixedRate = <span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>initialDelay：<strong>第一次</strong>延迟多长时间后再执行</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Scheduled</span>(initialDelay=<span class="number">1000</span>, fixedRate=<span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/endBlogs/2019/05/12/Spring-Scheduled/#more" rel="contents">

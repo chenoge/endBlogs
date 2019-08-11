@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="@Scheduled注解参数fixedDelay上一次执行完毕时间点之后多长时间再执行 12 //上一次执行完毕时间点之后5秒再执行@Scheduled(fixedDelay = 5000)  fixedRate上一次开始执行时间点之后多长时间再执行 12//上一次开始执行时间点之后5秒再执行@Scheduled(fixedRate = 5000)  initialDelay第一次延迟多长时间后再">
+<meta name="description" content="@Scheduled fixedDelay：上一次执行完毕时间点之后多长时间再执行，单位毫秒  1@Scheduled(fixedDelay = 5000)  fixedRate：上一次开始执行时间点之后多长时间再执行，单位毫秒  1@Scheduled(fixedRate = 5000)  initialDelay：第一次延迟多长时间后再执行  1@Scheduled(initialDelay=">
 <meta name="keywords" content="Spring,Scheduled">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring-Scheduled">
 <meta property="og:url" content="https://www.yf-gz.cn/2019/05/12/Spring-Scheduled/index.html">
 <meta property="og:site_name" content="chenogeの日志">
-<meta property="og:description" content="@Scheduled注解参数fixedDelay上一次执行完毕时间点之后多长时间再执行 12 //上一次执行完毕时间点之后5秒再执行@Scheduled(fixedDelay = 5000)  fixedRate上一次开始执行时间点之后多长时间再执行 12//上一次开始执行时间点之后5秒再执行@Scheduled(fixedRate = 5000)  initialDelay第一次延迟多长时间后再">
+<meta property="og:description" content="@Scheduled fixedDelay：上一次执行完毕时间点之后多长时间再执行，单位毫秒  1@Scheduled(fixedDelay = 5000)  fixedRate：上一次开始执行时间点之后多长时间再执行，单位毫秒  1@Scheduled(fixedRate = 5000)  initialDelay：第一次延迟多长时间后再执行  1@Scheduled(initialDelay=">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-05T10:16:28.781Z">
+<meta property="og:updated_time" content="2019-08-11T09:10:57.105Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring-Scheduled">
-<meta name="twitter:description" content="@Scheduled注解参数fixedDelay上一次执行完毕时间点之后多长时间再执行 12 //上一次执行完毕时间点之后5秒再执行@Scheduled(fixedDelay = 5000)  fixedRate上一次开始执行时间点之后多长时间再执行 12//上一次开始执行时间点之后5秒再执行@Scheduled(fixedRate = 5000)  initialDelay第一次延迟多长时间后再">
+<meta name="twitter:description" content="@Scheduled fixedDelay：上一次执行完毕时间点之后多长时间再执行，单位毫秒  1@Scheduled(fixedDelay = 5000)  fixedRate：上一次开始执行时间点之后多长时间再执行，单位毫秒  1@Scheduled(fixedRate = 5000)  initialDelay：第一次延迟多长时间后再执行  1@Scheduled(initialDelay=">
 
 
 
@@ -334,106 +334,95 @@
       
 
       
-        <h4 id="Scheduled注解参数"><a href="#Scheduled注解参数" class="headerlink" title="@Scheduled注解参数"></a>@Scheduled注解参数</h4><h5 id="fixedDelay"><a href="#fixedDelay" class="headerlink" title="fixedDelay"></a>fixedDelay</h5><p>上一次<strong>执行完毕时间点</strong>之后多长时间再执行</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//上一次执行完毕时间点之后5秒再执行</span></span><br><span class="line"><span class="meta">@Scheduled</span>(fixedDelay = <span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
-<p><br></p>
-<h5 id="fixedRate"><a href="#fixedRate" class="headerlink" title="fixedRate"></a>fixedRate</h5><p>上一次<strong>开始执行时间点</strong>之后多长时间再执行</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//上一次开始执行时间点之后5秒再执行</span></span><br><span class="line"><span class="meta">@Scheduled</span>(fixedRate = <span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
-<p><br></p>
-<h5 id="initialDelay"><a href="#initialDelay" class="headerlink" title="initialDelay"></a>initialDelay</h5><p><strong>第一次</strong>延迟多长时间后再执行</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一次延迟1秒后执行，之后按fixedRate的规则每5秒执行一次</span></span><br><span class="line"><span class="meta">@Scheduled</span>(initialDelay=<span class="number">1000</span>, fixedRate=<span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
+        <h4 id="Scheduled"><a href="#Scheduled" class="headerlink" title="@Scheduled"></a>@Scheduled</h4><ul>
+<li>fixedDelay：上一次<strong>执行完毕时间点</strong>之后多长时间再执行，单位毫秒</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Scheduled</span>(fixedDelay = <span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>fixedRate：上一次<strong>开始执行时间点</strong>之后多长时间再执行，单位毫秒</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Scheduled</span>(fixedRate = <span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>initialDelay：<strong>第一次</strong>延迟多长时间后再执行</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Scheduled</span>(initialDelay=<span class="number">1000</span>, fixedRate=<span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<p><br></p>
-<h5 id="cron"><a href="#cron" class="headerlink" title="cron"></a>cron</h5><p>该参数接收一个<code>cron表达式</code>，<code>cron表达式</code>是一个字符串，字符串以5或6个空格隔开，分开共6或7个域，每一个域代表一个含义。cron表达式语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[秒] [分] [时] [日] [月] [周] [年]</span><br></pre></td></tr></table></figure>
-<p>注：[年]不是必须的域，可以省略[年]</p>
+<ul>
+<li>cron：有6或7个域（<code>[秒] [分] [时] [日] [月] [周] [年]</code>），每一个域代表一个含义。<code>[年]</code>不是必须的域，可以省略<code>[年]</code> </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Scheduled(cron=&quot;0 0 0 1 * ?&quot;)</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
-<th>序号</th>
-<th>说明</th>
-<th>必填</th>
-<th>允许填写的值</th>
-<th>允许的通配符</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">必填</th>
+<th style="text-align:left">值</th>
+<th style="text-align:left">通配符</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1</td>
-<td>秒</td>
-<td>是</td>
-<td>0-59</td>
-<td>, - * /</td>
+<td style="text-align:center">秒</td>
+<td style="text-align:center">是</td>
+<td style="text-align:left">0 - 59</td>
+<td style="text-align:left">,  -  *  /</td>
 </tr>
 <tr>
-<td>2</td>
-<td>分</td>
-<td>是</td>
-<td>0-59</td>
-<td>, - * /</td>
+<td style="text-align:center">分</td>
+<td style="text-align:center">是</td>
+<td style="text-align:left">0 - 59</td>
+<td style="text-align:left">,  -  *  /</td>
 </tr>
 <tr>
-<td>3</td>
-<td>时</td>
-<td>是</td>
-<td>0-23</td>
-<td>, - * /</td>
+<td style="text-align:center">时</td>
+<td style="text-align:center">是</td>
+<td style="text-align:left">0 - 23</td>
+<td style="text-align:left">,  -  *  /</td>
 </tr>
 <tr>
-<td>4</td>
-<td>日</td>
-<td>是</td>
-<td>1-31</td>
-<td>, - * ? / L W</td>
+<td style="text-align:center">日</td>
+<td style="text-align:center">是</td>
+<td style="text-align:left">1 - 31</td>
+<td style="text-align:left">,  -  *  ?  /  L  W</td>
 </tr>
 <tr>
-<td>5</td>
-<td>月</td>
-<td>是</td>
-<td>1-12 / JAN-DEC</td>
-<td>, - * /</td>
+<td style="text-align:center">月</td>
+<td style="text-align:center">是</td>
+<td style="text-align:left">1 - 12 or JAN - DEC</td>
+<td style="text-align:left">,  -  *  /</td>
 </tr>
 <tr>
-<td>6</td>
-<td>周</td>
-<td>是</td>
-<td>1-7 or SUN-SAT</td>
-<td>, - * ? / L #</td>
+<td style="text-align:center">周</td>
+<td style="text-align:center">是</td>
+<td style="text-align:left">1 - 7  or SUN - SAT</td>
+<td style="text-align:left">,  -  *  ?  /  L  #</td>
 </tr>
 <tr>
-<td>7</td>
-<td>年</td>
-<td>否</td>
-<td>1970-2099</td>
-<td>, - * /</td>
+<td style="text-align:center">年</td>
+<td style="text-align:center">否</td>
+<td style="text-align:left">1970 - 2099</td>
+<td style="text-align:left">,  -  *  /</td>
 </tr>
 </tbody>
 </table>
 <h6 id="通配符说明"><a href="#通配符说明" class="headerlink" title="通配符说明:"></a>通配符说明:</h6><ul>
-<li><code>*</code> 表示所有值。 例如:在分的字段上设置 *,表示每一分钟都会触发。</li>
-<li><code>?</code> 表示不指定值。使用的场景为不需要关心当前设置这个字段的值。例如:要在每月的10号触发一个操作，但不关心是周几，所以需要周位置的那个字段设置为”?” 具体设置为 0 0 0 10 * ?</li>
-<li><code>-</code> 表示区间。例如 在小时上设置 “10-12”,表示 10,11,12点都会触发。</li>
-<li><code>,</code> 表示指定多个值，例如在周字段上设置 “MON,WED,FRI” 表示周一，周三和周五触发</li>
-<li><code>/</code> 用于递增触发。如在秒上面设置”5/15” 表示从5秒开始，每增15秒触发(5,20,35,50)。 在月字段上设置’1/3’所示每月1号开始，每隔三天触发一次。</li>
-<li><code>L</code> 表示最后的意思。在日字段设置上，表示当月的最后一天(依据当前月份，<ul>
-<li>如果是二月还会依据是否是润年[leap]), 在周字段上表示星期六，相当于”7”或”SAT”。</li>
-<li>如果在”L”前加上数字，则表示该数据的最后一个。</li>
-<li>例如在周字段上设置”6L”这样的格式,则表示“本月最后一个星期五”</li>
+<li><code>*</code> 表示所有值。如：在分的字段上设置 <code>*</code>，表示每一分钟都会触发</li>
+<li><code>?</code> 表示不指定值。如：在每月的10号触发一个操作，但不关心是周几： <code>0 0 0 10 * ?</code></li>
+<li><code>-</code> 表示区间。如：在小时上设置 <code>10-12</code>，表示 <code>10,11,12</code>点都会触发</li>
+<li><code>,</code> 表示指定多个值。如：在周字段上设置 <code>MON,WED,FRI</code> 表示周一，周三和周五触发</li>
+<li><code>/</code> 用于递增触发。如：在秒上面设置<code>5/15</code> 表示从5秒开始，每增15秒触发(<code>5,20,35,50</code>)</li>
+<li><code>L</code> 表示最后的意思。如：在日字段设置上，表示当月的最后一天</li>
+<li><code>W</code> 表示离指定日期的最近那个工作日(<code>周一至周五</code>)，如：日字段上置<code>15W</code></li>
+<li><code>#</code> 序号，表示每月的第几个周几。如：在周字段上设置<code>6#3</code>表示在每月的第三个周六</li>
 </ul>
-</li>
-<li><code>W</code> 表示离指定日期的最近那个工作日(周一至周五).<ul>
-<li>例如在日字段上置”15W”，表示离每月15号最近的那个工作日触发。如果15号正好是周六，则找最近的周五(14号)触发, 如果15号是周未，则找最近的下周一(16号)触发.如果15号正好在工作日(周一至周五)，则就在该天触发。</li>
-<li>如果指定格式为 “1W”,它则表示每月1号往后最近的工作日触发。如果1号正是周六，则将在3号下周一触发。(注，”W”前只能设置具体的数字,不允许区间”-“)。</li>
-</ul>
-</li>
-<li><code>#</code> 序号，表示每月的第几个周几。<ul>
-<li>例如在周字段上设置”6#3”表示在每月的第三个周六</li>
-<li>注意如果指定”#5”，正好第五周没有周六，则不会触发该配置</li>
-<li>如果在日字段上设置”LW”,则表示在本月的最后一个工作日触发</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">// 每隔5秒执行一次</span><br><span class="line">*/5 * * * * ?</span><br><span class="line"></span><br><span class="line">// 每隔1分钟执行一次</span><br><span class="line">0 */1 * * * ?</span><br><span class="line"></span><br><span class="line">// 每天23点执行一次</span><br><span class="line">0 0 23 * * ?</span><br><span class="line"></span><br><span class="line">// 每天凌晨1点执行一次</span><br><span class="line">0 0 1 * * ?</span><br><span class="line"></span><br><span class="line">// 每月1号凌晨1点执行一次</span><br><span class="line">0 0 1 1 * ?</span><br><span class="line"></span><br><span class="line">// 每月最后一天23点执行一次</span><br><span class="line">0 0 23 L * ?</span><br><span class="line"></span><br><span class="line">// 每周星期天凌晨1点实行一次</span><br><span class="line">0 0 1 ? * L</span><br><span class="line"></span><br><span class="line">// 在26分、29分、33分执行一次</span><br><span class="line">0 26,29,33 * * * ?</span><br><span class="line"></span><br><span class="line">// 每天的0点、13点、18点、21点都执行一次</span><br><span class="line">0 0 0,13,18,21 * * ?</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="线程问题"><a href="#线程问题" class="headerlink" title="线程问题"></a>线程问题</h4><p><code>@Scheduled</code>默认为<strong>单线程</strong>，开启多个任务时，任务的执行时机会受上一个任务执行时间的影响。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ScheduledTasks</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd  HH:mm:ss"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Scheduled</span>(fixedDelay = <span class="number">1000</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">first</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"第一个定时任务开始: "</span> + sdf.format(<span class="keyword">new</span> Date()));</span><br><span class="line">        System.out.println( <span class="string">"线程: "</span> + Thread.currentThread().getName());</span><br><span class="line">        System.out.println();</span><br><span class="line">        <span class="comment">// 模拟第一个任务执行的时间</span></span><br><span class="line">        Thread.sleep(<span class="number">1000</span> * <span class="number">2</span>); </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Scheduled</span>(fixedDelay = <span class="number">1000</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">second</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"第二个定时任务开始: "</span> + sdf.format(<span class="keyword">new</span> Date()));</span><br><span class="line">        System.out.println( <span class="string">"线程: "</span> + Thread.currentThread().getName());</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一个定时任务开始 : 2019-08-11 15:27:32</span></span><br><span class="line"><span class="comment">// 线程 : pool-1-thread-1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二个定时任务开始 : 2019-08-11 15:27:34</span></span><br><span class="line"><span class="comment">// 线程 : pool-1-thread-1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一个定时任务开始 : 2019-08-11 15:27:35</span></span><br><span class="line"><span class="comment">// 线程 : pool-1-thread-1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二个定时任务开始 : 2019-08-11 15:27:37</span></span><br><span class="line"><span class="comment">// 线程 : pool-1-thread-1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认单线程，任务都运行在同一个线程内，第二个任务的执行时机受第一个任务的影响</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h5><p>在<strong>任务类</strong>上加<code>@EnableAsync</code>注解，在<strong>任务方法</strong>上加<code>@Async</code>注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@EnableAsync</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ScheduledTasks</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd  HH:mm:ss"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Async</span></span><br><span class="line">    <span class="meta">@Scheduled</span>(fixedDelay = <span class="number">1000</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">first</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"第一个定时任务开始: "</span> + sdf.format(<span class="keyword">new</span> Date()));</span><br><span class="line">        System.out.println( <span class="string">"线程: "</span> + Thread.currentThread().getName());</span><br><span class="line">        System.out.println();</span><br><span class="line">        <span class="comment">// 模拟第一个任务执行的时间</span></span><br><span class="line">        Thread.sleep(<span class="number">1000</span> * <span class="number">2</span>); </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Async</span></span><br><span class="line">    <span class="meta">@Scheduled</span>(fixedDelay = <span class="number">1000</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">second</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"第二个定时任务开始: "</span> + sdf.format(<span class="keyword">new</span> Date()));</span><br><span class="line">        System.out.println( <span class="string">"线程: "</span> + Thread.currentThread().getName());</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一个定时任务开始 : 2019-08-11 15:36:42</span></span><br><span class="line"><span class="comment">// 线程 : SimpleAsyncTaskExecutor-17</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二个定时任务开始 : 2019-08-11 15:36:42</span></span><br><span class="line"><span class="comment">// 线程 : SimpleAsyncTaskExecutor-18</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一个定时任务开始 : 2019-08-11 15:36:43</span></span><br><span class="line"><span class="comment">// 线程 : SimpleAsyncTaskExecutor-20</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二个定时任务开始 : 2019-08-11 15:36:43</span></span><br><span class="line"><span class="comment">// 线程 : SimpleAsyncTaskExecutor-21</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 开启了多线程，第一个任务的执行时机也不受其本身执行时间的限制，需要注意数据幂等性。</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="ScheduleConfig"><a href="#ScheduleConfig" class="headerlink" title="ScheduleConfig"></a>ScheduleConfig</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ScheduleConfig</span> <span class="keyword">implements</span> <span class="title">SchedulingConfigurer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Autowired</span></span><br><span class="line">   <span class="keyword">private</span> Executor executor;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">final</span> ThreadFactory threadFactory = <span class="keyword">new</span> BasicThreadFactory.Builder().namingPattern(<span class="string">"epsm-scheduled-task-%d"</span>).build();</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configureTasks</span><span class="params">(ScheduledTaskRegistrar taskRegistrar)</span> </span>&#123;</span><br><span class="line">       taskRegistrar.setScheduler(executor);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Bean</span>(destroyMethod = <span class="string">"shutdown"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> Executor <span class="title">taskExecutor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> Executors.newScheduledThreadPool(<span class="number">8</span>, threadFactory);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单任务自己是串行，任务与任务之间是并行</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -600,7 +589,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Scheduled注解参数"><span class="nav-number">1.</span> <span class="nav-text">@Scheduled注解参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#fixedDelay"><span class="nav-number">1.1.</span> <span class="nav-text">fixedDelay</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#fixedRate"><span class="nav-number">1.2.</span> <span class="nav-text">fixedRate</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#initialDelay"><span class="nav-number">1.3.</span> <span class="nav-text">initialDelay</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cron"><span class="nav-number">1.4.</span> <span class="nav-text">cron</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#通配符说明"><span class="nav-number">1.4.1.</span> <span class="nav-text">通配符说明:</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Scheduled"><span class="nav-number">1.</span> <span class="nav-text">@Scheduled</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#通配符说明"><span class="nav-number">1.0.1.</span> <span class="nav-text">通配符说明:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程问题"><span class="nav-number">2.</span> <span class="nav-text">线程问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#多线程"><span class="nav-number">2.1.</span> <span class="nav-text">多线程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ScheduleConfig"><span class="nav-number">2.2.</span> <span class="nav-text">ScheduleConfig</span></a></li></ol></li></ol></div>
             
 
           </div>
