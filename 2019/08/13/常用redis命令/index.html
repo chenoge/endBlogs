@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="redis," />
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="一个程序猿和一支笔的故事">
-<meta property="og:type" content="website">
-<meta property="og:title" content="chenogeの日志">
-<meta property="og:url" content="https://www.yf-gz.cn/tags/FileInputStream/index.html">
+<meta name="description" content="访问redis12# --raw参数，处理中文编码问题redis-cli -h host -p port --raw">
+<meta name="keywords" content="redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用redis命令">
+<meta property="og:url" content="https://www.yf-gz.cn/2019/08/13/常用redis命令/index.html">
 <meta property="og:site_name" content="chenogeの日志">
-<meta property="og:description" content="一个程序猿和一支笔的故事">
+<meta property="og:description" content="访问redis12# --raw参数，处理中文编码问题redis-cli -h host -p port --raw">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-13T07:44:03.395Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="chenogeの日志">
-<meta name="twitter:description" content="一个程序猿和一支笔的故事">
+<meta name="twitter:title" content="常用redis命令">
+<meta name="twitter:description" content="访问redis12# --raw参数，处理中文编码问题redis-cli -h host -p port --raw">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://www.yf-gz.cn/tags/FileInputStream/"/>
+  <link rel="canonical" href="https://www.yf-gz.cn/2019/08/13/常用redis命令/"/>
 
 
 
 
 
-  <title>标签: FileInputStream | chenogeの日志</title>
+  <title>常用redis命令 | chenogeの日志</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -251,54 +253,155 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>FileInputStream<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/08/13/常用redis命令/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/endBlogs/2019/06/24/java-FileInputStream和FileOutputStream/" itemprop="url">
-              
-                <span itemprop="name">java-FileInputStream和FileOutputStream</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">常用redis命令</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-06-24T10:19:00+08:00"
-              content="2019-06-24" >
-          06-24
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-13T15:21:17+08:00">
+                2019-08-13
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    </div>
+      
 
+      
+        <h5 id="访问redis"><a href="#访问redis" class="headerlink" title="访问redis"></a>访问redis</h5><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># --raw参数，处理中文编码问题</span><br><span class="line">redis-cli -h host -p port --raw</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h5 id="key"><a href="#key" class="headerlink" title="key"></a>key</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">select 0 选择第一个库</span><br><span class="line"></span><br><span class="line">keys * 获取所有的key</span><br><span class="line"> </span><br><span class="line">move myString 1 将当前的数据库key移动到某个数据库，目标库有，则不能移动</span><br><span class="line"></span><br><span class="line">flush db      清除指定库</span><br><span class="line"></span><br><span class="line">randomkey     随机key</span><br><span class="line"></span><br><span class="line">type key      类型</span><br><span class="line"></span><br><span class="line">set key1 value1 设置key</span><br><span class="line"></span><br><span class="line">get key1    获取key</span><br><span class="line"></span><br><span class="line">mset key1 value1 key2 value2 key3 value3</span><br><span class="line"></span><br><span class="line">mget key1 key2 key3</span><br><span class="line"></span><br><span class="line">del key1   删除key</span><br><span class="line"></span><br><span class="line">exists key      判断是否存在key</span><br><span class="line"></span><br><span class="line">expire key 10   10过期</span><br><span class="line"></span><br><span class="line">pexpire key 1000 毫秒</span><br><span class="line"></span><br><span class="line">persist key     删除过期时间</span><br></pre></td></tr></table></figure>
+<h5 id="string"><a href="#string" class="headerlink" title="string"></a>string</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">set name cxx</span><br><span class="line"></span><br><span class="line">get name</span><br><span class="line"></span><br><span class="line">getrange name 0 -1        字符串分段</span><br><span class="line"></span><br><span class="line">getset name new_cxx       设置值，返回旧值</span><br><span class="line"></span><br><span class="line">mset key1 key2            批量设置</span><br><span class="line"></span><br><span class="line">mget key1 key2            批量获取</span><br><span class="line"></span><br><span class="line">setnx key value           不存在就插入（not exists）</span><br><span class="line"></span><br><span class="line">setex key time value      过期时间（expire）</span><br><span class="line"></span><br><span class="line">setrange key index value  从index开始替换value</span><br><span class="line"></span><br><span class="line">incr age        递增</span><br><span class="line"></span><br><span class="line">incrby age 10   递增</span><br><span class="line"></span><br><span class="line">decr age        递减</span><br><span class="line"></span><br><span class="line">decrby age 10   递减</span><br><span class="line"></span><br><span class="line">incrbyfloat     增减浮点数</span><br><span class="line"></span><br><span class="line">append          追加</span><br><span class="line"></span><br><span class="line">strlen          长度</span><br><span class="line"></span><br><span class="line">getbit/setbit/bitcount/bitop    位操作</span><br></pre></td></tr></table></figure>
+<h5 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">hset myhash name cxx</span><br><span class="line"></span><br><span class="line">hget myhash name</span><br><span class="line"></span><br><span class="line">hmset myhash name cxx age 25 note &quot;i am notes&quot;</span><br><span class="line"></span><br><span class="line">hmget myhash name age note   </span><br><span class="line"></span><br><span class="line">hgetall myhash               获取所有的</span><br><span class="line"></span><br><span class="line">hexists myhash name          是否存在</span><br><span class="line"></span><br><span class="line">hsetnx myhash score 100      设置不存在的</span><br><span class="line"></span><br><span class="line">hincrby myhash id 1          递增</span><br><span class="line"></span><br><span class="line">hdel myhash name             删除</span><br><span class="line"></span><br><span class="line">hkeys myhash                 只取key</span><br><span class="line"></span><br><span class="line">hvals myhash                 只取value</span><br><span class="line"></span><br><span class="line">hlen myhash                  长度</span><br></pre></td></tr></table></figure>
+<h5 id="list"><a href="#list" class="headerlink" title="list"></a>list</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">lpush mylist a b c  左插入</span><br><span class="line"></span><br><span class="line">rpush mylist x y z  右插入</span><br><span class="line"></span><br><span class="line">lrange mylist 0 -1  数据集合</span><br><span class="line"></span><br><span class="line">lpop mylist  弹出元素</span><br><span class="line"></span><br><span class="line">rpop mylist  弹出元素</span><br><span class="line"></span><br><span class="line">llen mylist  长度</span><br><span class="line"></span><br><span class="line">lrem mylist count value  删除</span><br><span class="line"></span><br><span class="line">lindex mylist 2          指定索引的值</span><br><span class="line"></span><br><span class="line">lset mylist 2 n          索引设值</span><br><span class="line"></span><br><span class="line">ltrim mylist 0 4         删除key</span><br><span class="line"></span><br><span class="line">linsert mylist before a  插入</span><br><span class="line"></span><br><span class="line">linsert mylist after a   插入</span><br><span class="line"></span><br><span class="line">rpoplpush list list2     转移列表的数据</span><br></pre></td></tr></table></figure>
+<h5 id="set"><a href="#set" class="headerlink" title="set"></a>set</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sadd myset redis </span><br><span class="line"></span><br><span class="line">smembers myset       数据集合</span><br><span class="line"></span><br><span class="line">srem myset set1         删除</span><br><span class="line"></span><br><span class="line">sismember myset set1 判断元素是否在集合中</span><br><span class="line"></span><br><span class="line">scard key_name       个数</span><br><span class="line"></span><br><span class="line">sdiff | sinter | sunion 操作：集合间运算：差集 | 交集 | 并集</span><br><span class="line"></span><br><span class="line">srandmember          随机获取集合中的元素</span><br><span class="line"></span><br><span class="line">spop                 从集合中弹出一个元素</span><br></pre></td></tr></table></figure>
+<h5 id="zset"><a href="#zset" class="headerlink" title="zset"></a>zset</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">zadd zset 1 one</span><br><span class="line"></span><br><span class="line">zadd zset 2 two</span><br><span class="line"></span><br><span class="line">zadd zset 3 three</span><br><span class="line"></span><br><span class="line">zincrby zset 1 one              增长分数</span><br><span class="line"></span><br><span class="line">zscore zset two                 获取分数</span><br><span class="line"></span><br><span class="line">zrange zset 0 -1 withscores     范围值</span><br><span class="line"></span><br><span class="line">zrangebyscore zset 10 25 withscores 指定范围的值</span><br><span class="line"></span><br><span class="line">zrangebyscore zset 10 25 withscores limit 1 2 分页</span><br><span class="line"></span><br><span class="line">Zrevrangebyscore zset 10 25 withscores  指定范围的值</span><br><span class="line"></span><br><span class="line">zcard zset  元素数量</span><br><span class="line"></span><br><span class="line">Zcount zset 获得指定分数范围内的元素个数</span><br><span class="line"></span><br><span class="line">Zrem zset one two        删除一个或多个元素</span><br><span class="line"></span><br><span class="line">Zremrangebyrank zset 0 1  按照排名范围删除元素</span><br><span class="line"></span><br><span class="line">Zremrangebyscore zset 0 1 按照分数范围删除元素</span><br><span class="line"></span><br><span class="line">Zrank zset 0 -1    分数最小的元素排名为0</span><br><span class="line"></span><br><span class="line">Zrevrank zset 0 -1  分数最大的元素排名为0</span><br></pre></td></tr></table></figure>
+<p>##### </p>
+<h5 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sort mylist  排序</span><br><span class="line"></span><br><span class="line">sort mylist alpha desc limit 0 2 字母排序</span><br><span class="line"></span><br><span class="line">sort list by it:* desc           by命令</span><br><span class="line"></span><br><span class="line">sort list by it:* desc get it:*  get参数</span><br><span class="line"></span><br><span class="line"># sort命令之store参数：表示把sort查询的结果集保存起来</span><br><span class="line">sort list by it:* desc get it:* store sorc:result</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/endBlogs/tags/redis/" rel="tag"># redis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/endBlogs/2019/08/13/java-时间格式化/" rel="next" title="java-时间格式化">
+                <i class="fa fa-chevron-left"></i> java-时间格式化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -306,6 +409,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -326,8 +433,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -378,6 +494,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#访问redis"><span class="nav-number">1.</span> <span class="nav-text">访问redis</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#key"><span class="nav-number">2.</span> <span class="nav-text">key</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#string"><span class="nav-number">3.</span> <span class="nav-text">string</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#hash"><span class="nav-number">4.</span> <span class="nav-text">hash</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#list"><span class="nav-number">5.</span> <span class="nav-text">list</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#set"><span class="nav-number">6.</span> <span class="nav-text">set</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#zset"><span class="nav-number">7.</span> <span class="nav-text">zset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#排序"><span class="nav-number">8.</span> <span class="nav-text">排序</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -511,6 +643,10 @@
   
 
   
+  <script type="text/javascript" src="/endBlogs/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/endBlogs/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
