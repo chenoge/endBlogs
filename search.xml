@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[读取resources资源文件]]></title>
+    <url>%2FendBlogs%2F2019%2F08%2F15%2Fjava-%E8%AF%BB%E5%8F%96resources%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[由Maven构建的web工程，主代码放在src/main/java路径下，资源放在src/main/resources路径下，当构建jar包 或 war包时，JVM虚拟机会自动编译java文件为class文件存放在 target/classes目录下，resource资源下的文件会原封不动的拷贝一份到 target/classes 目录下。 Class.getResource(String path) path不以/开头时，默认是从此类所在的包下取资源 123// 当前类(class)所在的包目录 (指定资源名，可以获取该包下面的其他资源)System.out.println(this.getClass().getResource(""));// 输出： file:/D:/ds-epsm-data-provider/target/classes/com/datastory/controller/ path 以/开头时，则是从ClassPath根下获取 123// class path根目录 (指定资源名，可以获取根目录下面的资源)System.out.println(this.getClass().getResource("/"));// 输出： file:/D:/ds-epsm-data-provider/target/classes/ 注：Class.getResourceAsStream(String path)方法，相当于用getResource()取得File文件后，再new InputStream(file)一样的结果 Class.getClassLoader().getResource(String path) path是从ClassPath根下获取，并且不能以/开头 12345System.out.println(this.getClass().getClassLoader().getResource(""));// 输出： file:/D:/ds-epsm-data-provider/target/classes/System.out.println(this.getClass().getClassLoader().getResource("/"));// 输出： null]]></content>
+      <tags>
+        <tag>resources</tag>
+        <tag>getResource</tag>
+        <tag>getClassLoader</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[pom文件-profiles]]></title>
     <url>%2FendBlogs%2F2019%2F08%2F15%2Fpom%E6%96%87%E4%BB%B6-profiles%2F</url>
     <content type="text"><![CDATA[在Maven项目中，profile是根据不同的构件环境，对构建（build）过程进行动态配置的手段。可以通过pom.xml定义多个profile，也可以通过settings.xml文件定义多个profile。对于一个profile，如果同时在pom.xml和settings.xml中配置，则settings.xml中的配置优先。 settings.xml中的profile只能配置如下元素： id activation repositories pluginRepositories properties pom.xml中的profile能配置如下元素： id activation repositories pluginRepositories properties build modules dependencies dependencyManagement repositories pluginRepositories distributionManagement reporting 123456789101112131415161718&lt;profiles&gt; &lt;profile&gt; &lt;id&gt;dev&lt;/id&gt; &lt;properties&gt; &lt;conf.dir&gt;profile/dev/&lt;/conf.dir&gt; &lt;/properties&gt; &lt;activation&gt; &lt;!-- 启用spring.profiles.active配置 --&gt; &lt;activeByDefault&gt;true&lt;/activeByDefault&gt; &lt;/activation&gt; &lt;/profile&gt; &lt;profile&gt; &lt;id&gt;prod&lt;/id&gt; &lt;properties&gt; &lt;conf.dir&gt;profile/prod/&lt;/conf.dir&gt; &lt;/properties&gt; &lt;/profile&gt;&lt;/profiles&gt; 12345678910&lt;resources&gt; &lt;resource&gt; &lt;directory&gt;$&#123;conf.dir&#125;&lt;/directory&gt; &lt;filtering&gt;true&lt;/filtering&gt; &lt;includes&gt; &lt;include&gt;**/*.properties&lt;/include&gt; &lt;include&gt;**/*.xml&lt;/include&gt; &lt;/includes&gt; &lt;/resource&gt;&lt;/resources&gt; spring.profiles.activespring boot允许你通过命名约定按照一定的格式(application-{profile}.properties)来定义多个配置文件，然后通过在application.properyies通过spring.profiles.active来具体激活一个或者多个配置文件。 如果没有没有指定任何profile的配置文件的话，spring boot默认会启动application-default.properties。 123# application-&#123;profile&#125;.properties# profile: docx...spring.profiles.active=docx,es,redis,mail,restful,other,org]]></content>
