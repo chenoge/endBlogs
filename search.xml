@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[java-执行shell]]></title>
+    <url>%2FendBlogs%2F2019%2F08%2F16%2Fjava-%E6%89%A7%E8%A1%8Cshell%2F</url>
+    <content type="text"><![CDATA[执行shell有时候我们在Linux中运行Java程序时，需要调用一些Shell命令和脚本。而Runtime.getRuntime().exec()方法给我们提供了这个功能，而且Runtime.getRuntime()给我们提供了以下几种exec()方法： 1234567891011121314151617// 在单独的进程中执行指定的字符串命令Process exec(String command) // 在单独的进程中执行指定命令和变量Process exec(String[] cmdarray) // 在指定环境的独立进程中执行指定命令和变量Process exec(String[] cmdarray, String[] envp) // 在指定环境和工作目录的独立进程中执行指定的命令和变量Process exec(String[] cmdarray, String[] envp, File dir) // 在指定环境的单独进程中执行指定的字符串命令Process exec(String command, String[] envp) // 在有指定环境和工作目录的独立进程中执行指定的字符串命令Process exec(String command, String[] envp, File dir) 如果参数中如果没有envp参数或设为null，表示调用命令将在当前程序执行的环境中执行 如果没有dir参数或设为null，表示调用命令将在当前程序执行的目录中执行 Process exec(String command, String[] envp, File dir)12345678910111213141516171819private void callCMD(String tarName, String fileName, String...workspace) &#123; try &#123; String cmd = "tar -cf" + tarName + " " + fileName; // String[] cmd = &#123;"tar", "-cf", tarName, fileName&#125;; File dir = null; if (workspace[0] != null) &#123; dir = new File(workspace[0]); System.out.println(workspace[0]); &#125; process = Runtime.getRuntime().exec(cmd, null, dir); // process = Runtime.getRuntime().exec(cmd); int status = process.waitFor(); if (status != 0) &#123; System.err.println("Failed to call shell's command : " + status); &#125; &#125; catch (Exception e) &#123; e.printStackTrace(); &#125;&#125; 注意：如果把命令放到一个String[]中时，必须把命令中每个部分作为一个元素存在String[]中，或者是把命令按照空格符分割得到的String[]。 12String[] cmd = &#123;"tar", "-cf", tarName, fileName&#125;; //rightString[] cmd = &#123;"tar -cf", tarName, fileName&#125;; //error 捕获调用输出信息123BufferedReader input = new BufferedReader( new InputStreamReader(process.getInputStream()));]]></content>
+      <tags>
+        <tag>java</tag>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[读取resources资源文件]]></title>
     <url>%2FendBlogs%2F2019%2F08%2F15%2Fjava-%E8%AF%BB%E5%8F%96resources%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%2F</url>
     <content type="text"><![CDATA[由Maven构建的web工程，主代码放在src/main/java路径下，资源放在src/main/resources路径下，当构建jar包 或 war包时，JVM虚拟机会自动编译java文件为class文件存放在 target/classes目录下，resource资源下的文件会原封不动的拷贝一份到 target/classes 目录下。 Class.getResource(String path) path不以/开头时，默认是从此类所在的包下取资源 123// 当前类(class)所在的包目录 (指定资源名，可以获取该包下面的其他资源)System.out.println(this.getClass().getResource(""));// 输出： file:/D:/ds-epsm-data-provider/target/classes/com/datastory/controller/ path 以/开头时，则是从ClassPath根下获取 123// class path根目录 (指定资源名，可以获取根目录下面的资源)System.out.println(this.getClass().getResource("/"));// 输出： file:/D:/ds-epsm-data-provider/target/classes/ 注：Class.getResourceAsStream(String path)方法，相当于用getResource()取得File文件后，再new InputStream(file)一样的结果 Class.getClassLoader().getResource(String path) path是从ClassPath根下获取，并且不能以/开头 12345System.out.println(this.getClass().getClassLoader().getResource(""));// 输出： file:/D:/ds-epsm-data-provider/target/classes/System.out.println(this.getClass().getClassLoader().getResource("/"));// 输出： null]]></content>
