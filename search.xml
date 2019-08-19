@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[mysql-大小写]]></title>
+    <url>%2FendBlogs%2F2019%2F08%2F19%2Fmysql-%E5%A4%A7%E5%B0%8F%E5%86%99%2F</url>
+    <content type="text"><![CDATA[敏感性在MySQL中，数据库在系统上是以一个文件夹的形式出现的，表对应着一个文件(也可能是多个，取决于存储引擎)。因此，操作系统的大小写敏感性决定了数据库名和表名的大小写敏感性。 在大多数Unix中数据库名和表名对大小写敏感，而在Windows中对大小写不敏感。一个显著的例外情况是Mac OS X，它基于Unix，但使用默认文件系统类型(HFS+)，对大小写不敏感。然而，Mac OS X也支持UFS卷，该卷对大小写敏感，就像Unix一样。 变量lower_case_file_system，说明文件系统对文件名的大小写是否敏感。ON说明对文件名的大小写不敏感，OFF表示敏感。unix/linux下lower_case_table_names默认值为 0 ，Windows下默认值是 1 ，Mac OS X下默认值是 2。 123lower_case_table_names = 0 表名存储为给定的大小和比较是区分大小写的lower_case_table_names = 1 表名存储在磁盘是小写的，但是比较的时候是不区分大小写lower_case_table_names = 2 表名存储为给定的大小写但是比较的时候是小写的 12345# 查看数据存储目录show global variables like &apos;%datadir%&apos;;# 查看文件系统大小写敏感情况show variables like &apos;lower%&apos;; 写区分规则linux： 数据库名与表名是严格区分大小写的 表的别名是严格区分大小写的 列名与列的别名在所有的情况下均是忽略大小写的 变量名也是严格区分大小写的 windows： 都不区分大小写 Mac OS下（非UFS卷） 都不区分大小写]]></content>
+      <tags>
+        <tag>mysql</tag>
+        <tag>大小写</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[mysql-聚集索引]]></title>
     <url>%2FendBlogs%2F2019%2F08%2F19%2Fmysql-%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%2F</url>
     <content type="text"><![CDATA[聚集索引聚集索引是指数据库表行中数据的物理顺序与键值的逻辑（索引）顺序相同。一个表只能有一个主键， 一个表只能有一个聚集索引，因为一个表的物理顺序只有一种情况。与非聚集索引相比，聚集索引有着更快的检索速度。 非聚集索引非聚集索引和聚集索引一样， 同样是采用平衡树作为索引的数据结构。索引树结构中各节点的值来自于表中的索引字段。 每次给字段建一个新索引， 字段中的数据就会被复制一份出来， 用于生成索引。 因此，给表添加索引，会增加表的体积， 占用磁盘存储空间。 注：非聚集索引和聚集索引的区别在于， 通过聚集索引可以查到需要查找的数据， 而通过非聚集索引可以查到记录对应的主键值 ， 再使用主键的值通过聚集索引查找到需要的数据。 回表（回行）非聚集索引无法直接查询想要的列数据，所以通过非聚集索引查询到聚簇索引后，再查询到想要的数据，这种通过非聚集索引查询出来的过程，就叫做回表。 覆盖索引如果一个索引包含了（或覆盖了）满足查询语句中字段与条件的数据就叫做覆盖索引。]]></content>

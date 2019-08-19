@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="聚集索引聚集索引是指数据库表行中数据的物理顺序与键值的逻辑（索引）顺序相同。一个表只能有一个主键， 一个表只能有一个聚集索引，因为一个表的物理顺序只有一种情况。与非聚集索引相比，聚集索引有着更快的检索速度。 非聚集索引非聚集索引和聚集索引一样， 同样是采用平衡树作为索引的数据结构。索引树结构中各节点的值来自于表中的索引字段。 每次给字段建一个新索引， 字段中的数据就会被复制一份出来， 用于生成索引">
+<meta name="description" content="聚集索引聚集索引是指数据库表行中数据的物理顺序与键值的逻辑（索引）顺序相同。一个表只能有一个主键， 一个表只能有一个聚集索引，因为一个表的物理顺序只有一种情况。与非聚集索引相比，聚集索引有着更快的检索速度。">
 <meta name="keywords" content="mysql,聚集索引,非聚集索引,覆盖索引,回表,回行">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql-聚集索引">
 <meta property="og:url" content="https://www.yf-gz.cn/2019/08/19/mysql-聚集索引/index.html">
 <meta property="og:site_name" content="chenogeの日志">
-<meta property="og:description" content="聚集索引聚集索引是指数据库表行中数据的物理顺序与键值的逻辑（索引）顺序相同。一个表只能有一个主键， 一个表只能有一个聚集索引，因为一个表的物理顺序只有一种情况。与非聚集索引相比，聚集索引有着更快的检索速度。 非聚集索引非聚集索引和聚集索引一样， 同样是采用平衡树作为索引的数据结构。索引树结构中各节点的值来自于表中的索引字段。 每次给字段建一个新索引， 字段中的数据就会被复制一份出来， 用于生成索引">
+<meta property="og:description" content="聚集索引聚集索引是指数据库表行中数据的物理顺序与键值的逻辑（索引）顺序相同。一个表只能有一个主键， 一个表只能有一个聚集索引，因为一个表的物理顺序只有一种情况。与非聚集索引相比，聚集索引有着更快的检索速度。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://chenoge.github.io/endBlogs/2019/08/19/mysql-聚集索引/2.png">
-<meta property="og:image" content="https://chenoge.github.io/endBlogs/2019/08/19/mysql-聚集索引/1.png">
-<meta property="og:updated_time" content="2019-08-19T09:42:49.506Z">
+<meta property="og:image" content="https://chenoge.github.io/endBlogs/2019/08/19/mysql-%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95/2.png">
+<meta property="og:image" content="https://chenoge.github.io/endBlogs/2019/08/19/mysql-%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95/1.png">
+<meta property="og:updated_time" content="2019-08-19T10:47:44.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql-聚集索引">
-<meta name="twitter:description" content="聚集索引聚集索引是指数据库表行中数据的物理顺序与键值的逻辑（索引）顺序相同。一个表只能有一个主键， 一个表只能有一个聚集索引，因为一个表的物理顺序只有一种情况。与非聚集索引相比，聚集索引有着更快的检索速度。 非聚集索引非聚集索引和聚集索引一样， 同样是采用平衡树作为索引的数据结构。索引树结构中各节点的值来自于表中的索引字段。 每次给字段建一个新索引， 字段中的数据就会被复制一份出来， 用于生成索引">
-<meta name="twitter:image" content="https://chenoge.github.io/endBlogs/2019/08/19/mysql-聚集索引/2.png">
+<meta name="twitter:description" content="聚集索引聚集索引是指数据库表行中数据的物理顺序与键值的逻辑（索引）顺序相同。一个表只能有一个主键， 一个表只能有一个聚集索引，因为一个表的物理顺序只有一种情况。与非聚集索引相比，聚集索引有着更快的检索速度。">
+<meta name="twitter:image" content="https://chenoge.github.io/endBlogs/2019/08/19/mysql-%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95/2.png">
 
 
 
@@ -338,11 +338,12 @@
 
       
         <h4 id="聚集索引"><a href="#聚集索引" class="headerlink" title="聚集索引"></a>聚集索引</h4><p>聚集索引是指数据库表<strong>行中数据的物理顺序与键值的逻辑（索引）顺序相同</strong>。一个表只能有一个<strong>主键</strong>， 一个表只能有一个<strong>聚集索引</strong>，因为一个表的<strong>物理顺序</strong>只有一种情况。与非聚集索引相比，聚集索引有着更快的检索速度。</p>
+<a id="more"></a>
 <h4 id="非聚集索引"><a href="#非聚集索引" class="headerlink" title="非聚集索引"></a>非聚集索引</h4><p>非聚集索引和聚集索引一样， 同样是采用<strong>平衡树</strong>作为索引的数据结构。索引树结构中各<strong>节点的值来自于表中的索引字段</strong>。</p>
 <p>每次给字段建一个新索引， <strong>字段中的数据就会被复制一份出来</strong>， 用于生成索引。 因此，给表添加索引，会增加表的体积， 占用磁盘存储空间。</p>
 <p>注：非聚集索引和聚集索引的区别在于， <strong>通过聚集索引可以查到需要查找的数据， 而通过非聚集索引可以查到记录对应的主键值 ， 再使用主键的值通过聚集索引查找到需要的数据</strong>。</p>
-<p><img src="https://chenoge.github.io/endBlogs/2019/08/19/mysql-聚集索引/2.png" alt=""></p>
-<p><img src="https://chenoge.github.io/endBlogs/2019/08/19/mysql-聚集索引/1.png" alt=""></p>
+<p><img src="https://chenoge.github.io/endBlogs/2019/08/19/mysql-%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95/2.png" alt=""></p>
+<p><img src="https://chenoge.github.io/endBlogs/2019/08/19/mysql-%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95/1.png" alt=""></p>
 <h4 id="回表（回行）"><a href="#回表（回行）" class="headerlink" title="回表（回行）"></a>回表（回行）</h4><p>非聚集索引<strong>无法直接查询</strong>想要的列数据，所以<strong>通过非聚集索引查询到聚簇索引</strong>后，再查询到想要的数据，这种通过非聚集索引查询出来的过程，就叫做回表。</p>
 <h4 id="覆盖索引"><a href="#覆盖索引" class="headerlink" title="覆盖索引"></a>覆盖索引</h4><p>如果一个<strong>索引</strong>包含了（或覆盖了）满足<strong>查询语句中字段与条件的数据</strong>就叫做覆盖索引。</p>
 
@@ -394,6 +395,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/endBlogs/2019/08/19/mysql-大小写/" rel="prev" title="mysql-大小写">
+                mysql-大小写 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -470,7 +475,7 @@
               
                 <a href="/endBlogs/archives/">
               
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -483,7 +488,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">89</span>
+                  <span class="site-state-item-count">90</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
