@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="创建脚本测试1[root@anuo ~]# vim anuo.sh  --创建个脚本 1234# !/bin/bash# chkconfig: 35 53 88  --35是指定3和5级别启动、53是启动的顺序、88是关闭的顺序# description: is anuo  --可以随便说点啥， 最好的说明这个脚本的用途啥的。echo Anuo Come on  --脚本的内容 1234[root">
+<meta name="description" content="创建脚本测试1[root@anuo ~]# vim anuo.sh    --创建个脚本 1234# !/bin/bash# chkconfig: 35 53 88    --35是指定3和5级别启动、53是启动的顺序、88是关闭的顺序# description: is anuo   --可以随便说点啥， 最好的说明这个脚本的用途啥的。echo Anuo Come on  --脚本的内容 1234">
 <meta name="keywords" content="linux,chkconfig">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux-开机自启动服务">
 <meta property="og:url" content="https://www.yf-gz.cn/2019/05/27/linux-开机自启动服务/index.html">
 <meta property="og:site_name" content="chenogeの日志">
-<meta property="og:description" content="创建脚本测试1[root@anuo ~]# vim anuo.sh  --创建个脚本 1234# !/bin/bash# chkconfig: 35 53 88  --35是指定3和5级别启动、53是启动的顺序、88是关闭的顺序# description: is anuo  --可以随便说点啥， 最好的说明这个脚本的用途啥的。echo Anuo Come on  --脚本的内容 1234[root">
+<meta property="og:description" content="创建脚本测试1[root@anuo ~]# vim anuo.sh    --创建个脚本 1234# !/bin/bash# chkconfig: 35 53 88    --35是指定3和5级别启动、53是启动的顺序、88是关闭的顺序# description: is anuo   --可以随便说点啥， 最好的说明这个脚本的用途啥的。echo Anuo Come on  --脚本的内容 1234">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-05T10:16:28.841Z">
+<meta property="og:updated_time" content="2019-08-19T06:53:21.132Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux-开机自启动服务">
-<meta name="twitter:description" content="创建脚本测试1[root@anuo ~]# vim anuo.sh  --创建个脚本 1234# !/bin/bash# chkconfig: 35 53 88  --35是指定3和5级别启动、53是启动的顺序、88是关闭的顺序# description: is anuo  --可以随便说点啥， 最好的说明这个脚本的用途啥的。echo Anuo Come on  --脚本的内容 1234[root">
+<meta name="twitter:description" content="创建脚本测试1[root@anuo ~]# vim anuo.sh    --创建个脚本 1234# !/bin/bash# chkconfig: 35 53 88    --35是指定3和5级别启动、53是启动的顺序、88是关闭的顺序# description: is anuo   --可以随便说点啥， 最好的说明这个脚本的用途啥的。echo Anuo Come on  --脚本的内容 1234">
 
 
 
@@ -334,19 +334,19 @@
       
 
       
-        <h5 id="创建脚本测试"><a href="#创建脚本测试" class="headerlink" title="创建脚本测试"></a>创建脚本测试</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@anuo ~]# vim anuo.sh  --创建个脚本</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> !/bin/bash</span><br><span class="line"><span class="meta">#</span> chkconfig: 35 53 88  --35是指定3和5级别启动、53是启动的顺序、88是关闭的顺序</span><br><span class="line"><span class="meta">#</span> description: is anuo  --可以随便说点啥， 最好的说明这个脚本的用途啥的。</span><br><span class="line">echo Anuo Come on  --脚本的内容</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@anuo ~]# mv anuo.sh /etc/init.d/  --必须将脚本放到/etc/init.d/目录下</span><br><span class="line">[root@anuo ~]# chmod +x /etc/init.d/anuo.sh  --别忘记给脚本加执行权限</span><br><span class="line">[root@anuo ~]# chkconfig --add anuo.sh  --添加开机自启动</span><br><span class="line">[root@anuo ~]# chkconfig --list | grep anuo.sh  --可以看到开启级别的启动</span><br></pre></td></tr></table></figure>
+        <h5 id="创建脚本测试"><a href="#创建脚本测试" class="headerlink" title="创建脚本测试"></a>创建脚本测试</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@anuo ~]# vim anuo.sh    --创建个脚本</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> !/bin/bash</span><br><span class="line"><span class="meta">#</span> chkconfig: 35 53 88    --35是指定3和5级别启动、53是启动的顺序、88是关闭的顺序</span><br><span class="line"><span class="meta">#</span> description: is anuo   --可以随便说点啥， 最好的说明这个脚本的用途啥的。</span><br><span class="line">echo Anuo Come on  --脚本的内容</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@anuo ~]# mv anuo.sh /etc/init.d/    --必须将脚本放到/etc/init.d/目录下</span><br><span class="line">[root@anuo ~]# chmod +x /etc/init.d/anuo.sh    --别忘记给脚本加执行权限</span><br><span class="line">[root@anuo ~]# chkconfig --add anuo.sh    --添加开机自启动</span><br><span class="line">[root@anuo ~]# chkconfig --list | grep anuo.sh    --可以看到开启级别的启动</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">anuo.sh   0:关闭    1:关闭    2:关闭    3:启用    4:关闭    5:启用    6:关闭</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <p><br></p>
-<h5 id="小测试"><a href="#小测试" class="headerlink" title="小测试"></a>小测试</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@anuo ~]# ll /etc/rc.d/rc3.d/|grep anuo.sh</span><br><span class="line">lrwxrwxrwx  1 root root 17 5月  12 19:10 S53anuo.sh -&gt; ../init.d/anuo.sh</span><br></pre></td></tr></table></figure>
-<p>查看到3级别启动的文件里一个S53anuo.sh的链接文件</p>
+<h5 id="小测试"><a href="#小测试" class="headerlink" title="小测试"></a>小测试</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@anuo ~]# ll /etc/rc.d/rc3.d/ | grep anuo.sh</span><br><span class="line">lrwxrwxrwx  1 root root 17 5月  12 19:10 S53anuo.sh -&gt; ../init.d/anuo.sh</span><br></pre></td></tr></table></figure>
+<p>查看到3级别启动的文件里一个<code>S53anuo.sh</code>的链接文件</p>
 <p>（S表示开启，53也就对应了配置文件里的53的启动的顺序）</p>
 <p><br></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@anuo ~]# chkconfig anuo.sh off --设置开机不启动</span><br><span class="line">[root@anuo ~]# ll /etc/rc.d/rc3.d/|grep anuo.sh     </span><br><span class="line">lrwxrwxrwx  1 root root 17 5月  12 19:30 K88anuo.sh -&gt; ../init.d/anuo.sh</span><br></pre></td></tr></table></figure>
-<p>再次查看发现S53anuo.sh的链接文件没有了，却多了个K88anuo.sh的链接文件</p>
-<p>（K表示不开启 88对应的是配置文件里的88关闭的顺序）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@anuo ~]# chkconfig anuo.sh off   --设置开机不启动</span><br><span class="line">[root@anuo ~]# ll /etc/rc.d/rc3.d/ | grep anuo.sh     </span><br><span class="line">lrwxrwxrwx  1 root root 17 5月  12 19:30 K88anuo.sh -&gt; ../init.d/anuo.sh</span><br></pre></td></tr></table></figure>
+<p>再次查看发现<code>S53anuo.sh</code>的链接文件没有了，却多了个<code>K88anuo.sh</code>的链接文件</p>
+<p>（<code>K</code>表示不开启，<code>88</code>对应的是配置文件里的<code>88</code>关闭的顺序）</p>
 <p><br></p>
 <p>小结：</p>
 <ul>
@@ -399,8 +399,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/endBlogs/2019/05/27/linux-chkconfig/" rel="prev" title="chkconfig">
-                chkconfig <i class="fa fa-chevron-right"></i>
+              <a href="/endBlogs/2019/05/27/linux-chkconfig/" rel="prev" title="linux-chkconfig">
+                linux-chkconfig <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -478,7 +478,7 @@
               
                 <a href="/endBlogs/archives/">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -491,7 +491,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-count">89</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

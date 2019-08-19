@@ -266,6 +266,259 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/06/24/java-GZIPOutputStream和GZIPInputStream/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/endBlogs/2019/06/24/java-GZIPOutputStream和GZIPInputStream/" itemprop="url">java-GZIPOutputStream和GZIPInputStream</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-24T10:55:41+08:00">
+                2019-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="GZIPOutputStream类：压缩"><a href="#GZIPOutputStream类：压缩" class="headerlink" title="GZIPOutputStream类：压缩"></a>GZIPOutputStream类：压缩</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">GZIPOutputStream</span><span class="params">(OutputStream out)</span> <span class="keyword">throws</span> IOException </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>GZIPOutputStream只有一个方法用于压缩，就是带定长的write方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">compress</span><span class="params">(InputStream is, OutputStream os)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">    GZIPOutputStream gos = <span class="keyword">new</span> GZIPOutputStream(os);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> count;</span><br><span class="line">    <span class="keyword">byte</span> data[] = <span class="keyword">new</span> <span class="keyword">byte</span>[BUFFER];</span><br><span class="line">    <span class="keyword">while</span> ((count = is.read(data, <span class="number">0</span>, BUFFER)) != -<span class="number">1</span>) &#123;</span><br><span class="line">        gos.write(data, <span class="number">0</span>, count);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    gos.finish();</span><br><span class="line">    gos.flush();</span><br><span class="line">    gos.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：操作完成后，调用finish方法和flush方法</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/endBlogs/2019/06/24/java-GZIPOutputStream和GZIPInputStream/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/06/24/java-FileInputStream和FileOutputStream/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/endBlogs/2019/06/24/java-FileInputStream和FileOutputStream/" itemprop="url">java-FileInputStream和FileOutputStream</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-24T10:19:00+08:00">
+                2019-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="FileInputStream"><a href="#FileInputStream" class="headerlink" title="FileInputStream"></a>FileInputStream</h4><p>FileInputStream流被称为文件字节输入流，意思指对文件数据以字节的形式进行读取操作如读取图片视频等。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 打开与File类对象代表的实际文件的链接来创建FileInputStream流对象</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">FileInputStream</span><span class="params">(File file)</span> <span class="keyword">throws</span> FileNotFoundException</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 指定的字符串参数来创建File类对象，</span></span><br><span class="line"><span class="comment">// 再与File对象所代表的实际路径建立链接创建FileInputStream流对象</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">FileInputStream</span><span class="params">(String name)</span> <span class="keyword">throws</span> FileNotFoundException</span></span><br></pre></td></tr></table></figure>
+<p>注：若File类对象的所代表的文件不存在、不是文件是目录、或者其他原因不能打开的话，则会抛出异常。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/endBlogs/2019/06/24/java-FileInputStream和FileOutputStream/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/06/21/java-File类/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1267,263 +1520,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/05/29/linux分区与目录/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/endBlogs/2019/05/29/linux分区与目录/" itemprop="url">linux分区与目录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-29T12:56:51+08:00">
-                2019-05-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="分区和目录"><a href="#分区和目录" class="headerlink" title="分区和目录"></a>分区和目录</h4><p>Windows的文件结构是多个并列的树状结构，最顶部的是不同的磁盘（分区）。</p>
-<p>Linux的文件结构是单个的树状结构。</p>
-<p>每次安装系统的时候我们都会进行分区，Linux下磁盘分区和目录的关系如下：</p>
-<ul>
-<li>任何一个分区都必须挂载到某个目录上</li>
-<li>目录是逻辑上的区分，分区是物理上的区分</li>
-<li>磁盘Linux分区都必须挂载到目录树中的某个具体的目录上才能进行读写操作</li>
-<li>根目录是所有Linux的文件和目录所在的地方，需要挂载上一个磁盘分区</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/endBlogs/2019/05/29/linux分区与目录/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/05/28/springboot-HandlerMethodArgumentResolver/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/endBlogs/2019/05/28/springboot-HandlerMethodArgumentResolver/" itemprop="url">springboot-HandlerMethodArgumentResolver</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-28T22:13:48+08:00">
-                2019-05-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h5 id="自定义参数注解（解析）"><a href="#自定义参数注解（解析）" class="headerlink" title="自定义参数注解（解析）"></a>自定义参数注解（解析）</h5><p>在<code>controller</code>的请求方法中，有自定义的参数注解<code>@UserInfo</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/filter/test2"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test2</span> <span class="params">(@RequestBody String o, @UserInfo UserInfoVo userInfoVo)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"Controller中获取的请求数据："</span> + o);</span><br><span class="line">    System.out.println(<span class="string">"自定义注解UserInfo的值："</span> + userInfoVo);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"OK"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/endBlogs/2019/05/28/springboot-HandlerMethodArgumentResolver/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1574,7 +1570,7 @@
               
                 <a href="/endBlogs/archives/">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1587,7 +1583,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-count">89</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

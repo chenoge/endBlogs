@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="分区和目录Windows的文件结构是多个并列的树状结构，最顶部的是不同的磁盘（分区）。 Linux的文件结构是单个的树状结构。 每次安装系统的时候我们都会进行分区，Linux下磁盘分区和目录的关系如下：  任何一个分区都必须挂载到某个目录上 目录是逻辑上的区分，分区是物理上的区分 磁盘Linux分区都必须挂载到目录树中的某个具体的目录上才能进行读写操作 根目录是所有Linux的文件和目录所在的地方">
+<meta name="description" content="分区和目录Windows的文件结构是多个并列的树状结构，最顶部的是不同的磁盘（分区）。Linux的文件结构是单个的树状结构。每次安装系统的时候我们都会进行分区，Linux下磁盘分区和目录的关系如下：  任何一个分区都必须挂载到某个目录上 目录是逻辑上的区分，分区是物理上的区分 磁盘Linux分区都必须挂载到目录树中的某个具体的目录上才能进行读写操作 根目录是所有Linux的文件和目录所在的地方，需">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux分区与目录">
 <meta property="og:url" content="https://www.yf-gz.cn/2019/05/29/linux分区与目录/index.html">
 <meta property="og:site_name" content="chenogeの日志">
-<meta property="og:description" content="分区和目录Windows的文件结构是多个并列的树状结构，最顶部的是不同的磁盘（分区）。 Linux的文件结构是单个的树状结构。 每次安装系统的时候我们都会进行分区，Linux下磁盘分区和目录的关系如下：  任何一个分区都必须挂载到某个目录上 目录是逻辑上的区分，分区是物理上的区分 磁盘Linux分区都必须挂载到目录树中的某个具体的目录上才能进行读写操作 根目录是所有Linux的文件和目录所在的地方">
+<meta property="og:description" content="分区和目录Windows的文件结构是多个并列的树状结构，最顶部的是不同的磁盘（分区）。Linux的文件结构是单个的树状结构。每次安装系统的时候我们都会进行分区，Linux下磁盘分区和目录的关系如下：  任何一个分区都必须挂载到某个目录上 目录是逻辑上的区分，分区是物理上的区分 磁盘Linux分区都必须挂载到目录树中的某个具体的目录上才能进行读写操作 根目录是所有Linux的文件和目录所在的地方，需">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-05T10:16:28.841Z">
+<meta property="og:updated_time" content="2019-08-19T06:50:18.024Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux分区与目录">
-<meta name="twitter:description" content="分区和目录Windows的文件结构是多个并列的树状结构，最顶部的是不同的磁盘（分区）。 Linux的文件结构是单个的树状结构。 每次安装系统的时候我们都会进行分区，Linux下磁盘分区和目录的关系如下：  任何一个分区都必须挂载到某个目录上 目录是逻辑上的区分，分区是物理上的区分 磁盘Linux分区都必须挂载到目录树中的某个具体的目录上才能进行读写操作 根目录是所有Linux的文件和目录所在的地方">
+<meta name="twitter:description" content="分区和目录Windows的文件结构是多个并列的树状结构，最顶部的是不同的磁盘（分区）。Linux的文件结构是单个的树状结构。每次安装系统的时候我们都会进行分区，Linux下磁盘分区和目录的关系如下：  任何一个分区都必须挂载到某个目录上 目录是逻辑上的区分，分区是物理上的区分 磁盘Linux分区都必须挂载到目录树中的某个具体的目录上才能进行读写操作 根目录是所有Linux的文件和目录所在的地方，需">
 
 
 
@@ -334,9 +334,7 @@
       
 
       
-        <h4 id="分区和目录"><a href="#分区和目录" class="headerlink" title="分区和目录"></a>分区和目录</h4><p>Windows的文件结构是多个并列的树状结构，最顶部的是不同的磁盘（分区）。</p>
-<p>Linux的文件结构是单个的树状结构。</p>
-<p>每次安装系统的时候我们都会进行分区，Linux下磁盘分区和目录的关系如下：</p>
+        <h4 id="分区和目录"><a href="#分区和目录" class="headerlink" title="分区和目录"></a>分区和目录</h4><p>Windows的文件结构是<strong>多个并列的树状结构</strong>，最顶部的是不同的磁盘（分区）。Linux的文件结构是<strong>单个的树状结构</strong>。每次安装系统的时候我们都会进行分区，Linux下磁盘分区和目录的关系如下：</p>
 <ul>
 <li>任何一个分区都必须挂载到某个目录上</li>
 <li>目录是逻辑上的区分，分区是物理上的区分</li>
@@ -345,7 +343,7 @@
 </ul>
 <a id="more"></a>
 <p><br></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# df -lh</span><br><span class="line">Filesystem            容量    已用     可用      已用%     挂载点</span><br><span class="line">/dev/sda3             6.4G   4.8G    1.3G     80%        /</span><br><span class="line">/dev/sda1             99M    8.4M    86M      9%         /boot</span><br><span class="line">none                  494M   0       494M     0%         /dev/shm</span><br><span class="line">/dev/hdc              105M   105M    0        100%       /media/cdrom</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# df -lh</span><br><span class="line">Filesystem       容量      已用      可用      已用%      挂载点</span><br><span class="line">/dev/sda3        6.4G     4.8G      1.3G     80%        /</span><br><span class="line">/dev/sda1        99M      8.4M      86M      9%         /boot</span><br><span class="line">none             494M     0         494M     0%         /dev/shm</span><br><span class="line">/dev/hdc         105M     105M      0        100%       /media/cdrom</span><br></pre></td></tr></table></figure>
 <p>①左边的信息代表了磁盘文件系统分区：<code>/dev/sda1, /dev/sda3</code>等</p>
 <p>②右边的信息分别代表了<strong>容量，已用空间，可用空间，百分比，挂载点</strong></p>
 <p><br></p>
@@ -470,7 +468,7 @@
               
                 <a href="/endBlogs/archives/">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -483,7 +481,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-count">89</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

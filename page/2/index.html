@@ -266,6 +266,266 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/08/06/java-synchronized/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/endBlogs/2019/08/06/java-synchronized/" itemprop="url">java-synchronized</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-06T21:21:57+08:00">
+                2019-08-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h4><p><code>synchronized</code>关键字最主要有以下3种应用方式：</p>
+<ul>
+<li><strong>修饰实例方法</strong>，作用于当前实例加锁，进入同步代码前<strong>要获得当前实例的锁</strong></li>
+<li><strong>修饰静态方法</strong>，作用于当前类对象加锁，进入同步代码前<strong>要获得当前类对象的锁</strong></li>
+<li>修饰代码块，指定加锁对象，对给定对象加锁，进入同步代码库前<strong>要获得给定对象的锁</strong></li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/endBlogs/2019/08/06/java-synchronized/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/08/06/Elasticsearch聚合排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/endBlogs/2019/08/06/Elasticsearch聚合排序/" itemprop="url">Elasticsearch聚合排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-06T14:35:41+08:00">
+                2019-08-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="内置排序"><a href="#内置排序" class="headerlink" title="内置排序"></a>内置排序</h4><p>聚合引入了一个 <code>order</code> 对象， 它允许我们可以根据以下几个值中的一个值进行排序：</p>
+<ul>
+<li><strong><code>_count</code></strong> ：按文档数排序。对 <code>terms</code> 、 <code>histogram</code> 、 <code>date_histogram</code> 有效</li>
+<li><strong><code>_term</code></strong> ： 按词项的字符串值的字母顺序排序。只在 <code>terms</code> 内使用</li>
+<li><strong><code>_key</code></strong> ：按每个桶的键值数值排序。 只在 <code>histogram</code> 和 <code>date_histogram</code> 内使用</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">GET /cars/transactions/_search</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"size"</span> : <span class="number">0</span>,</span><br><span class="line">    <span class="string">"aggs"</span> : &#123;</span><br><span class="line">        <span class="string">"colors"</span> : &#123;</span><br><span class="line">            <span class="string">"terms"</span> : &#123;</span><br><span class="line">              <span class="string">"field"</span> : <span class="string">"color"</span>,</span><br><span class="line">              <span class="string">"order"</span>: &#123;</span><br><span class="line">                <span class="string">"_count"</span> : <span class="string">"desc"</span> </span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：Elasticsearch默认的，桶会根据 <code>doc_count</code> 降序排列</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/endBlogs/2019/08/06/Elasticsearch聚合排序/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/08/01/JedisPool配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -971,7 +1231,9 @@
 
       
         
-          <h5 id="一、原理"><a href="#一、原理" class="headerlink" title="一、原理"></a>一、原理</h5><p>索引一般以文件形式存在磁盘中（也可以存于内存中），存储的索引的原理大致概括为<strong>以空间换时间</strong>。数据库在未添加索引的时候进行查询默认的是进行<strong>全量搜索</strong>，也就是进行全局扫描，有多少条数据就要进行多少次查询，然后找到相匹配的数据就把他放到结果集中，直到全表扫描完。而建立索引之后，会将建立索引的KEY值放在一个<strong>n叉树</strong>上（BTree）。因为B树的特点就是适合在磁盘等直接存储设备上组织动态查找表，每次以索引进行条件查询时，会去树上根据key值直接进行搜索。</p>
+          <h5 id="一、原理"><a href="#一、原理" class="headerlink" title="一、原理"></a>一、原理</h5><p>索引一般以<strong>文件形式</strong>存在磁盘中（也可以存于内存中），存储的索引的原理大致概括为<strong>以空间换时间</strong>。</p>
+<p>数据库在<strong>未添加索引</strong>的时候进行查询默认的是进行<strong>全量搜索</strong>，也就是进行全局扫描，有多少条数据就要进行多少次查询，然后找到相匹配的数据就把他放到<strong>结果集</strong>中，直到全表扫描完。</p>
+<p><strong>建立索引之后</strong>，会将建立索引的<code>KEY值</code>放在一个<strong>n叉树</strong>上（<code>BTree</code>）。因为B树的特点就是适合在磁盘等直接存储设备上组织动态查找表，每次以索引进行条件查询时，会去树上根据<code>key值</code>直接进行搜索。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/endBlogs/2019/06/29/mysql索引/#more" rel="contents">
@@ -1268,259 +1530,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/06/24/java-GZIPOutputStream和GZIPInputStream/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/endBlogs/2019/06/24/java-GZIPOutputStream和GZIPInputStream/" itemprop="url">java-GZIPOutputStream和GZIPInputStream</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-24T10:55:41+08:00">
-                2019-06-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="GZIPOutputStream类：压缩"><a href="#GZIPOutputStream类：压缩" class="headerlink" title="GZIPOutputStream类：压缩"></a>GZIPOutputStream类：压缩</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">GZIPOutputStream</span><span class="params">(OutputStream out)</span> <span class="keyword">throws</span> IOException </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>GZIPOutputStream只有一个方法用于压缩，就是带定长的write方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">compress</span><span class="params">(InputStream is, OutputStream os)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">    GZIPOutputStream gos = <span class="keyword">new</span> GZIPOutputStream(os);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> count;</span><br><span class="line">    <span class="keyword">byte</span> data[] = <span class="keyword">new</span> <span class="keyword">byte</span>[BUFFER];</span><br><span class="line">    <span class="keyword">while</span> ((count = is.read(data, <span class="number">0</span>, BUFFER)) != -<span class="number">1</span>) &#123;</span><br><span class="line">        gos.write(data, <span class="number">0</span>, count);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    gos.finish();</span><br><span class="line">    gos.flush();</span><br><span class="line">    gos.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注：操作完成后，调用finish方法和flush方法</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/endBlogs/2019/06/24/java-GZIPOutputStream和GZIPInputStream/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/06/24/java-FileInputStream和FileOutputStream/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/endBlogs/2019/06/24/java-FileInputStream和FileOutputStream/" itemprop="url">java-FileInputStream和FileOutputStream</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-24T10:19:00+08:00">
-                2019-06-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="FileInputStream"><a href="#FileInputStream" class="headerlink" title="FileInputStream"></a>FileInputStream</h4><p>FileInputStream流被称为文件字节输入流，意思指对文件数据以字节的形式进行读取操作如读取图片视频等。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 打开与File类对象代表的实际文件的链接来创建FileInputStream流对象</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">FileInputStream</span><span class="params">(File file)</span> <span class="keyword">throws</span> FileNotFoundException</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 指定的字符串参数来创建File类对象，</span></span><br><span class="line"><span class="comment">// 再与File对象所代表的实际路径建立链接创建FileInputStream流对象</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">FileInputStream</span><span class="params">(String name)</span> <span class="keyword">throws</span> FileNotFoundException</span></span><br></pre></td></tr></table></figure>
-<p>注：若File类对象的所代表的文件不存在、不是文件是目录、或者其他原因不能打开的话，则会抛出异常。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/endBlogs/2019/06/24/java-FileInputStream和FileOutputStream/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1571,7 +1580,7 @@
               
                 <a href="/endBlogs/archives/">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1584,7 +1593,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-count">89</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

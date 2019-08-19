@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="一、原理索引一般以文件形式存在磁盘中（也可以存于内存中），存储的索引的原理大致概括为以空间换时间。数据库在未添加索引的时候进行查询默认的是进行全量搜索，也就是进行全局扫描，有多少条数据就要进行多少次查询，然后找到相匹配的数据就把他放到结果集中，直到全表扫描完。而建立索引之后，会将建立索引的KEY值放在一个n叉树上（BTree）。因为B树的特点就是适合在磁盘等直接存储设备上组织动态查找表，每次以索引">
+<meta name="description" content="一、原理索引一般以文件形式存在磁盘中（也可以存于内存中），存储的索引的原理大致概括为以空间换时间。 数据库在未添加索引的时候进行查询默认的是进行全量搜索，也就是进行全局扫描，有多少条数据就要进行多少次查询，然后找到相匹配的数据就把他放到结果集中，直到全表扫描完。 建立索引之后，会将建立索引的KEY值放在一个n叉树上（BTree）。因为B树的特点就是适合在磁盘等直接存储设备上组织动态查找表，每次以索">
 <meta name="keywords" content="sql,索引">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql索引">
 <meta property="og:url" content="https://www.yf-gz.cn/2019/06/29/mysql索引/index.html">
 <meta property="og:site_name" content="chenogeの日志">
-<meta property="og:description" content="一、原理索引一般以文件形式存在磁盘中（也可以存于内存中），存储的索引的原理大致概括为以空间换时间。数据库在未添加索引的时候进行查询默认的是进行全量搜索，也就是进行全局扫描，有多少条数据就要进行多少次查询，然后找到相匹配的数据就把他放到结果集中，直到全表扫描完。而建立索引之后，会将建立索引的KEY值放在一个n叉树上（BTree）。因为B树的特点就是适合在磁盘等直接存储设备上组织动态查找表，每次以索引">
+<meta property="og:description" content="一、原理索引一般以文件形式存在磁盘中（也可以存于内存中），存储的索引的原理大致概括为以空间换时间。 数据库在未添加索引的时候进行查询默认的是进行全量搜索，也就是进行全局扫描，有多少条数据就要进行多少次查询，然后找到相匹配的数据就把他放到结果集中，直到全表扫描完。 建立索引之后，会将建立索引的KEY值放在一个n叉树上（BTree）。因为B树的特点就是适合在磁盘等直接存储设备上组织动态查找表，每次以索">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-29T13:00:41.983Z">
+<meta property="og:updated_time" content="2019-08-19T07:40:44.449Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql索引">
-<meta name="twitter:description" content="一、原理索引一般以文件形式存在磁盘中（也可以存于内存中），存储的索引的原理大致概括为以空间换时间。数据库在未添加索引的时候进行查询默认的是进行全量搜索，也就是进行全局扫描，有多少条数据就要进行多少次查询，然后找到相匹配的数据就把他放到结果集中，直到全表扫描完。而建立索引之后，会将建立索引的KEY值放在一个n叉树上（BTree）。因为B树的特点就是适合在磁盘等直接存储设备上组织动态查找表，每次以索引">
+<meta name="twitter:description" content="一、原理索引一般以文件形式存在磁盘中（也可以存于内存中），存储的索引的原理大致概括为以空间换时间。 数据库在未添加索引的时候进行查询默认的是进行全量搜索，也就是进行全局扫描，有多少条数据就要进行多少次查询，然后找到相匹配的数据就把他放到结果集中，直到全表扫描完。 建立索引之后，会将建立索引的KEY值放在一个n叉树上（BTree）。因为B树的特点就是适合在磁盘等直接存储设备上组织动态查找表，每次以索">
 
 
 
@@ -334,10 +334,12 @@
       
 
       
-        <h5 id="一、原理"><a href="#一、原理" class="headerlink" title="一、原理"></a>一、原理</h5><p>索引一般以文件形式存在磁盘中（也可以存于内存中），存储的索引的原理大致概括为<strong>以空间换时间</strong>。数据库在未添加索引的时候进行查询默认的是进行<strong>全量搜索</strong>，也就是进行全局扫描，有多少条数据就要进行多少次查询，然后找到相匹配的数据就把他放到结果集中，直到全表扫描完。而建立索引之后，会将建立索引的KEY值放在一个<strong>n叉树</strong>上（BTree）。因为B树的特点就是适合在磁盘等直接存储设备上组织动态查找表，每次以索引进行条件查询时，会去树上根据key值直接进行搜索。</p>
+        <h5 id="一、原理"><a href="#一、原理" class="headerlink" title="一、原理"></a>一、原理</h5><p>索引一般以<strong>文件形式</strong>存在磁盘中（也可以存于内存中），存储的索引的原理大致概括为<strong>以空间换时间</strong>。</p>
+<p>数据库在<strong>未添加索引</strong>的时候进行查询默认的是进行<strong>全量搜索</strong>，也就是进行全局扫描，有多少条数据就要进行多少次查询，然后找到相匹配的数据就把他放到<strong>结果集</strong>中，直到全表扫描完。</p>
+<p><strong>建立索引之后</strong>，会将建立索引的<code>KEY值</code>放在一个<strong>n叉树</strong>上（<code>BTree</code>）。因为B树的特点就是适合在磁盘等直接存储设备上组织动态查找表，每次以索引进行条件查询时，会去树上根据<code>key值</code>直接进行搜索。</p>
 <a id="more"></a>
 <h5 id="二、优点"><a href="#二、优点" class="headerlink" title="二、优点"></a>二、优点</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">建立索引的目的是加快对表中记录的查找或排序！</span><br></pre></td></tr></table></figure>
-<p>① 建立索引的列可以保证行的唯一性，生成唯一的rowId</p>
+<p>① 建立索引的列可以保证行的唯一性，生成唯一的<code>rowId</code></p>
 <p>② 建立索引可以有效缩短数据的检索时间</p>
 <p>③ 建立索引可以加快表与表之间的连接</p>
 <p>④ 为用来排序或者是分组的字段添加索引可以加快分组和排序顺序</p>
@@ -346,14 +348,14 @@
 <p>② 创建索引和维护索引需要空间成本，每一条索引都要占据数据库的物理存储空间</p>
 <p>③ 会降低表的增删改的效率，因为每次增删改索引需要进行动态维护，导致时间变长</p>
 <p><br></p>
-<h5 id="四、创建创建"><a href="#四、创建创建" class="headerlink" title="四、创建创建"></a>四、创建创建</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_name[col_name <span class="keyword">data</span> <span class="keyword">type</span>]</span><br><span class="line">[<span class="keyword">unique</span>|fulltext][<span class="keyword">index</span>|<span class="keyword">key</span>][index_name](col_name[<span class="keyword">length</span>])[<span class="keyword">asc</span>|<span class="keyword">desc</span>]</span><br></pre></td></tr></table></figure>
+<h5 id="四、创建索引"><a href="#四、创建索引" class="headerlink" title="四、创建索引"></a>四、创建索引</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_name [col_name <span class="keyword">data</span> <span class="keyword">type</span>] [<span class="keyword">unique</span> | fulltext] </span><br><span class="line">[<span class="keyword">index</span> | <span class="keyword">key</span>] [index_name] (col_name[<span class="keyword">length</span>]) [<span class="keyword">asc</span> | <span class="keyword">desc</span>]</span><br></pre></td></tr></table></figure>
 <ul>
-<li>unique|fulltext为可选参数，分别表示唯一索引、全文索引</li>
-<li>index和key为同义词，两者作用相同，用来指定创建索引</li>
-<li>col_name为需要创建索引的字段列，该列必须从数据表中该定义的多个列中选择</li>
-<li>index_name指定索引的名称，为可选参数，如果不指定，默认col_name为索引值</li>
-<li>length为可选参数，表示索引的长度，只有字符串类型的字段才能指定索引长度</li>
-<li>asc或desc指定升序或降序的索引值存储</li>
+<li><code>unique | fulltext</code>为可选参数，分别表示唯一索引、全文索引</li>
+<li><code>index</code>和<code>key</code>为同义词，两者作用相同，用来指定创建索引</li>
+<li><code>col_name</code>为需要创建索引的字段列，该列必须从数据表中该定义的多个列中选择</li>
+<li><code>index_name</code>指定索引的名称，为可选参数，如果不指定，默认<code>col_name</code>为索引值</li>
+<li><code>length</code>为可选参数，表示索引的长度，只有字符串类型的字段才能指定索引长度</li>
+<li><code>asc</code>或<code>desc</code>指定升序或降序的索引值存储</li>
 </ul>
 <h5 id="直接创建索引"><a href="#直接创建索引" class="headerlink" title="直接创建索引"></a>直接创建索引</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">INDEX</span> index_name <span class="keyword">ON</span> table_name(col_name);</span><br></pre></td></tr></table></figure>
 <h5 id="修改表结构的方式添加索引"><a href="#修改表结构的方式添加索引" class="headerlink" title="修改表结构的方式添加索引"></a>修改表结构的方式添加索引</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">ADD</span> <span class="keyword">INDEX</span> index_name(col_name);</span><br></pre></td></tr></table></figure>
@@ -480,7 +482,7 @@
               
                 <a href="/endBlogs/archives/">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -493,7 +495,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-count">89</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -526,7 +528,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#一、原理"><span class="nav-number">1.</span> <span class="nav-text">一、原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二、优点"><span class="nav-number">2.</span> <span class="nav-text">二、优点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三、缺点"><span class="nav-number">3.</span> <span class="nav-text">三、缺点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#四、创建创建"><span class="nav-number">4.</span> <span class="nav-text">四、创建创建</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#直接创建索引"><span class="nav-number">5.</span> <span class="nav-text">直接创建索引</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改表结构的方式添加索引"><span class="nav-number">6.</span> <span class="nav-text">修改表结构的方式添加索引</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建表的时候同时创建索引"><span class="nav-number">7.</span> <span class="nav-text">创建表的时候同时创建索引</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#删除索引"><span class="nav-number">8.</span> <span class="nav-text">删除索引</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#一、原理"><span class="nav-number">1.</span> <span class="nav-text">一、原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二、优点"><span class="nav-number">2.</span> <span class="nav-text">二、优点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三、缺点"><span class="nav-number">3.</span> <span class="nav-text">三、缺点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#四、创建索引"><span class="nav-number">4.</span> <span class="nav-text">四、创建索引</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#直接创建索引"><span class="nav-number">5.</span> <span class="nav-text">直接创建索引</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改表结构的方式添加索引"><span class="nav-number">6.</span> <span class="nav-text">修改表结构的方式添加索引</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建表的时候同时创建索引"><span class="nav-number">7.</span> <span class="nav-text">创建表的时候同时创建索引</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#删除索引"><span class="nav-number">8.</span> <span class="nav-text">删除索引</span></a></li></ol></div>
             
 
           </div>
