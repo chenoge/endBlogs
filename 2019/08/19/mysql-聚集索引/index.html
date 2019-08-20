@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://chenoge.github.io/endBlogs/2019/08/19/mysql-%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95/2.png">
 <meta property="og:image" content="https://chenoge.github.io/endBlogs/2019/08/19/mysql-%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95/1.png">
-<meta property="og:updated_time" content="2019-08-19T10:47:44.026Z">
+<meta property="og:updated_time" content="2019-08-20T02:35:26.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql-聚集索引">
 <meta name="twitter:description" content="聚集索引聚集索引是指数据库表行中数据的物理顺序与键值的逻辑（索引）顺序相同。一个表只能有一个主键， 一个表只能有一个聚集索引，因为一个表的物理顺序只有一种情况。与非聚集索引相比，聚集索引有着更快的检索速度。">
@@ -339,13 +339,28 @@
       
         <h4 id="聚集索引"><a href="#聚集索引" class="headerlink" title="聚集索引"></a>聚集索引</h4><p>聚集索引是指数据库表<strong>行中数据的物理顺序与键值的逻辑（索引）顺序相同</strong>。一个表只能有一个<strong>主键</strong>， 一个表只能有一个<strong>聚集索引</strong>，因为一个表的<strong>物理顺序</strong>只有一种情况。与非聚集索引相比，聚集索引有着更快的检索速度。</p>
 <a id="more"></a>
+<p><br></p>
 <h4 id="非聚集索引"><a href="#非聚集索引" class="headerlink" title="非聚集索引"></a>非聚集索引</h4><p>非聚集索引和聚集索引一样， 同样是采用<strong>平衡树</strong>作为索引的数据结构。索引树结构中各<strong>节点的值来自于表中的索引字段</strong>。</p>
 <p>每次给字段建一个新索引， <strong>字段中的数据就会被复制一份出来</strong>， 用于生成索引。 因此，给表添加索引，会增加表的体积， 占用磁盘存储空间。</p>
 <p>注：非聚集索引和聚集索引的区别在于， <strong>通过聚集索引可以查到需要查找的数据， 而通过非聚集索引可以查到记录对应的主键值 ， 再使用主键的值通过聚集索引查找到需要的数据</strong>。</p>
 <p><img src="https://chenoge.github.io/endBlogs/2019/08/19/mysql-%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95/2.png" alt=""></p>
 <p><img src="https://chenoge.github.io/endBlogs/2019/08/19/mysql-%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95/1.png" alt=""></p>
+<p><br></p>
 <h4 id="回表（回行）"><a href="#回表（回行）" class="headerlink" title="回表（回行）"></a>回表（回行）</h4><p>非聚集索引<strong>无法直接查询</strong>想要的列数据，所以<strong>通过非聚集索引查询到聚簇索引</strong>后，再查询到想要的数据，这种通过非聚集索引查询出来的过程，就叫做回表。</p>
+<p><br></p>
 <h4 id="覆盖索引"><a href="#覆盖索引" class="headerlink" title="覆盖索引"></a>覆盖索引</h4><p>如果一个<strong>索引</strong>包含了（或覆盖了）满足<strong>查询语句中字段与条件的数据</strong>就叫做覆盖索引。</p>
+<p><br></p>
+<h4 id="组合索引"><a href="#组合索引" class="headerlink" title="组合索引"></a>组合索引</h4><p>两个或更多个列上的索引被称作<strong>组合索引</strong>，遵循<strong>最左原则</strong>，是个完整的<strong>BTree 索引</strong>。组合索引的多字段是有序的，<strong>先按照第一列进行排序</strong>，然后<strong>在第一列排好序的基础上再对第二列排序</strong>，以此类推。</p>
+<p><strong>左侧原则</strong>：一个查询可以只使用复合索引<strong>最左侧的一部份</strong>。<strong>例如索引是<code>key index (a,b,c)</code>，可以支持<code>a | a,b | a,b,c</code> 3种组合进行查找</strong>，但不支持<code>b,c</code>进行查找 。</p>
+<ul>
+<li><p>当最左侧字段是常量引用时，索引就十分有效</p>
+</li>
+<li><p>某一列存在<strong>范围查询</strong>时，从该列开始断点，后面列无法发挥索引效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">有组合索引 Index(A,B)，下面条件可以用上组合索引排序：</span><br><span class="line">1、ORDER BY A   ——首列排序</span><br><span class="line">2、A=5 ORDER BY B   ——第一列过滤后第二列排序</span><br><span class="line">3、ORDER BY A DESC, B DESC   ——注意，此时两列以相同顺序排序</span><br><span class="line">4、A&gt;5 ORDER BY A   ——数据检索和排序都在第一列</span><br><span class="line"></span><br><span class="line">下面条件不能用上组合索引排序：</span><br><span class="line">1、ORDER BY B   ——排序在索引的第二列</span><br><span class="line">2、A&gt;5 ORDER BY B   ——范围查询在第一列，排序在第二列</span><br><span class="line">3、A IN(1,2) ORDER BY B   ——理由同上</span><br><span class="line">4、ORDER BY A ASC, B DESC   ——注意，此时两列以不同顺序排序</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br></p>
+<h4 id="索引原则"><a href="#索引原则" class="headerlink" title="索引原则"></a>索引原则</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.索引越少越好，因为在修改数据时，索引都要进行更新，降低写速度</span><br><span class="line"></span><br><span class="line">2.最窄的字段放在键的左边</span><br><span class="line"></span><br><span class="line">3.避免file sort排序，临时表和表扫描</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -475,7 +490,7 @@
               
                 <a href="/endBlogs/archives/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -488,7 +503,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-count">91</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -521,7 +536,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#聚集索引"><span class="nav-number">1.</span> <span class="nav-text">聚集索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非聚集索引"><span class="nav-number">2.</span> <span class="nav-text">非聚集索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回表（回行）"><span class="nav-number">3.</span> <span class="nav-text">回表（回行）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#覆盖索引"><span class="nav-number">4.</span> <span class="nav-text">覆盖索引</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#聚集索引"><span class="nav-number">1.</span> <span class="nav-text">聚集索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非聚集索引"><span class="nav-number">2.</span> <span class="nav-text">非聚集索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回表（回行）"><span class="nav-number">3.</span> <span class="nav-text">回表（回行）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#覆盖索引"><span class="nav-number">4.</span> <span class="nav-text">覆盖索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组合索引"><span class="nav-number">5.</span> <span class="nav-text">组合索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#索引原则"><span class="nav-number">6.</span> <span class="nav-text">索引原则</span></a></li></ol></div>
             
 
           </div>
