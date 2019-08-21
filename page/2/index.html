@@ -266,6 +266,130 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/08/13/常用redis命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/endBlogs/2019/08/13/常用redis命令/" itemprop="url">常用redis命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-13T15:21:17+08:00">
+                2019-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h5 id="访问redis"><a href="#访问redis" class="headerlink" title="访问redis"></a>访问redis</h5><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># --raw参数，处理中文编码问题</span><br><span class="line">redis-cli -h host -p port --raw</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/endBlogs/2019/08/13/常用redis命令/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/08/13/java-时间格式化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1396,132 +1520,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/06/29/mysql索引/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/endBlogs/2019/06/29/mysql索引/" itemprop="url">mysql索引</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-29T20:50:10+08:00">
-                2019-06-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h5 id="一、原理"><a href="#一、原理" class="headerlink" title="一、原理"></a>一、原理</h5><p>索引一般以<strong>文件形式</strong>存在磁盘中（也可以存于内存中），存储的索引的原理大致概括为<strong>以空间换时间</strong>。</p>
-<p>数据库在<strong>未添加索引</strong>的时候进行查询默认的是进行<strong>全量搜索</strong>，也就是进行全局扫描，有多少条数据就要进行多少次查询，然后找到相匹配的数据就把他放到<strong>结果集</strong>中，直到全表扫描完。</p>
-<p><strong>建立索引之后</strong>，会将建立索引的<code>KEY值</code>放在一个<strong>n叉树</strong>上（<code>BTree</code>）。因为B树的特点就是适合在磁盘等直接存储设备上组织动态查找表，每次以索引进行条件查询时，会去树上根据<code>key值</code>直接进行搜索。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/endBlogs/2019/06/29/mysql索引/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1572,7 +1570,7 @@
               
                 <a href="/endBlogs/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1585,7 +1583,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">91</span>
+                  <span class="site-state-item-count">92</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

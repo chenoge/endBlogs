@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Java,ElasticSearch," />
+  <meta name="keywords" content="mysql,left join on," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Index(增加）12345678910111213141516171819202122232425262728public class IndexTest &amp;#123;    public static void main(String[] argv) &amp;#123;        Settings settings = ImmutableSettings.settingsBuilder()">
-<meta name="keywords" content="Java,ElasticSearch">
+<meta name="description" content="连表数据库在通过连接两张或多张表来返回记录时，都会生成一张中间的临时表，然后再将这张临时表返回给用户。在使用left jion时，on和where条件的区别如下：  on条件是在生成临时表时使用的条件，它不管on中的条件是否为真，都会返回左边表中的记录  where条件是在临时表生成好后，再对临时表进行过滤的条件 12select * from tab1 left join tab2 on (ta">
+<meta name="keywords" content="mysql,left join on">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java-ElasticSearch增删改查">
-<meta property="og:url" content="https://www.yf-gz.cn/2019/06/05/Java-ElasticSearch增删改查/index.html">
+<meta property="og:title" content="mysql-left-join-on多条件无效">
+<meta property="og:url" content="https://www.yf-gz.cn/2019/08/21/mysql-left-join-on多条件无效/index.html">
 <meta property="og:site_name" content="chenogeの日志">
-<meta property="og:description" content="Index(增加）12345678910111213141516171819202122232425262728public class IndexTest &amp;#123;    public static void main(String[] argv) &amp;#123;        Settings settings = ImmutableSettings.settingsBuilder()">
+<meta property="og:description" content="连表数据库在通过连接两张或多张表来返回记录时，都会生成一张中间的临时表，然后再将这张临时表返回给用户。在使用left jion时，on和where条件的区别如下：  on条件是在生成临时表时使用的条件，它不管on中的条件是否为真，都会返回左边表中的记录  where条件是在临时表生成好后，再对临时表进行过滤的条件 12select * from tab1 left join tab2 on (ta">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-05T10:16:28.761Z">
+<meta property="og:updated_time" content="2019-08-21T11:37:37.713Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java-ElasticSearch增删改查">
-<meta name="twitter:description" content="Index(增加）12345678910111213141516171819202122232425262728public class IndexTest &amp;#123;    public static void main(String[] argv) &amp;#123;        Settings settings = ImmutableSettings.settingsBuilder()">
+<meta name="twitter:title" content="mysql-left-join-on多条件无效">
+<meta name="twitter:description" content="连表数据库在通过连接两张或多张表来返回记录时，都会生成一张中间的临时表，然后再将这张临时表返回给用户。在使用left jion时，on和where条件的区别如下：  on条件是在生成临时表时使用的条件，它不管on中的条件是否为真，都会返回左边表中的记录  where条件是在临时表生成好后，再对临时表进行过滤的条件 12select * from tab1 left join tab2 on (ta">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://www.yf-gz.cn/2019/06/05/Java-ElasticSearch增删改查/"/>
+  <link rel="canonical" href="https://www.yf-gz.cn/2019/08/21/mysql-left-join-on多条件无效/"/>
 
 
 
 
 
-  <title>Java-ElasticSearch增删改查 | chenogeの日志</title>
+  <title>mysql-left-join-on多条件无效 | chenogeの日志</title>
   
 
 
@@ -267,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/06/05/Java-ElasticSearch增删改查/">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/08/21/mysql-left-join-on多条件无效/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chenoge">
@@ -284,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java-ElasticSearch增删改查</h1>
+          <h1 class="post-title" itemprop="name headline">mysql-left-join-on多条件无效</h1>
         
 
         <div class="post-meta">
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-05T17:57:29+08:00">
-                2019-06-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-21T18:41:07+08:00">
+                2019-08-21
               </time>
             
 
@@ -334,13 +334,13 @@
       
 
       
-        <h5 id="Index-增加）"><a href="#Index-增加）" class="headerlink" title="Index(增加）"></a>Index(增加）</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] argv)</span> </span>&#123;</span><br><span class="line">        Settings settings = ImmutableSettings.settingsBuilder()</span><br><span class="line">            <span class="comment">//指定集群名称  </span></span><br><span class="line">            .put(<span class="string">"cluster.name"</span>, <span class="string">"elasticsearch"</span>)</span><br><span class="line">            <span class="comment">//探测集群中机器状态  </span></span><br><span class="line">            .put(<span class="string">"client.transport.sniff"</span>, <span class="keyword">true</span>).build();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/* </span></span><br><span class="line"><span class="comment">         * 创建客户端，所有的操作都由客户端开始，这个就好像是JDBC的Connection对象 </span></span><br><span class="line"><span class="comment">         * 用完记得要关闭 </span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        Client client = <span class="keyword">new</span> TransportClient(settings)</span><br><span class="line">            .addTransportAddress(<span class="keyword">new</span> InetSocketTransportAddress(<span class="string">"192.168.1.106"</span>, <span class="number">9300</span>));</span><br><span class="line">        String json = ESUtils.toJson(<span class="keyword">new</span> LogModel());</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//在这里创建我们要索引的对象  </span></span><br><span class="line">        IndexResponse response = client.prepareIndex(<span class="string">"twitter"</span>, <span class="string">"tweet"</span>)</span><br><span class="line">            <span class="comment">//必须为对象单独指定ID  </span></span><br><span class="line">            .setId(<span class="string">"1"</span>)</span><br><span class="line">            .setSource(json)</span><br><span class="line">            .execute()</span><br><span class="line">            .actionGet();</span><br><span class="line">        <span class="comment">//多次index这个版本号会变  </span></span><br><span class="line">        System.out.println(<span class="string">"response.version():"</span> + response.version());</span><br><span class="line">        client.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p><br></p>
-<h5 id="delete-删除）"><a href="#delete-删除）" class="headerlink" title="delete(删除）"></a>delete(删除）</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeleteTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] argv)</span> </span>&#123;</span><br><span class="line">        Settings settings = ImmutableSettings.settingsBuilder()</span><br><span class="line">            <span class="comment">//指定集群名称  </span></span><br><span class="line">            .put(<span class="string">"cluster.name"</span>, <span class="string">"elasticsearch"</span>)</span><br><span class="line">            <span class="comment">//探测集群中机器状态  </span></span><br><span class="line">            .put(<span class="string">"client.transport.sniff"</span>, <span class="keyword">true</span>).build();</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* </span></span><br><span class="line"><span class="comment">         * 创建客户端，所有的操作都由客户端开始，这个就好像是JDBC的Connection对象 </span></span><br><span class="line"><span class="comment">         * 用完记得要关闭 </span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        Client client = <span class="keyword">new</span> TransportClient(settings)</span><br><span class="line">            .addTransportAddress(<span class="keyword">new</span> InetSocketTransportAddress(<span class="string">"192.168.1.106"</span>, <span class="number">9300</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//在这里创建我们要索引的对象  </span></span><br><span class="line">        DeleteResponse response = client.prepareDelete(<span class="string">"twitter"</span>, <span class="string">"tweet"</span>, <span class="string">"1"</span>)</span><br><span class="line">            .execute()</span><br><span class="line">            .actionGet();</span><br><span class="line">        System.out.println(response.getId());</span><br><span class="line">        System.out.println(ESUtils.toJson(response.getHeaders()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><br></p>
-<h5 id="GET-查询）"><a href="#GET-查询）" class="headerlink" title="GET(查询）"></a>GET(查询）</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GetTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] argv)</span> </span>&#123;</span><br><span class="line">        Settings settings = ImmutableSettings.settingsBuilder()</span><br><span class="line">            <span class="comment">//指定集群名称  </span></span><br><span class="line">            .put(<span class="string">"cluster.name"</span>, <span class="string">"elasticsearch"</span>)</span><br><span class="line">            <span class="comment">//探测集群中机器状态  </span></span><br><span class="line">            .put(<span class="string">"client.transport.sniff"</span>, <span class="keyword">true</span>).build();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/* </span></span><br><span class="line"><span class="comment">         * 创建客户端，所有的操作都由客户端开始，这个就好像是JDBC的Connection对象 </span></span><br><span class="line"><span class="comment">         * 用完记得要关闭 </span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        Client client = <span class="keyword">new</span> TransportClient(settings)</span><br><span class="line">            .addTransportAddress(<span class="keyword">new</span> InetSocketTransportAddress(<span class="string">"192.168.1.106"</span>, <span class="number">9300</span>));</span><br><span class="line">       </span><br><span class="line">        <span class="comment">//在这里创建我们要索引的对象  </span></span><br><span class="line">        GetResponse response = client.prepareGet(<span class="string">"twitter"</span>, <span class="string">"tweet"</span>, <span class="string">"1"</span>)</span><br><span class="line">            .execute()</span><br><span class="line">            .actionGet();</span><br><span class="line">        System.out.println(<span class="string">"response.getId():"</span> + response.getId());</span><br><span class="line">        System.out.println(<span class="string">"response.getSourceAsString():"</span> + response.getSourceAsString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><br></p>
+        <h4 id="连表"><a href="#连表" class="headerlink" title="连表"></a>连表</h4><p>数据库在通过连接两张或多张表来返回记录时，都会生成一张中间的<strong>临时表</strong>，然后再将这张临时表返回给用户。在使用<code>left jion</code>时，<code>on</code>和<code>where</code>条件的区别如下：</p>
+<ul>
+<li><p><code>on</code>条件是在生成临时表时使用的条件，它不管<code>on</code>中的<strong>条件是否为真</strong>，都会返回左边表中的记录</p>
+</li>
+<li><p><code>where</code>条件是在临时表生成好后，再对临时表进行过滤的条件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from tab1 left join tab2 on (tab1.size = tab2.size) where tab2.name=&apos;AAA&apos;;</span><br><span class="line">select * from tab1 left join tab2 on (tab1.size = tab2.size and tab2.name=&apos;AAA&apos;);</span><br></pre></td></tr></table></figure></li>
+</ul>
 
       
     </div>
@@ -358,9 +358,9 @@
       
         <div class="post-tags">
           
-            <a href="/endBlogs/tags/Java/" rel="tag"># Java</a>
+            <a href="/endBlogs/tags/mysql/" rel="tag"># mysql</a>
           
-            <a href="/endBlogs/tags/ElasticSearch/" rel="tag"># ElasticSearch</a>
+            <a href="/endBlogs/tags/left-join-on/" rel="tag"># left join on</a>
           
         </div>
       
@@ -373,8 +373,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/endBlogs/2019/06/05/Java-PostConstruct和PreConstruct/" rel="next" title="Java-PostConstruct和PreConstruct">
-                <i class="fa fa-chevron-left"></i> Java-PostConstruct和PreConstruct
+              <a href="/endBlogs/2019/08/20/mysql-explain/" rel="next" title="mysql-explain">
+                <i class="fa fa-chevron-left"></i> mysql-explain
               </a>
             
           </div>
@@ -382,10 +382,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/endBlogs/2019/06/14/java泛型/" rel="prev" title="java泛型">
-                java泛型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -508,7 +504,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Index-增加）"><span class="nav-number">1.</span> <span class="nav-text">Index(增加）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#delete-删除）"><span class="nav-number">2.</span> <span class="nav-text">delete(删除）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#GET-查询）"><span class="nav-number">3.</span> <span class="nav-text">GET(查询）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#连表"><span class="nav-number">1.</span> <span class="nav-text">连表</span></a></li></ol></div>
             
 
           </div>
