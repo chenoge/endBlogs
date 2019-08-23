@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="chenogeの日志">
 <meta property="og:description" content="一、原理索引一般以文件形式存在磁盘中（也可以存于内存中），存储的索引的原理大致概括为以空间换时间。 数据库在未添加索引的时候进行查询默认的是进行全量搜索，也就是进行全局扫描，有多少条数据就要进行多少次查询，然后找到相匹配的数据就把他放到结果集中，直到全表扫描完。 建立索引之后，会将建立索引的KEY值放在一个n叉树上（BTree）。因为B树的特点就是适合在磁盘等直接存储设备上组织动态查找表，每次以索">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-19T07:40:44.449Z">
+<meta property="og:updated_time" content="2019-08-23T01:39:06.279Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql索引">
 <meta name="twitter:description" content="一、原理索引一般以文件形式存在磁盘中（也可以存于内存中），存储的索引的原理大致概括为以空间换时间。 数据库在未添加索引的时候进行查询默认的是进行全量搜索，也就是进行全局扫描，有多少条数据就要进行多少次查询，然后找到相匹配的数据就把他放到结果集中，直到全表扫描完。 建立索引之后，会将建立索引的KEY值放在一个n叉树上（BTree）。因为B树的特点就是适合在磁盘等直接存储设备上组织动态查找表，每次以索">
@@ -347,6 +347,24 @@
 <h5 id="三、缺点"><a href="#三、缺点" class="headerlink" title="三、缺点"></a>三、缺点</h5><p>① 创建索引和维护索引需要时间成本，这个成本随着数据量的增加而加大</p>
 <p>② 创建索引和维护索引需要空间成本，每一条索引都要占据数据库的物理存储空间</p>
 <p>③ 会降低表的增删改的效率，因为每次增删改索引需要进行动态维护，导致时间变长</p>
+<p><br></p>
+<p>注：</p>
+<ul>
+<li><p>不建议列上允许为空，最好限制<code>not null</code>，并设置一个默认值。</p>
+<ul>
+<li>设置<code>0</code>和<code>&#39;&#39;</code>空字符串等</li>
+<li>如果是<code>datetime</code>类型，可以设置成<code>1970-01-01 00:00:00</code>这样的特殊值</li>
+</ul>
+</li>
+<li><p>对MySQL来说，<code>null</code>是一个特殊的值，<code>Conceptually, NULL means “a missing unknown value” and it is treated somewhat differently from other values</code>。</p>
+<ul>
+<li>不能使用<code>=,&lt;,&gt;</code>这样的运算符</li>
+<li>对<code>null</code>做算术运算的结果都是<code>null</code> </li>
+<li><code>count</code>时不会包括<code>null</code>行</li>
+<li><code>null</code>比空字符串需要更多的存储空间</li>
+</ul>
+</li>
+</ul>
 <p><br></p>
 <h5 id="四、创建索引"><a href="#四、创建索引" class="headerlink" title="四、创建索引"></a>四、创建索引</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_name [col_name <span class="keyword">data</span> <span class="keyword">type</span>] [<span class="keyword">unique</span> | fulltext] </span><br><span class="line">[<span class="keyword">index</span> | <span class="keyword">key</span>] [index_name] (col_name[<span class="keyword">length</span>]) [<span class="keyword">asc</span> | <span class="keyword">desc</span>]</span><br></pre></td></tr></table></figure>
 <ul>
