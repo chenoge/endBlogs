@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://chenoge.github.io/endBlogs/2019/08/19/mysql-%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95/2.png">
 <meta property="og:image" content="https://chenoge.github.io/endBlogs/2019/08/19/mysql-%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95/1.png">
-<meta property="og:updated_time" content="2019-08-20T02:35:26.181Z">
+<meta property="og:updated_time" content="2019-09-07T10:08:32.819Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql-聚集索引">
 <meta name="twitter:description" content="聚集索引聚集索引是指数据库表行中数据的物理顺序与键值的逻辑（索引）顺序相同。一个表只能有一个主键， 一个表只能有一个聚集索引，因为一个表的物理顺序只有一种情况。与非聚集索引相比，聚集索引有着更快的检索速度。">
@@ -360,7 +360,15 @@
 </li>
 </ul>
 <p><br></p>
-<h4 id="索引原则"><a href="#索引原则" class="headerlink" title="索引原则"></a>索引原则</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.索引越少越好，因为在修改数据时，索引都要进行更新，降低写速度</span><br><span class="line"></span><br><span class="line">2.最窄的字段放在键的左边</span><br><span class="line"></span><br><span class="line">3.避免file sort排序，临时表和表扫描</span><br></pre></td></tr></table></figure>
+<h4 id="索引原则"><a href="#索引原则" class="headerlink" title="索引原则"></a>索引原则</h4><ol>
+<li>尽量控制单表数据量的大小，建议控制在<code>500万</code>以内</li>
+<li>索引越少越好，建议单张表索引不超过5个</li>
+<li><strong>区分度最高</strong>的放在<strong>联合索引</strong>的<strong>最左侧</strong>，<code>区分度=列中不同值的数量/列的总行数</code></li>
+<li>尽量把<strong>字段长度小的列</strong>放在<strong>联合索引</strong>的<strong>最左侧</strong></li>
+<li><strong>使用最频繁的列</strong>放到<strong>联合索引</strong>的<strong>左侧</strong></li>
+<li>避免<code>file sort</code>排序，临时表和表扫描</li>
+<li><strong>避免使用子查询，子查询的结果集无法使用索引</strong>。通常子查询的结果集会被存储到<strong>临时表</strong>中，不论是内存临时表还是磁盘临时表都不会存在索引，所以查询性能会受到一定的影响</li>
+</ol>
 
       
     </div>
