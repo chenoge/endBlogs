@@ -266,6 +266,141 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/05/14/Elasticsearch排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenoge">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenogeの日志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/endBlogs/2019/05/14/Elasticsearch排序/" itemprop="url">Elasticsearch排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-14T15:26:16+08:00">
+                2019-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在 Elasticsearch 中， <em>相关性得分</em> 由一个浮点数进行表示，并在搜索结果中通过 <code>_score</code> 参数返回， 默认排序是 <code>_score</code> 降序。</p>
+<ul>
+<li><p>简单指定字段排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;sort&quot;: &quot;number_of_children&quot;</span><br></pre></td></tr></table></figure>
+<p>字段将会默认升序排序 ，而按照 <code>_score</code> 的值进行降序排序</p>
+</li>
+</ul>
+<ul>
+<li><p>按照字段的值排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">GET /_search</span><br><span class="line">&#123;</span><br><span class="line">    &quot;query&quot; : &#123;</span><br><span class="line">        &quot;bool&quot; : &#123;</span><br><span class="line">            &quot;filter&quot; : &#123; &quot;term&quot; : &#123; &quot;user_id&quot; : 1 &#125;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;sort&quot;: &#123; &quot;date&quot;: &#123; &quot;order&quot;: &quot;desc&quot; &#125;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/endBlogs/2019/05/14/Elasticsearch排序/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/05/14/Elasticsearch字段类型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1428,157 +1563,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yf-gz.cn/endBlogs/2019/03/21/数据库表格设计与范式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenoge">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/endBlogs/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chenogeの日志">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/endBlogs/2019/03/21/数据库表格设计与范式/" itemprop="url">数据库表格设计与范式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-21T10:45:45+08:00">
-                2019-03-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="一、表设计"><a href="#一、表设计" class="headerlink" title="一、表设计"></a>一、表设计</h4><p> 数据库实体间是<code>一对多、多对多</code>关系时，如何进行表设计：</p>
-<ul>
-<li><code>一对多</code>：添加外键</li>
-<li><code>多对多</code> ：建立关系表</li>
-</ul>
-<p>注：</p>
-<ul>
-<li><strong>添加外键</strong>时，尽量只<strong>记录外键</strong>，<strong>不创建外键约束</strong></li>
-<li>推荐业务层级的约束，慎重使用数据库层级的约束，为表结构的重构提供可能性</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 慎重</span><br><span class="line">foreign key(member_id) references member (id);</span><br></pre></td></tr></table></figure>
-<p><br></p>
-<h5 id="业务层级约束"><a href="#业务层级约束" class="headerlink" title="业务层级约束"></a>业务层级约束</h5><ol>
-<li><p>物理删除</p>
-<p>删除数据时，手动查看当前数据<strong>主键被引用的情况</strong></p>
-<ul>
-<li>存在引用，不能删除</li>
-<li>不存在引用，可以删除</li>
-</ul>
-<p>注：主键可能会被新增的表引用，因此每新增一个引用，都需要添加一种<strong>查看引用情况</strong>的逻辑</p>
-</li>
-</ol>
-<p><br></p>
-<ol start="2">
-<li><p>非物理删除</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 使用status字段，表示数据的可用状态</span><br><span class="line"># 被其他表引用时，不添加外键约束</span><br><span class="line"># 删除数据时，不用考虑被其他表引用，从而导致数据不一致的情况</span><br><span class="line">status =  1： 可用。可执行操作包括，删、查、改</span><br><span class="line">status =  0： 不可用。可执行操作包括，删、查、改</span><br><span class="line">status = -1： 已删除。执行操作包括，查、改(只允许修改status字段)</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/endBlogs/2019/03/21/数据库表格设计与范式/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1629,7 +1613,7 @@
               
                 <a href="/endBlogs/archives/">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1642,7 +1626,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">92</span>
+                  <span class="site-state-item-count">93</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -1679,7 +1663,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
